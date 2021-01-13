@@ -1,0 +1,75 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.CustomerContact
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CustomerContact</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerContactType.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerContactType.TypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerPhone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerPhone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CustomerContactID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,159 @@
+﻿
+@{
+    ViewBag.Title = "ListOfPhoto";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="/">Trang chủ</a></li>
+        <li class="active">Thư viện Ảnh</li>
+
+    </ol>
+
+    <h1>Thư viện Ảnh</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+
+            <a href="/Quantri/PhotoLibraryLst/Index" class="btn btn-success btn-label"><i class="fa fa-plus"></i>Thêm mới</a>
+        </div>
+    </div>
+</div>
+<div class="container" style="background-color:#ffffff">
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4>Catalogues</h4>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group clearfix">
+                                <select class="form-control" id="ddlPageSize">
+                                    <option value="5">5 dòng</option>
+                                    <option value="10">10 dòng</option>
+                                    <option value="15" selected>15 dòng</option>
+                                    <option value="20">20 dòng</option>
+                                    <option value="-1">Tất cả</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group clearfix">
+                                <select class="form-control drChange" id="ParentId" name="ParentId">
+                                    <option value="">--Tất cả chủng loại--</option>
+                                    @foreach (var i in (List<NhomXingfa.Areas.Quantri.Models.DataModels.PhotoLibraryCategory>)ViewData["lstCatePhoto"])
+                                    {
+                                        <option value="@i.Id">@i.LibraryName</option>
+                                    }
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group clearfix">
+                                <input type="text" id="hinhsp" name="hinhsp" class="form-control txtSearch" placeholder="Nhập tên hình cần tìm kiếm...">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr style="margin-top:0; margin-bottom:10px;">
+
+                    <div class="row">
+                        <div class="col-md-12" id="lstCatalogue">
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div> <!--col-lg-12-->
+    </div>
+</div>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+         $.ajaxSetup({
+                cache: false
+         });
+
+        filter();
+
+        $('body').on('change', '#ddlPageSize', function () {
+            filter();
+        });
+
+        //textbox name
+        $('.txtSearch').on('input', function () {
+            filter();
+        });
+
+        //Drop change Dept
+            $('.drChange').change(function () {
+                filter();
+            });
+
+
+
+    });
+
+    function filter() {
+        var hinhsp = $("#hinhsp").val();
+        var DanhMucCha = $("#ParentId").val();
+        $.ajax({
+            //url: '/BDS_TinTuc/_PartialIndex',
+            url: '@Url.Action("_PartialListOfPhoto", "PhotoLibraryLst")',
+            data: {
+                pageSize: parseInt($('#ddlPageSize').val()),
+                hinhsp:hinhsp,
+                DanhMucCha: DanhMucCha
+            },
+            method: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#lstCatalogue').html(data);
+            }
+        });
+
+
+        }
+
+        function XoaCateLog() {
+
+        if (confirm("Bạn có chắc chắn xóa không?")) {
+
+            var id = $("#hidImage").val();
+            alert(id);
+            $.ajax({
+                url: "@Url.Action("ClearCatalogue", "CategoryImage")",
+                data: {id:id},
+                type: 'GET',
+                success: function (data, textStatus, jqXHR) {
+                    if (data.toString() == "OK") {
+                        alert("Xóa thành công");
+                        var url = '@Url.Action("LstCategoryImages", "CategoryImage")';
+                        window.location.href = url;
+                    }
+                    else {
+                        $("#ErrorText").html(data);
+                    }
+                },
+                error: function (data, textStatus, jqXHR) { alert(textStatus); }
+            });
+
+            // your deletion code
+        }
+    }
+    </script>
+}

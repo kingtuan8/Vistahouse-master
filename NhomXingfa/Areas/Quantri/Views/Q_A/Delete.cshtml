@@ -1,0 +1,32 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Q_A
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="/">Trang chủ</a></li>
+        <li class="active">Xóa CÂU HỎI THƯỜNG GẶP</li>
+
+    </ol>
+
+</div>
+<div class="container" style="background-color:#fff">
+
+    <div class="alert alert-dismissable alert-danger">
+        <strong>@Model.Question</strong> <br />
+        Bạn có chắc xóa dữ liệu này không?
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", "Q_A")
+        </div>
+    }
+</div>

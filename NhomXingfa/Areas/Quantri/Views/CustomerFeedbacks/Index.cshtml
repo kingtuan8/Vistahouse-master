@@ -1,0 +1,82 @@
+﻿@model IEnumerable<NhomXingfa.Areas.Quantri.Models.DataModels.CustomerFeedback>
+@using NhomXingfa.Areas.Quantri.Utilities
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+@{ int dem = 1;}
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="/">Trang chủ</a></li>
+        <li class="active">Danh sách Phản hồi từ Khách hàng</li>
+
+    </ol>
+
+    <h1>Danh sách Cảm nhận Khách hàng</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+
+            <a href="/Quantri/CustomerFeedbacks/Create/" class="btn btn-success btn-label"><i class="fa fa-plus"></i>Thêm mới</a>
+        </div>
+    </div>
+</div>
+<div class="container" style="background-color:#ffffff">
+    @{ Html.RenderPartial("_Alerts"); }
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th style="width:20%; text-align:center">Tên KH</th>
+                
+                <th style="width:40%;">Nội Dung</th>
+                <th style="width:10%;">Thứ tự</th>
+                <th style="width:10%;">Hiện thị</th>
+                <th style="width:10%;">Lần cập nhật cuối</th>
+                <th style="width:10%;">#</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@dem</td>
+                    <td style="text-align:center">
+                        <img src="@WebConstants.imgCusFeedbackShow/@item.CustomerImage" style="height:75px" /><br /><br />
+                        <strong> @Html.DisplayFor(modelItem => item.CustomerName)</strong><br />
+                        <span style="font-style:italic">@Html.DisplayFor(modelItem => item.CustomerInfo)</span>
+                    </td>
+
+                    
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Feedback)
+                    </td>
+                    <td>
+
+                        <span class="badge badge-info">@item.ThuTu</span>
+                    </td>
+                    <td>
+                        @if (item.IsActive == true)
+                        {
+                            <span class="badge badge-success">Hiện thị</span>
+                        }
+                        else
+                        {
+                            <span class="badge">Ẩn</span>
+                        }
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastModify)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+                dem++;
+            }
+        </tbody>
+    </table>
+</div>

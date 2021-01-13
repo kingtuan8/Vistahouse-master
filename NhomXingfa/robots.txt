@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /css/*
+Disallow: /Scripts/*
+Disallow: /Areas/Quantri*
+Allow: /*
+ 
+Sitemap: https://noithatchungcubinhduong.com/sitemap.xml

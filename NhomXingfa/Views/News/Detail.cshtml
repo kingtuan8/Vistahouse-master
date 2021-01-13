@@ -1,0 +1,37 @@
+﻿@model NhomXingfa.Models.DetailNewsViewModel
+@{
+    ViewBag.Title = Model.blog.SEOTitle;
+}
+@section metatags
+{
+    <meta name="keywords" content="@Model.blog.SEOKeywords" />
+    <meta name="description" content="@Model.blog.SEOMetadescription" />
+}
+
+<div class="hero-wrap hero-bread" style="background-image: url('/images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Trang chủ</a></span></p>
+                <h1 class="mb-0 bread">Tin tức</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_detail", Model)
+
+
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            $(".pull-right li").removeClass("active");
+
+            $(".pull-right li#menutt").addClass("active");
+
+        });
+    </script>
+}

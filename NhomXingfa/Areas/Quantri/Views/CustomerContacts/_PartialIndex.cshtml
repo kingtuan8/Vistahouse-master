@@ -1,0 +1,121 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using NhomXingfa.Areas.Quantri.Models.DataModels
+@using NhomXingfa.Areas.Quantri.Utilities;
+@model IPagedList<NhomXingfa.Areas.Quantri.Models.DataModels.CustomerContact>
+@{
+    int stt = ViewBag.STT;
+    Helpers h = new Helpers();
+}
+
+<span style="color:#ff0000; font-weight:bold">Total: @ViewBag.TotalRow row(s)</span>
+<div class="frame">
+
+    <div class="card card--table1">
+        <div class="card-hScroll">
+            <table>
+                <thead>
+                    <tr>
+                        <td>
+                            #
+                        </td>
+
+                        <th style="width:200px">
+                            Tên Khách Hàng
+                        </th>
+                        <th>
+                            Số Điện thoại
+                        </th>
+                        <th style="width:250px">
+                            Loại
+                        </th>
+                        <th style="width:300px">
+                            Nội Dung
+                        </th>
+
+                        <th>
+                            Tạo lúc
+                        </th>
+                        <th>Trạng thái</th>
+                        <th style="width:250px">Note</th>
+                        <th></th>
+                    </tr>
+
+                </thead>
+            </table>
+
+            <div class="card-vScroll">
+                <table class="table table-striped table-hover xcont">
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>@stt</td>
+
+                        <td style="width:200px">
+                            @item.CustomerName
+                        </td>
+                        <td>
+                            <span class="badge badge-danger" style="font-size:12pt">@item.CustomerPhone</span>
+
+                        </td>
+                        <td style="width:250px">
+                            @item.CustomerContactType.TypeName
+                        </td>
+                        <td style="width:300px">
+                            @item.CustomerContent
+                        </td>
+
+                        <td>
+                            @Convert.ToDateTime(item.Created).ToString(WebConstants.DateFormatVI)
+                        </td>
+                        <td>
+                            @if (item.StatusReply == 1)
+                            {
+                                <span class="badge badge-info">Mới</span>
+                            }
+                            else if (item.StatusReply == 2)
+                            {
+                                <span class="badge badge-success">Đã trả lời</span>
+                            }
+                            else
+                            {
+                                <span class="badge">Canceled</span>
+                            }
+                        </td>
+                        <td style="width:250px">@item.AdminNote</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CustomerContactID })
+
+                        </td>
+                    </tr>
+                        stt++;
+                    }
+                </table>
+            </div>
+        </div>
+
+        <div class="dataTables_paginate paging_bootstrap_full_number pull-right" id="sample_1_paginate">
+            @Html.PagedListPager(Model, pageNumber => Url.Action("_PartialIndex",
+               new
+               {
+                   pageNumber,
+                   pageSize = ViewBag.pageSize,
+                   TenKH = ViewBag.TenKH,
+                   TypeContact = ViewBag.TypeContact
+               }),
+                PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+                new PagedListRenderOptions()
+                {
+                    Display = PagedListDisplayMode.IfNeeded,
+                    DisplayItemSliceAndTotal = true
+                }, new AjaxOptions()
+                {
+                    HttpMethod = "GET",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "season-list"
+                }))
+        </div>
+
+        <div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite"></div>
+    </div>
+</div>

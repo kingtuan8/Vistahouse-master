@@ -1,0 +1,64 @@
+﻿@model IEnumerable<NhomXingfa.Areas.Quantri.Models.DataModels.Q_A>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+
+    .panel-heading .options > a {
+        opacity: 0.5;
+        filter: alpha(opacity=50);
+        color: #000;
+        font-size: 14px;
+        float: right;
+        line-height: 40px;
+        padding-left: 10px;
+    }
+</style>
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="active">Danh sách CÂU HỎI THƯỜNG GẶP</li>
+
+    </ol>
+
+    <h1>CÂU HỎI THƯỜNG GẶP</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+
+            <a href="/Quantri/Q_A/Create/" class="btn btn-success btn-label"><i class="fa fa-plus"></i>Thêm mới</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="panel-group panel-info" id="accordion">
+        @foreach (var item in Model)
+        {
+            <div class="panel panel-default">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne-@item.Id" class="collapsed">
+                    <div class="panel-heading">
+                        <h4 style="color:#ffffff">@item.Question</h4>
+                        <div class="options">
+
+                            <a href="/Quantri/Q_A/Edit/@item.Id" class="panel-collapse"><i class="fa fa-trash-o"></i></a>
+                            <a href="javascript:;"><i class="fa fa-wrench"></i></a>
+                        </div>
+                    </div>
+
+                </a>
+                <div id="collapseOne-@item.Id" class="panel-collapse collapse" style="height: 0px;">
+                    <div class="panel-body">
+
+                        @Html.Raw(item.Answer)
+                        <br />
+                        <br />
+                        <a href="/Quantri/Q_A/Edit/@item.Id" class="btn btn-primary btn-sm btn-label"><i class="fa fa-edit"></i> Sửa</a>   
+                        <a href="/Quantri/Q_A/Delete/@item.Id" class="btn btn-danger btn-sm btn-label"><i class="fa fa-trash-o"></i> Xóa</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

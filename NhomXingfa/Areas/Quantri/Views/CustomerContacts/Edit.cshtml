@@ -1,0 +1,121 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.CustomerContact
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div id="page-heading">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Trang chủ</a></li>
+            <li class="active">Phản hồi Khách Hàng</li>
+
+        </ol>
+
+        <h1>Cập nhật Phản hồi KH</h1>
+        <div class="options">
+
+            <div class="btn-toolbar">
+                <input type="submit" value="Lưu" class="btn btn-success" />
+                <a href="/Quantri/CustomerContacts/Index" class="btn btn-primary">Quay Lại</a>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="background-color:#ffffff">
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.CustomerContactID)
+            @Html.HiddenFor(model => model.CustomerName)
+            @Html.HiddenFor(model => model.CustomerEmail)
+            @Html.HiddenFor(model => model.CustomerContent)
+            @Html.HiddenFor(model => model.Created)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerName, "Tên KH", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="display:none">
+                @Html.LabelFor(model => model.CustomerEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustomerEmail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustomerEmail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerPhone, "Điện thoại", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustomerPhone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustomerPhone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustomerAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.CustomerAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.ContactTypeId, "Thể loại", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("ContactTypeId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ContactTypeId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerContent, "Nội Dung", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <textarea id="CustomerContent" readonly name="CustomerContent" class="form-control" rows="5">@Model.CustomerContent</textarea>
+                    @Html.ValidationMessageFor(model => model.CustomerContent, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.AdminNote, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    <textarea id="AdminNote" name="AdminNote" class="form-control" rows="5">@Model.AdminNote</textarea>
+                    @Html.ValidationMessageFor(model => model.AdminNote, "", new { @class = "text-danger" })
+                </div>
+                @Html.LabelFor(model => model.StatusReply, "Trạng thái", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    <div class="checkbox">
+                        <select class="form-control" id="StatusReply" name="StatusReply">
+                            @if (Model.StatusReply == 1)
+                            {
+                                <option selected value="1">Chưa phản hồi</option>
+                                <option value="2">Đã Phản Hồi</option>
+                                <option value="3">Canceled</option>
+                            }
+                            else if (Model.StatusReply == 2)
+                            {
+                                <option value="1">Chưa phản hồi</option>
+                                <option selected value="2">Đã Phản Hồi</option>
+                                <option value="3">Canceled</option>
+                            }
+                            else
+                            {
+                                <option value="1">Chưa phản hồi</option>
+                                <option value="2">Đã Phản Hồi</option>
+                                <option selected value="3">Canceled</option>
+                            }
+
+                        </select>
+                        @Html.ValidationMessageFor(model => model.StatusReply, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+

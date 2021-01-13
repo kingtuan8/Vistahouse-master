@@ -1,0 +1,84 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.CustomerFeedback
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "CustomerFeedbacks", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="active">Thêm mới Phản hồi KH</li>
+
+    </ol>
+
+    <h1>Thêm mới</h1>
+    <div class="options">
+
+        <div class="btn-toolbar">
+            <input type="submit" value="Lưu mới" class="btn btn-success" />
+            <a href="/CustomerFeedbacks/Index" class="btn btn-primary">Quay Lại</a>
+        </div>
+    </div>
+</div>
+<div class="container" style="background-color:#ffffff">
+    <div class="form-horizontal">
+       
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerName, "Tên Khách Hàng", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerInfo, "Thông tin KH", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerInfo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CustomerInfo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerImage, "Ảnh đại diện", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <input type="file" id="HinhAnh" name="HinhAnh" />
+
+                @Html.ValidationMessageFor(model => model.CustomerImage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ThuTu, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.ThuTu, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ThuTu, "", new { @class = "text-danger" })
+            </div>
+            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                <div class="checkbox">
+                    <select class="form-control" id="IsActive" name="IsActive">
+                        <option selected="" value="true">Hiện thị</option>
+                        <option value="false">Ẩn</option>
+                    </select>
+
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Feedback, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <textarea id="Feedback" name="Feedback" class="form-control" rows="5"></textarea>
+                @Html.ValidationMessageFor(model => model.Feedback, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+    </div>
+</div>
+}
+

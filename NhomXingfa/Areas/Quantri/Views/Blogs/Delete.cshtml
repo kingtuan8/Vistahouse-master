@@ -1,0 +1,36 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Blog
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="">Trang chủ</a></li>
+        <li><a href="/Blogs/Index">Trang chủ</a></li>
+        <li class="active">Xóa tin tức</li>
+
+    </ol>
+
+    <h1>Xóa tin tức</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+            <a href="/Blogs/Index" class="btn btn-primary">Quay Lại</a>
+        </div>
+    </div>
+</div>
+<div class="container" style="padding:5px">
+    <div class="alert alert-dismissable alert-danger">
+        Tiêu đề: <strong>@Model.BlogName</strong> Bạn có chắc chắn xóa tin tức này không?
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

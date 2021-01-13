@@ -1,0 +1,162 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+}
+
+<div class="row" id="processcart">
+    <span class="borderstyle"></span>
+            <div class="col-md-4 actived">
+                <span class="circlenumber activeds">
+                    1
+                </span>
+                Xác Nhận Đơn Hàng
+            </div>
+            <div class="col-md-4">
+                <span class="circlenumber">
+                    2
+                </span>
+                Chọn Giao Hàng
+            </div>
+            <div class="col-md-4">
+                <span class="circlenumber">
+                    3
+                </span>
+                Thanh Toán
+            </div>
+</div>
+
+<div class="row">
+     <div class="col-md-8">
+         <div id="lstfullgiohang">
+             <div class="itemlst">
+                 <div class="floatleft cartitemleft">
+                     <div class="titleitem">
+                         1. Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
+                     </div>
+                     <div class="dscitem">
+                         Giá gói: 2,380,000VND <br />
+                         Phí ship: 105,000VND/7 ngày <br />
+                         Hiện đang ưu đãi miễn phí 100% phí ship cho gói này và free upgrade 7 chai Cần Tây Nổi Tiếng <br />
+                         Tổng chi phí chỉ còn: 2,380,000 VND
+                     </div>
+                 </div>
+                 <div class="floatright cartitemright">
+                     <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
+                     <div class="itempricefc">
+                         2,300,800<sup>đ</sup>
+                     </div>
+                 </div>
+                 <div class="buttonfunc">
+                     <span class="removesp">
+                         <i class="glyphicon glyphicon-remove"></i>
+                     </span>
+                     <div class="form-inline">
+                         <a class="btn btn-default" id="btnTruSL">
+                             <i class="glyphicon glyphicon-minus"></i>
+                         </a>
+                         <input class="form-control" type="text" value="1" placeholder="0" id="txtSoLuongDH" readonly />
+                         <a class="btn btn-default" id="btnCongSL">
+                             <i class="glyphicon glyphicon-plus"></i>
+                         </a>
+                     </div>
+                 </div>
+                 <div class="clear"></div>
+             </div>
+
+             <div class="itemlst">
+                 <div class="floatleft cartitemleft">
+                     <div class="titleitem">
+                         2. Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
+                     </div>
+                     <div class="dscitem">
+                         Giá gói: 2,380,000VND <br />
+                         Phí ship: 105,000VND/7 ngày <br />
+                         Hiện đang ưu đãi miễn phí 100% phí ship cho gói này và free upgrade 7 chai Cần Tây Nổi Tiếng <br />
+                         Tổng chi phí chỉ còn: 2,380,000 VND
+                     </div>
+                 </div>
+                 <div class="floatright cartitemright">
+                     <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
+                     <div class="itempricefc">
+                         2,300,800<sup>đ</sup>
+                     </div>
+                 </div>
+                 <div class="buttonfunc">
+                     <span class="removesp">
+                         <i class="glyphicon glyphicon-remove"></i>
+                     </span>
+                     <div class="form-inline">
+                         <a class="btn btn-default" id="btnTruSL">
+                             <i class="glyphicon glyphicon-minus"></i>
+                         </a>
+                         <input class="form-control" type="text" value="1" placeholder="0" id="txtSoLuongDH" readonly />
+                         <a class="btn btn-default" id="btnCongSL">
+                             <i class="glyphicon glyphicon-plus"></i>
+                         </a>
+                     </div>
+                 </div>
+                 <div class="clear"></div>
+             </div>
+
+         </div>
+     </div>
+    <div class="col-md-4">
+        <div id="tongfullgiohang">
+            <ul>
+                <li>
+                    <div class="totalleft floatleft">
+                        <span>
+                            Gói 7 ngày Giảm cân an toàn - Thải độc triệt để hữu duyên
+                        </span>
+                        <span>
+                            x3
+                        </span>
+                    </div>
+                    <div class="totalright floatright">
+                        <span>2,380,000<sup>đ</sup></span>
+                    </div>
+                    <div class="clear"></div>
+                </li>
+                <li>
+                    <div class="totalleft floatleft">
+                        <span>
+                            Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
+                        </span>
+                        <span>
+                            x3
+                        </span>
+                    </div>
+                    <div class="totalright floatright">
+                        <span>2,380,000<sup>đ</sup></span>
+                    </div>
+                    <div class="clear"></div>
+                </li>
+            </ul>
+
+            <div class="totaltong">
+                <div class="ttitemleft floatleft">
+                    Số lượng <br />
+                    <span>2</span>
+                </div>
+                <div class="ttitemright floatright">
+                    Tổng tiền tạm tính<br />
+                    <span id="tt1">14,300,000<sup>đ</sup></span> <br />
+                    <span id="tt2">** chưa bao gôm phí ship (nếu có)</span>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div id="chongiaohang">
+                <a class="btn btn-lg btn-info">
+                    Chọn Giao Hàng <i class="glyphicon glyphicon-menu-right"></i>
+                </a>
+            </div>
+
+            <div id="hotrocall">
+                Bạn cần hỗ trợ? <br />
+                Hotline: 090909 60 60 - 090944 80 60
+            </div>
+
+        </div>
+    </div>
+</div>

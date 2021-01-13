@@ -1,0 +1,72 @@
+﻿
+@using PagedList;
+@using PagedList.Mvc;
+@using NhomXingfa.Areas.Quantri.Models.DataModels
+@using NhomXingfa.Areas.Quantri.Utilities;
+@model IPagedList<NhomXingfa.Areas.Quantri.Models.DataModels.PhotoLibraryLst>
+@{
+    int stt = ViewBag.STT;
+    Helpers h = new Helpers();
+}
+
+
+<ul class="gallery list-unstyled">
+    @foreach (var i in Model)
+    {
+
+        <li class="mix industrial mix_all" data-name="@i.Id" style="display: inline-block;  opacity: 1;">
+            <a href="@WebConstants.PhotoLibShow/@i.URLImage">
+                <img src="@WebConstants.PhotoLibShow/@i.URLImage" style="height:150px">
+            </a>
+            <h4>@i.Title</h4><br />
+            <span>@i.Title</span><br />
+            <input type="hidden" id="hidImage" value="@i.Id" />
+
+            <a href="#" id="@i.Id" title="@i.Id"> <i class="fa fa-trash-o" title="Xóa" onclick="XoaCateLog();"></i> </a>
+        </li>
+    }
+
+
+    <li class="gap"></li> <!-- "gap" elements fill in the gaps in justified grid -->
+</ul>
+
+<div id="gallarymodal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 class="modal-title">Heading</h3>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dataTables_paginate paging_bootstrap_full_number pull-right" id="sample_1_paginate">
+    @Html.PagedListPager(Model, pageNumber => Url.Action("_PartialListOfPhoto",
+       new
+       {
+           pageNumber,
+           pageSize = ViewBag.pageSize,
+           SanPham = ViewBag.SanPham,
+           DanhMucCha = ViewBag.DanhMucCha,
+           
+       }),
+        PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new PagedListRenderOptions()
+        {
+            Display = PagedListDisplayMode.IfNeeded,
+            DisplayItemSliceAndTotal = true
+        }, new AjaxOptions()
+        {
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "lstCatalogue"
+        }))
+</div>
+
+<div class="dataTables_info" id="sample_1_info" role="status" aria-live="polite"></div>

@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<div class="jumbotron" style="position:relative;">
+    <h1>ASP.NET</h1>
+    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+
+    <div class="ytframe ytxt">
+        <div id="yticon"> 
+            <img src="~/images/youtube-icon (1).png">
+        </div>
+        <div id="frameyt">
+            <span id="ytremove">
+                <i class="glyphicon glyphicon-remove-circle"></i>
+            </span>
+            <div class="">
+                <iframe frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="300" height="130" src="https://www.youtube.com/embed/psZ1g9fMfeo?autoplay=1&amp;muted=1&amp;origin=https%3A%2F%2Fwww.greeno.vn&amp;enablejsapi=1&amp;widgetid=1" id="widget2"></iframe>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+@Html.Partial("_slogan")
+
+
+
+@Html.Partial("_goidinhky")
+
+
+@Html.Partial("_sanphamdon")
+
+@Html.Partial("_luachon")
+
+<div class="row" id="ourstory">
+    <div class="col-md-5">
+        <div class="titleour">
+            Our Story
+        </div>
+        <div class="contentour">
+            Cuộc sống của mình là một hành trình hạnh phúc mỗi ngày với Juice, Yoga và những thói quen lành mạnh. Với hàng nghìn con người đã và đang thay đổi tích cực hơn nhờ Juice mà mình được biết đến và quan sát được, mình luôn muốn truyền tải sự tốt đẹp đó đến với nhiều người hơn mỗi ngày.
+        </div>
+        <a href="javscript:">Xem tiếp</a>
+    </div>
+    <div class="col-md-7">
+        <div class="stories"></div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-1">&nbsp;</div>
+    <div class="col-md-10">
+        <div class="sliderthuonghieu">
+            <div>
+                <img src="~/images/hot.png" />
+            </div>
+            <div>
+                <img src="~/images/vmm.png" />
+            </div>
+            <div>
+                <img src="~/images/bct.png" />
+            </div>
+            <div>
+                <img src="~/images/vtv.png" />
+            </div>
+            <div>
+                <img src="~/images/vne.png" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">&nbsp;</div>
+</div>
+
+
+@Html.Partial("_congdong")
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("_stack")
+    </div>
+</div>
+
+@Html.Partial("_minicart")
+
+
+
+@Html.Partial("_box")
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            new Photostack(document.getElementById('photostack-3'), {
+                callback: function (item) {
+                    //console.log(item)
+                }
+            });
+
+        });
+    </script>
+}

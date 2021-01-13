@@ -1,0 +1,157 @@
+﻿@using NhomXingfa.Models
+@using NhomXingfa.Areas.Quantri.Utilities
+@model ProjectViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Helpers h = new Helpers();
+}
+@section metatags
+{
+    <meta name="keywords" content="nhôm kính Bình Dương, nhôm kính giá rẻ Bình Dương , nội thất chung cư bình dương, nội thất bình dương, thi công nội thất bình dương" />
+    <meta name="description" content="Dịch vụ thiết kế thi công nhôm kính Tân thời chúng tôi, cung cấp các sản phẩm nhôm kính Xingfa giá rẻ nhưng chất lượng" />
+}
+<div class="hero-wrap hero-bread" style="background-image: url('../images/bg_1.jpg');">
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+            <div class="col-md-9 ftco-animate text-center fadeInUp ftco-animated">
+                <p class="breadcrumbs"><span class="mr-2"><a href="/">Trang chủ</a></span></p>
+                <h1 class="mb-0 bread">Dự Án</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate fadeInUp ftco-animated">
+
+                <div class="row" id="lstProject">
+
+
+                </div>
+            </div> <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar ftco-animate fadeInUp ftco-animated">
+                <div class="sidebar-box">
+                    <form action="#" class="search-form">
+                        <div class="form-group">
+                            <span class="icon ion-ios-search"></span>
+                            <input type="text" class="form-control" id="txtNoiDung" placeholder="Nhập nội dung...">
+                        </div>
+                    </form>
+                </div>
+                <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
+                    <h3 class="heading">Danh mục sản phẩm</h3>
+                    <ul class="categories">
+                        @foreach (var j in Model.lstCategory)
+                        {
+                            <li>
+                                <a href="/san-pham/@j.SEOUrlRewrite-@j.CategoryID">
+                                    @j.CategoryName
+                                    <span> (@h.CountTotalSP(j.CategoryID))</span>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Recent Blog</h3>
+                    @foreach (var k in Model.lstNews)
+                    {
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="blog-img mr-4" style="background-image: url(@WebConstants.imgNewsURLShow/@k.ImageURL);"></a>
+                            <div class="text">
+                                <h3 class="heading-1"><a href="#">@k.BlogName</a></h3>
+                                <div class="meta">
+                                    <div><a href="#"><span class="icon-calendar"></span> @Convert.ToDateTime(k.Created).ToString(WebConstants.DateFormatVI)</a></div>
+                                    <div><a href="#"><span class="icon-person"></span> @k.User.UserName</a></div>
+                                    <div><a href="#"><span class="icon-chat"></span> @k.CountView</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Tags</h3>
+                    <div class="tagcloud">
+                        <a href="https://noithatchungcubinhduong.com" target="_blank" class="tag-cloud-link">Nội thất chung cư</a>
+                        <a href="https://noithattanthoi.com" target="_blank" class="tag-cloud-link">Nội thất giá rẻ</a>
+                        <a href="https://noithattanthoi.com/san-pham/noi-that-phong-khach-1" target="_blank" class="tag-cloud-link">nội thất phòng khách</a>
+                        <a href="https://kinhbinhduong.com" class="tag-cloud-link">Nhôm kính giá rẻ</a>
+                        <a href="https://www.nhomxingfabd.com/" target="_blank" class="tag-cloud-link">Nhôm Xingfa Bình Dương</a>
+                        <a href="https://www.noithattanthoi.com/" target="_blank" class="tag-cloud-link">Thiết kế Nội thất Bình Dương</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3 class="heading">Nội thất Tân Thời</h3>
+                    <video src="~/images/TanThoiVideo.mp4" controls="controls" style="height:250px; width:100%" audio="muted">Dòng thông báo</video>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+@section scripts{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+             $(".pull-right li").removeClass("active");
+
+            $(".pull-right li#menuda").addClass("active");
+
+         $.ajaxSetup({
+                cache: false
+         });
+        filter();
+
+        $('body').on('change', '#ddlPageSize', function () {
+            filter();
+        });
+
+        //textbox name
+        $('.txtSearch').on('input', function () {
+            filter();
+        });
+
+        //Drop change Dept
+            $('.drChange').change(function () {
+                filter();
+            });
+
+
+
+    });
+
+    function filter() {
+
+        $.ajax({
+            //url: '/BDS_TinTuc/_PartialIndex',
+            url: '@Url.Action("_partialIndex", "Projects")',
+            data: {
+                pageSize: parseInt($('#ddlPageSize').val()),
+            },
+            method: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#lstProject').html(data);
+                $("#lbl_Message").html("");
+            }
+        });
+
+    }
+    </script>
+}
+
+
+
+

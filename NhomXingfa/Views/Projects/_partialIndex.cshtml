@@ -1,0 +1,50 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@using NhomXingfa.Areas.Quantri.Models.DataModels
+@using NhomXingfa.Areas.Quantri.Utilities;
+@model IPagedList<NhomXingfa.Areas.Quantri.Models.DataModels.Product>
+@{
+    Helpers h = new Helpers();
+}
+@foreach (var i in Model)
+{
+    <div class="col-md-12 d-flex ftco-animate fadeInUp ftco-animated">
+        <div class="blog-entry align-self-stretch d-md-flex">
+            <a href="/chi-tiet-du-an/@i.SEOUrlRewrite-@i.ProductID" class="block-20" style="background-image: url('@WebConstants.ImgProductShow/@i.Images');  width:450px">
+            </a>
+            <div class="text d-block pl-md-4">
+                <div class="meta mb-3">
+                    <div><a href="#">@Convert.ToDateTime(i.Created).ToShortDateString()</a></div>
+                    <div><a href="#">@i.User.UserName</a></div>
+                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> @i.CountView</a></div>
+                </div>
+                <h3 class="heading"><a href="/chi-tiet-du-an/@i.SEOUrlRewrite-@i.ProductID">@i.ProductName</a></h3>
+                <p>@i.ShortDescription</p>
+                <p><a href="/chi-tiet-du-an/@i.SEOUrlRewrite-@i.ProductID" class="btn btn-primary py-2 px-3">Xem thêm</a></p>
+            </div>
+        </div>
+    </div>
+    
+
+}
+<div class="pagination">
+    @Html.PagedListPager(Model, pageNumber => Url.Action("_partialIndex",
+       new
+       {
+           pageNumber,
+           pageSize = ViewBag.pageSize,
+           SanPham = ViewBag.SanPham
+       }),
+        PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(
+        new PagedListRenderOptions()
+        {
+            Display = PagedListDisplayMode.IfNeeded,
+            DisplayItemSliceAndTotal = true
+        }, new AjaxOptions()
+        {
+            HttpMethod = "GET",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "lstProject"
+        }))
+</div>
+

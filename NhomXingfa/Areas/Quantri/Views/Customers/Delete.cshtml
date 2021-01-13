@@ -1,0 +1,35 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Customer
+@using NhomXingfa.Areas.Quantri.Utilities
+@{
+    ViewBag.Title = "Delete";
+}
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="active">Danh sách KH</li>
+
+    </ol>
+
+    <h1>Xóa KH</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+            <a href="/Customers/Index" class="btn btn-primary">Quay Lại</a>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="padding:5px; background-color:#ffffff">
+    <div class="alert alert-dismissable alert-danger">
+        Khách hàng: <strong>@Model.CustomerName</strong> Bạn có chắc chắn xóa không?
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <img src="@WebConstants.imgLogoCustShow/@Model.CustomerImage" style="height:80px" />
+        <br /><br />
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    }
+</div>

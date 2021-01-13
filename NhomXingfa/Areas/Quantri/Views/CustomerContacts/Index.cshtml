@@ -1,0 +1,122 @@
+﻿@model IEnumerable<NhomXingfa.Areas.Quantri.Models.DataModels.CustomerContact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+}
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="active">Danh sách KH Liên hệ</li>
+
+    </ol>
+
+    <h1>Khách hàng Liên hệ</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+
+            @*<a href="/Quantri/Blogs/Create/" class="btn btn-success btn-label"><i class="fa fa-plus"></i>Thêm mới</a>*@
+        </div>
+    </div>
+</div>
+<div class="container" style="padding:5px">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-1">
+                Hiện thị<br />
+                <select name="sample_2_length" aria-controls="sample_2" class="form-control input-xsmall input-inline select2-offscreen" tabindex="-1" title="" id="ddlPageSize">
+                    <option value="5">5 dòng</option>
+                    <option value="10">10 dòng</option>
+                    <option value="15" selected>15 dòng</option>
+                    <option value="20">20 dòng</option>
+                    <option value="-1">Tất cả</option>
+                </select>
+            </div>
+
+            <div class="col-xs-3">
+                Tên Khách Hàng<br />
+                <input type="text" id="txtTenKH" name="txtTenKH" class="form-control txtSearch" placeholder="Nhập tên...">
+            </div>
+
+            <div class="col-xs-2">
+                Loại<br />
+
+                <select class="form-control drChange" id="TypeContact" name="TypeContact">
+                    <option value="">--Tất cả--</option>
+
+                    @foreach (var i in (List<NhomXingfa.Areas.Quantri.Models.DataModels.CustomerContactType>)ViewData["ListCate"])
+                    {
+                        <option value="@i.Id">@i.TypeName</option>
+                    }
+
+                </select>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        @{ Html.RenderPartial("_Alerts"); }
+        <div class="panel-body" style="padding:0px;">
+
+            <div class="row" id="season-list">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+         $.ajaxSetup({
+                cache: false
+         });
+
+        filter();
+
+        $('body').on('change', '#ddlPageSize', function () {
+            filter();
+        });
+
+        //textbox name
+        $('.txtSearch').on('input', function () {
+            filter();
+        });
+
+        //Drop change Dept
+            $('.drChange').change(function () {
+                filter();
+            });
+
+
+
+    });
+
+    function filter() {
+        var TenKH = $("#txtTenKH").val();
+        var TypeContact = $("#TypeContact").val();
+        
+        $.ajax({
+            //url: '/BDS_TinTuc/_PartialIndex',
+            url: '@Url.Action("_PartialIndex", "CustomerContacts", new { Areas = "Quantri" })',
+            data: {
+                pageSize: parseInt($('#ddlPageSize').val()),
+                TenKH: TenKH,
+                TypeContact: TypeContact
+            },
+            method: 'GET',
+            dataType: 'html',
+            success: function (data) {
+                $('#season-list').html(data);
+                $("#lbl_Message").html("");
+            }
+        });
+
+    }
+    </script>
+}

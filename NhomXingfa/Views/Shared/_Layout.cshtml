@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Juice</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    @*<link href="~/fonts/SVN-Friends Forever.otf" rel="stylesheet" />*@
+
+</head>
+<body>
+    <div class="toptran container-fluid">
+
+        <div class="col-md-5">
+            &nbsp;
+        </div>
+        <div class="col-md-7">
+            <h4>
+                Hotline: 1900 63 67 91 - 0909 09 60 60 - 0909 44 80 60
+            </h4>
+            <a href="#">
+                <i class="glyphicon glyphicon-list"></i>
+                Quản lý Đơn Hàng
+            </a>
+            <a href="#">
+                Đăng nhập / Đăng ký
+            </a>
+            <a href="#">
+                <sub>GB</sub>English
+            </a>
+        </div>
+
+    </div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
+                <a class="navbar-brand" href="/" style="padding-top:0px;">
+                    <img src="~/images/p.png" title="logo" style="height:50px;" />
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                @*<ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>*@
+                @*@Html.Partial("_LoginPartial")*@
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">Sản phẩm</a>
+                    </li>
+                    <li>
+                        <a href="/product/goisanpham">Gói định kỳ</a>
+                    </li>
+                    <li>
+                        <a href="#">Thông tin dinh dưỡng</a>
+                    </li>
+                    <li>
+                        <a href="#">Câu hỏi thường gặp</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">
+                            Về chúng tôi <i class="glyphicon glyphicon-triangle-bottom" id="menudown"></i>
+                        </a>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Thông tin dinh dưỡng</a>
+                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Câu hỏi thường gặp</a>
+                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Chính sách bán hàng</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/home/cart">
+                            <i class="glyphicon glyphicon-shopping-cart" id="shopicon" style="position:relative;">
+                                <span class="redshop">13</span>
+                            </i>
+
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid body-content" style="height:800px;">
+        @RenderBody()
+        <hr />
+        <footer>
+            @Html.Partial("_footer")
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <div id="full-opacity">&nbsp;</div>
+</body>
+</html>
