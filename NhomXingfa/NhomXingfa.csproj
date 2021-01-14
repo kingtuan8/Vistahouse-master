@@ -577,17 +577,23 @@
     <Content Include="fonts\slick.svg" />
     <Content Include="Global.asax" />
     <Content Include="images\1.27f2e41e.jpg" />
+    <Content Include="images\1438480.jpg" />
     <Content Include="images\900-x-603-2.jpg" />
     <Content Include="images\bct.png" />
     <Content Include="images\bgchai.png" />
     <Content Include="images\bullet-star-icon.png" />
     <Content Include="images\bullet_blue.png" />
+    <Content Include="images\chicago.jpg" />
+    <Content Include="images\Culinary_fruits_front_view.jpg" />
+    <Content Include="images\FruitJuices_Lead.jpg" />
     <Content Include="images\home-07.jpg" />
     <Content Include="images\hot.png" />
     <Content Include="images\hover.png" />
     <Content Include="images\kh1.7ba13134.jpg" />
     <Content Include="images\kh2.63e24508.jpg" />
     <Content Include="images\kh3.c8cf21f7.jpg" />
+    <Content Include="images\la.jpg" />
+    <Content Include="images\ny.jpg" />
     <Content Include="images\our-story-home-cover.jpg" />
     <Content Include="images\p.png" />
     <Content Include="images\product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
@@ -983,6 +989,7 @@
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\_slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1040,7 +1047,7 @@
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-</Target>
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

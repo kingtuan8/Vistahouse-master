@@ -2,13 +2,10 @@
     ViewBag.Title = "Home";
 }
 
-<div class="jumbotron" style="position:relative;">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-
+<div class="jumbotrons" style="position:relative; padding:12px;">
+    @Html.Partial("_slider")
     <div class="ytframe ytxt">
-        <div id="yticon"> 
+        <div id="yticon">
             <img src="~/images/youtube-icon (1).png">
         </div>
         <div id="frameyt">
@@ -20,7 +17,6 @@
             </div>
         </div>
     </div>
-
 </div>
 
 
