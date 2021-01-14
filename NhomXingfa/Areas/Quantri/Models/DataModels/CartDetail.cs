@@ -20,6 +20,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         public decimal? Total { get; set; }
         public bool? IsGoiSanPham { get; set; }
+        public string ml { get; set; }
 
         public virtual Cart Cart { get; set; }
     }
