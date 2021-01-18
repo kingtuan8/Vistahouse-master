@@ -90,6 +90,11 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         public string SEOMetadescription { get; set; }
 
+        public int? SoLuongChai { get; set; }
+
+        public decimal? PhiShip { get; set; }
+        public int? SoNgayShip { get; set; }
+
         public virtual Category Category { get; set; }
 
         public virtual Category Category1 { get; set; }

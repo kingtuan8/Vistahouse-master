@@ -88,6 +88,10 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
                 .Property(e => e.Total)
                 .HasPrecision(18, 0);
 
+            modelBuilder.Entity<CartDetail>()
+                .Property(e => e.ml)
+                .IsUnicode(false);
+
             modelBuilder.Entity<Category>()
                 .Property(e => e.SEOUrlRewrite)
                 .IsUnicode(false);
@@ -174,6 +178,10 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
             modelBuilder.Entity<Product>()
                 .Property(e => e.SEOUrlRewrite)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.PhiShip)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<ProductImage>()
                 .Property(e => e.URLImage)
