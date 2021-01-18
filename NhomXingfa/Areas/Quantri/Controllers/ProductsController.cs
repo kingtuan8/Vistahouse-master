@@ -119,8 +119,9 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "ProductID,ProductCode,ProductName,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
-            "CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription")] Product product,
+        public ActionResult Create([Bind(Include = "ProductID,ProductCode,ProductName,IsProduct,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
+            "CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription," +
+            "SoLuongChai,PhiShip,SoNgayShip")] Product product,
                                    HttpPostedFileBase HinhAnh)
         {
             if (ModelState.IsValid)
@@ -158,7 +159,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                     }
                 }
                 product.CategoryIDParent = product.CategoryID;
-                product.IsProduct = true;
+                //product.IsProduct = true;
 
                 
                 product.SEOUrlRewrite = Helpers.ConvertToUpperLower(product.ProductName);
@@ -206,7 +207,8 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "ProductID,ProductCode,ProductName,IsProduct,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
-            "CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription")] Product product,
+            "CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription," +
+            "SoLuongChai,PhiShip,SoNgayShip")] Product product,
             HttpPostedFileBase HinhAnh)
         {
             if (ModelState.IsValid)
@@ -253,7 +255,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                     }
                 }
 
-                product.IsProduct = true;
+                //product.IsProduct = true;
                
                 product.Created = product.Created;
                 product.CreatedBy = product.CreatedBy;

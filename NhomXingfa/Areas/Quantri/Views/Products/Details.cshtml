@@ -19,6 +19,7 @@
             <a href="javascript:" class="btn btn-label btn-info" id="btnUploadImage" productid="@Model.ProductID"><i class="fa fa-upload"></i>Upload ảnh</a>
             <a href="/Quantri/Products/Edit/@Model.ProductID" class="btn btn-success btn-label"><i class="fa fa-edit"></i>Chỉnh sửa</a>
             <a href="/Quantri/Products/Index" class="btn btn-primary">Quay Lại</a>
+            <a href="/Quantri/Products/Delete/@Model.ProductID" class="btn btn-danger btn-label"><i class="fa fa-trash-o"></i>Xóa</a>
         </div>
     </div>
 </div>
@@ -46,87 +47,127 @@
 
                                         <tr>
                                             <td>DM SP</td>
-                                            <td><a href="#">@Model.Category1.CategoryName</a></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td colspan="2" style="background-color:#fcdada">
-                                                <table>
-                                                    <tr>
-                                                        <td rowspan="3">Loại: <b> @Model.Capacity </b>(ml)</td>
-                                                        <td style="padding-left:10px">
-                                                            Giá:  <span class="badge badge-danger">
-                                                                @string.Format("{0:#,##0}", Convert.ToDecimal(@Model.Price)) đ
-                                                            </span>
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="padding-left:10px">
-                                                            KM: <span class="badge badge-warning">@Model.PricePhanTram %</span>
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="padding-left:10px">
-                                                            Còn lại: <span class="badge badge-warning">@string.Format("{0:#,##0}", Convert.ToDecimal(@Model.PriceSale)) đ</span>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="2" style="background-color:#d9d9d9">
-                                                <table>
-                                                    <tr>
-                                                        <td rowspan="3">Loại: <b> @Model.Capacity1 </b>(ml)</td>
-                                                        <td style="padding-left:10px">
-                                                            Giá:  <span class="badge badge-danger">
-                                                                @string.Format("{0:#,##0}", Convert.ToDecimal(@Model.Price1)) đ
-                                                            </span>
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="padding-left:10px">
-                                                            KM: <span class="badge badge-warning">@Model.PricePhanTram1 %</span>
-                                                        </td>
-
-                                                    </tr>
-                                                    <tr>
-                                                        <td style="padding-left:10px">
-                                                            Còn lại: <span class="badge badge-warning">@string.Format("{0:#,##0}", Convert.ToDecimal(@Model.PriceSale1)) đ</span>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>SP Mới</td>
                                             <td>
-                                                @if (Model.IsNew == true)
+                                                @if (Model.CategoryIDParent == null || Model.CategoryID == null)
                                                 {
-                                                    <span class="badge badge-danger">Sản Phẩm mới</span>
+                                                    <b>Sản phẩm Gói</b>
                                                 }
                                                 else
                                                 {
-                                                    <span class="badge">#</span>
+                                                    <a href="#">
+                                                        @Model.Category1.CategoryName
+                                                    </a>
                                                 }
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>SP Hot</td>
-                                            <td>
-                                                @if (Model.isHot == true)
-                                                {
-                                                    <span class="badge badge-danger">Sản Phẩm Hot</span>
-                                                }
-                                                else
-                                                {
-                                                    <span class="badge">#</span>
-                                                }
-                                            </td>
-                                        </tr>
+                                        @if (Model.IsProduct == true)
+                                        {
+                                            <tr>
+                                                <td colspan="2" style="background-color:#fcdada">
+                                                    <table>
+                                                        <tr>
+                                                            <td rowspan="3">Loại: <b> @Model.Capacity </b>(ml)</td>
+                                                            <td style="padding-left:10px">
+                                                                Giá:  <span class="badge badge-danger">
+                                                                    @string.Format("{0:#,##0}", Convert.ToDecimal(@Model.Price)) đ
+                                                                </span>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left:10px">
+                                                                KM: <span class="badge badge-warning">@Model.PricePhanTram %</span>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left:10px">
+                                                                Còn lại: <span class="badge badge-warning">@string.Format("{0:#,##0}", Convert.ToDecimal(@Model.PriceSale)) đ</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="background-color:#d9d9d9">
+                                                    <table>
+                                                        <tr>
+                                                            <td rowspan="3">Loại: <b> @Model.Capacity1 </b>(ml)</td>
+                                                            <td style="padding-left:10px">
+                                                                Giá:  <span class="badge badge-danger">
+                                                                    @string.Format("{0:#,##0}", Convert.ToDecimal(@Model.Price1)) đ
+                                                                </span>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left:10px">
+                                                                KM: <span class="badge badge-warning">@Model.PricePhanTram1 %</span>
+                                                            </td>
+
+                                                        </tr>
+                                                        <tr>
+                                                            <td style="padding-left:10px">
+                                                                Còn lại: <span class="badge badge-warning">@string.Format("{0:#,##0}", Convert.ToDecimal(@Model.PriceSale1)) đ</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>SP Mới</td>
+                                                <td>
+                                                    @if (Model.IsNew == true)
+                                                    {
+                                                        <span class="badge badge-danger">Sản Phẩm mới</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge">#</span>
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>SP Hot</td>
+                                                <td>
+                                                    @if (Model.isHot == true)
+                                                    {
+                                                        <span class="badge badge-danger">Sản Phẩm Hot</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge">#</span>
+                                                    }
+                                                </td>
+                                            </tr>
+                                        }
+                                        else
+                                        {
+                                            <tr>
+
+                                                <td>Giá Gói</td>
+                                                <td>
+                                                    @string.Format("{0:#,##0}", Convert.ToDecimal(@Model.PriceSale)) đ
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td>Số lượng Chai</td>
+                                                <td>
+                                                    @Model.SoLuongChai (Chai)
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+
+                                                <td>Phí Ship</td>
+                                                <td>
+                                                    @Model.PhiShip / @Model.SoNgayShip
+                                                </td>
+
+                                            </tr>
+                                        }
                                         <tr>
                                             <td>Lượt xem</td>
                                             <td>
@@ -173,7 +214,7 @@
                         <div class="col-md-6">
                             <h4>Mô tả ngắn</h4>
                             <p>
-                                @Model.ShortDescription
+                                @Html.Raw(Model.ShortDescription)
                             </p>
                             <h4>SEO Google</h4>
                             <table class="table table-condensed">
