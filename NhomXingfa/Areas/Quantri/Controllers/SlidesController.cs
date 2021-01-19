@@ -217,7 +217,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             Slide slide = db.Slides.Find(id);
             db.Slides.Remove(slide);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("ForHomepage");
         }
 
         protected override void Dispose(bool disposing)

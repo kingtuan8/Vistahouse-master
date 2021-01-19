@@ -1,4 +1,7 @@
-﻿using System;
+﻿using NhomXingfa.Areas.Quantri.Models.DataModels;
+using NhomXingfa.Areas.Quantri.Utilities;
+using NhomXingfa.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,14 +11,40 @@ namespace NhomXingfa.Controllers
 {
     public class BlogController : Controller
     {
+        XingFaEntities db = new XingFaEntities();
         // GET: Blog
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
-            return View();
+            NewsViewModel model = new NewsViewModel();
+
+            model.categories = db.Categories.Where(q => q.IsActive == true && q.TypeCate == WebConstants.CategoryNews).ToList();
+
+            model.category = db.Categories.Find(id);
+
+            if (id == null)
+            {
+                model.blogs = db.Blogs.Where(q => q.IsActive == true && q.TypeBlog == WebConstants.BlogNews ).ToList();
+
+                //model.recent = db.Blogs.Where(q => q.IsActive == true).ToList();
+            }
+            else
+            {
+                model.blogs = db.Blogs.Where(q => q.IsActive == true && q.TypeBlog == WebConstants.BlogNews && q.CategoryID == id).ToList();
+                //model.recent = db.Blogs.Where(q => q.IsActive == true && q.CategoryID == id &&).ToList();
+            }
+            //System.Globalization.CultureInfo
+            return View(model);
         }
-        public ActionResult Detail()
+        public ActionResult Detail(int? id)
         {
-            return View();
+            var model = new DetailNewsViewModel();
+
+            model.blog = db.Blogs.Find(id);
+            model.category = db.Categories.Find(model.blog.CategoryID);
+            model.categories = db.Categories.Where(q => q.TypeCate == WebConstants.CategoryNews).ToList();
+            model.recents = db.Blogs.Where(q => q.CategoryID == model.blog.CategoryID && q.IsActive == true && q.CategoryID != id).ToList();
+
+            return View(model);
         }
     }
 }

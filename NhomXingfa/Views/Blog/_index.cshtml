@@ -1,0 +1,123 @@
+﻿@model NhomXingfa.Models.NewsViewModel
+@using NhomXingfa.Areas.Quantri.Utilities
+@{
+    var culture = new System.Globalization.CultureInfo("vi-VN");
+}
+<div class="lstblog">
+    <ul>
+        @foreach (var q in Model.blogs)
+        {
+            <li>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="#">
+                            <img src="@WebConstants.imgNewsURLShow/@q.ImageURL" alt="@q.BlogName" />
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="cate">
+                            <a href="#">
+                                @*@Model.category.CategoryName*@
+                            </a>
+                        </div>
+                        <div class="title">
+                            <a href="/chi-tiet/@q.SEOUrlRewrite-@q.BlogID">
+                                @q.BlogName
+                            </a>
+                        </div>
+                        <div class="timer">
+                            <span class="bywho">
+                                by <b><a href="#">@q.User.UserName</a></b>
+                            </span>
+                            <span class="catngang">
+                                |
+                            </span>
+                            <span class="thoigian">
+                                @q.Created.Value.ToString("MMMM dd, yyyy", culture)
+                            </span>
+                        </div>
+                        <div class="descript">
+                            @q.Descript
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+
+
+        <li>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#">
+                        <img src="~/images/900-x-603-2.jpg" />
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <div class="cate">
+                        <a href="#">
+                            Uncategorized
+                        </a>
+                    </div>
+                    <div class="title">
+                        <a href="#">
+                            Ưu đãi khủng: Nhận ngay Mì Kiều Mạch cao cấp Old Henry hoàn toàn miễn phí!
+                        </a>
+                    </div>
+                    <div class="timer">
+                        <span class="bywho">
+                            by <b><a href="#">green</a></b>
+                        </span>
+                        <span class="catngang">
+                            |
+                        </span>
+                        <span class="thoigian">
+                            Tháng Tám 3, 2020
+                        </span>
+                    </div>
+                    <div class="descript">
+                        Sức khỏe luôn là điều quý giá nhất mà mỗi chúng ta cần trân trọng…
+                    </div>
+                </div>
+            </div>
+        </li>
+
+        <li>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="#">
+                        <img src="~/images/900-x-603-2.jpg" />
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <div class="cate">
+                        <a href="#">
+                            Uncategorized
+                        </a>
+                    </div>
+                    <div class="title">
+                        <a href="#">
+                            Ưu đãi khủng: Nhận ngay Mì Kiều Mạch cao cấp Old Henry hoàn toàn miễn phí!
+                        </a>
+                    </div>
+                    <div class="timer">
+                        <span class="bywho">
+                            by <b><a href="#">green</a></b>
+                        </span>
+                        <span class="catngang">
+                            |
+                        </span>
+                        <span class="thoigian">
+                            Tháng Tám 3, 2020
+                        </span>
+                    </div>
+                    <div class="descript">
+                        Sức khỏe luôn là điều quý giá nhất mà mỗi chúng ta cần trân trọng…
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+
+    </ul>
+</div>
