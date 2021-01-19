@@ -1,4 +1,5 @@
-﻿
+﻿@model List<NhomXingfa.Areas.Quantri.Models.DataModels.Product>
+
 <div class="text-center fontstyle" id="titlespcon">
     <h2>
         Thải độc - đẹp da - bổ sung dưỡng chất
@@ -6,16 +7,19 @@
 </div>
 
 <div class="row" id="goispdon">
-    <div class="col-md-3">
+
+    @foreach(var q in Model)
+    {
+        <div class="col-md-3">
         <a href="javascript:">
             <div class="imggoidon">
-                <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
+                <img src="~/Photos/Products/@q.Images" />
                 <img src="~/images/hover.png" class="imghover" />
             </div>
 
             <div class="namegoidon">
                 <div class="namegoidon1">
-                    Protein Tốt Lắm
+                    @q.ProductName
                 </div>
                 <div class="namegoidon2">
                     Protein Tốt Lắm
@@ -23,14 +27,14 @@
             </div>
 
             <div class="goidonbutton">
-                <input type="button" class="btn btn-lg btn-info btnAddCartDon" value="thêm vào giỏ hàng" />
+                <input type="button" class="btn btn-lg btn-info btnAddCartDon" productid="@q.ProductID" value="thêm vào giỏ hàng" />
             </div>
             <div class="goidonthetich">
                 <div class="thetich1">
-                    85,000<sup>đ</sup> - 350ml
+                    @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup> - 350ml
                 </div>
                 <div class="thetich2">
-                    115,000<sup>đ</sup> - 500ml
+                    @String.Format("{0:#,0}", q.PriceSale1)<sup>đ</sup> - 500ml
                 </div>
                 <div class="goidonxemthem">
                     <span>Xem Thêm ></span>
@@ -38,104 +42,10 @@
             </div>
         </a>
     </div>
+    }
 
-    <div class="col-md-3">
-        <a href="javascript:">
-            <div class="imggoidon">
-                <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
-                <img src="~/images/hover.png" class="imghover" />
-            </div>
+    
 
-            <div class="namegoidon">
-                <div class="namegoidon1">
-                    Protein Tốt Lắm
-                </div>
-                <div class="namegoidon2">
-                    Protein Tốt Lắm
-                </div>
-            </div>
 
-            <div class="goidonbutton">
-                <input type="button" class="btn btn-lg btn-info btnAddCartDon" value="thêm vào giỏ hàng" />
-            </div>
-            <div class="goidonthetich">
-                <div class="thetich1">
-                    85,000<sup>đ</sup> - 350ml
-                </div>
-                <div class="thetich2">
-                    115,000<sup>đ</sup> - 500ml
-                </div>
-                <div class="goidonxemthem">
-                    <span>Xem Thêm ></span>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-md-3">
-        <a href="javascript:">
-            <div class="imggoidon">
-                <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
-                <img src="~/images/hover.png" class="imghover" />
-            </div>
-
-            <div class="namegoidon">
-                <div class="namegoidon1">
-                    Protein Tốt Lắm
-                </div>
-                <div class="namegoidon2">
-                    Protein Tốt Lắm
-                </div>
-            </div>
-
-            <div class="goidonbutton">
-                <input type="button" class="btn btn-lg btn-info btnAddCartDon" value="thêm vào giỏ hàng" />
-            </div>
-            <div class="goidonthetich">
-                <div class="thetich1">
-                    85,000<sup>đ</sup> - 350ml
-                </div>
-                <div class="thetich2">
-                    115,000<sup>đ</sup> - 500ml
-                </div>
-                <div class="goidonxemthem">
-                    <span>Xem Thêm ></span>
-                </div>
-            </div>
-        </a>
-    </div>
-
-    <div class="col-md-3">
-        <a href="javascript:">
-            <div class="imggoidon">
-                <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
-                <img src="~/images/hover.png" class="imghover" />
-            </div>
-
-            <div class="namegoidon">
-                <div class="namegoidon1">
-                    Protein Tốt Lắm
-                </div>
-                <div class="namegoidon2">
-                    Protein Tốt Lắm
-                </div>
-            </div>
-
-            <div class="goidonbutton">
-                <input type="button" class="btn btn-lg btn-info btnAddCartDon" value="thêm vào giỏ hàng" />
-            </div>
-            <div class="goidonthetich">
-                <div class="thetich1">
-                    85,000<sup>đ</sup> - 350ml
-                </div>
-                <div class="thetich2">
-                    115,000<sup>đ</sup> - 500ml
-                </div>
-                <div class="goidonxemthem">
-                    <span>Xem Thêm ></span>
-                </div>
-            </div>
-        </a>
-    </div>
 
 </div>

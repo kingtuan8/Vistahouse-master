@@ -1,4 +1,9 @@
-﻿
+﻿@model List<NhomXingfa.Models.CartViewModel>
+    @{ 
+        int count = 0;
+        decimal? total = 0;
+    }
+
 <div class="row minicart">
     <div class="col-md-8">
     </div>
@@ -13,114 +18,61 @@
 
         <div class="listdathang">
             <ul>
-                <li>
-                    <div class="row">
-                        <div class="col-md-9 col-xs-9">
-                            <h5 class="titlesp">
-                                1. Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
-                            </h5>
-                            <p>
-                                Giá gói: 2,380,000VND
-                                Phí ship: 105,000VND/7 ngày
-                                Hiện đang ưu đãi miễn phí 100% phí ship cho gói này và free upgrade 7 chai Cần Tây Nổi Tiếng
-                                Tổng chi phí chỉ còn: 2,380,000 VND
-                            </p>
-                            <div class="actioncart">
-                                <span class="removesp">
-                                    <i class="glyphicon glyphicon-remove"></i>
+
+                @foreach (var q in Model)
+                {
+                    count++;
+                    total = total + (q.Price * q.Quantity);
+                    <li>
+                        <div class="row">
+                            <div class="col-md-9 col-xs-9">
+                                <h5 class="titlesp">
+                                    <span>@count</span>. @q.Name
+                                </h5>
+                                <p>
+                                   @q.Descript
+                                </p>
+                                <div class="actioncart">
+                                    <span class="removesp btnRemoveCart" productid="@q.ID">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                    </span>
+                                    @if (q.IsProduct == true)
+                                    {
+                                <span class="btn-group btn-group-sm cateml" role="group" aria-label="...">
+                                    <span class="piddata">@q.ID</span>
+                                    @if (q.CateSPDon == 1)
+                                    {
+                                        <button type="button" class="btn btn-default changeml actived" changeml="1">350ml</button>
+                                        <button type="button" class="btn btn-default changeml" changeml="2">550ml</button>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-default changeml" changeml="1">350ml</button>
+                                        <button type="button" class="btn btn-default changeml actived" changeml="2">550ml</button>
+                                    }
+
                                 </span>
-                                <div class="form-inline text-right">
-                                    <a class="btn btn-default" id="btnTruSL">
-                                        <i class="glyphicon glyphicon-minus"></i>
-                                    </a>
-                                    <input class="form-control" type="text" value="1" placeholder="0" id="txtSoLuongDH" readonly />
-                                    <a class="btn btn-default" id="btnCongSL">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                    </a>
+                                    }
+                                    <div class="form-inline text-right">
+                                        <a class="btn btn-xs btn-default btnTruSL" productid="@q.ID" catesp="@q.CateSPDon">
+                                            <i class="glyphicon glyphicon-minus"></i>
+                                        </a>
+                                        <input class="form-control-xs form-control txtSoLuongDH" type="text" value="@q.Quantity" placeholder="0" readonly />
+                                        <a class="btn btn-xs btn-default btnCongSL" productid="@q.ID" catesp="@q.CateSPDon">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                <img src="~/Photos/Products/@q.Image" />
+                                <div class="cartprice">
+                                    <span>@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3 col-xs-3">
-                            <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
-                            <div class="cartprice">
-                                3,409,000<sup>đ</sup>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-md-9 col-xs-9">
-                            <h5 class="titlesp">
-                                2. Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
-                            </h5>
-                            <p>
-                                Giá gói: 2,380,000VND
-                                Phí ship: 105,000VND/7 ngày
-                                Hiện đang ưu đãi miễn phí 100% phí ship cho gói này và free upgrade 7 chai Cần Tây Nổi Tiếng
-                                Tổng chi phí chỉ còn: 2,380,000 VND
-                            </p>
-                            <div class="actioncart">
-                                <span class="removesp">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </span>
-                                <div class="form-inline text-right">
-                                    <a class="btn btn-default" id="btnTruSL">
-                                        <i class="glyphicon glyphicon-minus"></i>
-                                    </a>
-                                    <input class="form-control" type="text" value="1" placeholder="0" id="txtSoLuongDH" readonly />
-                                    <a class="btn btn-default" id="btnCongSL">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-3">
-                            <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
-                            <div class="cartprice">
-                                3,409,000<sup>đ</sup>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="row">
-                        <div class="col-md-9 col-xs-9">
-                            <h5 class="titlesp">
-                                3. Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
-                            </h5>
-                            <p>
-                                Giá gói: 2,380,000VND
-                                Phí ship: 105,000VND/7 ngày
-                                Hiện đang ưu đãi miễn phí 100% phí ship cho gói này và free upgrade 7 chai Cần Tây Nổi Tiếng
-                                Tổng chi phí chỉ còn: 2,380,000 VND
-                            </p>
-                            <div class="actioncart">
-                                <span class="removesp">
-                                    <i class="glyphicon glyphicon-remove"></i>
-                                </span>
-                                <div class="form-inline text-right">
-                                    <a class="btn btn-default" id="btnTruSL">
-                                        <i class="glyphicon glyphicon-minus"></i>
-                                    </a>
-                                    <input class="form-control" type="text" value="1" placeholder="0" id="txtSoLuongDH" readonly />
-                                    <a class="btn btn-default" id="btnCongSL">
-                                        <i class="glyphicon glyphicon-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-xs-3">
-                            <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
-                            <div class="cartprice">
-                                3,409,000<sup>đ</sup>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
+                    </li>
+                }
             </ul>
         </div>
 
@@ -131,7 +83,7 @@
                         Số Lượng
                     </p>
                     <p class="numbersl">
-                        3
+                        @count
                     </p>
                     
                 </div>
@@ -140,7 +92,7 @@
                         Tổng tiền tạm tính
                     </p>
                     <p class="numbertong">
-                        13,762,000<sup>đ</sup>
+                        <span id="totaltien">@String.Format("{0:#,0}", total)</span><sup>đ</sup>
                     </p>
                     <p class="notecart">
                         ** chưa bao gồm phí ship (nếu có)

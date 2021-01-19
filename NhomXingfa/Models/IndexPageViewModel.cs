@@ -10,5 +10,18 @@ namespace NhomXingfa.Models
     {
         public List<Product> goidinhky { get; set; }
         public List<Product> products { get; set; }
+        public List<CartViewModel> carts { get; set; }
+    }
+
+    public class CartViewModel
+    {
+        public string Name { get; set; }
+        public string Descript { get; set; }
+        public string Image { get; set; }
+        public int? ID { get; set; }
+        public decimal? Price { get; set; }
+        public bool? IsProduct { get; set; }
+        public int? Quantity { get; set; }
+        public int? CateSPDon { get; set; }
     }
 }

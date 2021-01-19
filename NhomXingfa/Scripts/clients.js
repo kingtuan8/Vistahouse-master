@@ -1,4 +1,4 @@
-﻿
+﻿var timeout = null;
 $(document).ready(function () {
 
     GetTop();
@@ -19,12 +19,234 @@ $(document).ready(function () {
 
     $(document).on("click", ".btnAddCartGoi", function () {
 
-        //alert("jdd");
+        var productid = $(this).attr("productid");
 
-        $("#full-opacity").toggle("slow");
-        $(".minicart").toggle("slow");
+        var catespdon = 0;
 
-        $("body").css("overflow-y", "hidden");
+        var quantity = 0;
+
+        $.ajax({
+            url: '/home/AddCartJson',
+            contentType: 'application/json; charset=utf-8',
+            data: { productid: productid, catespdon: catespdon, quantity: quantity},
+            type: 'GET',
+            //cache: false,
+            dataType: 'json'
+            , success: function (data) {
+
+
+                if (data.split('_')[0] == "ok") {
+
+
+                    $.ajax({
+                        url: '/home/AddCartData',
+                        contentType: 'application/html; charset=utf-8',
+                        data: {  },
+                        type: 'GET',
+                        //cache: false,
+                        dataType: 'html'
+                        , success: function (data) {
+
+                            $("#showminicart").html(data);
+
+                        },
+                        error: function (xhr, status) {
+
+
+                            alert("Fail connect to system server. Please try again or check internet connection.");
+
+                        },
+                        complete: function (xhr, status) {
+
+                            var hw = window.innerHeight;
+
+                            $("#full-opacity").css("height", hw);
+                            $(".minicart").css("height", hw);
+                            $(".minicart").css("max-height", hw);
+                            $(".listdathang").css("height", hw - 70);
+                            $(".listdathang").css("max-height", hw - 70 - 180);
+                            $("#giohangmini").css("min-height", hw);
+
+
+                            $("#full-opacity").toggle("slow");
+                            $(".minicart").toggle("slow");
+                            $("body").css("overflow-y", "hidden");
+
+                        }
+                    });
+
+                }
+
+
+            },
+            error: function (xhr, status) {
+
+
+                alert("Fail connect to system server. Please try again or check internet connection.");
+
+            },
+            complete: function (xhr, status) {
+
+
+              
+            }
+        });
+    });
+
+    $(document).on("click", ".btnRemoveCart", function () {
+
+        var element = $(this);
+        var productid = $(this).attr("productid");
+
+        var conf = confirm("Bạn có chắc chắn muốn xóa sản phẩm này !");
+        var quantity = 0;
+        if (conf) {
+            $.ajax({
+                url: '/home/RemoveCart',
+                contentType: 'application/html; charset=utf-8',
+                data: { productid: productid, quantity: quantity },
+                type: 'GET',
+                dataType: 'json'
+                , success: function (data) {
+
+                    var k = data.split('_');
+
+                    if (k[0] == "ok") {
+                        element.parent().parent().parent().parent().remove();
+                        $("#totaltien").text(k[1]);
+                    }
+                  
+
+
+                },
+                error: function (xhr, status) {
+                    alert("Fail connect to system server. Please try again or check internet connection.");
+                },
+                complete: function (xhr, status) {
+                    var numbertotal = parseInt($(".numbersl").text().trim());
+
+                    $(".numbersl").text(numbertotal - 1);
+                }
+            });
+        }
+
+        
+
+    });
+
+    $(document).on("click", ".changeml", function () {
+        var elem = $(this);
+        var productid = $(this).parent().find(".piddata").text().trim();
+        var cml = $(this).attr("changeml");
+        if (!$(this).hasClass('actived')) {
+            
+
+            $.ajax({
+                url: '/home/ChangeML',
+                contentType: 'application/html; charset=utf-8',
+                data: { productid: productid, catespdon: cml },
+                type: 'GET',
+                dataType: 'json'
+                , success: function (data) {
+
+                    var k = data.split('_');
+
+                    if (k[0] == "ok") {
+                        $("#totaltien").text(k[1]);
+                        elem.parent().parent().parent().parent().find(".col-md-3 .cartprice span").text(k[2]);
+                    }
+
+
+
+                },
+                error: function (xhr, status) {
+                    alert("Fail connect to system server. Please try again or check internet connection.");
+                },
+                complete: function (xhr, status) {
+                    elem.parent().find(".changeml").removeClass("actived");
+                    elem.addClass("actived");
+                }
+            });
+
+        }
+        
+    });
+
+    $(document).on("click", ".btnAddCartDon", function () {
+
+        var productid = $(this).attr("productid");
+
+        var catespdon = 1;
+
+        var quantity = 0;
+
+        $.ajax({
+            url: '/home/AddCartJson',
+            contentType: 'application/json; charset=utf-8',
+            data: { productid: productid, catespdon: catespdon, quantity: quantity },
+            type: 'GET',
+            //cache: false,
+            dataType: 'json'
+            , success: function (data) {
+
+
+                if (data.split('_')[0] == "ok") {
+
+
+                    $.ajax({
+                        url: '/home/AddCartData',
+                        contentType: 'application/html; charset=utf-8',
+                        data: {},
+                        type: 'GET',
+                        //cache: false,
+                        dataType: 'html'
+                        , success: function (data) {
+
+                            $("#showminicart").html(data);
+
+                        },
+                        error: function (xhr, status) {
+
+
+                            alert("Fail connect to system server. Please try again or check internet connection.");
+
+                        },
+                        complete: function (xhr, status) {
+
+                            var hw = window.innerHeight;
+
+                            $("#full-opacity").css("height", hw);
+                            $(".minicart").css("height", hw);
+                            $(".minicart").css("max-height", hw);
+                            $(".listdathang").css("height", hw - 70);
+                            $(".listdathang").css("max-height", hw - 70 - 180);
+                            $("#giohangmini").css("min-height", hw);
+
+
+                            $("#full-opacity").toggle("slow");
+                            $(".minicart").toggle("slow");
+                            $("body").css("overflow-y", "hidden");
+
+                        }
+                    });
+
+                }
+
+
+            },
+            error: function (xhr, status) {
+
+
+                alert("Fail connect to system server. Please try again or check internet connection.");
+
+            },
+            complete: function (xhr, status) {
+
+
+
+            }
+        });
+        
 
     });
 
@@ -54,11 +276,14 @@ $(document).ready(function () {
         $("#frameyt").hide();
     });
 
-    $(document).on("click", "#btnTruSL", function () {
+    $(document).on("click", ".btnTruSL", function () {
+
+        var productid = $(this).attr("productid");
+        //var catesp = $(this).attr("catesp");
 
         var parentx = $(this).parent();
 
-        var sl = parseInt(parentx.find("#txtSoLuongDH").val().trim());
+        var sl = parseInt(parentx.find(".txtSoLuongDH").val().trim());
 
         var tru = sl - 1;
 
@@ -66,24 +291,89 @@ $(document).ready(function () {
             tru = 1;
         }        
 
-        parentx.find("#txtSoLuongDH").val(tru);
+        parentx.find(".txtSoLuongDH").val(tru);
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function () {
+
+            if (sl > 1) {
+                $.ajax({
+                    url: '/home/RemoveCart',
+                    contentType: 'application/html; charset=utf-8',
+                    data: { productid: productid, quantity: tru },
+                    type: 'GET',
+                    dataType: 'json'
+                    , success: function (data) {
+
+                        var k = data.split('_');
+
+                        if (k[0] == "ok") {
+                            $("#totaltien").text(k[1]);
+                        }
+
+                    },
+                    error: function (xhr, status) {
+                        alert("Fail connect to system server. Please try again or check internet connection.");
+                    },
+                    complete: function (xhr, status) {
+
+                    }
+                });
+            }
+
+        }, 1000);
+
+        
+
 
     });
 
-    $(document).on("click", "#btnCongSL", function () {
+    $(document).on("click", ".btnCongSL", function () {
+
+        var productid = $(this).attr("productid");
+        var catesp = $(this).attr("catesp");
 
         var parentx = $(this).parent();
 
-        var sl = parseInt(parentx.find("#txtSoLuongDH").val().trim());
+        var sl = parseInt(parentx.find(".txtSoLuongDH").val().trim());
 
         var cong = sl + 1;
 
         if (cong >= 100) {
             cong = 100;
         }
+        parentx.find(".txtSoLuongDH").val(cong);
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function () {
+
+            $.ajax({
+                url: '/home/AddCartJson',
+                contentType: 'application/json; charset=utf-8',
+                data: { productid: productid, catespdon: catesp, quantity: cong },
+                type: 'GET',
+                //cache: false,
+                dataType: 'json'
+                , success: function (data) {
+                    var k = data.split('_');
+
+                    if (k[0] == "ok") {
+                        $("#totaltien").text(k[1]);
+                    }
+                },
+                error: function (xhr, status) {
 
 
-        parentx.find("#txtSoLuongDH").val(cong);
+                    alert("Fail connect to system server. Please try again or check internet connection.");
+
+                },
+                complete: function (xhr, status) {
+                }
+            });
+
+        }, 1000);
 
     });
 
@@ -192,5 +482,8 @@ function SetHeigth() {
     $(".minicart").css("height", hw);
     $(".minicart").css("max-height", hw);
     $(".listdathang").css("height", hw - 70);
+    $(".listdathang").css("max-height", hw - 70 - 180);
     $("#giohangmini").css("min-height", hw);
+
+    //alert("sd");
 }
