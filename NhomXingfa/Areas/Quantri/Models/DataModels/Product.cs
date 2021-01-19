@@ -20,7 +20,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         public int ProductID { get; set; }
 
-        [StringLength(20)]
+        [StringLength(200)]
         public string ProductCode { get; set; }
 
         [StringLength(200)]

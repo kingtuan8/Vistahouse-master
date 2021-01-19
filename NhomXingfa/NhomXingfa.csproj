@@ -821,6 +821,8 @@
     <Content Include="fonts\SVN-Friends-Forever.otf" />
     <Content Include="fonts\SVN-Larch-Shaded.otf" />
     <Content Include="img\.DS_Store" />
+    <Content Include="Areas\Quantri\Views\Products\_PartialGoiSPLst.cshtml" />
+    <Content Include="Areas\Quantri\Views\Products\GoiSPLst.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

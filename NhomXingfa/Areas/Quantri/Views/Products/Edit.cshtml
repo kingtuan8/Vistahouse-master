@@ -71,7 +71,7 @@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.CategoryIDParent, "Danh Mục SP", htmlAttributes: new { @class = "control-label col-md-3" })
                                                             <div class="col-md-9">
-                                                              <input type="text" value="Sản phẩm GÓI" class="form-control" readonly />
+                                                                <input type="text" value="Sản phẩm GÓI" class="form-control" readonly />
                                                             </div>
                                                         </div>
                                                     }
@@ -280,7 +280,7 @@
                                                         </div>
                                                     </div>
 
-                                                  
+
                                                     <h4 style="border-bottom:1px solid #808080">SEO Google</h4>
                                                     <div class="form-group">
                                                         @Html.LabelFor(model => model.SEOTitle, "Page Title", htmlAttributes: new { @class = "control-label col-md-3" })
@@ -307,11 +307,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <b>Mô tả ngắn </b> <br />
-                                                <textarea class="form-control" id="ShortDescription" name="ShortDescription" rows="7">@Model.ShortDescription</textarea>
-                                                
-                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <b>Mô tả ngắn </b> <br />
+                                            <textarea class="form-control" id="ShortDescription" name="ShortDescription" rows="7">@Model.ShortDescription</textarea>
+
                                         </div>
                                     </div>
 
