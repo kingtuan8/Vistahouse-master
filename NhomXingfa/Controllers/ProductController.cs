@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NhomXingfa.Areas.Quantri.Models.DataModels;
+using NhomXingfa.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,7 @@ namespace NhomXingfa.Controllers
 {
     public class ProductController : Controller
     {
+        XingFaEntities db = new XingFaEntities();
         // GET: Product
         public ActionResult Index()
         {
@@ -19,9 +22,12 @@ namespace NhomXingfa.Controllers
             return View();
         }
 
-        public ActionResult Detail()
+        public ActionResult Detail(int? id)
         {
-            return View();
+            var model = new DetailPageViewModel();
+            model.product = db.Products.Find(id);
+            model.products = db.Products.Where(q => q.IsProduct == false && q.IsActive == true).ToList();
+            return View(model);
         }
     }
 }

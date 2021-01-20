@@ -225,6 +225,7 @@ i#shopicon
             padding-left: 2%;
             padding-right: 2%;
             min-height:340px;
+            padding-top:12px;
         }
     #listgoidinhky .col-md-3 .toppin img {
         border-radius: 50%;
@@ -284,17 +285,18 @@ i#shopicon
             -webkit-text-fill-color: transparent;
             font-size:30px;
         }
-    #listgoidinhky .col-md-3 a
-    {
-        display:block;
-        text-decoration:none;
-        margin-bottom:32px;
-    }
-        #listgoidinhky .col-md-3 a:hover {
-            border-color: rgba(0,0,0,.09);
-            box-shadow: 0 2px 8px rgba(0,0,0,.09);
-            text-decoration: none;
-        }
+#listgoidinhky .col-md-3 .divtong {
+    /*display: block;*/
+    text-decoration: none;
+    margin-bottom: 32px;
+    position:relative;
+    cursor:pointer;
+}
+#listgoidinhky .col-md-3 .divtong:hover {
+    border-color: rgba(0,0,0,.09);
+    box-shadow: 0 2px 8px rgba(0,0,0,.09);
+    text-decoration: none;
+}
 
 #listgoidinhky .col-md-3 h4.goiname1 {
     text-align: center;
@@ -350,12 +352,11 @@ i#shopicon
     text-decoration:line-through;
     padding-left:8px;
 }
-#listgoidinhky .col-md-3 a:hover .giagoi
-{
-    display:none;
+#listgoidinhky .col-md-3 .divtong:hover .giagoi {
+    display: none;
 }
 
-#listgoidinhky .col-md-3 a:hover .giaship {
+#listgoidinhky .col-md-3 .divtong:hover .giaship {
     display: none;
 }
 #listgoidinhky .col-md-3 .actionhover
@@ -364,11 +365,15 @@ i#shopicon
     min-height:70px;
     max-height:70px;
 }
-    #listgoidinhky .col-md-3 .actionhover .xemthem {
-        text-align:center;
-        display:none;
-        padding-top:12px;
-    }
+#listgoidinhky .col-md-3 a, #listgoidinhky .col-md-3 a:hover{
+    text-decoration: none;
+    color:#333;
+}
+#listgoidinhky .col-md-3 .actionhover .xemthem {
+    text-align: center;
+    display: none;
+    padding-top: 12px;
+}
         #listgoidinhky .col-md-3 .actionhover .xemthem span {
             color: #124f27;
             text-transform: capitalize;
@@ -378,7 +383,7 @@ i#shopicon
         {
             text-decoration:underline;
         }
-#listgoidinhky .col-md-3 a:hover .xemthem
+#listgoidinhky .col-md-3 .divtong:hover .xemthem
 {
     display:block;
 }
@@ -397,17 +402,21 @@ i#shopicon
 {
 
 }
-    #goispdon .col-md-3 a
+    #goispdon a, #goispdon a:hover
     {
-        display:block;
-        margin-bottom:32px;
+        text-decoration:none;
     }
-    #goispdon .col-md-3 a:hover {
-        text-decoration: none;
-        border-color: rgba(0,0,0,.09);
-        box-shadow: 0 2px 8px rgba(0,0,0,.09);
-        /*text-decoration: none;*/
+    #goispdon .col-md-3 .divtongd {
+        display: block;
+        margin-bottom: 32px;
+        cursor: pointer;
     }
+        #goispdon .col-md-3 .divtongd:hover {
+            text-decoration: none;
+            border-color: rgba(0,0,0,.09);
+            box-shadow: 0 2px 8px rgba(0,0,0,.09);
+            /*text-decoration: none;*/
+        }
     #goispdon .col-md-3 .imggoidon {
         width: 96%;
         padding-left: 2%;
@@ -424,12 +433,10 @@ i#shopicon
         {
             display:none;
         }
-            #goispdon .col-md-3 a:hover .imggoidon img
-            {
-                /*display:none;*/
-            }
-    #goispdon .col-md-3 a:hover .imggoidon .imghover
-    {
+    #goispdon .col-md-3 .divtongd:hover .imggoidon img {
+        /*display:none;*/
+    }
+    #goispdon .col-md-3 .divtongd:hover .imggoidon .imghover {
         /*display:block;*/
     }
 
@@ -489,17 +496,16 @@ i#shopicon
             font-weight:normal;
         }
 
-        #goispdon .col-md-3 a:hover .goidonthetich .goidonxemthem {
-            display: block;
-            text-decoration:underline;
-            padding-bottom:12px;
-            padding-top:18px;
-        }
-    #goispdon .col-md-3 a:hover .goidonthetich .thetich1
-    {
-        display:none;
+    #goispdon .col-md-3 .divtongd:hover .goidonthetich .goidonxemthem {
+        display: block;
+        text-decoration: underline;
+        padding-bottom: 12px;
+        padding-top: 18px;
     }
-    #goispdon .col-md-3 a:hover .goidonthetich .thetich2 {
+    #goispdon .col-md-3 .divtongd:hover .goidonthetich .thetich1 {
+        display: none;
+    }
+    #goispdon .col-md-3 .divtongd:hover .goidonthetich .thetich2 {
         display: none;
     }
 #luachonhangdau
@@ -1932,9 +1938,89 @@ footer .col-md-8
 .dropdown:hover .dropbtn {
     background-color: #c6d1b1;
 }
+.showcart_hidden
+{
+    display:none;
+}
+.shownull
+{
+    display:none;
+}
+#btnXacMinhTK {
+    display:none;
+}
+.shownull_hidden
+{
+    display:block;
+}
+
+.inputgiaohang {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-bottom: 28px;
+    display: none;
+}
+.inputgiaohang .titleinput
+{
+    padding:18px 0px 18px 39px;
+    color:#000;
+    font-weight:bold;
+    border-bottom:1px solid #ccc;
+    margin-bottom:18px;
+}
+.changegh
+{
+    outline:none;
+    background-color:unset !important;
+}
+    .changegh:hover {
+        outline: none;
+        background-color: unset !important;
+    }
+    .changegh:active {
+        outline: none;
+        background-color: unset !important;
+    }
+    .changegh:visited {
+        outline: none;
+        background-color: unset !important;
+    }
+    .changegh:focus {
+        outline: none;
+        background-color: unset !important;
+    }
+#taicuahang
+{
+    display:none;
+}
+    #taicuahang img
+    {
+        width:100%;
+    }
+    .inputgiaohang .forminput label {
+        font-weight: normal;
+        color: #888;
+    }
+    .inputgiaohang .forminput label span
+    {
+        color:#f00;
+    }
+    .inputgiaohang .forminput input, .inputgiaohang .forminput textarea {
+        max-width: 400px;
+    }
+        .inputgiaohang .forminput button{
+            background-color: #084f1f;
+            border: 1px solid #084f1f;
+            color:#fff;
+        }
 
 
-
-
-
-
+    .inputgiaohang .ghgroup
+    {
+        margin-bottom:32px;
+    }
+        .inputgiaohang .ghgroup .activex {
+            border: 1px solid #084f1f;
+            color: #084f1f;
+        }

@@ -58,7 +58,12 @@ namespace NhomXingfa.Controllers
 
         public JsonResult RemoveCart(int? productid, int? quantity)
         {
-            decimal x = removeCart(productid, quantity);            
+            decimal x = removeCart(productid, quantity);  
+            
+            if(x == 0)
+            {
+                Session["CartShop"] = null;
+            }
 
             return Json("ok_" + String.Format("{0:#,0}", x), JsonRequestBehavior.AllowGet);
         }
@@ -135,7 +140,15 @@ namespace NhomXingfa.Controllers
                 child.IsProduct = prod.IsProduct;
                 child.Name = prod.ProductName;
                 child.Price = prod.PriceSale;
-                child.Quantity = 1;
+                if(quantity <= 0)
+                {
+                    child.Quantity = 1;
+                }
+                else
+                {
+                    child.Quantity = quantity;
+                }
+                
                 cart.Add(child);
             }
 

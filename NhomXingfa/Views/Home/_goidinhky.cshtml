@@ -12,19 +12,21 @@
         @foreach (var q in Model)
         {
             <div class="col-md-3">
-                <a href="javascript:">
-                    <div class="toppin">
-                        <img src="~/Photos/Products/@q.Images" />
-                        <span class="slchai">
-                            <span class="numberchai">@q.SoLuongChai</span><br /> Chai
-                        </span>
-                    </div>
-                    <h4 class="goiname1">
-                        @q.ProductName
-                    </h4>
-                    <h4 class="goiname2">
-                        14 Ngày - 4 Chai  / 1 Ngày
-                    </h4>
+                <div class="divtong">
+                    <a href="/product/detail/@q.ProductID">
+                        <div class="toppin">
+                            <img src="~/Photos/Products/@q.Images" />
+                            <span class="slchai">
+                                <span class="numberchai">@q.SoLuongChai</span><br /> Chai
+                            </span>
+                        </div>
+                        <h4 class="goiname1">
+                            @q.ProductName
+                        </h4>
+                        <h4 class="goiname2">
+                            14 Ngày - 4 Chai  / 1 Ngày
+                        </h4>
+                    </a>
                     <div class="buttondathanggoi">
                         <input type="button" class="btn btn-lg btn-primary btnAddCartGoi" productid="@q.ProductID" value="thêm vào giỏ hàng" />
                     </div>
@@ -36,10 +38,12 @@
                             Ship: <span>0<sup>đ</sup></span><span class="shipdagiam">@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
                         </div>
                         <div class="xemthem">
-                            <span>Xem Thêm ></span>
+                            <a href="/product/detail/@q.ProductID">
+                                <span>Xem Thêm ></span>
+                            </a>
                         </div>
                     </div>
-                </a>
+                </div>
             </div>
         }
 

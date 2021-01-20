@@ -8,6 +8,11 @@ namespace NhomXingfa
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/moments").Include(
+                      "~/Scripts/moment.js",
+                      "~/Scripts/moment-with-locales.js"
+                      ));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -20,14 +25,14 @@ namespace NhomXingfa
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                       "~/Scripts/bootstrap.js",
+                       "~/Scripts/bootstrap.js", "~/Scripts/bootstrap-datetimepicker.js",
  "~/Scripts/jquery-migrate-1.2.1.min.js",
  "~/Scripts/classie.js", "~/Scripts/photostack.js",
                        "~/Scripts/slick.js", "~/Scripts/clients.js"
                        ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                     "~/Content/bootstrap.css",
+                     "~/Content/bootstrap.css", "~/Content/bootstrap-datetimepicker.css",
                      "~/Content/site.css", "~/Content/component.css",
                      "~/Content/slick.css", "~/Content/slick-theme.css"
                      ));

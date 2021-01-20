@@ -24,4 +24,10 @@ namespace NhomXingfa.Models
         public int? Quantity { get; set; }
         public int? CateSPDon { get; set; }
     }
+
+    public class DetailPageViewModel
+    {
+        public Product product { get; set; }
+        public List<Product> products { get; set; }
+    }
 }

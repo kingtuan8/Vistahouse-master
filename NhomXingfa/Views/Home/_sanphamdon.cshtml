@@ -11,20 +11,23 @@
     @foreach(var q in Model)
     {
         <div class="col-md-3">
-        <a href="javascript:">
-            <div class="imggoidon">
-                <img src="~/Photos/Products/@q.Images" />
-                <img src="~/images/hover.png" class="imghover" />
-            </div>
+        <div class="divtongd">
+            
+            <a href="/product/detail/@q.ProductID">
+                <div class="imggoidon">
+                    <img src="~/Photos/Products/@q.Images" />
+                    <img src="~/images/hover.png" class="imghover" />
+                </div>
 
-            <div class="namegoidon">
-                <div class="namegoidon1">
-                    @q.ProductName
+                <div class="namegoidon">
+                    <div class="namegoidon1">
+                        @q.ProductName
+                    </div>
+                    <div class="namegoidon2">
+                        Protein Tốt Lắm
+                    </div>
                 </div>
-                <div class="namegoidon2">
-                    Protein Tốt Lắm
-                </div>
-            </div>
+            </a>
 
             <div class="goidonbutton">
                 <input type="button" class="btn btn-lg btn-info btnAddCartDon" productid="@q.ProductID" value="thêm vào giỏ hàng" />
@@ -37,10 +40,12 @@
                     @String.Format("{0:#,0}", q.PriceSale1)<sup>đ</sup> - 500ml
                 </div>
                 <div class="goidonxemthem">
-                    <span>Xem Thêm ></span>
+                    <a href="/product/detail/@q.ProductID">
+                        <span>Xem Thêm ></span>
+                    </a>
                 </div>
             </div>
-        </a>
+        </div>
     </div>
     }
 
