@@ -13,6 +13,8 @@ namespace NhomXingfa.Models
         public List<CartViewModel> carts { get; set; }
         public List<Slide> lstBannerHomePage { get; set; }
         public List<Blog> lstLuaChon { get; set; }
+        public Blog OurStory { get; set; }
+        public List<CustomerFeedback> lstCustomerFeedback { get; set; }
     }
 
     public class CartViewModel
