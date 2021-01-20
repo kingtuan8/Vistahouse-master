@@ -33,7 +33,8 @@ namespace NhomXingfa.Controllers
 
         public ActionResult Cart()
         {
-            return View();
+            var model = GetCart();
+            return View(model);
         }
 
         public ActionResult Contact()
@@ -149,10 +150,7 @@ namespace NhomXingfa.Controllers
 
             Session["CartShop"] = cart;
 
-            return total;
-
-                 
-
+            return total;      
         }
 
         private decimal removeCart(int? productid, int? quantity)

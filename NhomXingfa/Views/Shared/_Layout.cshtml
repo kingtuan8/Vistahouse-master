@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿
+@{ 
+    var cart = new List<NhomXingfa.Models.CartViewModel>();
+    if (Session["CartShop"] != null)
+    {
+        cart = (List<NhomXingfa.Models.CartViewModel>)Session["CartShop"];
+    }
+
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -83,7 +92,7 @@
                     <li>
                         <a href="/home/cart">
                             <i class="glyphicon glyphicon-shopping-cart" id="shopicon" style="position:relative;">
-                                <span class="redshop">13</span>
+                                <span class="redshop">@cart.Count</span>
                             </i>
 
                         </a>
