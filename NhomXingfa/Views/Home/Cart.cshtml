@@ -1,146 +1,136 @@
-﻿
+﻿@model List<NhomXingfa.Models.CartViewModel>
+
 @{
     ViewBag.Title = "Cart";
+    int count = 0;
+    decimal total = 0;
+    decimal child = 0;
 }
 
 <div class="row" id="processcart">
     <span class="borderstyle"></span>
             <div class="col-md-4 actived">
-                <span class="circlenumber activeds">
-                    1
+                <span style="background-color:#f5f5f9; padding-right:5px; padding-left:5px;">
+                    <span class="circlenumber activeds">
+                        1
+                    </span>
+                    Xác Nhận Đơn Hàng
                 </span>
-                Xác Nhận Đơn Hàng
             </div>
             <div class="col-md-4">
-                <span class="circlenumber">
-                    2
+                <span style="background-color:#f5f5f9; padding-right:5px; padding-left:5px;">
+                    <span class="circlenumber">
+                        2
+                    </span>
+                    Chọn Giao Hàng
                 </span>
-                Chọn Giao Hàng
             </div>
             <div class="col-md-4">
-                <span class="circlenumber">
-                    3
+                <span style="background-color:#f5f5f9; padding-right:5px; padding-left:5px;">
+                    <span class="circlenumber">
+                        3
+                    </span>
+                    Thanh Toán
                 </span>
-                Thanh Toán
             </div>
 </div>
 
 <div class="row">
      <div class="col-md-8">
          <div id="lstfullgiohang">
-             <div class="itemlst">
-                 <div class="floatleft cartitemleft">
-                     <div class="titleitem">
-                         1. Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
-                     </div>
-                     <div class="dscitem">
-                         Giá gói: 2,380,000VND <br />
-                         Phí ship: 105,000VND/7 ngày <br />
-                         Hiện đang ưu đãi miễn phí 100% phí ship cho gói này và free upgrade 7 chai Cần Tây Nổi Tiếng <br />
-                         Tổng chi phí chỉ còn: 2,380,000 VND
-                     </div>
-                 </div>
-                 <div class="floatright cartitemright">
-                     <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
-                     <div class="itempricefc">
-                         2,300,800<sup>đ</sup>
-                     </div>
-                 </div>
-                 <div class="buttonfunc">
-                     <span class="removesp">
-                         <i class="glyphicon glyphicon-remove"></i>
-                     </span>
-                     <div class="form-inline">
-                         <a class="btn btn-default" id="btnTruSL">
-                             <i class="glyphicon glyphicon-minus"></i>
-                         </a>
-                         <input class="form-control" type="text" value="1" placeholder="0" id="txtSoLuongDH" readonly />
-                         <a class="btn btn-default" id="btnCongSL">
-                             <i class="glyphicon glyphicon-plus"></i>
-                         </a>
-                     </div>
-                 </div>
-                 <div class="clear"></div>
-             </div>
 
-             <div class="itemlst">
-                 <div class="floatleft cartitemleft">
-                     <div class="titleitem">
-                         2. Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
+             @foreach (var q in Model)
+                     {
+                         count++;
+                 total = total + (q.Price.Value * q.Quantity.Value);
+                 <div class="itemlst">
+                     <div class="floatleft cartitemleft">
+                         <div class="titleitem">
+                             <span>@count</span>. @q.Name
+                         </div>
+                         <div class="dscitem">
+                             @q.Descript
+                         </div>
                      </div>
-                     <div class="dscitem">
-                         Giá gói: 2,380,000VND <br />
-                         Phí ship: 105,000VND/7 ngày <br />
-                         Hiện đang ưu đãi miễn phí 100% phí ship cho gói này và free upgrade 7 chai Cần Tây Nổi Tiếng <br />
-                         Tổng chi phí chỉ còn: 2,380,000 VND
+                     <div class="floatright cartitemright">
+                         <img src="~/Photos/Products/@q.Image" />
+                         <div class="itempricefc">
+                             <span>@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
+                         </div>
                      </div>
+                     <div class="buttonfunc">
+                         <span class="removesp btnRemoveCart" productid="@q.ID">
+                             <i class="glyphicon glyphicon-remove"></i>
+                         </span>
+
+                         @if (q.IsProduct == true)
+                         {
+                             <span class="btn-group btn-group-sm cateml" role="group" aria-label="...">
+                                 <span class="piddata">@q.ID</span>
+                                 @if (q.CateSPDon == 1)
+                                 {
+                                     <button type="button" class="btn btn-default changeml actived" changeml="1">350ml</button>
+                                     <button type="button" class="btn btn-default changeml" changeml="2">550ml</button>
+                                 }
+                                 else
+                                 {
+                                     <button type="button" class="btn btn-default changeml" changeml="1">350ml</button>
+                                     <button type="button" class="btn btn-default changeml actived" changeml="2">550ml</button>
+                                 }
+
+                             </span>
+                         }
+
+                         <div class="form-inline">
+                             <a class="btn btn-default btn-xs btnTruSL" productid="@q.ID" catesp="@q.CateSPDon">
+                                 <i class="glyphicon glyphicon-minus"></i>
+                             </a>
+                             <input class="form-control-xs form-control txtSoLuongDH" type="text" value="@q.Quantity" placeholder="0" readonly />
+                             <a class="btn btn-default btn-xs btnCongSL" productid="@q.ID" catesp="@q.CateSPDon">
+                                 <i class="glyphicon glyphicon-plus"></i>
+                             </a>
+                         </div>
+                     </div>
+                     <div class="clear"></div>
                  </div>
-                 <div class="floatright cartitemright">
-                     <img src="~/images/product_medium79f9a012dfb84359d3837ae251acaf9c_.png" />
-                     <div class="itempricefc">
-                         2,300,800<sup>đ</sup>
-                     </div>
-                 </div>
-                 <div class="buttonfunc">
-                     <span class="removesp">
-                         <i class="glyphicon glyphicon-remove"></i>
-                     </span>
-                     <div class="form-inline">
-                         <a class="btn btn-default" id="btnTruSL">
-                             <i class="glyphicon glyphicon-minus"></i>
-                         </a>
-                         <input class="form-control" type="text" value="1" placeholder="0" id="txtSoLuongDH" readonly />
-                         <a class="btn btn-default" id="btnCongSL">
-                             <i class="glyphicon glyphicon-plus"></i>
-                         </a>
-                     </div>
-                 </div>
-                 <div class="clear"></div>
-             </div>
+             }
+
+
 
          </div>
      </div>
     <div class="col-md-4">
         <div id="tongfullgiohang">
             <ul>
-                <li>
-                    <div class="totalleft floatleft">
-                        <span>
-                            Gói 7 ngày Giảm cân an toàn - Thải độc triệt để hữu duyên
-                        </span>
-                        <span>
-                            x3
-                        </span>
-                    </div>
-                    <div class="totalright floatright">
-                        <span>2,380,000<sup>đ</sup></span>
-                    </div>
-                    <div class="clear"></div>
-                </li>
-                <li>
-                    <div class="totalleft floatleft">
-                        <span>
-                            Gói 7 ngày Giảm cân an toàn - Thải độc triệt để
-                        </span>
-                        <span>
-                            x3
-                        </span>
-                    </div>
-                    <div class="totalright floatright">
-                        <span>2,380,000<sup>đ</sup></span>
-                    </div>
-                    <div class="clear"></div>
-                </li>
+                @foreach (var q in Model)
+                {
+                    child = q.Quantity.Value * q.Price.Value;
+                    <li class="cartp_@q.ID">
+                        <div class="totalleft floatleft">
+                            <span>
+                                @q.Name
+                            </span>
+                            <span class="nhansl">
+                                x<span>@q.Quantity</span>
+                            </span>
+                        </div>
+                        <div class="totalright floatright">
+                            <span><span class="tprice">@String.Format("{0:#,0}", child)</span><sup>đ</sup></span>
+                        </div>
+                        <div class="clear"></div>
+                    </li>
+
+                }
             </ul>
 
             <div class="totaltong">
                 <div class="ttitemleft floatleft">
                     Số lượng <br />
-                    <span>2</span>
+                    <span class="numbersl">@count</span>
                 </div>
                 <div class="ttitemright floatright">
                     Tổng tiền tạm tính<br />
-                    <span id="tt1">14,300,000<sup>đ</sup></span> <br />
+                    <span id="tt1"><span id="totaltien">@String.Format("{0:#,0}", total)</span><sup>đ</sup></span> <br />
                     <span id="tt2">** chưa bao gôm phí ship (nếu có)</span>
                 </div>
                 <div class="clear"></div>

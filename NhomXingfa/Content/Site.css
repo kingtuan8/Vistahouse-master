@@ -1425,6 +1425,7 @@ footer .col-md-8
     padding: 20px;
     margin-top: 28px;
     border-radius:4px;
+    background-color:#fff;
 }
     #lstfullgiohang .itemlst
     {
@@ -1493,8 +1494,10 @@ footer .col-md-8
                     #lstfullgiohang .itemlst .buttonfunc input[type="text"] {
                         font-weight: bold;
                         text-align: center;
-                        width: 55px;
+                        width: 40px;
                         background-color: #fff;
+                        font-family: 'Trebuchet MS';
+                        font-size: 13px;
                     }
                     #lstfullgiohang .itemlst .buttonfunc .form-inline a {
                         background-color: #185c2b;
@@ -1511,14 +1514,25 @@ footer .col-md-8
                         font-size:18px;
                         position:absolute;
                         left:22px;
-                        top:24px;
+                        top:14px;
                         cursor:pointer;
                     }
+                    #lstfullgiohang .itemlst .buttonfunc .cateml {
+                        position: absolute;
+                        left: 222px;
+                        top: 14px;
+                    }
+                        #lstfullgiohang .itemlst .buttonfunc .cateml button.actived {
+                            border: 1px solid #084f1f;
+                            color: #084f1f
+                        }
 
 #tongfullgiohang {
     border: 1px solid #ccc;
     margin-top: 28px;
-    border-radius:4px;
+    border-radius: 4px;
+    background-color: #fff;
+}
 }
     #tongfullgiohang ul
     {
@@ -1531,6 +1545,7 @@ footer .col-md-8
             padding:28px 15px;
             margin-left:10px;
             margin-right:10px;
+            list-style:none;
         }
             #tongfullgiohang ul li:last-child
             {
@@ -1551,11 +1566,11 @@ footer .col-md-8
     {
         
     }
-    #tongfullgiohang .totalleft span:last-child {
-        font-weight: bold;
-        color: rgba(0,0,0,.85);
-        padding-left: 32px;
-    }
+#tongfullgiohang .totalleft span.nhansl {
+    font-weight: bold;
+    color: rgba(0,0,0,.85);
+    padding-left: 32px;
+}
     #tongfullgiohang .totalright span
     {
         font-family:'Trebuchet MS';
@@ -1604,7 +1619,7 @@ footer .col-md-8
     position:relative;
 }
     #processcart span.borderstyle {
-        border-top: 1px solid #999;
+        border-top: 1px solid #ccc;
         position: absolute;
         display: inline-block;
         width: 100%;
@@ -1612,7 +1627,7 @@ footer .col-md-8
         left: 0px;
         top: 52%;
         z-index: 8;
-        display:none;
+        /*display:none;*/
     }
     #processcart .col-md-4 {
         color: #888;
@@ -1634,7 +1649,7 @@ footer .col-md-8
         line-height: 32px;
         display: inline-block;
         border-radius: 50%;
-        margin-right:8px;
+        margin-right:2px;
     }
     #processcart .actived span.activeds {
         background-color: #084f1f;

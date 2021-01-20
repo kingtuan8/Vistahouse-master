@@ -72,6 +72,8 @@ $(document).ready(function () {
                             $(".minicart").toggle("slow");
                             $("body").css("overflow-y", "hidden");
 
+                            updateiconcart();
+
                         }
                     });
 
@@ -126,6 +128,8 @@ $(document).ready(function () {
                     var numbertotal = parseInt($(".numbersl").text().trim());
 
                     $(".numbersl").text(numbertotal - 1);
+
+                    updateiconcart();
                 }
             });
         }
@@ -138,8 +142,7 @@ $(document).ready(function () {
         var elem = $(this);
         var productid = $(this).parent().find(".piddata").text().trim();
         var cml = $(this).attr("changeml");
-        if (!$(this).hasClass('actived')) {
-            
+        if (!$(this).hasClass('actived')) {           
 
             $.ajax({
                 url: '/home/ChangeML',
@@ -154,6 +157,14 @@ $(document).ready(function () {
                     if (k[0] == "ok") {
                         $("#totaltien").text(k[1]);
                         elem.parent().parent().parent().parent().find(".col-md-3 .cartprice span").text(k[2]);
+                        elem.parent().parent().parent().find(".cartitemright .itempricefc span").text(k[2]);
+
+                        var qty = parseInt(elem.parent().parent().find(".form-inline .txtSoLuongDH").val());
+                        var cartpid = "cartp_" + productid;
+                        $("#tongfullgiohang").find("." + cartpid + " .totalleft .nhansl span").text(qty);
+                        var xxx = k[2].replace(',', '');            
+                        var xfinal = formatCurrency(qty * parseInt(xxx)).replace('.0', '');
+                        $("#tongfullgiohang").find("." + cartpid + " .totalright span span.tprice").text(xfinal);
                     }
 
 
@@ -165,6 +176,7 @@ $(document).ready(function () {
                 complete: function (xhr, status) {
                     elem.parent().find(".changeml").removeClass("actived");
                     elem.addClass("actived");
+                    updateiconcart();
                 }
             });
 
@@ -227,6 +239,8 @@ $(document).ready(function () {
                             $(".minicart").toggle("slow");
                             $("body").css("overflow-y", "hidden");
 
+                            updateiconcart();
+
                         }
                     });
 
@@ -277,7 +291,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".btnTruSL", function () {
-
+        var elem = $(this);
         var productid = $(this).attr("productid");
         //var catesp = $(this).attr("catesp");
 
@@ -310,6 +324,15 @@ $(document).ready(function () {
 
                         if (k[0] == "ok") {
                             $("#totaltien").text(k[1]);
+
+
+                            var qty = parseInt(elem.parent().find(".txtSoLuongDH").val());
+                            var cartpid = "cartp_" + productid;
+                            $("#tongfullgiohang").find("." + cartpid + " .totalleft .nhansl span").text(qty);
+                            var ppp = elem.parent().parent().parent().find(".cartitemright .itempricefc span").text().trim();
+                            var xxx = ppp.replace(',', '');
+                            var xfinal = formatCurrency(qty * parseInt(xxx)).replace('.0', '');
+                            $("#tongfullgiohang").find("." + cartpid + " .totalright span span.tprice").text(xfinal);
                         }
 
                     },
@@ -317,7 +340,7 @@ $(document).ready(function () {
                         alert("Fail connect to system server. Please try again or check internet connection.");
                     },
                     complete: function (xhr, status) {
-
+                        updateiconcart();
                     }
                 });
             }
@@ -330,6 +353,8 @@ $(document).ready(function () {
     });
 
     $(document).on("click", ".btnCongSL", function () {
+
+        var elem = $(this);
 
         var productid = $(this).attr("productid");
         var catesp = $(this).attr("catesp");
@@ -361,6 +386,17 @@ $(document).ready(function () {
 
                     if (k[0] == "ok") {
                         $("#totaltien").text(k[1]);
+
+
+                        var qty = parseInt(elem.parent().find(".txtSoLuongDH").val());
+                        var cartpid = "cartp_" + productid;
+                        $("#tongfullgiohang").find("." + cartpid + " .totalleft .nhansl span").text(qty);
+                        var ppp = elem.parent().parent().parent().find(".cartitemright .itempricefc span").text().trim();
+                        var xxx = ppp.replace(',', '');
+                        var xfinal = formatCurrency(qty * parseInt(xxx)).replace('.0', '');
+                        $("#tongfullgiohang").find("." + cartpid + " .totalright span span.tprice").text(xfinal);
+
+
                     }
                 },
                 error: function (xhr, status) {
@@ -370,6 +406,7 @@ $(document).ready(function () {
 
                 },
                 complete: function (xhr, status) {
+                    updateiconcart();
                 }
             });
 
@@ -459,6 +496,18 @@ $(document).ready(function () {
 
 });
 
+function updateiconcart() {
+    var numbersl = $(".numbersl").text().trim();
+
+
+
+    //if (numbersl == undefined || numbersl == null || numbersl == "") {
+    //    numbersl = $(".numberslt").text().trim();
+    //}
+
+    $(".redshop").text(numbersl);
+}
+
 function GetTop() {
     var x = $(window).scrollTop();
     if (x >= 30) {
@@ -486,4 +535,13 @@ function SetHeigth() {
     $("#giohangmini").css("min-height", hw);
 
     //alert("sd");
+}
+
+function formatCurrency(total) {
+    var neg = false;
+    if (total < 0) {
+        neg = true;
+        total = Math.abs(total);
+    }
+    return (neg ? "-$" : '') + parseFloat(total, 10).toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
 }
