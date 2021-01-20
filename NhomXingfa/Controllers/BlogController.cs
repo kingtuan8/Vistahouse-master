@@ -23,7 +23,7 @@ namespace NhomXingfa.Controllers
 
             if (id == null)
             {
-                model.blogs = db.Blogs.Where(q => q.IsActive == true && q.TypeBlog == WebConstants.BlogNews ).ToList();
+                model.blogs = db.Blogs.Where(q => q.IsActive == true && q.TypeBlog == WebConstants.BlogNews).OrderByDescending(a=>a.LastModify).ToList();
 
                 //model.recent = db.Blogs.Where(q => q.IsActive == true).ToList();
             }
