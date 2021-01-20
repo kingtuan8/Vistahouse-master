@@ -1,0 +1,30 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Blog
+@using NhomXingfa.Areas.Quantri.Utilities
+<div class="row" id="ourstory">
+    <div class="col-md-5">
+        <div class="titleour">
+            @Model.BlogName
+        </div>
+        <div class="contentour">
+            @{ string str = "";}
+            @if (Model.Content.Length >= 600)
+            {
+                str = Model.Content.Substring(0, 600);
+            }
+            else
+            {
+                str = Model.Content;
+            }
+            @Html.Raw(str)
+
+            
+        </div>
+        <a href="javscript:">Xem tiếp</a>
+    </div>
+    <div class="col-md-7">
+        @*<div class="stories">*@
+        <div class="">
+            <img src="@WebConstants.imgNewsURLShow/@Model.ImageURL" title="@Model.BlogName" />
+        </div>
+    </div>
+</div>

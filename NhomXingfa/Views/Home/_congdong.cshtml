@@ -1,28 +1,32 @@
-﻿
+﻿@model List<NhomXingfa.Areas.Quantri.Models.DataModels.CustomerFeedback>
 <div class="row" id="congdongyeu">
     <div class="col-md-3">
         &nbsp;
     </div>
     <div class="col-md-6">
         <h1 class="fontstyle">
-            Cộng đồng yêu True Juice
+            Cộng đồng yêu VistaHouse
         </h1>
         <p id="congdongy">
             Bạn có tin cuộc sống của mình sẽ thay đổi từ những thói quen nhỏ bé? Bằng chính sự thay đổi của bản thân và những thói quen tích cực chứ không phải từ một ai hay điều gì tác động. Có một cộng đồng như thế! Với Juicing & Yoga đã và đang truyền cảm hứng cho nhau. Để khỏe mạnh hơn và thấy cuộc sống thú vị, đầy màu sắc! Hãy nghe chia sẻ từ những con người và những câu chuyện thật mà chúng mình đồng hành và vun đắp từng chút một.
         </p>
 
         <div class="listtamsu variable">
-            <div class="tamsu">
-                <p class="quoteauthor">
-                    Có lẽ, Yoga–Juicing có một mối liên quan đặc biệt, nó tác động từ bên trong, làm cho con người ta trở nên tươi sáng và tràn đầy sinh lực hơn. Tôi thực sự cảm nhận được sự thay đổi rõ rệt bên trong con người mình, thậm chí cả bề ngoài cũng có nhiều sự thay đổi tích cực. Và tất nhiên, tôi vẫn duy trì việc uống nước ép và tập yoga đều đặn hàng ngày cho tới hiện tại, và sẽ tiếp tục duy trì trong tương lai. Tôi và các con sẽ tiếp tục sống khỏe mạnh, yêu đời và có ích, như một cách nối dài sự sống.
-                </p>
-                <div class="author">
-                    <p>Nguyễn Xuân Bách</p>
-                    <p>Nhân viên sale BĐS</p>
+            @foreach (var i in Model)
+            {
+                <div class="tamsu">
+                    <p class="quoteauthor">
+                        @i.Feedback
+                    </p>
+                    <div class="author">
+                        <p>@i.CustomerName</p>
+                        <p>@i.CustomerInfo</p>
+                    </div>
                 </div>
-            </div>
+            }
 
-            <div class="tamsu">
+
+            @*<div class="tamsu">
                 <p class="quoteauthor">
                     Có lẽ, Yoga–Juicing có một mối liên quan đặc biệt, nó tác động từ bên trong, làm cho con người ta trở nên tươi sáng và tràn đầy sinh lực hơn. Tôi thực sự cảm nhận được sự thay đổi rõ rệt bên trong con người mình, thậm chí cả bề ngoài cũng có nhiều sự thay đổi tích cực. Và tất nhiên, tôi vẫn duy trì việc uống nước ép và tập yoga đều đặn hàng ngày cho tới hiện tại, và sẽ tiếp tục duy trì trong tương lai. Tôi và các con sẽ tiếp tục sống khỏe mạnh, yêu đời và có ích, như một cách nối dài sự sống.
                 </p>
@@ -50,7 +54,7 @@
                     <p>Nguyễn Xuân Bách 4</p>
                     <p>Nhân viên sale BĐS</p>
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
     <div class="col-md-3">

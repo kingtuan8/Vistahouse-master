@@ -4,7 +4,7 @@
 }
 
 <div class="jumbotrons" style="position:relative; padding:12px;">
-    @Html.Partial("_slider")
+    @Html.Partial("_slider", Model.lstBannerHomePage)
     <div class="ytframe ytxt">
         <div id="yticon">
             <img src="~/images/youtube-icon (1).png">
@@ -30,22 +30,12 @@
 
 @Html.Partial("_sanphamdon", Model.products)
 
-@Html.Partial("_luachon")
+@Html.Partial("_luachon", Model.lstLuaChon)
 
-<div class="row" id="ourstory">
-    <div class="col-md-5">
-        <div class="titleour">
-            Our Story
-        </div>
-        <div class="contentour">
-            Cuộc sống của mình là một hành trình hạnh phúc mỗi ngày với Juice, Yoga và những thói quen lành mạnh. Với hàng nghìn con người đã và đang thay đổi tích cực hơn nhờ Juice mà mình được biết đến và quan sát được, mình luôn muốn truyền tải sự tốt đẹp đó đến với nhiều người hơn mỗi ngày.
-        </div>
-        <a href="javscript:">Xem tiếp</a>
-    </div>
-    <div class="col-md-7">
-        <div class="stories"></div>
-    </div>
-</div>
+@Html.Partial("_OurStory", Model.OurStory)
+
+
+
 
 
 <div class="row">
@@ -73,7 +63,7 @@
 </div>
 
 
-@Html.Partial("_congdong")
+@Html.Partial("_congdong", Model.lstCustomerFeedback)
 
 <div class="row">
     <div class="col-md-12">
