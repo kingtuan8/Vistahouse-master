@@ -21,6 +21,8 @@ namespace NhomXingfa.Controllers
         {
             var model = new GoiDinhKyViewModel();
             model.products = db.Products.Where(q => q.IsProduct == true).ToList();
+            model.lstQAs= db.Q_A.Where(a => a.IsActive == true).OrderBy(a => a.ThuTu).ToList();
+            model.lstCustomerFeed = db.CustomerFeedbacks.Where(c => c.IsActive == true).OrderBy(c => c.ThuTu).ToList();
             return View(model);
         }
 

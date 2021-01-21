@@ -39,5 +39,7 @@ namespace NhomXingfa.Models
     public class GoiDinhKyViewModel
     {
         public List<Product> products { get; set; }
+        public List<Q_A> lstQAs { get; set; }
+        public List<CustomerFeedback> lstCustomerFeed { get; set; }
     }
 }

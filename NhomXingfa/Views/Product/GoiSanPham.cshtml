@@ -1,4 +1,5 @@
 ﻿@model NhomXingfa.Models.GoiDinhKyViewModel
+@using NhomXingfa.Areas.Quantri.Utilities
 @{
     ViewBag.Title = "Goi Định Kỳ";
     int count = 1;
@@ -173,7 +174,7 @@
 
 @*<div class="dotdiv divider">
 
-</div>*@
+    </div>*@
 
 
 <div class="text-center fontstyle" id="khachhangchungtoi">
@@ -186,19 +187,25 @@
     </div>
     <div class="col-md-10">
         <div class="row">
-            <div class="col-md-4">
-                <div class="imagekh">
-                    <img src="~/images/kh1.7ba13134.jpg" />
+            @foreach (var q in Model.lstCustomerFeed.Take(3))
+            {
+                <div class="col-md-4">
+                    <div class="imagekh">
+                        <img src="@WebConstants.imgCusFeedbackShow/@q.CustomerImage" style="height:270px" />
+                    </div>
+                    <div class="commentkh">
+                       @Html.Raw(q.Feedback)
+                    </div>
+                    <div class="authorkh">
+                       @q.CustomerName 
+                        <br />
+                        <span style="font-style:italic">@q.CustomerInfo</span>
+                    </div>
                 </div>
-                <div class="commentkh">
-                    Hôm nay bạn đã uống Green O - Sinh tố rau sạch chưa? #Green_O #Sinh_tố_rau_sạch
-                </div>
-                <div class="authorkh">
-                    - Ms THANH HOA -
-                </div>
-            </div>
+            }
 
-            <div class="col-md-4">
+
+            @*<div class="col-md-4">
                 <div class="imagekh">
                     <img src="~/images/kh2.63e24508.jpg" />
                 </div>
@@ -220,8 +227,22 @@
                 <div class="authorkh">
                     - BÙI THẢO THIỆN -
                 </div>
-            </div>
+            </div>*@
 
+        </div>
+    </div>
+    <div class="col-md-1">
+        &nbsp;
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-1">
+        &nbsp;
+    </div>
+    <div class="col-md-10">
+        <div class="row">
+            @Html.Partial("_QA", Model.lstQAs)
         </div>
     </div>
     <div class="col-md-1">
