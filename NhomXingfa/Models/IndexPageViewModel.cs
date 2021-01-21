@@ -15,6 +15,7 @@ namespace NhomXingfa.Models
         public List<Blog> lstLuaChon { get; set; }
         public Blog OurStory { get; set; }
         public List<CustomerFeedback> lstCustomerFeedback { get; set; }
+        public List<Customer> lstCustomerParner { get; set; }
     }
 
     public class CartViewModel

@@ -1,0 +1,31 @@
+﻿@model List<NhomXingfa.Areas.Quantri.Models.DataModels.Customer>
+@using NhomXingfa.Areas.Quantri.Utilities
+<div class="row">
+    <div class="col-md-1">&nbsp;</div>
+    <div class="col-md-10">
+        <div class="sliderthuonghieu">
+            @foreach (var item in Model)
+            {
+                <div>
+                    <img src="@WebConstants.imgLogoCustShow/@item.CustomerImage" alt="@item.CustomerName" title="@item.CustomerName" />
+                </div>
+            }
+            <div>
+                <img src="~/images/hot.png" />
+            </div>
+            <div>
+                <img src="~/images/vmm.png" />
+            </div>
+            <div>
+                <img src="~/images/bct.png" />
+            </div>
+            @*<div>
+            <img src="~/images/vtv.png" />
+        </div>
+        <div>
+            <img src="~/images/vne.png" />
+        </div>*@
+        </div>
+    </div>
+    <div class="col-md-1">&nbsp;</div>
+</div>

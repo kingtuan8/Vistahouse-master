@@ -892,9 +892,9 @@ i#shopicon
     padding-top: 50px;
     padding-bottom: 50px;
 }
-#listcauhoi .col-md-10 {
+#listcauhoi .col-md-12 {
 }
-    #listcauhoi .col-md-10 ul li {
+    #listcauhoi .col-md-12 ul li {
         list-style: none;
         background: rgb(207, 235, 216);
         border-radius: 4px;
@@ -903,22 +903,22 @@ i#shopicon
         overflow: hidden;
         border: 1px solid rgb(207, 235, 216);
     }
-        #listcauhoi .col-md-10 ul li .titlecauhoi {
+        #listcauhoi .col-md-12 ul li .titlecauhoi {
             font-weight: bold;
             font-size: 15px;
             padding: 18px 40px !important;
             padding-left: 16px !important;
             cursor:pointer;
         }
-            #listcauhoi .col-md-10 ul li .titlecauhoi:hover {
+            #listcauhoi .col-md-12 ul li .titlecauhoi:hover {
                 background-color: #c3eaeb;
                 border-color: #c3eaeb;
             }
-            #listcauhoi .col-md-10 ul li .titlecauhoi i {
+            #listcauhoi .col-md-12 ul li .titlecauhoi i {
                 font-size: 12px;
                 margin-right:18px;
             }
-        #listcauhoi .col-md-10 ul li .noidungtraloi {
+        #listcauhoi .col-md-12 ul li .noidungtraloi {
             /*display:none;*/
             background-color: #fff;
             padding: 16px;

@@ -22,7 +22,7 @@ namespace NhomXingfa.Controllers
             model.lstLuaChon = db.Blogs.Where(b=>b.IsActive == true &&(b.BlogID == 6 || b.BlogID == 5 || b.BlogID == 4)).OrderBy(b => b.Sort).ToList();
             model.OurStory = db.Blogs.Where(b => b.IsActive == true && b.BlogID == 3).FirstOrDefault();
             model.lstCustomerFeedback = db.CustomerFeedbacks.Where(c => c.IsActive == true).OrderBy(c => c.ThuTu).ToList();
-            //model.carts = GetCart();
+            model.lstCustomerParner = db.Customers.Where(a => a.IsActive == true).ToList();
             return View(model);
         }
 
