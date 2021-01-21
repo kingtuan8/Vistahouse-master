@@ -16,29 +16,31 @@
 
 <div class="row" id="processcart">
     <span class="borderstyle"></span>
-            <div class="col-md-4 actived">
-                <span style="background-color:#fff; padding-right:5px; padding-left:5px;">
-                    <span class="circlenumber activeds">
+            <div class="col-md-4 actived" id="dot1">
+                <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
+                    <span class="circlenumber activeds cc1">
                         1
                     </span>
                     Xác Nhận Đơn Hàng
                 </span>
+                <span style="position:absolute; top:52%; left:0px; height:5px; background-color:#fff; z-index:9; width:60%;">&nbsp;</span>
             </div>
             <div class="col-md-4">
-                <span style="background-color:#fff; padding-right:5px; padding-left:5px;">
-                    <span class="circlenumber">
+                <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
+                    <span class="circlenumber cc2">
                         2
                     </span>
                     Chọn Giao Hàng
                 </span>
             </div>
-            <div class="col-md-4">
-                <span style="background-color:#fff; padding-right:5px; padding-left:5px;">
-                    <span class="circlenumber">
+            <div class="col-md-4" id="dot3">
+                <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
+                    <span class="circlenumber cc3">
                         3
                     </span>
                     Thanh Toán
                 </span>
+                <span style="position:absolute; top:52%; right:0px; height:5px; background-color:#fff; z-index:9; width:50%;">&nbsp;</span>
             </div>
 </div>
 
@@ -130,6 +132,11 @@
                  </div>
                  <div class="col-md-10">
 
+                     <p style="text-align:center; padding:9px;background-color: #fffbe6;border: 1px solid #ffe58f; font-size:13px;">
+                         Nếu quý khách đã có tài khoản, vui lòng đăng nhập để sử dụng thông tin đặt hàng trước đó
+                         <button type="button" class="close" id="closewarm" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                     </p>
+
                      <div class="forminput form-horizontal">
                          <div class="form-group">
                              <label for="txtHoTen" class="col-sm-4 control-label"><span>*</span> Họ & Tên</label>
@@ -165,13 +172,13 @@
                          <div class="form-group">
                              <label for="txtDiaChi" class="col-sm-4 control-label">Ghi chú</label>
                              <div class="col-sm-8">
-                                 <textarea class="form-control" cols="3" placeholder="ghi chú"></textarea>
+                                 <textarea class="form-control" cols="3" id="txtNoted" placeholder="ghi chú"></textarea>
                              </div>
                          </div>
 
                          <div class="form-group">
                              <div class="col-sm-offset-4 col-sm-8">
-                                 <button type="button" class="btn btn-default">Lưu</button>
+                                 <button type="button" class="btn btn-default" id="btnLuuThongTin">Lưu</button>
                                  <button type="button" class="btn btn-default" id="btnHuy">Hủy</button>
                              </div>
                          </div>
@@ -251,6 +258,27 @@
                 Hotline: 090909 60 60 - 090944 80 60
             </div>
 
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Cảnh báo</h4>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:16px; color:#333; padding:12px 0px 22px 22px;">
+                    Vui lòng nhập đầy đủ các trường có dấu <sup style="color:#f00;">*</sup>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                @*<button type="button" class="btn btn-primary">Save changes</button>*@
+            </div>
         </div>
     </div>
 </div>

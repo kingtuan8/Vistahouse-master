@@ -1004,6 +1004,8 @@
     <Content Include="Views\Home\_Partners.cshtml" />
     <Content Include="Views\Shared\_QA.cshtml" />
     <Content Include="Views\Q_As\Index.cshtml" />
+    <Content Include="Views\Home\OrderDetail.cshtml" />
+    <Content Include="Views\Account\LoginCust.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

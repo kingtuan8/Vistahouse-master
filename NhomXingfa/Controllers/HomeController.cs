@@ -32,6 +32,11 @@ namespace NhomXingfa.Controllers
 
             return View();
         }
+        [Authorize]
+        public ActionResult OrderDetail()
+        {
+            return View();
+        }
 
         public ActionResult Cart()
         {

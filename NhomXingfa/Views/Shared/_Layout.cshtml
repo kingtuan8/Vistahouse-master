@@ -1,5 +1,5 @@
-﻿
-@{ 
+﻿@using Microsoft.AspNet.Identity
+@{
     var cart = new List<NhomXingfa.Models.CartViewModel>();
     if (Session["CartShop"] != null)
     {
@@ -32,16 +32,24 @@
             <h4>
                 Hotline: 1900 63 67 91 - 0909 09 60 60 - 0909 44 80 60
             </h4>
-            <a href="#">
+            <a href="home/orderdetail">
                 <i class="glyphicon glyphicon-list"></i>
                 Quản lý Đơn Hàng
             </a>
-            <a href="#">
-                Đăng nhập / Đăng ký
-            </a>
+            @if (!Request.IsAuthenticated)
+            {
+                <a href="~/account/logincust" id="linklogin">
+                    Đăng nhập / Đăng ký
+                </a>
+            }
+            else
+            {
+                <a href="javascript:" class="dropdown">Chào, @User.Identity.Name</a>
+            }
             <a href="#">
                 <sub>GB</sub>English
             </a>
+
         </div>
 
     </div>
@@ -111,6 +119,56 @@
 
     <div id="showminicart">
     </div>
+
+    <div class="modal fade" id="modalLogin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Đăng Nhập</h4>
+                </div>
+                <div class="modal-body row">
+
+                    <div class="col-sm-offset-1 col-md-10">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="txtUserName" class="col-sm-3 control-label">Tài khoản</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control" id="txtUserName" placeholder="nhập tài khoản">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtPassword" class="col-sm-3 control-label">Mật khẩu</label>
+                                <div class="col-sm-9">
+                                    <input type="password" class="form-control" id="txtPassword" placeholder="nhập mật khẩu">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Nhớ truy cập lần sau !
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-info" style="display:none;">Đăng Nhập</button>
+                                    <button type="button" class="btn btn-info">Đăng Nhập</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    @*<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
     @Scripts.Render("~/bundles/moments")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

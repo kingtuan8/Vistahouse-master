@@ -34,6 +34,30 @@ $(document).ready(function () {
             $("#taicuahang").show();
         }
     });
+    $(document).on("click", "#closewarm", function () {
+        $(this).parent().toggle("slow");
+    });
+
+
+    $(document).on("click", "#btnLuuThongTin", function () {
+        var hoten = $("#txtHoTen").val().trim();
+        var sdt = $("#txtSDT").val().trim();
+        var ngaynhan = $("#txtNgayNhan").val().trim();
+        var diachi = $("#txtDiaChi").val().trim();
+        var noted = $("#txtNoted").val().trim();
+
+        if (hoten == "" || sdt == "" || ngaynhan == "" || diachi == "") {
+            $('#modalWarning').modal({ backdrop: 'static', keyboard: false });
+        }
+        else {
+
+        }
+
+    });
+
+    $(document).on("click", "#linklogin", function () {
+        //$('#modalLogin').modal({ backdrop: 'static', keyboard: false });
+    });
 
     $(document).on("click", "#btnTuVanDinhKy", function () {
 
@@ -133,6 +157,11 @@ $(document).ready(function () {
         $("#btnChonGiaoHang").show();
         $("#btnXacMinhTK").hide();
 
+        $(".circlenumber").parent().parent().removeClass("actived");
+        $(".circlenumber").removeClass("activeds");
+        $(".cc1").parent().parent().addClass("actived");
+        $(".cc1").addClass("activeds");
+
     });
 
     $(document).on("click", "#btnChonGiaoHang", function () {
@@ -140,6 +169,11 @@ $(document).ready(function () {
         $(".inputgiaohang").show();
         $(this).hide();
         $("#btnXacMinhTK").show();
+
+        $(".circlenumber").parent().parent().removeClass("actived");
+        $(".circlenumber").removeClass("activeds");
+        $(".cc2").parent().parent().addClass("actived");
+        $(".cc2").addClass("activeds");
     });
 
     $(document).on("click", ".btnRemoveCart2", function () {

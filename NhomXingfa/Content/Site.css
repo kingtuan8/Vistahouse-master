@@ -1631,6 +1631,8 @@ footer .col-md-8
 {
     margin-top:28px;
     position:relative;
+    margin-left:0px;
+    margin-right:0px;
 }
     #processcart span.borderstyle {
         border-top: 1px solid #ccc;
@@ -1647,6 +1649,10 @@ footer .col-md-8
         color: #888;
         text-align: center;
         z-index:9;
+        height:50px;
+    }
+    #processcart #dot1 {
+        padding-left: 0px;
     }
     #processcart .actived
     {
@@ -2027,7 +2033,7 @@ footer .col-md-8
 
     .inputgiaohang .ghgroup
     {
-        margin-bottom:32px;
+        margin-bottom:10px;
     }
         .inputgiaohang .ghgroup .activex {
             border: 1px solid #084f1f;

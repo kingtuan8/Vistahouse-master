@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "LoginCust";
+}
+
+@using NhomXingfa.Models
+@model LoginViewModel
+<style type="text/css">
+    .focusedform .verticalcenter {
+        position: absolute;
+        top: 22%;
+        left: 50%;
+        margin-top: -56px;
+        margin-left: -200px;
+    }
+    .focusedform
+    {
+        position:relative;
+        height:500px;
+    }
+        .focusedform .panel {
+            width: 400px;
+            border-color: #4f8edc;
+            margin: 0px 0 20px;
+            border-radius: 4px;
+        }
+    .pull-right
+    {
+        float:unset !important;
+    }
+</style>
+
+<div class="focusedform">
+    <div class="verticalcenter">
+
+        <div class="panel panel-primary">
+
+            @using (Html.BeginForm("LoginCust", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="panel-body">
+                    @*<a href="index.html"><img src="../assets/img/logo.png" alt="Logo" class="brand" /></a>*@
+                    <h4 class="text-center" style="margin-bottom: 25px;">Đăng nhập</h4>
+
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                @*<input type="text" class="form-control" id="username" placeholder="@Model.Email">*@
+                                <input class="form-control" data-val="true" data-val-required="The Tài Khoản field is required." placeholder="tài khoản" id="Email" name="Email" type="text" value="">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                @*<input type="password" class="form-control" id="password" placeholder="@Model.Password">*@
+                                <input class="form-control" data-val="true" data-val-required="The Mật Khẩu field is required." id="Password" placeholder="mật khẩu" name="Password" type="password">
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix">
+                        <div class="pull-right"><label><input type="checkbox" style="margin-bottom: 20px" checked=""> Nhớ cho lần truy cập sau ?</label></div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    @*<a href="extras-forgotpassword.html" class="pull-left btn btn-link" style="padding-left:0">Forgot password?</a>*@
+
+                    <div class="pull-right">
+                        @*<a href="#" class="btn btn-default">Reset</a>
+                            <a href="index.html" class="btn btn-primary">Log In</a>*@
+                        <input type="submit" value="Đăng Nhập" class="btn btn-primary" />
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
+
+
+

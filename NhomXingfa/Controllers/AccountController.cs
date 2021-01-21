@@ -63,6 +63,13 @@ namespace NhomXingfa.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult LoginCust(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
         //
         // POST: /Account/Login
         [HttpPost]
@@ -106,6 +113,32 @@ namespace NhomXingfa.Controllers
             //        ModelState.AddModelError("", "Invalid login attempt.");
             //        return View(model);
             //}
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LoginCust(LoginViewModel model, string returnUrl)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(model);
+            //}
+
+            CustomMembershipProvider customeProvider = new CustomMembershipProvider();
+
+            if (customeProvider.ValidateUser(model.Email, model.Password))
+            {
+
+                FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
+
+                return Redirect("~/home");//RedirectToLocal(returnUrl);
+            }
+            else
+            {
+                ModelState.AddModelError("", "Tài khoản hoặc mật khẩu không chính xác !");
+                return View(model);
+            }
         }
 
         //
