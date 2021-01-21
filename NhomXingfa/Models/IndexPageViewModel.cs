@@ -35,4 +35,9 @@ namespace NhomXingfa.Models
         public Product product { get; set; }
         public List<Product> products { get; set; }
     }
+
+    public class GoiDinhKyViewModel
+    {
+        public List<Product> products { get; set; }
+    }
 }

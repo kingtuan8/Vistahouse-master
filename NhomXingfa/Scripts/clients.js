@@ -126,6 +126,15 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on("click", "#btnHuy", function () {
+
+        $("#lstfullgiohang").show();
+        $(".inputgiaohang").hide();
+        $("#btnChonGiaoHang").show();
+        $("#btnXacMinhTK").hide();
+
+    });
+
     $(document).on("click", "#btnChonGiaoHang", function () {
         $("#lstfullgiohang").hide();
         $(".inputgiaohang").show();

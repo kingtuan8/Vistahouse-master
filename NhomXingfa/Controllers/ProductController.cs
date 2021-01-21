@@ -19,7 +19,9 @@ namespace NhomXingfa.Controllers
 
         public ActionResult GoiSanPham()
         {
-            return View();
+            var model = new GoiDinhKyViewModel();
+            model.products = db.Products.Where(q => q.IsProduct == true).ToList();
+            return View(model);
         }
 
         public ActionResult Detail(int? id)

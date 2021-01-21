@@ -1,6 +1,7 @@
-﻿
+﻿@model NhomXingfa.Models.GoiDinhKyViewModel
 @{
     ViewBag.Title = "Goi Định Kỳ";
+    int count = 1;
 }
 
 <div class="text-center fontstyle" id="titlegoidinhky">
@@ -11,127 +12,80 @@
 
 
 <div id="listgoipagedinhky">
-    <div class="row goidinhky">
-        <span class="sttdinhky fontstyle">1</span>
-        <span class="borderdinhky"></span>
-        <div class="col-md-6">
-            <img src="~/images/1.27f2e41e.jpg" />
-        </div>
-        <div class="col-md-6">
-            <h2 class="fontstyle">
-                Gói Giảm Cân Nhanh An Toàn 14 ngày
-            </h2>
-            <div class="giashipdk">
-                <span class="dkgia">Giá: 4,600,000 <sup>đ</sup></span>
-                <span class="dkship">Freeship - <span>4,600,000 <sup>đ</sup></span></span>
+    @foreach (var q in Model.products)
+    {
+        if (count % 2 == 1)
+        {
+            <div class="row goidinhky">
+                <span class="sttdinhky fontstyle">@count</span>
+                <span class="borderdinhky"></span>
+                <div class="col-md-6">
+                    <img src="~/Photos/Products/@q.Images" />
+                </div>
+                <div class="col-md-6">
+                    <h2 class="fontstyle">
+                        @q.ProductName
+                    </h2>
+                    <div class="giashipdk">
+                        <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup></span>
+                        <span class="dkship">Freeship - <span>@String.Format("{0:#,0}", q.PhiShip)<sup>đ</sup></span></span>
+                    </div>
+                    <div class="descriptdk">
+                        @q.ShortDescription
+                    </div>
+                    <p>
+                        <b>
+                            Sinh tố dung tích 500ml và nước ép dung tích 350ml!
+                        </b>
+                    </p>
+                    <p>
+                        <a href="/product/detail/@q.ProductID">
+                            Xem chi tiết
+                        </a>
+                    </p>
+                </div>
             </div>
-            <div class="descriptdk">
-                Gói Giảm Cân Nhanh An Toàn 14 ngày (56 chai) là lựa chọn tốt nhất để đánh bay 3 đến 5 kg mỡ thừa đồng thời thanh lọc, thải độc cơ thể và hệ tiêu hóa của bạn trong 14 ngày một cách an toàn. Hơn nữa, làn da và sức khỏe của bạn được cải thiện một cách tự nhiên nhờ các khoáng chất, vitamin và chất chống oxy hóa từ rau và trái cây.
+        }
+        else
+        {
+            <div class="row goidinhky">
+                <span class="sttdinhky fontstyle">@count</span>
+                <span class="borderdinhky"></span>
+                <div class="col-md-6">
+                    <h2 class="fontstyle">
+                        @q.ProductName
+                    </h2>
+                    <div class="giashipdk">
+                        <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup></span>
+                        <span class="dkship">Freeship - <span>@String.Format("{0:#,0}", q.PhiShip)<sup>đ</sup></span></span>
+                    </div>
+                    <div class="descriptdk">
+                        @q.ShortDescription
+                    </div>
+                    <p>
+                        <b>
+                            Sinh tố dung tích 500ml và nước ép dung tích 350ml!
+                        </b>
+                    </p>
+                    <p>
+                        <a href="/product/detail/@q.ProductID">
+                            Xem chi tiết
+                        </a>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="~/images/1.27f2e41e.jpg" />
+                </div>
             </div>
-            <p>
-                <b>
-                    Sinh tố dung tích 500ml và nước ép dung tích 350ml!
-                </b>
-            </p>
-            <p>
-                <a href="#">
-                    Xem chi tiết
-                </a>
-            </p>
-        </div>
-    </div>
+        }
+        count++;
+    }
 
 
-    <div class="row goidinhky">
-        <span class="sttdinhky fontstyle">2</span>
-        <span class="borderdinhky"></span>
-        <div class="col-md-6">
-            <h2 class="fontstyle">
-                Gói Giảm Cân Nhanh An Toàn 14 ngày
-            </h2>
-            <div class="giashipdk">
-                <span class="dkgia">Giá: 4,600,000 <sup>đ</sup></span>
-                <span class="dkship">Freeship - <span>4,600,000 <sup>đ</sup></span></span>
-            </div>
-            <div class="descriptdk">
-                Gói Giảm Cân Nhanh An Toàn 14 ngày (56 chai) là lựa chọn tốt nhất để đánh bay 3 đến 5 kg mỡ thừa đồng thời thanh lọc, thải độc cơ thể và hệ tiêu hóa của bạn trong 14 ngày một cách an toàn. Hơn nữa, làn da và sức khỏe của bạn được cải thiện một cách tự nhiên nhờ các khoáng chất, vitamin và chất chống oxy hóa từ rau và trái cây.
-            </div>
-            <p>
-                <b>
-                    Sinh tố dung tích 500ml và nước ép dung tích 350ml!
-                </b>
-            </p>
-            <p>
-                <a href="#">
-                    Xem chi tiết
-                </a>
-            </p>
-        </div>
-        <div class="col-md-6">
-            <img src="~/images/1.27f2e41e.jpg" />
-        </div>
-    </div>
-
-    <div class="row goidinhky">
-        <span class="sttdinhky fontstyle">3</span>
-        <span class="borderdinhky"></span>
-        <div class="col-md-6">
-            <img src="~/images/1.27f2e41e.jpg" />
-        </div>
-        <div class="col-md-6">
-            <h2 class="fontstyle">
-                Gói Giảm Cân Nhanh An Toàn 14 ngày
-            </h2>
-            <div class="giashipdk">
-                <span class="dkgia">Giá: 4,600,000 <sup>đ</sup></span>
-                <span class="dkship">Freeship - <span>4,600,000 <sup>đ</sup></span></span>
-            </div>
-            <div class="descriptdk">
-                Gói Giảm Cân Nhanh An Toàn 14 ngày (56 chai) là lựa chọn tốt nhất để đánh bay 3 đến 5 kg mỡ thừa đồng thời thanh lọc, thải độc cơ thể và hệ tiêu hóa của bạn trong 14 ngày một cách an toàn. Hơn nữa, làn da và sức khỏe của bạn được cải thiện một cách tự nhiên nhờ các khoáng chất, vitamin và chất chống oxy hóa từ rau và trái cây.
-            </div>
-            <p>
-                <b>
-                    Sinh tố dung tích 500ml và nước ép dung tích 350ml!
-                </b>
-            </p>
-            <p>
-                <a href="#">
-                    Xem chi tiết
-                </a>
-            </p>
-        </div>
-    </div>
 
 
-    <div class="row goidinhky">
-        <span class="sttdinhky fontstyle">4</span>
-        <span class="borderdinhky"></span>
-        <div class="col-md-6">
-            <h2 class="fontstyle">
-                Gói Giảm Cân Nhanh An Toàn 14 ngày
-            </h2>
-            <div class="giashipdk">
-                <span class="dkgia">Giá: 4,600,000 <sup>đ</sup></span>
-                <span class="dkship">Freeship - <span>4,600,000 <sup>đ</sup></span></span>
-            </div>
-            <div class="descriptdk">
-                Gói Giảm Cân Nhanh An Toàn 14 ngày (56 chai) là lựa chọn tốt nhất để đánh bay 3 đến 5 kg mỡ thừa đồng thời thanh lọc, thải độc cơ thể và hệ tiêu hóa của bạn trong 14 ngày một cách an toàn. Hơn nữa, làn da và sức khỏe của bạn được cải thiện một cách tự nhiên nhờ các khoáng chất, vitamin và chất chống oxy hóa từ rau và trái cây.
-            </div>
-            <p>
-                <b>
-                    Sinh tố dung tích 500ml và nước ép dung tích 350ml!
-                </b>
-            </p>
-            <p>
-                <a href="#">
-                    Xem chi tiết
-                </a>
-            </p>
-        </div>
-        <div class="col-md-6">
-            <img src="~/images/1.27f2e41e.jpg" />
-        </div>
-    </div>
+
+
 
 </div>
 
