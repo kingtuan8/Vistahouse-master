@@ -1968,6 +1968,7 @@ footer .col-md-8
     border-radius: 4px;
     padding-bottom: 28px;
     display: none;
+    margin-top:28px;
 }
 .inputgiaohang .titleinput
 {
@@ -2017,7 +2018,7 @@ footer .col-md-8
     .inputgiaohang .forminput input, .inputgiaohang .forminput textarea {
         max-width: 400px;
     }
-        .inputgiaohang .forminput button{
+        .inputgiaohang .forminput button:first-child{
             background-color: #084f1f;
             border: 1px solid #084f1f;
             color:#fff;
