@@ -33,7 +33,7 @@ namespace NhomXingfa
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                      "~/Content/bootstrap.css", "~/Content/bootstrap-datetimepicker.css",
-                     "~/Content/site.css", "~/Content/component.css",
+                     "~/Content/site.css", "~/Content/component.css", "~/Content/pgwslider.css",
                      "~/Content/slick.css", "~/Content/slick-theme.css"
                      ));
 

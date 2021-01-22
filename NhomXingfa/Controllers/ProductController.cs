@@ -31,6 +31,7 @@ namespace NhomXingfa.Controllers
             var model = new DetailPageViewModel();
             model.product = db.Products.Find(id);
             model.products = db.Products.Where(q => q.IsProduct == false && q.IsActive == true).ToList();
+            model.images = db.ProductImages.Where(q => q.ProductID == id).ToList();
             return View(model);
         }
     }

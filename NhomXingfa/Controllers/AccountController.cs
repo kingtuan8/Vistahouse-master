@@ -447,6 +447,15 @@ namespace NhomXingfa.Controllers
             return RedirectToAction("login", "account");
         }
 
+        [HttpGet]
+        public ActionResult LogOffCust()
+        {
+            FormsAuthentication.SignOut();
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session.Abandon();
+            return RedirectToAction("index", "home");
+        }
+
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]

@@ -554,6 +554,7 @@
     <Content Include="Content\component.css" />
     <Content Include="Content\demo.css" />
     <Content Include="Content\normalize.css" />
+    <Content Include="Content\pgwslider.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\slick-theme.css" />
     <Content Include="Content\slick.css" />
@@ -851,6 +852,8 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+    <Content Include="Scripts\pgwslider.js" />
+    <Content Include="Scripts\pgwslider.min.js" />
     <Content Include="Scripts\photostack.js" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\slick.min.js" />
