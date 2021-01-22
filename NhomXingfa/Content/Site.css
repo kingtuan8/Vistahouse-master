@@ -976,9 +976,11 @@ i#shopicon
 }
 #detailsp {
     margin-top: 22px;
-    min-height: 500px;
+    /*min-height: 500px;*/
     padding-top: 10px;
+    padding-left:12px;
     background-color: #eaf1e1;
+    margin-bottom:22px;
 }
 #detailsp .col-md-6 h5 {
     font-weight: bold;
