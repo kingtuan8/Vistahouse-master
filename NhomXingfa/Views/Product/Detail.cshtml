@@ -39,7 +39,7 @@
                 <span>Phí ship: @String.Format("{0:#,0}", Model.product.PhiShip)<sup>đ</sup>/ @Model.product.SoNgayShip ngày</span> <br />
                 <span>Số chai: @Model.product.SoLuongChai chai (Sinh tố: size 500ml, Nước ép: size 350ml) </span><br />
             }
-            @Model.product.ShortDescription
+           @Html.Raw(Model.product.ShortDescription)
         </div>
 
         @if (Model.product.IsProduct == true)

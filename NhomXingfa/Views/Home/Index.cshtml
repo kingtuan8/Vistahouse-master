@@ -22,31 +22,22 @@
 
 
 @Html.Partial("_slogan")
-
-
+@Html.Partial("_luachon", Model.lstLuaChon)
+@Html.Partial("_Partners", Model.lstCustomerParner)
 
 @Html.Partial("_goidinhky", Model.goidinhky)
 
-
-@Html.Partial("_sanphamdon", Model.products)
-
-@Html.Partial("_luachon", Model.lstLuaChon)
-
 @Html.Partial("_OurStory", Model.OurStory)
 
-@Html.Partial("_Partners", Model.lstCustomerParner)
-
-
-
-
-
 @Html.Partial("_congdong", Model.lstCustomerFeedback)
-
 <div class="row">
     <div class="col-md-12">
         @Html.Partial("_stack")
     </div>
 </div>
+@Html.Partial("_sanphamdon", Model.products)
+
+
 
 <div id="showminicart">
     @*@Html.Partial("_minicart", Model.carts)*@
