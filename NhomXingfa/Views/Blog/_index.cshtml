@@ -1,11 +1,11 @@
-﻿@model NhomXingfa.Models.NewsViewModel
+﻿@model List<NhomXingfa.Areas.Quantri.Models.DataModels.Blog>
 @using NhomXingfa.Areas.Quantri.Utilities
 @{
     var culture = new System.Globalization.CultureInfo("vi-VN");
 }
 <div class="lstblog">
     <ul>
-        @foreach (var q in Model.blogs)
+        @foreach (var q in Model)
         {
             <li>
                 <div class="row">
@@ -21,7 +21,7 @@
                             </a>
                         </div>
                         <div class="title">
-                            <a href="/chi-tiet/@q.SEOUrlRewrite-@q.BlogID">
+                            <a href="/tin-tuc/@q.SEOUrlRewrite-@q.BlogID">
                                 @q.BlogName
                             </a>
                         </div>

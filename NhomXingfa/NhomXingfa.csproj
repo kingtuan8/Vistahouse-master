@@ -1006,6 +1006,7 @@
     <Content Include="Views\Q_As\Index.cshtml" />
     <Content Include="Views\Home\OrderDetail.cshtml" />
     <Content Include="Views\Account\LoginCust.cshtml" />
+    <Content Include="Views\Blog\_ChuyenMuc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

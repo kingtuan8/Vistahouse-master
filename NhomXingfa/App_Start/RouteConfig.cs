@@ -15,8 +15,8 @@ namespace NhomXingfa
 
             routes.MapRoute(
                  name: "product",
-                 url: "san-pham",
-                 defaults: new { controller = "product", action = "index", id = UrlParameter.Optional }
+                 url: "goi-dinh-ki",
+                 defaults: new { controller = "Product", action = "GoiSanPham", id = UrlParameter.Optional }
              );
 
             routes.MapRoute(
@@ -33,14 +33,20 @@ namespace NhomXingfa
 
             routes.MapRoute(
                name: "tintuc",
-               url: "tin-tuc/{url}-{id}",
-               defaults: new { controller = "news", action = "index", id = UrlParameter.Optional }
+               url: "tin-tuc",
+               defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional }
            );
+
+           // routes.MapRoute(
+           //    name: "tintuc1",
+           //    url: "tin-tuc/{url}-{id}",
+           //    defaults: new { controller = "news", action = "index", id = UrlParameter.Optional }
+           //);
 
             routes.MapRoute(
                name: "tintucdetails",
-               url: "chi-tiet/{url}-{id}",
-               defaults: new { controller = "news", action = "Detail", id = UrlParameter.Optional }
+               url: "tin-tuc/{url}-{id}",
+               defaults: new { controller = "Blog", action = "Detail", id = UrlParameter.Optional }
            );
 
 

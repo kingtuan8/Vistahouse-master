@@ -6,12 +6,15 @@
 <div class="container" id="bloglist">
     <div class="col-md-8">
         <h3>
-            Latest News
+            Tin Tức
         </h3>
-        @Html.Partial("_index", Model)
+        @Html.Partial("_index", Model.blogs)
     </div>
     <div class="col-md-4" id="tinlienquan">
-        @Html.Partial("_lienquan")
+        @Html.Partial("_lienquan", Model.recent)
+    </div>
+    <div class="col-md-4" id="tinlienquan">
+        @Html.Partial("_ChuyenMuc", Model.categories)
     </div>
 </div>
 

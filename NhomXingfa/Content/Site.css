@@ -1803,6 +1803,7 @@ footer .col-md-8
     margin-bottom:28px;
 }
     .baiviettitle span {
+        font-weight:bold;
         display: inline-block;
         border-bottom-width: 2px;
         margin-bottom: -2px !important;
