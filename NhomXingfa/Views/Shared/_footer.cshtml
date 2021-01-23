@@ -1,54 +1,36 @@
-﻿
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Blog
 <div class="row">
-    <div class="col-md-6">
-        <div class="flogo">
-            <img src="~/images/p.png" />
-        </div>
-        <div class="flogan">
-            Green O - Sinh Tố Rau Sạch là thương hiệu thức uống chú trọng đến các tiêu chí tươi, sạch, an toàn của nguyên liệu sử dụng nhằm đem lại lợi ích tốt nhất cho làn da và vóc dáng của bạn. Tự hào đem đến những sản phẩm an toàn và hiệu quả cao, góp phần tích cực trong việc cải thiện sắc vóc và sức khỏe người tiêu dùng Việt.
-        </div>
-        <div class="faddress">
-            <p>
-                Cửa hàng chính: 416A1 Hai Bà Trưng, Phường Tân Định, Quận 1, TP. Hồ Chí Minh<br>
-                Chi Nhánh Hà Nội: Toà nhà Việt Đức Complex, 39 Lê Văn Lương, Phường Nhân Chính, Quận Thanh Xuân, Thành Phố Hà Nội<br>
-                Hotline: 1900 63 67 91 - 090909 60 60 - 090944 80 60<br>
-                Email: vietnam@thousandhands.com
-            </p>            
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <img alt="certificate, giấy chứng nhận an toàn vệ sinh thực phẩm" class="green-o-components-footer-desktop-index-cert" src="data:image/png;base64,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">
-                <p>
-                    - Cơ quan chủ quản website: Công ty TNHH Thousand Hands Viet Nam<br>
-                    - Số ĐKKD: 0310752786, ngày cấp: 4/4/2011, nơi cấp: Sở KHĐT TPHCM
-                </p>
-                <p>
-                    Version 11.11.11
-                </p>
+    <div class="col-md-12">
+
+
+        <div class="col-md-6">
+            <div class="flogo">
+                <img src="~/images/p.png" />
             </div>
-            <div class="col-md-4">
-
+            <div class="flogan">
+                @Html.Raw(Model.Content)
             </div>
+
         </div>
-    </div>
-    <div class="col-md-3">
+        <div class="col-md-2">
 
-    </div>
-    <div class="col-md-3">
+        </div>
+        <div class="col-md-4">
 
-        @*<div class="listlink">
-            <p>
-                <a href="#">
-                    Chính sách bán hàng
-                </a>
-            </p>
-            <p>
-                <a href="/blog">
-                    Blogs
-                </a>
-            </p>
-        </div>*@
+            @*<div class="listlink">
+                    <p>
+                        <a href="#">
+                            Chính sách bán hàng
+                        </a>
+                    </p>
+                    <p>
+                        <a href="/blog">
+                            Blogs
+                        </a>
+                    </p>
+                </div>*@
 
-        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FHoiNhungNguoiSoMa%2F&tabs=timeline&width=340&height=413&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=646673222083002" width="340" height="413" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FHoiNhungNguoiSoMa%2F&tabs=timeline&width=350&height=413&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=true&appId=646673222083002" width="350" height="413" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
     </div>
 </div>

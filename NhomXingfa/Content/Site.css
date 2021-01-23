@@ -6,6 +6,10 @@
     /*overflow-y:hidden;*/
 }
 
+/*img{
+    width:100% !important;
+}
+*/
 blockquote {
     padding: 10px 20px;
     margin: 0 0 20px;
@@ -602,11 +606,13 @@ i#shopicon
         height: 53px;
         padding: 15px;
     }
+    #ourstory img{
+        width:100% !important;
+    }
 
-#sliderthuonghieu img
-{
-    outline:none;
-}
+    #sliderthuonghieu img {
+        outline: none;
+    }
     #sliderthuonghieu img:active, #sliderthuonghieu img:visited{
         outline: none;
     }

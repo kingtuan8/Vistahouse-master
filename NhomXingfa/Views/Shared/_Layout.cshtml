@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNet.Identity
+﻿@model NhomXingfa.Models.IndexPageViewModel
+@using Microsoft.AspNet.Identity
 @{
     var cart = new List<NhomXingfa.Models.CartViewModel>();
     if (Session["CartShop"] != null)
@@ -82,9 +83,9 @@
                     <li>
                         <a href="/goi-dinh-ki">Gói định kỳ</a>
                     </li>
-                    <li>
+                    @*<li>
                         <a href="#">Thông tin dinh dưỡng</a>
-                    </li>
+                    </li>*@
                     <li>
                         <a href="/tin-tuc">Blogs</a>
                     </li>
@@ -93,9 +94,9 @@
                             Về chúng tôi <i class="glyphicon glyphicon-triangle-bottom" id="menudown"></i>
                         </a>
                         <div class="dropdown-content">
-                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Thông tin dinh dưỡng</a>
-                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Câu hỏi thường gặp</a>
-                            <a href="#"><i class="glyphicon glyphicon-triangle-right"></i> Chính sách bán hàng</a>
+                            <a href="/thong-tin-dinh-duong"><i class="glyphicon glyphicon-triangle-right"></i> Thông tin dinh dưỡng</a>
+                            <a href="/cau-hoi-thuong-gap"><i class="glyphicon glyphicon-triangle-right"></i> Câu hỏi thường gặp</a>
+                            <a href="/chinh-sach-ban-hang"><i class="glyphicon glyphicon-triangle-right"></i> Chính sách bán hàng</a>
                         </div>
                     </li>
                     <li>
@@ -114,7 +115,7 @@
         @RenderBody()
         <hr />
         <footer>
-            @Html.Partial("_footer")
+            @Html.Partial("_footer", Model.footerInfo)
         </footer>
     </div>
 

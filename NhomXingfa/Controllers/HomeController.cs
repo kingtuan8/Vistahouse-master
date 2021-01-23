@@ -23,6 +23,7 @@ namespace NhomXingfa.Controllers
             model.OurStory = db.Blogs.Where(b => b.IsActive == true && b.BlogID == 3).FirstOrDefault();
             model.lstCustomerFeedback = db.CustomerFeedbacks.Where(c => c.IsActive == true).OrderBy(c => c.ThuTu).ToList();
             model.lstCustomerParner = db.Customers.Where(a => a.IsActive == true).ToList();
+            model.footerInfo = db.Blogs.Where(b => b.BlogID == 20 && (b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more)).FirstOrDefault();
             return View(model);
         }
 
@@ -201,6 +202,34 @@ namespace NhomXingfa.Controllers
 
         }
 
+        /// <summary>
+        /// Danny Code
+        /// </summary>
+        /// Lưu comment Tư Vấn từ khách hàng
+        /// <returns></returns>
+        /// 
 
+        #region Lưu Comment tư vấn từ khách hàng
+
+        
+        public JsonResult SavingTuVan(string txtName, string txtPhone, string txtComment, int ContactType)
+        {
+            CustomerContact cust = new CustomerContact();
+            cust.CustomerName = txtName.Trim();
+            cust.CustomerEmail = null;
+            cust.CustomerPhone = txtPhone;
+            cust.CustomerAddress = null;
+            cust.CustomerContent = txtComment;
+            cust.ContactTypeId = ContactType;
+            cust.StatusReply = 1;
+            cust.DateReply = null;
+            cust.AdminNote = null;
+            cust.Created = DateTime.Now;
+            db.CustomerContacts.Add(cust);
+            db.SaveChanges();
+
+            return Json("ok", JsonRequestBehavior.AllowGet);
+        }
+        #endregion
     }
 }
