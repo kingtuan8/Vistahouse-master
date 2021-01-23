@@ -16,7 +16,7 @@ namespace NhomXingfa.Models
         public Blog OurStory { get; set; }
         public List<CustomerFeedback> lstCustomerFeedback { get; set; }
         public List<Customer> lstCustomerParner { get; set; }
-        public Blog footerInfo { get; set; }
+        
     }
 
     public class CartViewModel
@@ -43,5 +43,11 @@ namespace NhomXingfa.Models
         public List<Product> products { get; set; }
         public List<Q_A> lstQAs { get; set; }
         public List<CustomerFeedback> lstCustomerFeed { get; set; }
+    }
+
+    //Danny
+    public class FooterViewModel
+    {
+        public Blog footerInfo { get; set; }
     }
 }

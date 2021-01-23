@@ -23,7 +23,7 @@ namespace NhomXingfa.Controllers
             model.OurStory = db.Blogs.Where(b => b.IsActive == true && b.BlogID == 3).FirstOrDefault();
             model.lstCustomerFeedback = db.CustomerFeedbacks.Where(c => c.IsActive == true).OrderBy(c => c.ThuTu).ToList();
             model.lstCustomerParner = db.Customers.Where(a => a.IsActive == true).ToList();
-            model.footerInfo = db.Blogs.Where(b => b.BlogID == 20 && (b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more)).FirstOrDefault();
+            
             return View(model);
         }
 
@@ -229,6 +229,15 @@ namespace NhomXingfa.Controllers
             db.SaveChanges();
 
             return Json("ok", JsonRequestBehavior.AllowGet);
+        }
+
+        public PartialViewResult loadFooter()
+        {
+            //var model = db.MENUs.Where(q => q.IdCha == 0).OrderBy(o => o.ThuTu);
+
+            FooterViewModel model = new FooterViewModel();
+            model.footerInfo = db.Blogs.Where(b => b.BlogID == 20 && (b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more)).FirstOrDefault();
+            return PartialView("_footer", model);
         }
         #endregion
     }

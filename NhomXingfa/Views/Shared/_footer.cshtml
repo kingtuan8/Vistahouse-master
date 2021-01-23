@@ -1,4 +1,4 @@
-﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Blog
+﻿@model NhomXingfa.Models.FooterViewModel
 <div class="row">
     <div class="col-md-12">
 
@@ -8,7 +8,7 @@
                 <img src="~/images/p.png" />
             </div>
             <div class="flogan">
-                @Html.Raw(Model.Content)
+                @Html.Raw(Model.footerInfo.Content)
             </div>
 
         </div>

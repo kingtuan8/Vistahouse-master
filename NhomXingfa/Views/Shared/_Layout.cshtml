@@ -1,4 +1,4 @@
-﻿@model NhomXingfa.Models.IndexPageViewModel
+﻿
 @using Microsoft.AspNet.Identity
 @{
     var cart = new List<NhomXingfa.Models.CartViewModel>();
@@ -115,7 +115,8 @@
         @RenderBody()
         <hr />
         <footer>
-            @Html.Partial("_footer", Model.footerInfo)
+            @*@Html.Partial("_footer")*@
+            @{Html.RenderAction("loadFooter", "Home");}
         </footer>
     </div>
 
