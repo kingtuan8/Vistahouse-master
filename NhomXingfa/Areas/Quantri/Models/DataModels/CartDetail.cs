@@ -16,14 +16,14 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         public decimal? Price { get; set; }
 
-        public int? Qty { get; set; }
-
-        public decimal? Total { get; set; }
-
         public bool? IsGoiSanPham { get; set; }
 
+        public int? Qty { get; set; }
+
         [StringLength(50)]
-        public string ml { get; set; }
+        public string ML { get; set; }
+
+        public decimal? Total { get; set; }
 
         public virtual Cart Cart { get; set; }
     }

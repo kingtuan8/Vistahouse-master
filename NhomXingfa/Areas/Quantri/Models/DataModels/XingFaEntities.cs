@@ -1,10 +1,10 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
-
 namespace NhomXingfa.Areas.Quantri.Models.DataModels
 {
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+
     public partial class XingFaEntities : DbContext
     {
         public XingFaEntities()
@@ -85,12 +85,12 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
                 .HasPrecision(16, 9);
 
             modelBuilder.Entity<CartDetail>()
-                .Property(e => e.Total)
-                .HasPrecision(18, 0);
+                .Property(e => e.ML)
+                .IsUnicode(false);
 
             modelBuilder.Entity<CartDetail>()
-                .Property(e => e.ml)
-                .IsUnicode(false);
+                .Property(e => e.Total)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.SEOUrlRewrite)
@@ -138,6 +138,11 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
                 .WithOptional(e => e.CustomerOrder)
                 .HasForeignKey(e => e.CustID);
 
+            modelBuilder.Entity<CustomerOrder>()
+                .HasMany(e => e.Users)
+                .WithOptional(e => e.CustomerOrder)
+                .HasForeignKey(e => e.CustomerID);
+
             modelBuilder.Entity<MenuImage>()
                 .Property(e => e.ImageURL)
                 .IsUnicode(false);
@@ -150,6 +155,10 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
                 .HasMany(e => e.PhotoLibraryLsts)
                 .WithOptional(e => e.PhotoLibraryCategory)
                 .HasForeignKey(e => e.PhotoCateId);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.PhiShip)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Price)
@@ -178,10 +187,6 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
             modelBuilder.Entity<Product>()
                 .Property(e => e.SEOUrlRewrite)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.PhiShip)
-                .HasPrecision(18, 0);
 
             modelBuilder.Entity<ProductImage>()
                 .Property(e => e.URLImage)

@@ -1969,6 +1969,10 @@ footer .col-md-8
 {
     display:block;
 }
+#btnHoanThanh
+{
+    display:none;
+}
 
 .inputgiaohang {
     background-color: #fff;
@@ -1976,7 +1980,7 @@ footer .col-md-8
     border-radius: 4px;
     padding-bottom: 28px;
     display: none;
-    margin-top:28px;
+    margin-top: 28px;
 }
 .inputgiaohang .titleinput
 {
@@ -1986,6 +1990,22 @@ footer .col-md-8
     border-bottom:1px solid #ccc;
     margin-bottom:18px;
 }
+.thongtinthanhtoan {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding-bottom: 28px;
+    /*display: none;*/
+    margin-top: 28px;
+}
+
+    .thongtinthanhtoan .titleinput {
+        padding: 18px 0px 18px 39px;
+        color: #000;
+        font-weight: bold;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 18px;
+    }
 .changegh
 {
     outline:none;

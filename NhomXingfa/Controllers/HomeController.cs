@@ -40,7 +40,14 @@ namespace NhomXingfa.Controllers
 
         public ActionResult Cart()
         {
-            var model = GetCart();
+            var model = new CartDetailViewModel();
+            model.cart = GetCart();
+            if(User.Identity.Name != null)
+            {
+                var userid = db.Users.FirstOrDefault(q => q.UserName == User.Identity.Name);
+                model.customer = db.CustomerOrders.Find(userid.CustomerID);
+            }
+            //model.customer = db.CustomerOrders.Find
             return View(model);
         }
 

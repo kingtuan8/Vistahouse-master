@@ -28,12 +28,16 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         public bool? Active { get; set; }
 
+        public int? CustomerID { get; set; }
+
         public DateTime? Created { get; set; }
 
         public int? CreatedBy { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Blog> Blogs { get; set; }
+
+        public virtual CustomerOrder CustomerOrder { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

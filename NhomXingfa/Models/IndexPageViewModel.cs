@@ -30,6 +30,12 @@ namespace NhomXingfa.Models
         public int? CateSPDon { get; set; }
     }
 
+    public class CartDetailViewModel
+    {
+        public List<CartViewModel> cart { get; set; }
+        public CustomerOrder customer { get; set; }
+    }
+
     public class DetailPageViewModel
     {
         public Product product { get; set; }
