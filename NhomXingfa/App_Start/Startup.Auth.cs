@@ -54,15 +54,15 @@ namespace NhomXingfa
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+              appId: "501550580008785",
+              appSecret: "a506b7d15bfe24da2f65fb8472a43491");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "391923825511-n2fmlt92cr0f4giv0q32lr5irjc5q1a3.apps.googleusercontent.com",
+                ClientSecret = "D5gDUx8Q-BfsKvxv3kC8WEBv"
+            });
         }
     }
 }

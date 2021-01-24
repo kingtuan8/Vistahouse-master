@@ -1,0 +1,18 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Blog
+@{
+    ViewBag.Title = "ThongTinDinhDuong";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center fontstyle" id="cauhoithuonggap">
+    @Model.BlogName
+</div>
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        @Html.Raw(Model.Content)
+    </div>
+    <div class="col-md-1">
+    </div>
+</div>

@@ -234,6 +234,7 @@
     <Compile Include="Areas\Quantri\Utilities\CustomRoleProvider.cs" />
     <Compile Include="Areas\Quantri\Utilities\Helpers.cs" />
     <Compile Include="Areas\Quantri\Utilities\WebConstants.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1009,12 +1010,16 @@
     <Content Include="Views\Q_As\Index.cshtml" />
     <Content Include="Views\Home\OrderDetail.cshtml" />
     <Content Include="Views\Account\LoginCust.cshtml" />
+    <Content Include="Views\Blog\_ChuyenMuc.cshtml" />
+    <Content Include="Views\About\ThongTinDinhDuong.cshtml" />
+    <Content Include="Views\About\ChinhSach.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Quantri\Data\" />
     <Folder Include="Photos\News\" />
     <Folder Include="Photos\Slides\" />
+    <Folder Include="Views\AboutUs\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

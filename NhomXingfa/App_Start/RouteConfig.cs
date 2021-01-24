@@ -15,8 +15,8 @@ namespace NhomXingfa
 
             routes.MapRoute(
                  name: "product",
-                 url: "san-pham",
-                 defaults: new { controller = "product", action = "index", id = UrlParameter.Optional }
+                 url: "goi-dinh-ki",
+                 defaults: new { controller = "Product", action = "GoiSanPham", id = UrlParameter.Optional }
              );
 
             routes.MapRoute(
@@ -33,14 +33,39 @@ namespace NhomXingfa
 
             routes.MapRoute(
                name: "tintuc",
-               url: "tin-tuc/{url}-{id}",
-               defaults: new { controller = "news", action = "index", id = UrlParameter.Optional }
+               url: "tin-tuc",
+               defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional }
            );
+
+            //Câu hỏi thường gặp
+            routes.MapRoute(
+               name: "CauHoiThuongGap",
+               url: "cau-hoi-thuong-gap",
+               defaults: new { controller = "Q_As", action = "Index", id = UrlParameter.Optional }
+           );
+
+            //Thongtindinhduong
+            routes.MapRoute(
+               name: "ThongTinDinhDuong",
+               url: "thong-tin-dinh-duong",
+               defaults: new { controller = "About", action = "ThongTinDinhDuong", id = UrlParameter.Optional }
+           );
+            //ChinhSach
+            routes.MapRoute(
+               name: "ChinhSachBanHang",
+               url: "chinh-sach-ban-hang",
+               defaults: new { controller = "About", action = "ChinhSach", id = UrlParameter.Optional }
+           );
+            // routes.MapRoute(
+            //    name: "tintuc1",
+            //    url: "tin-tuc/{url}-{id}",
+            //    defaults: new { controller = "news", action = "index", id = UrlParameter.Optional }
+            //);
 
             routes.MapRoute(
                name: "tintucdetails",
-               url: "chi-tiet/{url}-{id}",
-               defaults: new { controller = "news", action = "Detail", id = UrlParameter.Optional }
+               url: "tin-tuc/{url}-{id}",
+               defaults: new { controller = "Blog", action = "Detail", id = UrlParameter.Optional }
            );
 
 
@@ -51,18 +76,8 @@ namespace NhomXingfa
                defaults: new { controller = "Home", action = "About", id = UrlParameter.Optional }
            );
 
-            //các bài viết
-            routes.MapRoute(
-               name: "DuAn",
-               url: "du-an",
-               defaults: new { controller = "Projects", action = "Index", id = UrlParameter.Optional }
-           );
-            //các bài viết
-            routes.MapRoute(
-               name: "DuAnChiTiet",
-               url: "chi-tiet-du-an/{url}-{id}",
-               defaults: new { controller = "Projects", action = "Details", id = UrlParameter.Optional }
-           );
+           
+           
 
             //các bài viết
             routes.MapRoute(

@@ -1,0 +1,17 @@
+﻿@model List<NhomXingfa.Areas.Quantri.Models.DataModels.Category>
+<div class="baiviettitle">
+    <span>Chuyên mục</span>
+</div>
+<ul>
+    @foreach (var q in Model)
+    {
+        <li>
+            <a href="#">
+                @*<i class="glyphicon glyphicon-pushpin"></i>*@
+                @q.CategoryName
+            </a>
+        </li>
+    }
+
+
+</ul>
