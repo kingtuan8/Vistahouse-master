@@ -1255,12 +1255,17 @@ i#shopicon
             }
             .listdathang ul li .col-md-9 .actioncart .cateml {
                 position: absolute;
-                left: 55px;
-                top: -2px;
+                left: 25px;
+                top: 2px;
                 color: #333;
                 cursor: pointer;
                 font-size: 14px;
             }
+                .listdathang ul li .col-md-9 .actioncart .cateml button
+                {
+                    font-size:12px !important;
+                    padding:2px 7px !important;
+                }
                 .listdathang ul li .col-md-9 .actioncart .cateml button.actived {
                     border: 1px solid #084f1f;
                     color: #084f1f;
@@ -1541,7 +1546,7 @@ footer .col-md-8
                     }
                     #lstfullgiohang .itemlst .buttonfunc .cateml {
                         position: absolute;
-                        left: 222px;
+                        left: 130px;
                         top: 14px;
                     }
                         #lstfullgiohang .itemlst .buttonfunc .cateml button.actived {

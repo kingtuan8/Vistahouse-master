@@ -30,7 +30,7 @@
                                     <span>@count</span>. @q.Name
                                 </h5>
                                 <p>
-                                   @q.Descript
+                                    @Html.Raw(q.Descript.Replace("<p>", "").Replace("</p>", ""))
                                 </p>
                                 <div class="actioncart">
                                     <span class="removesp btnRemoveCart" productid="@q.ID">

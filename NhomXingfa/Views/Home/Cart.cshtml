@@ -69,7 +69,7 @@
                              <span>@count</span>. @q.Name
                          </div>
                          <div class="dscitem">
-                             @q.Descript
+                          @Html.Raw(q.Descript.Replace("<p>","").Replace("</p>",""))
                          </div>
                      </div>
                      <div class="floatright cartitemright">
