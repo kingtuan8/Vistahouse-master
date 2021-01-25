@@ -81,6 +81,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         public int? CountView { get; set; }
 
+
         public DateTime? Created { get; set; }
 
         public int? CreatedBy { get; set; }
