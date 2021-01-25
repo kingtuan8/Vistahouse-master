@@ -44,10 +44,11 @@
 
         @if (Model.product.IsProduct == true)
         {
+            
             <div class="thetichgia">
                 <div class="radio">
                     <label>
-                        <input type="radio" name="optionsRadios" value="1" checked>
+                        <input type="radio" name="optionsRadios" value="1" id="pricesaleso1">
                         <span class="t1">350ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale)<sup>đ</sup></span>
                     </label>
                 </div>
@@ -60,7 +61,7 @@
             </div>
         }
 
-        <input type="hidden" id="hdCateSpDon" value="0" />
+        <input type="hidden" id="hdCateSpDon" value="1" />
 
         <div class="form-inline" id="dtsldh">
             <a class="btn btn-default" id="btnTruSL">
@@ -161,6 +162,8 @@
     <script src="~/Scripts/pgwslider.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $("#pricesaleso1").attr("checked", true);
 
             $('.detailslider').pgwSlider(
                 {
