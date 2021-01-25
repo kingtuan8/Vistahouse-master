@@ -464,6 +464,12 @@ namespace NhomXingfa.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        public ActionResult RegisterCust()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1,5 +1,5 @@
 ﻿@model NhomXingfa.Models.CartDetailViewModel
-
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Cart";
     int count = 0;
@@ -13,40 +13,49 @@
         showcart = "showcart_hidden";
         shownull = "shownull_hidden";
     }
-    if(Model.customer != null)
+    if (Model.customer != null)
     {
         cust = Model.customer;
     }
+    string logged = "0";
+    if (Request.IsAuthenticated)
+    {
+        logged = "1";
+    }
+
 }
+
+<input type="hidden" id="hdLogged" value="@logged" />
+<input type="hidden" id="hdShipped" value="1" />
 
 <div class="row" id="processcart">
     <span class="borderstyle"></span>
-            <div class="col-md-4 actived" id="dot1">
-                <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
-                    <span class="circlenumber activeds cc1">
-                        1
-                    </span>
-                    Xác Nhận Đơn Hàng
-                </span>
-                <span style="position:absolute; top:52%; left:0px; height:5px; background-color:#fff; z-index:9; width:60%;">&nbsp;</span>
-            </div>
-            <div class="col-md-4">
-                <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
-                    <span class="circlenumber cc2">
-                        2
-                    </span>
-                    Chọn Giao Hàng
-                </span>
-            </div>
-            <div class="col-md-4" id="dot3">
-                <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
-                    <span class="circlenumber cc3">
-                        3
-                    </span>
-                    Thanh Toán
-                </span>
-                <span style="position:absolute; top:52%; right:0px; height:5px; background-color:#fff; z-index:9; width:50%;">&nbsp;</span>
-            </div>
+    <div class="col-md-4 actived" id="dot1">
+        <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
+            <span class="circlenumber activeds cc1">
+                1
+            </span>
+            Xác Nhận Đơn Hàng
+        </span>
+        <span style="position:absolute; top:52%; left:0px; height:5px; background-color:#fff; z-index:9; width:60%;">&nbsp;</span>
+    </div>
+    <div class="col-md-4">
+        <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
+            <span class="circlenumber cc2">
+                2
+            </span>
+            Chọn Giao Hàng
+        </span>
+    </div>
+    <div class="col-md-4" id="dot3">
+        <span style="background-color:#fff; padding-right:5px; padding-left:5px; z-index:10; position:absolute; top:8px;">
+            <span class="circlenumber cc3">
+                3
+            </span>
+            Thanh Toán
+        </span>
+        <span style="position:absolute; top:52%; right:0px; height:5px; background-color:#fff; z-index:9; width:50%;">&nbsp;</span>
+    </div>
 </div>
 
 <div class="row @shownull" style="background-color:#fff; padding:100px; text-align:center; margin-top:28px; margin-bottom:28px;">
@@ -56,167 +65,194 @@
 </div>
 
 <div class="row @showcart">
-     <div class="col-md-8">
-         <div id="lstfullgiohang">
+    <div class="col-md-8">
+        <div id="lstfullgiohang">
 
-             @foreach (var q in Model.cart)
-                     {
-                         count++;
-                 total = total + (q.Price.Value * q.Quantity.Value);
-                 <div class="itemlst">
-                     <div class="floatleft cartitemleft">
-                         <div class="titleitem">
-                             <span>@count</span>. @q.Name
-                         </div>
-                         <div class="dscitem">
-                          @Html.Raw(q.Descript.Replace("<p>","").Replace("</p>",""))
-                         </div>
-                     </div>
-                     <div class="floatright cartitemright">
-                         <img src="~/Photos/Products/@q.Image" />
-                         <div class="itempricefc">
-                             <span>@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
-                         </div>
-                     </div>
-                     <div class="buttonfunc">
-                         <span class="removesp btnRemoveCart2" productid="@q.ID">
-                             <i class="glyphicon glyphicon-remove"></i>
-                         </span>
+            @foreach (var q in Model.cart)
+            {
+                count++;
+                total = total + (q.Price.Value * q.Quantity.Value);
+                <div class="itemlst">
+                    <div class="floatleft cartitemleft">
+                        <div class="titleitem">
+                            <span>@count</span>. @q.Name
+                        </div>
+                        <div class="dscitem">
+                            @Html.Raw(q.Descript.Replace("<p>", "").Replace("</p>", ""))
+                        </div>
+                    </div>
+                    <div class="floatright cartitemright">
+                        <img src="~/Photos/Products/@q.Image" />
+                        <div class="itempricefc">
+                            <span>@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
+                        </div>
+                    </div>
+                    <div class="buttonfunc">
+                        <span class="removesp btnRemoveCart2" productid="@q.ID">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </span>
 
-                         @if (q.IsProduct == true)
-                         {
-                             <span class="btn-group btn-group-sm cateml" role="group" aria-label="...">
-                                 <span class="piddata">@q.ID</span>
-                                 @if (q.CateSPDon == 1)
-                                 {
-                                     <button type="button" class="btn btn-default changeml actived" changeml="1">350ml</button>
-                                     <button type="button" class="btn btn-default changeml" changeml="2">550ml</button>
-                                 }
-                                 else
-                                 {
-                                     <button type="button" class="btn btn-default changeml" changeml="1">350ml</button>
-                                     <button type="button" class="btn btn-default changeml actived" changeml="2">550ml</button>
-                                 }
+                        @if (q.IsProduct == true)
+                        {
+                            <span class="btn-group btn-group-sm cateml" role="group" aria-label="...">
+                                <span class="piddata">@q.ID</span>
+                                @if (q.CateSPDon == 1)
+                                {
+                                    <button type="button" class="btn btn-default changeml actived" changeml="1">350ml</button>
+                                    <button type="button" class="btn btn-default changeml" changeml="2">550ml</button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-default changeml" changeml="1">350ml</button>
+                                    <button type="button" class="btn btn-default changeml actived" changeml="2">550ml</button>
+                                }
 
-                             </span>
-                         }
+                            </span>
+                        }
 
-                         <div class="form-inline">
-                             <a class="btn btn-default btn-xs btnTruSL" productid="@q.ID" catesp="@q.CateSPDon">
-                                 <i class="glyphicon glyphicon-minus"></i>
-                             </a>
-                             <input class="form-control-xs form-control txtSoLuongDH" type="text" value="@q.Quantity" placeholder="0" readonly />
-                             <a class="btn btn-default btn-xs btnCongSL" productid="@q.ID" catesp="@q.CateSPDon">
-                                 <i class="glyphicon glyphicon-plus"></i>
-                             </a>
-                         </div>
-                     </div>
-                     <div class="clear"></div>
-                 </div>
-             }
+                        <div class="form-inline">
+                            <a class="btn btn-default btn-xs btnTruSL" productid="@q.ID" catesp="@q.CateSPDon">
+                                <i class="glyphicon glyphicon-minus"></i>
+                            </a>
+                            <input class="form-control-xs form-control txtSoLuongDH" type="text" value="@q.Quantity" placeholder="0" readonly />
+                            <a class="btn btn-default btn-xs btnCongSL" productid="@q.ID" catesp="@q.CateSPDon">
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            }
 
 
 
-         </div>
+        </div>
 
-         <div class="inputgiaohang">
-             <div class="titleinput">
-                 Chọn phương thức giao hàng:
-             </div>
+        <div class="inputgiaohang">
+            <div class="titleinput">
+                Chọn phương thức giao hàng:
+            </div>
 
-             <div class="ghgroup text-center">
-                 <div class="btn-group" role="group" aria-label="...">
-                     <button type="button" class="btn btn-default changegh activex" changegh="1">Giao Hàng Tận Nhà</button>
-                     <button type="button" class="btn btn-default changegh" changegh="2">Lấy Tại Cửa Hàng</button>
-                 </div>
-             </div>
+            <div class="ghgroup text-center">
+                <div class="btn-group" role="group" aria-label="...">
+                    <button type="button" class="btn btn-default changegh activex" changegh="1">Giao Hàng Tận Nhà</button>
+                    <button type="button" class="btn btn-default changegh" changegh="2">Lấy Tại Cửa Hàng</button>
+                </div>
+            </div>
 
-             <div class="row ptgiaohang" id="ptnhapdiachi">
-                 <div class="col-md-1">
-                     &nbsp;
-                 </div>
-                 <div class="col-md-10">
+            <div class="row ptgiaohang" id="ptnhapdiachi">
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+                <div class="col-md-10">
 
-                     <p style="text-align:center; padding:9px;background-color: #fffbe6;border: 1px solid #ffe58f; font-size:13px;">
-                         Nếu quý khách đã có tài khoản, vui lòng đăng nhập để sử dụng thông tin đặt hàng trước đó
-                         <button type="button" class="close" id="closewarm" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                     </p>
+                    <p style="text-align:center; padding:9px;background-color: #fffbe6;border: 1px solid #ffe58f; font-size:13px;">
+                        Nếu quý khách đã có tài khoản, vui lòng đăng nhập để sử dụng thông tin đặt hàng trước đó
+                        <button type="button" class="close" id="closewarm" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </p>
 
-                     <div class="forminput form-horizontal">
-                         <div class="form-group">
-                             <label for="txtHoTen" class="col-sm-4 control-label"><span>*</span> Họ & Tên</label>
-                             <div class="col-sm-8">
-                                 <input type="text" class="form-control" id="txtHoTen" placeholder="tên người nhận" value="@cust.CustName">
-                             </div>
-                         </div>
-                         <div class="form-group">
-                             <label for="txtSDT" class="col-sm-4 control-label"><span>*</span> SĐT</label>
-                             <div class="col-sm-8">
-                                 <input type="text" class="form-control" id="txtSDT" placeholder="số điện thoại người nhận" value="@cust.CustPhone">
-                             </div>
-                         </div>
+                    <div class="forminput form-horizontal">
+                        <div class="form-group">
+                            <label for="txtHoTen" class="col-sm-4 control-label"><span>*</span> Họ & Tên</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtHoTen" placeholder="tên người nhận" value="@cust.CustName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtSDT" class="col-sm-4 control-label"><span>*</span> SĐT</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtSDT" placeholder="số điện thoại người nhận" value="@cust.CustPhone">
+                            </div>
+                        </div>
 
-                         <div class="form-group">
-                             <label for="txtNgayNhan" class="col-sm-4 control-label"><span>*</span> Ngày giao hàng</label>
-                             <div class="col-sm-8" style="max-width:430px;">
-                                 <span class="input-group date">
-                                     <input id="txtNgayNhan" class="form-control datefrom3" autocomplete="off" placeholder="" type="text" />
-                                     <span class="input-group-addon">
-                                         <span class="glyphicon glyphicon-calendar" for="txtNgayNhan"></span>
-                                     </span>
-                                 </span>
-                             </div>
-                         </div>
-                         <div class="form-group">
-                             <label for="txtDiaChi" class="col-sm-4 control-label"><span>*</span> Địa chỉ giao hàng</label>
-                             <div class="col-sm-8">
-                                 <input type="text" class="form-control" id="txtDiaChi" placeholder="địa chỉ giao hàng" value="@cust.CustAddress">
-                             </div>
-                         </div>
+                        <div class="form-group">
+                            <label for="txtNgayNhan" class="col-sm-4 control-label"><span>*</span> Ngày giao hàng</label>
+                            <div class="col-sm-8" style="max-width:430px;">
+                                <span class="input-group date">
+                                    <input id="txtNgayNhan" class="form-control datefrom3" autocomplete="off" placeholder="" type="text" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar" for="txtNgayNhan"></span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtDiaChi" class="col-sm-4 control-label"><span>*</span> Địa chỉ giao hàng</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="txtDiaChi" placeholder="địa chỉ giao hàng" value="@cust.CustAddress">
+                            </div>
+                        </div>
 
-                         <div class="form-group">
-                             <label for="txtDiaChi" class="col-sm-4 control-label">Ghi chú</label>
-                             <div class="col-sm-8">
-                                 <textarea class="form-control" cols="3" id="txtNoted" placeholder="ghi chú"></textarea>
-                             </div>
-                         </div>
+                        <div class="form-group">
+                            <label for="txtDiaChi" class="col-sm-4 control-label">Ghi chú</label>
+                            <div class="col-sm-8">
+                                <textarea class="form-control" cols="3" id="txtNoted" placeholder="ghi chú"></textarea>
+                            </div>
+                        </div>
 
-                         <div class="form-group">
-                             <div class="col-sm-offset-4 col-sm-8">
-                                 <button type="button" class="btn btn-default" id="btnLuuThongTin">Lưu</button>
-                                 <button type="button" class="btn btn-default" id="btnHuy">Hủy</button>
-                             </div>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="col-md-1">
-                     &nbsp;
-                 </div>
-             </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-8">
+                                <button type="button" class="btn btn-default" id="btnLuuThongTin">Lưu</button>
+                                <button type="button" class="btn btn-default" id="btnHuy">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+            </div>
 
-             <div class="row ptgiaohang" id="taicuahang">
-                 <div class="col-md-1">
-                     &nbsp;
-                 </div>
-                 <div class="col-md-10">
-                     <img src="~/images/store.6ad31dce.jpg" />
-                 </div>
-                 <div class="col-md-1">
-                     &nbsp;
-                 </div>
-             </div>
+            <div class="row ptgiaohang" id="taicuahang">
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+                <div class="col-md-10">
+                    <img src="~/images/store.6ad31dce.jpg" />
+                </div>
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+            </div>
 
-         </div>
+        </div>
 
-         <div class="thongtinthanhtoan">
-             <div class="titleinput">
-                 Thông tin thanh toán
-             </div>
-         </div>
+        <div class="thongtinthanhtoan">
+            <div class="titleinput">
+                Thông tin thanh toán
+            </div>
 
-        
+            <div class="row">
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+                <div class="col-md-10">
+                    <p style="line-height:26px; font-weight:bold; border-bottom:1px solid #ccc; padding-left:18px; padding-right:18px;">
+                        Bạn có thể chuyển khoản vào một trong các tài khoản dưới đây. Sau đó thông báo lại cho admin. Website sẽ liên hệ lại với bạn trong thời gian sớm nhất sau khi nhận được đơn hàng.
+                    </p>
+                    <p>
+                        1) Chủ Tài Khoản: Cao Quốc Đạt <br />
+                        Số Tài Khoản: 0123 456 789 <br />
+                        Ngân Hàng Công Thương Việt Nam (Vietcombank)
+                    </p>
+                    <p>
+                        2) Chủ Tài Khoản: Cao Quốc Đạt <br />
+                        Số Tài Khoản: 0123 456 789 <br />
+                        Ngân Hàng Ngoại Thương Việt Nam (Sacombank)
+                    </p>
+                    <p>
+                        1) Chủ Tài Khoản: Cao Quốc Đạt <br />
+                        Số Tài Khoản: 0123 456 789 <br />
+                        Ngân Hàng Đầu Tư & Phát Triển Việt Nam (BIDV)
+                    </p>
+                </div>
+            </div>
 
-     </div>
+        </div>
+
+
+
+    </div>
     <div class="col-md-4">
         <div id="tongfullgiohang">
             <ul>
@@ -259,6 +295,7 @@
                     Chọn Giao Hàng <i class="glyphicon glyphicon-menu-right"></i>
                 </a>
 
+
                 <a class="btn btn-lg btn-info" id="btnXacMinhTK">
                     Xác Minh Tài Khoản <i class="glyphicon glyphicon-menu-right"></i>
                 </a>
@@ -266,7 +303,7 @@
                 <a class="btn btn-lg btn-info" id="btnHoanThanh">
                     Đặt Hàng Ngay <i class="glyphicon glyphicon-menu-right"></i>
                 </a>
-
+                <input type="hidden" id="hdCartID" value="0" />
             </div>
 
             <div id="hotrocall">
@@ -278,23 +315,3 @@
     </div>
 </div>
 
-
-<div class="modal fade" id="modalWarning" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-danger">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Cảnh báo</h4>
-            </div>
-            <div class="modal-body">
-                <p style="font-size:16px; color:#333; padding:12px 0px 22px 22px;">
-                    Vui lòng nhập đầy đủ các trường có dấu <sup style="color:#f00;">*</sup>
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-                @*<button type="button" class="btn btn-primary">Save changes</button>*@
-            </div>
-        </div>
-    </div>
-</div>

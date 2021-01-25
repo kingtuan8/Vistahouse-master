@@ -879,7 +879,7 @@ i#shopicon
         padding: 22px 22px 0px 22px;
         text-align: justify;
         line-height: 26px;
-        height: 200px;
+        min-height: 303px;
         background-color: #efefef;
     }
     #camnhamkhachhang .col-md-10 .row .col-md-4 .authorkh {
@@ -955,6 +955,7 @@ i#shopicon
 #buttondathangdt
 {
     padding-top:22px;
+    padding-bottom:8px;
 }
 #buttondathangdt a {
     overflow: hidden !important;
@@ -1269,7 +1270,26 @@ i#shopicon
                 .listdathang ul li .col-md-9 .actioncart .cateml button.actived {
                     border: 1px solid #084f1f;
                     color: #084f1f;
+                    background-color:#ebe6bb;
                 }
+                    .listdathang ul li .col-md-9 .actioncart .cateml button.actived:active {
+                        border: 1px solid #084f1f !important;
+                        color: #084f1f !important;
+                        background-color: #ebe6bb !important;
+                        outline: none !important;
+                    }
+                    .listdathang ul li .col-md-9 .actioncart .cateml button.actived:focus {
+                        border: 1px solid #084f1f !important;
+                        color: #084f1f !important;
+                        background-color: #ebe6bb !important;
+                        outline: none !important;
+                    }
+                    .listdathang ul li .col-md-9 .actioncart .cateml button.actived:visited {
+                        border: 1px solid #084f1f !important;
+                        color: #084f1f !important;
+                        background-color: #ebe6bb !important;
+                        outline:none !important;
+                    }
 
                 .listdathang ul li .col-md-9 .actioncart .form-inline a {
                     background-color: #185c2b;
@@ -1550,10 +1570,42 @@ footer .col-md-8
                         top: 14px;
                     }
                         #lstfullgiohang .itemlst .buttonfunc .cateml button.actived {
-                            border: 1px solid #084f1f;
-                            color: #084f1f
+                            border: 1px solid #084f1f !important;
+                            color: #084f1f !important;
+                            background-color: #ebe6bb !important;
+                            outline: none !important;
                         }
 
+                        #lstfullgiohang .itemlst .buttonfunc .cateml button.actived:focus {
+                            border: 1px solid #084f1f !important;
+                            color: #084f1f !important;
+                            background-color: #ebe6bb !important;
+                            outline: none !important;
+                        }
+                            #lstfullgiohang .itemlst .buttonfunc .cateml button.actived:visited {
+                                border: 1px solid #084f1f !important;
+                                color: #084f1f !important;
+                                background-color: #ebe6bb !important;
+                                outline: none !important;
+                            }
+                            #lstfullgiohang .itemlst .buttonfunc .cateml button.actived:active {
+                                border: 1px solid #084f1f !important;
+                                color: #084f1f !important;
+                                background-color: #ebe6bb !important;
+                                outline: none !important;
+                            }
+.thongtinthanhtoan
+{display:none;}
+.thongtinthanhtoan p {
+    padding-bottom: 28px;
+    padding-left: 22px;
+    line-height: 26px;
+}
+#formregister sup {
+    color: #f00;
+    font-weight: bold;
+    margin-right: 4px;
+}
 #tongfullgiohang {
     border: 1px solid #ccc;
     margin-top: 28px;

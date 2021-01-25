@@ -1,4 +1,6 @@
-﻿var timeout = null;
+﻿//import { fn } from "jquery";
+
+var timeout = null;
 $(document).ready(function () {
 
     $('.datefrom3').datetimepicker({
@@ -19,6 +21,8 @@ $(document).ready(function () {
     $(document).on("click", ".changegh", function () {
         var elem = $(this);
         var changegh = $(this).attr("changegh");
+
+        $("#hdShipped").val(changegh);
 
         if (!$(this).hasClass("activex")) {
             $(".changegh").removeClass("activex");
@@ -45,13 +49,72 @@ $(document).ready(function () {
         var ngaynhan = $("#txtNgayNhan").val().trim();
         var diachi = $("#txtDiaChi").val().trim();
         var noted = $("#txtNoted").val().trim();
+        var logged = $("#hdLogged").val().trim();
+        var styleship = $("#hdShipped").val().trim();
 
         if (hoten == "" || sdt == "" || ngaynhan == "" || diachi == "") {
             $('#modalWarning').modal({ backdrop: 'static', keyboard: false });
         }
         else {
+            $.ajax({
+                url: '/home/InsertDonHang',
+                contentType: 'application/json; charset=utf-8',
+                data: { fname: hoten, sdt: sdt, ngaygiao: ngaynhan, dchi: diachi, ghichu: noted, logged: logged, styleship: styleship },
+                type: 'GET',
+                dataType: 'json'
+                , success: function (data) {
 
+                    if (data != "0") {
+                        $(".inputgiaohang").hide();
+                        $(".thongtinthanhtoan").show();
+
+                        $(".circlenumber").parent().parent().removeClass("actived");
+                        $(".circlenumber").removeClass("activeds");
+                        $(".cc3").parent().parent().addClass("actived");
+                        $(".cc3").addClass("activeds");
+
+                        $("#hdCartID").val(data);
+                        $("#btnXacMinhTK").hide();
+                        $("#btnChonGiaoHang").hide();
+                        $("#btnHoanThanh").show();
+                    }
+                   
+                },
+                error: function (xhr, status) {
+                    alert("Fail connect to system server. Please try again or check internet connection.");
+                },
+                complete: function (xhr, status) {
+                    
+                }
+            });
         }
+
+    });
+
+    $(document).on("click", "#btnHoanThanh", function () {
+
+        var cartid = $("#hdCartID").val();
+
+        $.ajax({
+            url: '/home/CompleteCart',
+            contentType: 'application/json; charset=utf-8',
+            data: { cartid: cartid },
+            type: 'GET',
+            dataType: 'json'
+            , success: function (data) {
+
+                if (data == true) {
+                    location.href = "/home/orderdetail";
+                }
+
+            },
+            error: function (xhr, status) {
+                alert("Fail connect to system server. Please try again or check internet connection.");
+            },
+            complete: function (xhr, status) {
+
+            }
+        });
 
     });
 
@@ -156,6 +219,7 @@ $(document).ready(function () {
         $(".inputgiaohang").hide();
         $("#btnChonGiaoHang").show();
         $("#btnXacMinhTK").hide();
+        $("#btnHoanThanh").hide();
 
         $(".circlenumber").parent().parent().removeClass("actived");
         $(".circlenumber").removeClass("activeds");
@@ -165,10 +229,26 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#btnChonGiaoHang", function () {
+
         $("#lstfullgiohang").hide();
         $(".inputgiaohang").show();
         $(this).hide();
-        $("#btnXacMinhTK").show();
+        var logged = $("#hdLogged").val().trim();
+
+        if (logged == "0") {
+            //$("#lstfullgiohang").hide();
+            //$(".inputgiaohang").show();
+            //$(this).hide();
+            $("#btnXacMinhTK").show();
+            $("#btnHoanThanh").hide();
+        }
+        else {
+            
+            $("#btnXacMinhTK").hide();
+            //$("#btnHoanThanh").show();
+        }
+
+        
 
         $(".circlenumber").parent().parent().removeClass("actived");
         $(".circlenumber").removeClass("activeds");
@@ -317,6 +397,28 @@ $(document).ready(function () {
     $(document).on("click", ".loadx", function () {
 
         alert("s");
+
+    });
+
+    $(document).on("click", "#btnTruSL", function () {
+
+        var sl = parseInt($("#txtSoLuongDHThem").val().trim());
+        var xx = sl - 1;
+        if (xx <= 1) {
+            xx = 1;
+        }
+        $("#txtSoLuongDHThem").val(xx);
+
+    });
+
+    $(document).on("click", "#btnCongSL", function () {
+
+        var sl = parseInt($("#txtSoLuongDHThem").val().trim());
+        var xx = sl + 1;
+        if (xx >= 100) {
+            xx = 100;
+        }
+        $("#txtSoLuongDHThem").val(xx);
 
     });
 
@@ -564,6 +666,103 @@ $(document).ready(function () {
         }, 1000);      
     });
 
+    $(document).on("click", "#btnDatHangMini", function () {
+
+        location.href = "/home/cart";
+
+    });
+
+    $(document).on("focusout", "#txtAccount", function () {
+
+        var uname = $(this).val().trim();
+
+        $.ajax({
+            url: '/home/CheckUserName',
+            contentType: 'application/html; charset=utf-8',
+            data: { uname: uname },
+            type: 'GET',
+            dataType: 'json'
+            , success: function (data) {
+
+                if (data == "1") {
+                    $("#ckUsername").val("1");
+                    $('#modalWarning3').modal({ backdrop: 'static', keyboard: false });
+                }
+                else {
+                    $("#ckUsername").val("0");
+                }
+
+            },
+            error: function (xhr, status) {
+                alert("Fail connect to system server. Please try again or check internet connection.");
+            },
+            complete: function (xhr, status) {
+                
+            }
+        });
+
+
+    });
+
+    $('#modalWarning4').on('hidden.bs.modal', function () {
+        location.href = "/home";
+    })
+
+    $(document).on("click", "#btnDangKy", function () {
+
+        var uname = $("#txtAccount").val().trim();
+        var ckname = $("#ckUsername").val().trim();
+        var pword = $("#txtHassPass").val().trim();
+        var cfirm = $("#txtConfirm").val().trim();
+        var email = $("#txtEmail").val().trim();
+        var mobile = $("#txtMobile").val().trim();
+        var fname = $("#txtFullname").val().trim();
+        var dchi = $("#textdiachi").val().trim();
+
+        if (ckname == "0" && pword != "" && email != "" && mobile != "" && fname != "") {
+            if (pword == cfirm) {
+
+                $.ajax({
+                    url: '/home/InsertUser',
+                    contentType: 'application/html; charset=utf-8',
+                    data: { uname: uname, pword: pword, email: email, mobile: mobile, fname: fname, dchi: dchi },
+                    type: 'GET',
+                    dataType: 'json'
+                    , success: function (data) {
+
+                        if (data == true) {
+                            $('#modalWarning4').modal({ backdrop: 'static', keyboard: false });
+                        }
+                        else {
+                            alert("Đăng ký thất bại ! Vui lòng thử lại ");
+                        }
+
+                    },
+                    error: function (xhr, status) {
+                        alert("Fail connect to system server. Please try again or check internet connection.");
+                    },
+                    complete: function (xhr, status) {
+
+                    }
+                });
+
+
+            }
+            else {
+                $('#modalWarning2').modal({ backdrop: 'static', keyboard: false });
+            }
+        }
+        else if (ckname == "1")
+        {
+            $('#modalWarning3').modal({ backdrop: 'static', keyboard: false });
+        }
+        else {
+            $('#modalWarning').modal({ backdrop: 'static', keyboard: false });
+        }
+
+    });
+
+
     $(document).on("click", ".btnCongSL", function () {
 
         var elem = $(this);
@@ -699,9 +898,7 @@ $(document).ready(function () {
                     slidesToScroll: 1
                 }
             }
-            // You can unslick at a given breakpoint now by adding:
-            // settings: "unslick"
-            // instead of a settings object
+
         ]
     });
 
@@ -710,12 +907,6 @@ $(document).ready(function () {
 
 function updateiconcart() {
     var numbersl = $(".numbersl").text().trim();
-
-
-
-    //if (numbersl == undefined || numbersl == null || numbersl == "") {
-    //    numbersl = $(".numberslt").text().trim();
-    //}
 
     $(".redshop").text(numbersl);
 }

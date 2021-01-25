@@ -84,8 +84,8 @@
                         <a href="/goi-dinh-ki">Gói định kỳ</a>
                     </li>
                     @*<li>
-                        <a href="#">Thông tin dinh dưỡng</a>
-                    </li>*@
+                            <a href="#">Thông tin dinh dưỡng</a>
+                        </li>*@
                     <li>
                         <a href="/tin-tuc">Blogs</a>
                     </li>
@@ -102,7 +102,7 @@
                     <li>
                         <a href="/home/cart">
                             <i class="glyphicon glyphicon-shopping-cart" id="shopicon" style="position:relative;">
-                                <span class="redshop">@cart.Count</span>
+                                <span class="redshop">@cart.Sum(s => s.Quantity)</span>
                             </i>
 
                         </a>
@@ -171,6 +171,8 @@
             </div>
         </div>
     </div>
+
+    @Html.Partial("~/Views/Shared/_warning.cshtml")
 
     @Scripts.Render("~/bundles/moments")
     @Scripts.Render("~/bundles/jquery")

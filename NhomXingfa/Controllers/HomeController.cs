@@ -4,7 +4,10 @@ using NhomXingfa.Areas.Quantri.Utilities;
 using NhomXingfa.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,6 +16,7 @@ namespace NhomXingfa.Controllers
     public class HomeController : Controller
     {
         XingFaEntities db = new XingFaEntities();
+        //Helpers h = new Helpers();
         public ActionResult Index()
         {
             var model = new IndexPageViewModel();
@@ -36,14 +40,25 @@ namespace NhomXingfa.Controllers
         [Authorize]
         public ActionResult OrderDetail()
         {
+            if(Request.IsAuthenticated)
+            {
+
+            }
             return View();
         }
 
         public ActionResult Cart()
         {
+            //System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en");
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+
+            //HttpCookie cookie = new HttpCookie("Lang");
+            //cookie.Value = "en";
+            //Response.Cookies.Add(cookie);
+
             var model = new CartDetailViewModel();
             model.cart = GetCart();
-            if(User.Identity.Name != null)
+            if(User.Identity.Name != "")
             {
                 var userid = db.Users.FirstOrDefault(q => q.UserName == User.Identity.Name);
                 model.customer = db.CustomerOrders.Find(userid.CustomerID);
@@ -57,6 +72,261 @@ namespace NhomXingfa.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public JsonResult CheckUserName(string uname)
+        {
+            string x = "0";
+
+            var u = db.Users.FirstOrDefault(q => q.UserName == uname);
+
+            if(u != null)
+            {
+                x = "1";
+            }
+
+            return Json(x, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult InsertUser(string uname, string pword, string email, string mobile, string fname, string dchi)
+        {
+            bool flag = false;
+
+            CustomerOrder o = new CustomerOrder();
+            o.CustName = fname;
+            o.CustPhone = mobile;
+            o.CustEmail = email;
+            o.CustAddress = dchi;
+            db.CustomerOrders.Add(o);
+
+            db.SaveChanges();
+
+            User u = new User();
+            u.UserName = uname;
+            u.HashPass = GetMD5Hash(pword);
+            u.Active = true;
+            u.Created = DateTime.Now;
+            u.CustomerID = o.Id;
+
+            db.Users.Add(u);
+
+            db.SaveChanges();
+
+            flag = true;
+
+
+            return Json(flag, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult InsertDonHang(string logged, string fname, string sdt, string ngaygiao, string dchi, string ghichu, int?  styleship)
+        {
+            string check = "null";
+
+            if(logged == "0")
+            {
+                CustomerOrder o = new CustomerOrder();
+                o.CustName = fname;
+                o.CustPhone = sdt;
+                o.CustEmail = "";
+                o.CustAddress = dchi;
+                db.CustomerOrders.Add(o);
+
+                db.SaveChanges();
+
+                var cart = GetCart();
+
+                Cart c = new Cart();
+                c.CarCode = "";
+                c.CustID = o.Id;
+                c.AddresDelivery = dchi;
+                c.CustPhone = sdt;
+                DateTimeFormatInfo usDtfi = new CultureInfo("vi-VN", false).DateTimeFormat;
+                c.TimeDelivery = Convert.ToDateTime(ngaygiao, usDtfi);
+                c.ShipDelivery = 0;
+                c.Qty = cart.Sum(s => s.Quantity);
+                c.Total = 0;
+                c.TotalConLai = 0;
+                c.Notes = ghichu;
+                c.StatusOrder = 0;
+                c.StyleShip = styleship;
+                c.Created = DateTime.Now;
+                c.Updated = DateTime.Now;
+
+                db.Carts.Add(c);
+
+                db.SaveChanges();
+
+                decimal? total = 0;
+                decimal? phiship = 0;
+                
+
+                foreach(var q in cart)
+                {
+
+                    var p = db.Products.Find(q.ID);
+                    phiship = phiship + p.PhiShip;
+
+                    total = total + (q.Quantity * q.Price);
+
+                    CartDetail cd = new CartDetail();
+                    cd.CarID = c.Id;
+                    cd.ProductID = q.ID;
+                    cd.Price = q.Price;
+                    cd.Qty = q.Quantity;
+                    cd.Total = q.Quantity * q.Price;
+                    cd.IsGoiSanPham = q.IsProduct;
+                    if(q.IsProduct == true)
+                    {
+                        if (q.CateSPDon == 1)
+                        {
+                            cd.ML = "350ml";
+                        }
+                        else
+                        {
+                            cd.ML = "550ml";
+                        }
+                    }
+
+                    db.CartDetails.Add(cd);
+                }
+
+                c.Total = total;
+                c.TotalConLai = total;
+                c.ShipDelivery = phiship;
+
+                db.SaveChanges();
+
+                check = c.Id + "";
+
+            }
+            else
+            {
+                var unamex = User.Identity.Name;
+                int? custid = 0;
+                var u = db.Users.FirstOrDefault(q => q.UserName == unamex);
+                if(u != null)
+                {
+                    if(u.CustomerID != null)
+                    {
+                        custid = u.CustomerID;
+                        var co = db.CustomerOrders.Find(u.CustomerID);
+                        co.CustName = fname;
+                        co.CustPhone = sdt;
+                        co.CustAddress = dchi;
+
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        CustomerOrder o = new CustomerOrder();
+                        o.CustName = fname;
+                        o.CustPhone = sdt;
+                        o.CustEmail = "";
+                        o.CustAddress = dchi;
+                        db.CustomerOrders.Add(o);
+
+                        db.SaveChanges();
+
+                        custid = o.Id;
+                    }
+
+                    var cart = GetCart();
+
+                    Cart c = new Cart();
+                    c.CarCode = "";
+                    c.CustID = custid;
+                    c.AddresDelivery = dchi;
+                    c.CustPhone = sdt;
+                    DateTimeFormatInfo usDtfi = new CultureInfo("vi-VN", false).DateTimeFormat;
+                    c.TimeDelivery = Convert.ToDateTime(ngaygiao, usDtfi);
+                    c.ShipDelivery = 0;
+                    c.Qty = cart.Sum(s => s.Quantity);
+                    c.Total = 0;
+                    c.TotalConLai = 0;
+                    c.Notes = ghichu;
+                    c.StatusOrder = 0;
+                    c.StyleShip = styleship;
+                    c.Created = DateTime.Now;
+                    c.Updated = DateTime.Now;
+
+                    db.Carts.Add(c);
+
+                    db.SaveChanges();
+
+                    decimal? total = 0;
+                    decimal? phiship = 0;
+
+                    foreach (var q in cart)
+                    {
+
+                        var p = db.Products.Find(q.ID);
+                        phiship = phiship + p.PhiShip;
+
+                        total = total + (q.Quantity * q.Price);
+
+                        CartDetail cd = new CartDetail();
+                        cd.CarID = c.Id;
+                        cd.ProductID = q.ID;
+                        cd.Price = q.Price;
+                        cd.Qty = q.Quantity;
+                        cd.Total = q.Quantity * q.Price;
+                        cd.IsGoiSanPham = q.IsProduct;
+                        if (q.IsProduct == true)
+                        {
+                            if (q.CateSPDon == 1)
+                            {
+                                cd.ML = "350ml";
+                            }
+                            else
+                            {
+                                cd.ML = "550ml";
+                            }
+                        }
+
+                        db.CartDetails.Add(cd);
+                    }
+
+                    c.Total = total;
+                    c.TotalConLai = total;
+                    c.ShipDelivery = phiship;
+
+                    db.SaveChanges();
+
+                    check = c.Id + "";
+
+
+                }  
+            }
+
+            //check = true;
+
+            return Json(check, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CompleteCart(int? cartid)
+        {
+            bool check = false;
+
+            var cart = db.Carts.Find(cartid);
+            cart.StatusOrder = 1;
+
+            db.SaveChanges();
+
+            check = true;
+
+            return Json(check, JsonRequestBehavior.AllowGet);
+        }
+
+        private string GetMD5Hash(string value)
+        {
+            MD5 md5Hasher = MD5.Create();
+            byte[] data = md5Hasher.ComputeHash(Encoding.Default.GetBytes(value));
+            StringBuilder sBuilder = new StringBuilder();
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+            return sBuilder.ToString();
         }
 
         public PartialViewResult AddCartData()

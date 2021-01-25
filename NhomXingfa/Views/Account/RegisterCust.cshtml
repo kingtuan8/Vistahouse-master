@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Đăng Ký Thành Viên";
+}
+
+<div class="container" style="margin-top:42px; margin-bottom:42px;">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Đăng Ký Thành Viên</h3>
+            </div>
+            <div class="panel-body" id="formregister">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="txtUserName" class="col-sm-3 control-label"><sup>*</sup>Tên tài khoản</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txtAccount" placeholder="tên tài khoản">
+                            <input type="hidden" id="ckUsername" value="1" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPassword" class="col-sm-3 control-label"><sup>*</sup>Mật khẩu</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="txtHassPass" placeholder="mật khẩu">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtConfirm" class="col-sm-3 control-label"><sup>*</sup>Nhập lại mật khẩu</label>
+                        <div class="col-sm-9">
+                            <input type="password" class="form-control" id="txtConfirm" placeholder="xác nhận mật khẩu">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtEmail" class="col-sm-3 control-label"><sup>*</sup>Email</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txtEmail" placeholder="email">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtMobile" class="col-sm-3 control-label"><sup>*</sup>Điện thoại</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txtMobile" placeholder="điện thoại">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtFullname" class="col-sm-3 control-label"><sup>*</sup>Họ & tên</label>
+                        <div class="col-sm-9">
+                            <input type="text" class="form-control" id="txtFullname" placeholder="họ & tên">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="textdiachi" class="col-sm-3 control-label">Địa chỉ</label>
+                        <div class="col-sm-9">
+                            <textarea class="form-control" cols="3" id="textdiachi" placeholder="địa chỉ"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-9">
+                            <input type="submit" id="btnSubmitDangKy" style="display:none;" />
+                            <button type="button" id="btnDangKy" class="btn btn-primary">Đăng Ký</button>
+                            <button type="reset" id="btnReset" class="btn btn-danger">Làm Lại</button>
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
