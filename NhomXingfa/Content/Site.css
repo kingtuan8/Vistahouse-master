@@ -50,12 +50,12 @@ blockquote {
     /*z-index: 99999;*/
     width: 100%;
 }
-    .toptran .col-md-7
+    .toptran .col-md-10
     {
         color:#fff;  
         text-align:right;
     }
-    .toptran .col-md-7 h4 {
+    .toptran .col-md-10 h4 {
         font-size:14px;
         font-weight:bold;
         margin-bottom:0px;
@@ -63,13 +63,13 @@ blockquote {
         display:inline-block;
         padding-right:62px;
     }
-        .toptran .col-md-7 a
+        .toptran .col-md-10 a
         {
             font-size:14px;
             color:#fff;
             padding-right:22px;
         }
-            .toptran .col-md-7 a:hover
+            .toptran .col-md-10 a:hover
             {
                 color:#efefef;
                 text-decoration:none;
@@ -303,6 +303,7 @@ i#shopicon
     margin-bottom: 32px;
     position:relative;
     cursor:pointer;
+    min-height:545px;
 }
 #listgoidinhky .col-md-3 .divtong:hover {
     border-color: rgba(0,0,0,.09);
@@ -422,6 +423,7 @@ i#shopicon
         display: block;
         margin-bottom: 32px;
         cursor: pointer;
+        min-height:545px;
     }
         #goispdon .col-md-3 .divtongd:hover {
             text-decoration: none;

@@ -40,11 +40,20 @@ namespace NhomXingfa.Controllers
         [Authorize]
         public ActionResult OrderDetail()
         {
+            var model = new List<Cart>();
             if(Request.IsAuthenticated)
             {
-
+                string un = User.Identity.Name;
+                var uname = db.Users.FirstOrDefault(q => q.UserName == un);
+                if(uname != null)
+                { 
+                    if(uname.CustomerID != null)
+                    {
+                        model = db.Carts.Where(q => q.CustID == uname.CustomerID).ToList();
+                    }
+                }
             }
-            return View();
+            return View(model);
         }
 
         public ActionResult Cart()
