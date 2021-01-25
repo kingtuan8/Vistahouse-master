@@ -28,12 +28,6 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         public bool? IsProduct { get; set; }
 
-        public int? SoLuongChai { get; set; }
-
-        public int? SoNgayShip { get; set; }
-
-        public decimal? PhiShip { get; set; }
-
         [StringLength(50)]
         public string Capacity { get; set; }
 
@@ -95,6 +89,12 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public string SEOKeywords { get; set; }
 
         public string SEOMetadescription { get; set; }
+
+        public int? SoLuongChai { get; set; }
+
+        public decimal? PhiShip { get; set; }
+
+        public int? SoNgayShip { get; set; }
 
         public virtual Category Category { get; set; }
 

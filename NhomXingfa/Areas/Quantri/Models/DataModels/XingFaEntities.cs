@@ -65,15 +65,15 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
             modelBuilder.Entity<Cart>()
                 .Property(e => e.ShipDelivery)
-                .HasPrecision(18, 0);
+                .HasPrecision(30, 10);
 
             modelBuilder.Entity<Cart>()
                 .Property(e => e.Total)
-                .HasPrecision(16, 9);
+                .HasPrecision(30, 10);
 
             modelBuilder.Entity<Cart>()
                 .Property(e => e.TotalConLai)
-                .HasPrecision(18, 0);
+                .HasPrecision(30, 10);
 
             modelBuilder.Entity<Cart>()
                 .HasMany(e => e.CartDetails)
@@ -82,15 +82,15 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
             modelBuilder.Entity<CartDetail>()
                 .Property(e => e.Price)
-                .HasPrecision(16, 9);
-
-            modelBuilder.Entity<CartDetail>()
-                .Property(e => e.ML)
-                .IsUnicode(false);
+                .HasPrecision(30, 10);
 
             modelBuilder.Entity<CartDetail>()
                 .Property(e => e.Total)
-                .HasPrecision(18, 0);
+                .HasPrecision(30, 10);
+
+            modelBuilder.Entity<CartDetail>()
+                .Property(e => e.ml)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.SEOUrlRewrite)
@@ -157,10 +157,6 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
                 .HasForeignKey(e => e.PhotoCateId);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.PhiShip)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<Product>()
                 .Property(e => e.Price)
                 .HasPrecision(18, 0);
 
@@ -187,6 +183,10 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
             modelBuilder.Entity<Product>()
                 .Property(e => e.SEOUrlRewrite)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.PhiShip)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<ProductImage>()
                 .Property(e => e.URLImage)

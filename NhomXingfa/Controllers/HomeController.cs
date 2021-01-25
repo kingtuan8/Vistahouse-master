@@ -49,7 +49,7 @@ namespace NhomXingfa.Controllers
                 { 
                     if(uname.CustomerID != null)
                     {
-                        model = db.Carts.Where(q => q.CustID == uname.CustomerID).ToList();
+                        model = db.Carts.Where(q => q.CustID == uname.CustomerID).OrderByDescending(o => o.Created).ToList();
                     }
                 }
             }
@@ -188,11 +188,11 @@ namespace NhomXingfa.Controllers
                     {
                         if (q.CateSPDon == 1)
                         {
-                            cd.ML = "350ml";
+                            cd.ml = "350ml";
                         }
                         else
                         {
-                            cd.ML = "550ml";
+                            cd.ml = "550ml";
                         }
                     }
 
@@ -284,11 +284,11 @@ namespace NhomXingfa.Controllers
                         {
                             if (q.CateSPDon == 1)
                             {
-                                cd.ML = "350ml";
+                                cd.ml = "350ml";
                             }
                             else
                             {
-                                cd.ML = "550ml";
+                                cd.ml = "550ml";
                             }
                         }
 
