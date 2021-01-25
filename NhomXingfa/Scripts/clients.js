@@ -31,11 +31,13 @@ $(document).ready(function () {
 
         if (changegh == 1) {
             $("#taicuahang").hide();
-            $("#ptnhapdiachi").show();            
+            $("#ptnhapdiachi").show();
+            //$("#btnHoanThanh").hide();
         }
         else {
             $("#ptnhapdiachi").hide();
             $("#taicuahang").show();
+            //$("#btnHoanThanh").show();
         }
     });
     $(document).on("click", "#closewarm", function () {

@@ -1,22 +1,104 @@
 ﻿@model List<NhomXingfa.Areas.Quantri.Models.DataModels.Cart>
 @{
     ViewBag.Title = "Quản Lý Đơn Hàng";
+    int count = 1;
 }
 
 
-@foreach(var q in Model)
-{
 
-}
-
-<div class="container">
+<div class="row" style="margin-top:32px;">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Quản Lý Đơn Hàng</h3>
             </div>
             <div class="panel-body">
-
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>
+                                Đơn hàng
+                            </th>
+                            <th>
+                                Ngày giao
+                            </th>
+                            <th>
+                                Phone
+                            </th>
+                            <th>
+                                Địa chỉ
+                            </th>
+                            <th>
+                                Phí ship
+                            </th>
+                            <th>
+                                Tổng tiền
+                            </th>
+                            <th>
+                                Tình trạng
+                            </th>
+                            <th>
+                                Phương thức
+                            </th>
+                            <th>
+                                Ngày đặt
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var q in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @count
+                                </td>
+                                <td>
+                                    Order @count
+                                </td>
+                                <td>
+                                    @q.TimeDelivery.Value.ToShortDateString()
+                                </td>
+                                <td>
+                                    @q.CustPhone
+                                </td>
+                                <td>
+                                    @q.AddresDelivery
+                                </td>
+                                <td>
+                                    @String.Format("{0:#,0}", q.ShipDelivery)
+                                </td>
+                                <td>
+                                    @String.Format("{0:#,0}", q.TotalConLai)
+                                </td>
+                                <td>
+                                    @if (q.StatusOrder == 1)
+                                    {
+                                        <span class="label label-info">Đang chờ</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-success">Đã xác nhận</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (q.StyleShip == 2)
+                                    {
+                                        <span class="text-primary">Lấy tại cửa hàng</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-danger">Giao hàng</span>
+                                    }
+                                </td>
+                                <td>
+                                    @q.Created.Value.ToShortDateString()
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
