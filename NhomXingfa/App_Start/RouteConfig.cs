@@ -44,6 +44,13 @@ namespace NhomXingfa
                defaults: new { controller = "Q_As", action = "Index", id = UrlParameter.Optional }
            );
 
+            //OurStory
+            routes.MapRoute(
+               name: "OurStory",
+               url: "ve-chung-toi",
+               defaults: new { controller = "About", action = "AboutUs", id = UrlParameter.Optional }
+           );
+
             //Thongtindinhduong
             routes.MapRoute(
                name: "ThongTinDinhDuong",

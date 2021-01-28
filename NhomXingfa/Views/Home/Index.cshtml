@@ -14,7 +14,7 @@
                 <i class="glyphicon glyphicon-remove-circle"></i>
             </span>
             <div class="">
-                @*<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="300" height="130" src="https://www.youtube.com/embed/psZ1g9fMfeo?autoplay=1&amp;muted=1&amp;origin=https%3A%2F%2Fwww.greeno.vn&amp;enablejsapi=1&amp;widgetid=1" id="widget2"></iframe>*@
+                <iframe frameborder="0" allowfullscreen="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="300" height="130" src="https://www.youtube.com/embed/psZ1g9fMfeo?autoplay=1&amp;muted=1&amp;origin=https%3A%2F%2Fwww.greeno.vn&amp;enablejsapi=1&amp;widgetid=1" id="widget2"></iframe>
             </div>
         </div>
     </div>
@@ -23,12 +23,13 @@
 
 @Html.Partial("_slogan")
 @Html.Partial("_luachon", Model.lstLuaChon)
-@Html.Partial("_Partners", Model.lstCustomerParner)
+
 
 @Html.Partial("_goidinhky", Model.goidinhky)
 
 @Html.Partial("_OurStory", Model.OurStory)
 
+@Html.Partial("_Partners", Model.lstCustomerParner)
 @Html.Partial("_congdong", Model.lstCustomerFeedback)
 <div class="row">
     <div class="col-md-12">
@@ -63,7 +64,7 @@
         //Saving Tư vấn pop-up
         function CheckData() {
             var ContactType = $('input[name=optionsRadios]:checked', '#TuvanForm').val();
-            
+
             //$("#ErrorText").html("");
             var txtName = $("#txtName").val();
             if (jQuery.trim(txtName).length <= 0) {
@@ -95,16 +96,16 @@
                     txtPhone: txtPhone,
                     txtComment: txtComment,
                     ContactType: ContactType
-                    
+
                 },
             contentType: 'application/json; charset=utf-8',
             //data: JSON.stringify(json),
             success: function (data, textStatus, jqXHR) {
                 if (data.toString() == "ok") {
-                    
+
                     $("#txtName").focus();
 
-                    
+
                     $("#txtPhone").val("");
                     $("#txtComment").val("");
                     $("#ErrorText").html("");

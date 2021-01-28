@@ -1015,6 +1015,7 @@
     <Content Include="Views\About\ChinhSach.cshtml" />
     <Content Include="Views\Account\RegisterCust.cshtml" />
     <Content Include="Views\Shared\_warning.cshtml" />
+    <Content Include="Views\About\AboutUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

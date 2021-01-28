@@ -16,6 +16,12 @@ namespace NhomXingfa.Controllers
         {
             return View();
         }
+
+        public ActionResult AboutUs()
+        {
+            Blog about = db.Blogs.Where(b => b.BlogID == 3 && (b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more)).FirstOrDefault();
+            return View(about);
+        }
         public ActionResult ThongTinDinhDuong()
         {
             Blog ThongTinDinhDuong = db.Blogs.Where(b => b.BlogID == 18 &&(b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more)).FirstOrDefault();

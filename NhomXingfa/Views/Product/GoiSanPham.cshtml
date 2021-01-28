@@ -32,7 +32,7 @@
                         <span class="dkship">Freeship - <span>@String.Format("{0:#,0}", q.PhiShip)<sup>đ</sup></span></span>
                     </div>
                     <div class="descriptdk">
-                        @q.ShortDescription
+                        @Html.Raw(q.ShortDescription.Replace("<p>", "").Replace("</p>", ""))
                     </div>
                     <p>
                         <b>
