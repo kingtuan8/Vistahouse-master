@@ -309,6 +309,8 @@ namespace NhomXingfa.Controllers
 
             //check = true;
 
+            Session["CartShop"] = null;
+
             return Json(check, JsonRequestBehavior.AllowGet);
         }
 
@@ -322,6 +324,8 @@ namespace NhomXingfa.Controllers
             db.SaveChanges();
 
             check = true;
+
+            Session["CartShop"] = null;
 
             return Json(check, JsonRequestBehavior.AllowGet);
         }

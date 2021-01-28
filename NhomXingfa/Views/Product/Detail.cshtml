@@ -4,6 +4,7 @@
     ViewBag.Title = Model.product.ProductName;
 }
 
+
 <div class="row" id="detailsp">
 
     <div class="col-md-6">
@@ -32,6 +33,9 @@
     <div class="col-md-6">
         <h5>Gói Thải độc - Giảm cân</h5>
         <h2 class="fontstyle">@Model.product.ProductName</h2>
+        <div class="ratingx">
+
+        </div>
         <div class="spdscription">
             @if (Model.product.IsProduct == false)
             {
@@ -44,7 +48,7 @@
 
         @if (Model.product.IsProduct == true)
         {
-            
+
             <div class="thetichgia">
                 <div class="radio">
                     <label>
@@ -152,6 +156,9 @@
     </div>
 </div>
 
+<span style="display:none;" id="classrating">@Model.product.Rating</span>
+<span style="display:none;" id="classviewcount">@Model.product.CountView</span>
+
 @Html.Partial("~/Views/Home/_box.cshtml")
 
 
@@ -171,7 +178,7 @@
                     transitionEffect: 'sliding'
                 }
             );
-
+            GetRating();
         });
     </script>
 }
