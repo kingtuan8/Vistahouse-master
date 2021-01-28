@@ -950,3 +950,26 @@ function formatCurrency(total) {
     }
     return (neg ? "-$" : '') + parseFloat(total, 10).toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
 }
+
+function GetRating() {
+    var xx = $("#classrating").text().trim();
+    var rate = parseInt(xx);
+    var html = "";
+    var countview = parseInt($("#classviewcount").text().trim());
+    for (var i = 0; i < rate; i++) {
+        html += "<i class='glyphicon glyphicon-star goldstar'></i>";
+    }
+
+    for (var i = 0; i < 5 - rate; i++) {
+        html += "<i class='glyphicon glyphicon-star-empty'></i>";
+    }
+
+    html += "<span id='viewcountdx'>(" + countview + " lượt đánh giá)</span>"
+
+    if (rate == 0 || xx == "") {
+        html = "<span id='chuarating'>Chưa có đánh giá</span>"
+    }
+
+    $(".ratingx").append(html);
+
+}

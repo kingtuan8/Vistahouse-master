@@ -410,10 +410,31 @@ i#shopicon
     margin-top:42px;
     margin-bottom:42px;
 }
-
-#goispdon 
+i.goldstar
 {
-
+    color:#f2d526;
+}
+.ratingx
+{
+    margin-bottom:8px;
+}
+.ratingx i {
+    font-weight: bold;
+    margin-right: 4px;
+}
+#chuarating
+{
+    color:#1371a8;
+    font-size:12px;
+    font-style:italic;
+}
+#viewcountdx
+{
+    font-size:13px;
+    padding-left:12px;
+    color:#124f27;
+}
+#goispdon {
 }
     #goispdon a, #goispdon a:hover
     {
@@ -424,19 +445,39 @@ i#shopicon
         margin-bottom: 32px;
         cursor: pointer;
         min-height:545px;
+        position:relative;
     }
-        #goispdon .col-md-3 .divtongd:hover {
-            text-decoration: none;
-            border-color: rgba(0,0,0,.09);
-            box-shadow: 0 2px 8px rgba(0,0,0,.09);
-            /*text-decoration: none;*/
-        }
+.divtongd .iconbanchay {
+    position: absolute;
+    z-index: 999;
+    right: 12px;
+    top: 12px;
+    color: #ac8514;
+    font-weight:bold;
+    font-size:18px;
+    width:65px;
+    transition:all;
+}
+.divtongd .iconbanchay img
+{
+    width:43px;
+}
+#goispdon .col-md-3 .divtongd:hover {
+    text-decoration: none;
+    border-color: rgba(0,0,0,.09);
+    box-shadow: 0 2px 8px rgba(0,0,0,.09);
+    /*text-decoration: none;*/
+}
+    #goispdon .col-md-3 .divtongd:hover .iconbanchay
+    {
+        display:none;
+    }
     #goispdon .col-md-3 .imggoidon {
         width: 96%;
         padding-left: 2%;
         padding-right: 2%;
-        padding-top:18px;
-        min-height:340px;
+        padding-top: 18px;
+        min-height: 340px;
     }
     #goispdon .col-md-3 .imggoidon img {
         border-radius: 50%;
