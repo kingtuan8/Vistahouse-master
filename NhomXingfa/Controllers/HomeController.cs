@@ -492,6 +492,12 @@ namespace NhomXingfa.Controllers
 
         }
 
+        public PartialViewResult GetDetailOrder(int? id)
+        {
+            var model = db.Carts.Find(id);
+            return PartialView("_detailorder", model);
+        }
+
         /// <summary>
         /// Danny Code
         /// </summary>
