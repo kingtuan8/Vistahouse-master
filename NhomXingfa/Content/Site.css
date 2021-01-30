@@ -360,12 +360,11 @@ i#shopicon
     color: #124f27;
     padding-bottom: 8px;
 }
-#listgoidinhky .col-md-3 .giaship .shipdagiam
-{
-    color:#c30;
-    text-decoration:line-through;
-    padding-left:8px;
-}
+    #listgoidinhky .col-md-3 .giaship .shipdagiam {
+        color: #124f27;
+        text-decoration: line-through;
+        padding-left: 8px;
+    }
 #listgoidinhky .col-md-3 .divtong:hover .giagoi {
     display: none;
 }
@@ -406,8 +405,8 @@ i#shopicon
 {
     font-style:italic;
     color:green;
-    font-weight:bold;
-    font-size:44px;
+    /*font-weight:bold;*/
+    font-size:68px;
     margin-top:42px;
     margin-bottom:42px;
 }
