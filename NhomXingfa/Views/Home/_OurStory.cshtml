@@ -2,14 +2,19 @@
 @using NhomXingfa.Areas.Quantri.Utilities
 <div class="row" id="ourstory">
     <div class="col-md-5">
-        <div class="titleour">
+        @*<div class="titleour">
             @Model.BlogName
+        </div>*@
+        <div class="text-center fontstyle" id="titlespcon" style="line-height:35px;">
+            <h2 style="line-height:58px;">
+                @Model.BlogName
+            </h2>
         </div>
         <div class="contentour">
             @{ string str = "";}
             @if (Model.Content.Length >= 600)
             {
-                str = Model.Content.Substring(0, 600);
+                str = Model.Content.Substring(0, 800);
             }
             else
             {
@@ -17,7 +22,7 @@
             }
             @Html.Raw(str)
 
-            
+
         </div>
         <a href="/ve-chung-toi">Xem tiếp</a>
     </div>
