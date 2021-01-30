@@ -4,9 +4,61 @@
     int count = 1;
 }
 
+<div class="row">
+    <div class="col-md-3" id="leftql">
+        <div class="text-right">
+            <a href="#">Xem tất cả đơn hàng <i class="glyphicon glyphicon-menu-right" id="caticon"></i></a>
+        </div>
+
+        <ul>
+            @foreach (var q in Model)
+            {
+            <li cartid="@q.Id">
+                <span class="axql1">
+                    @count
+                </span>
+                <span class="axql2">
+                    Đơn hàng lẻ #@count
+                </span>
+                @if (q.StatusOrder == 0)
+                {
+                    <span class="axql3">
+                        <i class="glyphicon glyphicon-triangle-right"></i>
+                        Đang xử lý
+                    </span>
+                }
+                else
+                {
+                    <span class="axql3">
+                        <i class="glyphicon glyphicon-triangle-right"></i>
+                        Hoàn thành
+                    </span>
+                }
+            </li>
+                count++;
+            }
+        </ul>
+
+        <div class="text-right" id="pagelist">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                </button>
+                <button type="button" class="btn btn-default">1</button>
+                <button type="button" class="btn btn-default">
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-9" id="rightql">
+        @*@Html.Partial("_detailorder")*@
+    </div>
+</div>
 
 
-<div class="row" style="margin-top:32px;">
+<div class="row" style="margin-top:32px; display:none;">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">

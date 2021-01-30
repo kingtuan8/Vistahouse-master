@@ -1017,6 +1017,7 @@
     <Content Include="Views\Account\RegisterCust.cshtml" />
     <Content Include="Views\Shared\_warning.cshtml" />
     <Content Include="Views\About\AboutUs.cshtml" />
+    <Content Include="Views\Home\_detailorder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

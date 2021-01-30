@@ -1,0 +1,72 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Cart
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Thông tin đơn hàng #HD1845098</h3>
+            </div>
+            <div class="panel-body">
+                <div id="titleplist">
+                    Táo cho Sức Khỏe
+                </div>
+                <ul>
+                    <li>
+                        Tổng số chai: <span>@Model.Qty</span>
+                    </li>
+                    <li>
+                        Tổng tiền: <span>@String.Format("{0:#,0}", Model.TotalConLai)đ</span> (Thanh toán: <span>Chuyển khoản</span>)
+                    </li>
+                    <li>
+                        Thời gian bắt đầu giao: <span>@Model.TimeDelivery.Value.ToString("HH:mm - dd MMMM yyyy")</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Thông tin giao hàng</h3>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li>
+                        Tổng số chai: <span>@Model.Qty</span>
+                    </li>
+                    <li>
+                        Số chai đã giao: <span>0</span>
+                    </li>
+                    <li>
+                        Số chai chưa giao: <span>1</span>
+                    </li>
+                    <li>
+                        Số lần giao còn lại: <span>...</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%">
+                <span class="sr-only">10% Complete (success)</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">Lịch giao sinh tố / nước ép</h3>
+            </div>
+            <div class="panel-body">
+               
+            </div>
+        </div>
+    </div>
+</div>
