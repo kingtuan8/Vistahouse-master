@@ -138,11 +138,12 @@ textarea {
     border-top:1px solid #ddd;
     margin:12px 25px;
     padding:12px 0px;
-    display:none;
+    /*display:none;*/
 }
     .phivctooltip i
     {
         color:#09a703;
+        cursor:pointer;
     }
 
     .redshop {
@@ -158,10 +159,54 @@ textarea {
         font-size: 10px;
         line-height: 16px;
     }
-i#shopicon
+.phivctooltip #pvc
 {
-    font-size:20px;
+    font-weight:bold;
+    color:#2a3d6b;
 }
+.popover {
+    max-width: 700px;
+    min-width: 700px;
+}
+
+.popper-content .divxxx
+{
+    width:100%;
+}
+.divxxx:first-child
+{
+    font-weight:bold;
+    border-bottom:2px solid #ccc;
+}
+.divxxx
+{
+    border-bottom:1px solid #dedede;
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left:10px;
+
+}
+    .divxxx:last-child
+    {
+        border-bottom:unset;
+    }
+    .span1x {
+        display: inline-block;
+        width: 100px;
+    }
+.span2x {
+    display: inline-block;
+    width: 390px;
+    line-height:25px;
+}
+.span3x {
+    display: inline-block;
+    width: 160px;
+
+}
+    i#shopicon {
+        font-size: 20px;
+    }
 #topslogan .col-md-3
 {
     padding-left:5px;
