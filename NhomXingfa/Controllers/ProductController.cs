@@ -34,5 +34,11 @@ namespace NhomXingfa.Controllers
             model.images = db.ProductImages.Where(q => q.ProductID == id).ToList();
             return View(model);
         }
+
+        public ActionResult SanPhamDon()
+        {
+            var model = db.Products.Where(q => q.IsProduct == true).ToList();
+            return View(model);
+        }
     }
 }

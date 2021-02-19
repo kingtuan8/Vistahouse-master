@@ -902,6 +902,7 @@
     <Content Include="Scripts\pgwslider.js" />
     <Content Include="Scripts\pgwslider.min.js" />
     <Content Include="Scripts\photostack.js" />
+    <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\slick.js" />
     <Content Include="Scripts\slick.min.js" />
     <Content Include="Web.config" />
@@ -1063,6 +1064,7 @@
     <Content Include="Views\Shared\_warning.cshtml" />
     <Content Include="Views\About\AboutUs.cshtml" />
     <Content Include="Views\Home\_detailorder.cshtml" />
+    <Content Include="Views\Product\SanPhamDon.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

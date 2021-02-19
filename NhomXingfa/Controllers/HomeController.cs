@@ -37,7 +37,7 @@ namespace NhomXingfa.Controllers
 
             return View();
         }
-        [Authorize]
+        //[Authorize]
         public ActionResult OrderDetail()
         {
             var model = new List<Cart>();

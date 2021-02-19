@@ -20,6 +20,12 @@ namespace NhomXingfa
              );
 
             routes.MapRoute(
+                name: "product4",
+                url: "san-pham",
+                defaults: new { controller = "Product", action = "SanPhamDon", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                  name: "product2",
                  url: "san-pham/{url}-{id}",
                  defaults: new { controller = "product", action = "index", id = UrlParameter.Optional }

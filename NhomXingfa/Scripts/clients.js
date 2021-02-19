@@ -897,7 +897,16 @@ $(document).ready(function () {
         autoplaySpeed: 5000
     });
 
-    
+    $('.popper').popover({
+        placement: 'top',
+        trigger: 'hover',
+        container: 'body',
+        title: 'Phí vận chuyển',
+        html: true,
+        content: function () {
+            return $('.popper-content').html();
+        }
+    });
 
 
     $('.sliderthuonghieu').slick({
