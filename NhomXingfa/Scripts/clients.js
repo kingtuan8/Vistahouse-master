@@ -680,7 +680,7 @@ $(document).ready(function () {
                             var cartpid = "cartp_" + productid;
                             $("#tongfullgiohang").find("." + cartpid + " .totalleft .nhansl span").text(qty);
                             var ppp = elem.parent().parent().parent().find(".cartitemright .itempricefc span").text().trim();
-                            var xxx = ppp.replace(',', '');
+                            var xxx = ppp.split(',').join('');
                             var xfinal = formatCurrency(qty * parseInt(xxx)).replace('.0', '');
                             $("#tongfullgiohang").find("." + cartpid + " .totalright span span.tprice").text(xfinal);
                         }
@@ -835,7 +835,7 @@ $(document).ready(function () {
                         var cartpid = "cartp_" + productid;
                         $("#tongfullgiohang").find("." + cartpid + " .totalleft .nhansl span").text(qty);
                         var ppp = elem.parent().parent().parent().find(".cartitemright .itempricefc span").text().trim();
-                        var xxx = ppp.replace(',', '');
+                        var xxx = ppp.split(',').join('');
                         var xfinal = formatCurrency(qty * parseInt(xxx)).replace('.0', '');
                         $("#tongfullgiohang").find("." + cartpid + " .totalright span span.tprice").text(xfinal);
 
@@ -897,7 +897,16 @@ $(document).ready(function () {
         autoplaySpeed: 5000
     });
 
-    
+    $('.popper').popover({
+        placement: 'top',
+        trigger: 'hover',
+        container: 'body',
+        title: 'Phí vận chuyển',
+        html: true,
+        content: function () {
+            return $('.popper-content').html();
+        }
+    });
 
 
     $('.sliderthuonghieu').slick({

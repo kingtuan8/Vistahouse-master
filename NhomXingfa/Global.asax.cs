@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Services;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
@@ -21,13 +23,32 @@ namespace NhomXingfa
         }
         protected void Application_AuthenticateRequest(Object sender, EventArgs e)
         {
-            HttpCookie authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];
-            if (authCookie != null)
+            try
             {
-                FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-                string[] roles = authTicket.UserData.Split(new Char[] { ',' });
-                GenericPrincipal userPrincipal = new GenericPrincipal(new GenericIdentity(authTicket.Name), roles);
-                Context.User = userPrincipal;
+                HttpCookie authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];
+                if (authCookie != null)
+                {
+                    FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                    string[] roles = authTicket.UserData.Split(new Char[] { ',' });
+                    GenericPrincipal userPrincipal = new GenericPrincipal(new GenericIdentity(authTicket.Name), roles);
+                    Context.User = userPrincipal;
+                }
+            }
+            catch (CryptographicException)
+            {
+                FormsAuthentication.SignOut();
+            }
+            
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            var error = Server.GetLastError();
+            var cryptoEx = error as CryptographicException;
+            if (cryptoEx != null)
+            {
+                FederatedAuthentication.WSFederationAuthenticationModule.SignOut();
+                Server.ClearError();
             }
         }
     }

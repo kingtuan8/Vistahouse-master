@@ -25,6 +25,7 @@ namespace NhomXingfa
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                "~/Scripts/popper.min.js",
                        "~/Scripts/bootstrap.js", "~/Scripts/bootstrap-datetimepicker.js",
  "~/Scripts/jquery-migrate-1.2.1.min.js",
  "~/Scripts/classie.js", "~/Scripts/photostack.js",

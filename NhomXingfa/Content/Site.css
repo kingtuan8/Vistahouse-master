@@ -133,19 +133,31 @@ textarea {
 
 /***************************************************************************************************/
 
-.redshop {
-    position: absolute;
-    border-radius: 50%;
-    text-align: center;
-    background-color: #f00;
-    color: #fff;
-    min-width: 20px;
-    height:20px;
-    top: -10px;
-    right: -10px;
-    font-size: 10px;
-    line-height:16px;
+.phivctooltip
+{
+    border-top:1px solid #ddd;
+    margin:12px 25px;
+    padding:12px 0px;
+    display:none;
 }
+    .phivctooltip i
+    {
+        color:#09a703;
+    }
+
+    .redshop {
+        position: absolute;
+        border-radius: 50%;
+        text-align: center;
+        background-color: #f00;
+        color: #fff;
+        min-width: 20px;
+        height: 20px;
+        top: -10px;
+        right: -10px;
+        font-size: 10px;
+        line-height: 16px;
+    }
 i#shopicon
 {
     font-size:20px;
