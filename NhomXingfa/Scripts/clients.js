@@ -45,6 +45,15 @@ $(document).ready(function () {
     });
 
 
+    $(document).on("hover", "#goispdon .col-md-3 .divtongd .imggoidon", function () {
+
+        $(this).find("img:first-child").toggle();
+        $(this).find("img:last-child").toggle();
+
+        //alert("1");
+
+    });
+
     $(document).on("click", "#btnLuuThongTin", function () {
         var hoten = $("#txtHoTen").val().trim();
         var sdt = $("#txtSDT").val().trim();
@@ -943,6 +952,7 @@ $(document).ready(function () {
         ]
     });
 
+    updateimagedata();
 
 });
 
@@ -1014,4 +1024,10 @@ function GetRating() {
 
     $(".ratingx").append(html);
 
+}
+
+function updateimagedata() {
+    var him = $("#goispdon .col-md-3 .divtongd .imggoidon img:first-child").innerWidth();
+
+    $("#goispdon .col-md-3 .divtongd .imggoidon img").css("height", him);
 }

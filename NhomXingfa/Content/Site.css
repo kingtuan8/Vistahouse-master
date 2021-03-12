@@ -34,7 +34,8 @@ blockquote {
         height:50px;
         padding-top:25px;
     }
-    .navbar-inverse .navbar-nav li a:active, .navbar-inverse .navbar-nav li a:visited {
+    .navbar-inverse .navbar-nav li a:active, .navbar-inverse .navbar-nav li a:visited
+    .navbar-inverse .navbar-nav li a:focus {
         color: #222;
     }
     .navbar-fixed-top {
@@ -138,11 +139,12 @@ textarea {
     border-top:1px solid #ddd;
     margin:12px 25px;
     padding:12px 0px;
-    display:none;
+    /*display:none;*/
 }
     .phivctooltip i
     {
         color:#09a703;
+        cursor:pointer;
     }
 
     .redshop {
@@ -158,10 +160,54 @@ textarea {
         font-size: 10px;
         line-height: 16px;
     }
-i#shopicon
+.phivctooltip #pvc
 {
-    font-size:20px;
+    font-weight:bold;
+    color:#2a3d6b;
 }
+.popover {
+    max-width: 700px;
+    min-width: 700px;
+}
+
+.popper-content .divxxx
+{
+    width:100%;
+}
+.divxxx:first-child
+{
+    font-weight:bold;
+    border-bottom:2px solid #ccc;
+}
+.divxxx
+{
+    border-bottom:1px solid #dedede;
+    padding-top:8px;
+    padding-bottom:8px;
+    padding-left:10px;
+
+}
+    .divxxx:last-child
+    {
+        border-bottom:unset;
+    }
+    .span1x {
+        display: inline-block;
+        width: 100px;
+    }
+.span2x {
+    display: inline-block;
+    width: 390px;
+    line-height:25px;
+}
+.span3x {
+    display: inline-block;
+    width: 160px;
+
+}
+    i#shopicon {
+        font-size: 20px;
+    }
 #topslogan .col-md-3
 {
     padding-left:5px;
@@ -422,6 +468,22 @@ i#shopicon
     margin-top:42px;
     margin-bottom:42px;
 }
+#titlespcon2 h2 {
+    font-style: italic;
+    color: green;
+    /*font-weight:bold;*/
+    font-size: 68px;
+    margin-top: 42px;
+    margin-bottom: 42px;
+}
+#titlespcon3 h2 {
+    font-style: italic;
+    color: green;
+    /*font-weight:bold;*/
+    font-size: 68px;
+    margin-top: 42px;
+    margin-bottom: 42px;
+}
 i.goldstar
 {
     color:#f2d526;
@@ -496,9 +558,13 @@ i.goldstar
         width: 100%;
         max-height:340px;
     }
-        #goispdon .col-md-3 .imggoidon .imghover
+        #goispdon .col-md-3 .imggoidon img:first-child
         {
-            display:none;
+            z-index:9998;
+        }
+        #goispdon .col-md-3 .imggoidon .imghover {
+            display: none;
+            z-index: 9999;
         }
     #goispdon .col-md-3 .divtongd:hover .imggoidon img {
         /*display:none;*/
@@ -813,7 +879,7 @@ i.goldstar
 
     #listgoipagedinhky .goidinhky .col-md-6 .giashipdk {
         font-size: 20px;
-        color: #c30;
+        color: #261b1b;
     }
         #listgoipagedinhky .goidinhky .col-md-6 .giashipdk .dkgia {
             padding-right: 28px;
