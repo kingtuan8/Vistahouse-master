@@ -1113,7 +1113,7 @@ i.goldstar
 }
 #detailsp .col-md-6 h5 {
     font-weight: bold;
-    color: #c30;
+    color: #226f92;
     font-size: 15px;
 }
 #detailsp .col-md-4 img
@@ -1266,7 +1266,7 @@ i.goldstar
     }
     .thetichgia .radio span.t2 sup
     {
-        color:#f00;
+        color:#124f27;
         padding-left:2px;
     }
 .minicart {
@@ -1650,7 +1650,7 @@ footer .col-md-8
             }
                 #lstfullgiohang .itemlst .cartitemright .itempricefc sup
                 {
-                    color:#c30;
+                    color:#124f27;
                 }
                 #lstfullgiohang .itemlst .buttonfunc {
                     clear: both;
