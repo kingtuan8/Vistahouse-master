@@ -63,7 +63,15 @@
 
 <div class="row @shownull" style="background-color:#fff; padding:100px; text-align:center; margin-top:28px; margin-bottom:28px;">
     <div class="col-md-12">
-        <p>Giỏ hàng đang trống</p>
+        <p>
+            <img src="~/images/Shopping-icon.png" alt="cart" />
+        </p>
+        <p>
+            Your cart is empty
+        </p>
+        <p>
+            <a class="btn btn-success" href="/">Chọn Sản Phẩm</a> 
+        </p>
     </div>
 </div>
 
@@ -87,7 +95,7 @@
                     <div class="floatright cartitemright">
                         <img src="~/Photos/Products/@q.Image" />
                         <div class="itempricefc">
-                            <span>@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
+                            <span>@String.Format("{0:#,0}", q.Price)</span><sup>VNĐ</sup>
                         </div>
                     </div>
                     <div class="buttonfunc">
@@ -272,7 +280,7 @@
                             </span>
                         </div>
                         <div class="totalright floatright">
-                            <span><span class="tprice">@String.Format("{0:#,0}", child)</span><sup>đ</sup></span>
+                            <span><span class="tprice">@String.Format("{0:#,0}", child)</span><sup>VNĐ</sup></span>
                         </div>
                         <div class="clear"></div>
                     </li>
@@ -287,7 +295,7 @@
                 </div>
                 <div class="ttitemright floatright">
                     Tổng tiền tạm tính<br />
-                    <span id="tt1"><span id="totaltien">@String.Format("{0:#,0}", total)</span><sup>đ</sup></span> <br />
+                    <span id="tt1"><span id="totaltien">@String.Format("{0:#,0}", total)</span><sup>VNĐ</sup></span> <br />
                     <span id="tt2">** chưa bao gôm phí ship (nếu có)</span>
                 </div>
                 <div class="clear"></div>
@@ -313,7 +321,7 @@
                         < 5km
                     </span>
                     <span class="span2x">
-                        15,000 đ
+                        15,000 VNĐ
                     </span>
                     <span class="span3x">
                         Tùy gói
@@ -324,7 +332,7 @@
                         5 - 10km
                     </span>
                     <span class="span2x">
-                        25,000 đ
+                        25,000 VNĐ
                     </span>
                     <span class="span3x">
                         Tùy gói
