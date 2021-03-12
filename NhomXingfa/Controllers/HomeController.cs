@@ -19,16 +19,18 @@ namespace NhomXingfa.Controllers
         //Helpers h = new Helpers();
         public ActionResult Index()
         {
-            var model = new IndexPageViewModel();
-            model.goidinhky = db.Products.Where(q => q.IsActive == true && q.IsProduct == false).ToList();
-            model.products = db.Products.Where(q => q.IsActive == true && q.IsProduct == true).ToList();
-            model.lstBannerHomePage = db.Slides.Where(q => q.CategoryID == 0).OrderBy(q => q.Sort).ToList();
-            model.lstLuaChon = db.Blogs.Where(b=>b.IsActive == true &&(b.BlogID == 6 || b.BlogID == 5 || b.BlogID == 4)).OrderBy(b => b.Sort).ToList();
-            model.OurStory = db.Blogs.Where(b => b.IsActive == true && b.BlogID == 3).FirstOrDefault();
-            model.lstCustomerFeedback = db.CustomerFeedbacks.Where(c => c.IsActive == true).OrderBy(c => c.ThuTu).ToList();
-            model.lstCustomerParner = db.Customers.Where(a => a.IsActive == true).ToList();
-            
-            return View(model);
+            //var model = new IndexPageViewModel();
+            //model.goidinhky = db.Products.Where(q => q.IsActive == true && q.IsProduct == false).ToList();
+            //model.products = db.Products.Where(q => q.IsActive == true && q.IsProduct == true).ToList();
+            //model.lstBannerHomePage = db.Slides.Where(q => q.CategoryID == 0).OrderBy(q => q.Sort).ToList();
+            //model.lstLuaChon = db.Blogs.Where(b=>b.IsActive == true &&(b.BlogID == 6 || b.BlogID == 5 || b.BlogID == 4)).OrderBy(b => b.Sort).ToList();
+            //model.OurStory = db.Blogs.Where(b => b.IsActive == true && b.BlogID == 3).FirstOrDefault();
+            //model.lstCustomerFeedback = db.CustomerFeedbacks.Where(c => c.IsActive == true).OrderBy(c => c.ThuTu).ToList();
+            //model.lstCustomerParner = db.Customers.Where(a => a.IsActive == true).ToList();
+
+            //return View(model);
+
+            return Redirect("https://thevitahouse.vn/comming/");
         }
 
         public ActionResult About()
