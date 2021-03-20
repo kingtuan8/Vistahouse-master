@@ -63,6 +63,8 @@ $(document).ready(function () {
         var logged = $("#hdLogged").val().trim();
         var styleship = $("#hdShipped").val().trim();
 
+        var timeship = $("#slGioGiaoHang").children("option:selected").val();
+
         if (hoten == "" || sdt == "" || ngaynhan == "" || diachi == "") {
             $('#modalWarning').modal({ backdrop: 'static', keyboard: false });
         }
@@ -70,7 +72,7 @@ $(document).ready(function () {
             $.ajax({
                 url: '/home/InsertDonHang',
                 contentType: 'application/json; charset=utf-8',
-                data: { fname: hoten, sdt: sdt, ngaygiao: ngaynhan, dchi: diachi, ghichu: noted, logged: logged, styleship: styleship },
+                data: { fname: hoten, sdt: sdt, ngaygiao: ngaynhan, dchi: diachi, ghichu: noted, logged: logged, styleship: styleship, timeship: timeship },
                 type: 'GET',
                 dataType: 'json'
                 , success: function (data) {
@@ -134,6 +136,11 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#btnTuVanDinhKy", function () {
+
+        $('#modalTuVan').modal({ backdrop: 'static', keyboard: false });
+
+    });
+    $(document).on("click", "#btnTuVanDinhKy2", function () {
 
         $('#modalTuVan').modal({ backdrop: 'static', keyboard: false });
 

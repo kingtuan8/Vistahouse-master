@@ -271,15 +271,29 @@ textarea {
 {
     margin-top:32px;
 }
+.floatbutton {
+    position: fixed;
+    right: 39px;
+    bottom: 39px;
+    z-index: 1554;
+}
 #listgoidinhky
 {
     margin-top:32px;
+}
+.detailslider li {
+    max-height: 88px !important;
+    max-width: 100px !important;
+}
+.detailslider li img {
+    max-height: 88px !important;    
+    max-width:100px !important;
 }
 #btnTuVanDinhKy {
     border-radius: 22px;
     text-transform: uppercase;
     background-color: #084f1f !important;
-    transition:all .3s;
+    transition: all .3s;
 }
     #btnTuVanDinhKy:hover, #btnTuVanDinhKy:active, #btnTuVanDinhKy:visited, #btnTuVanDinhKy:focus {
         outline: none;
@@ -2300,7 +2314,7 @@ footer .col-md-8
     #leftql ul li span.axql3
     {
         color:#000;
-        font-size:13px;
+        font-size:12px;
     }
     #leftql ul li span.axql3 i
     {

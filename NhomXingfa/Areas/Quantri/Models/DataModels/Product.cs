@@ -12,6 +12,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            CartDetails = new HashSet<CartDetail>();
             ProductGroups = new HashSet<ProductGroup>();
             ProductImages = new HashSet<ProductImage>();
             ProductRatings = new HashSet<ProductRating>();
@@ -75,7 +76,6 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         public int? CountView { get; set; }
 
-
         public DateTime? Created { get; set; }
 
         public int? CreatedBy { get; set; }
@@ -96,6 +96,9 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public decimal? PhiShip { get; set; }
 
         public int? SoNgayShip { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartDetail> CartDetails { get; set; }
 
         public virtual Category Category { get; set; }
 

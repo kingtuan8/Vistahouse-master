@@ -129,7 +129,7 @@ namespace NhomXingfa.Controllers
             return Json(flag, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult InsertDonHang(string logged, string fname, string sdt, string ngaygiao, string dchi, string ghichu, int?  styleship)
+        public JsonResult InsertDonHang(string logged, string fname, string sdt, string ngaygiao, string dchi, string ghichu, int?  styleship,string timeship)
         {
             string check = "null";
 
@@ -152,7 +152,7 @@ namespace NhomXingfa.Controllers
                 c.AddresDelivery = dchi;
                 c.CustPhone = sdt;
                 DateTimeFormatInfo usDtfi = new CultureInfo("vi-VN", false).DateTimeFormat;
-                c.TimeDelivery = Convert.ToDateTime(ngaygiao, usDtfi);
+                c.TimeDelivery = Convert.ToDateTime(ngaygiao + " " + timeship, usDtfi);
                 c.ShipDelivery = 0;
                 c.Qty = cart.Sum(s => s.Quantity);
                 c.Total = 0;
@@ -224,7 +224,6 @@ namespace NhomXingfa.Controllers
                         co.CustName = fname;
                         co.CustPhone = sdt;
                         co.CustAddress = dchi;
-
                         db.SaveChanges();
                     }
                     else
@@ -236,7 +235,11 @@ namespace NhomXingfa.Controllers
                         o.CustAddress = dchi;
                         db.CustomerOrders.Add(o);
 
+                        
+
                         db.SaveChanges();
+
+                        u.CustomerID = o.Id;
 
                         custid = o.Id;
                     }
@@ -496,7 +499,9 @@ namespace NhomXingfa.Controllers
 
         public PartialViewResult GetDetailOrder(int? id)
         {
-            var model = db.Carts.Find(id);
+            var model = new DetailOrderViewModel();
+            model.Cart = db.Carts.Find(id);
+            model.cartDetails = db.CartDetails.Where(q => q.CarID == id).ToList();
             return PartialView("_detailorder", model);
         }
 

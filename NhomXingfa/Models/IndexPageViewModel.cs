@@ -37,6 +37,12 @@ namespace NhomXingfa.Models
         public CustomerOrder customer { get; set; }
     }
 
+    public class DetailOrderViewModel
+    {
+        public Cart Cart { get; set; }
+        public List<CartDetail> cartDetails { get; set; }
+    }
+
     public class DetailPageViewModel
     {
         public Product product { get; set; }

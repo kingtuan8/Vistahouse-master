@@ -602,6 +602,7 @@
     <Content Include="images\kh2.63e24508.jpg" />
     <Content Include="images\kh3.c8cf21f7.jpg" />
     <Content Include="images\la.jpg" />
+    <Content Include="images\Message-icon.png" />
     <Content Include="images\ny.jpg" />
     <Content Include="images\our-story-home-cover.jpg" />
     <Content Include="images\p.png" />
@@ -1066,6 +1067,9 @@
     <Content Include="Views\About\AboutUs.cshtml" />
     <Content Include="Views\Home\_detailorder.cshtml" />
     <Content Include="Views\Product\SanPhamDon.cshtml" />
+    <Content Include="Views\Home\_popuptuvan.cshtml" />
+    <Content Include="Views\Blog\_docnhieu.cshtml" />
+    <Content Include="Views\Shared\_floatbutton.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

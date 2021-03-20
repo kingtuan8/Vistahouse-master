@@ -174,11 +174,14 @@
 
     @Html.Partial("~/Views/Shared/_warning.cshtml")
 
+
+
     @Scripts.Render("~/bundles/moments")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
     <div id="full-opacity">&nbsp;</div>
+    @Html.Partial("_floatbutton")
 </body>
 </html>

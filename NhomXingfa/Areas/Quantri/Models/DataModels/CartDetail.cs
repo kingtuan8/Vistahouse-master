@@ -26,5 +26,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public string ml { get; set; }
 
         public virtual Cart Cart { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

@@ -1,5 +1,10 @@
-﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Cart
-<div class="row">
+﻿@using NhomXingfa.Models
+@model DetailOrderViewModel
+    @{ 
+        var CartModel = Model.Cart;
+        System.Globalization.DateTimeFormatInfo usDtfi = new System.Globalization.CultureInfo("vi-VN", false).DateTimeFormat;
+    }
+<div class="row" style="display:none;">
     <div class="col-md-8">
         <div class="panel panel-info">
             <div class="panel-heading">
@@ -11,13 +16,13 @@
                 </div>
                 <ul>
                     <li>
-                        Tổng số chai: <span>@Model.Qty</span>
+                        Tổng số chai: <span>@CartModel.Qty</span>
                     </li>
                     <li>
-                        Tổng tiền: <span>@String.Format("{0:#,0}", Model.TotalConLai)đ</span> (Thanh toán: <span>Chuyển khoản</span>)
+                        Tổng tiền: <span>@String.Format("{0:#,0}", CartModel.TotalConLai)đ</span> (Thanh toán: <span>Chuyển khoản</span>)
                     </li>
                     <li>
-                        Thời gian bắt đầu giao: <span>@Model.TimeDelivery.Value.ToString("HH:mm - dd MMMM yyyy")</span>
+                        Thời gian bắt đầu giao: <span>@CartModel.TimeDelivery.Value.ToString("HH:mm - dd MMMM yyyy")</span>
                     </li>
                 </ul>
             </div>
@@ -31,7 +36,7 @@
             <div class="panel-body">
                 <ul>
                     <li>
-                        Tổng số chai: <span>@Model.Qty</span>
+                        Tổng số chai: <span>@CartModel.Qty</span>
                     </li>
                     <li>
                         Số chai đã giao: <span>0</span>
@@ -47,6 +52,167 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h5>
+            <b>Thông tin đơn hàng</b>
+        </h5>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Mã đơn hàng
+                    </th>
+                    <th>
+                        Giờ đặt hàng
+                    </th>
+                    <th>
+                        Trạng thái đơn hàng
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @CartModel.CarCode
+                    </td>
+                    <td>
+                        @CartModel.TimeDelivery.Value.ToString("HH:mm - dddd, dd MMMM yyyy", usDtfi)
+                    </td>
+                    <td>
+                        @if (CartModel.StatusOrder == 0)
+                        {
+                            <span class="label label-info">
+                                Đang xử lý
+                            </span>
+                        }
+                        else if (CartModel.StatusOrder == 1)
+                        {
+                            <span class="label label-warning">
+                                Chưa thanh toán
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="label label-success">
+                                Hoàn thành
+                            </span>
+                        }
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h5>
+            <b>Thông tin thanh toán</b>
+        </h5>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Giá đơn hàng
+                    </th>
+                    <th>
+                        Khuyến mại
+                    </th>
+                    <th>
+                        Phí vận chuyển
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @String.Format("{0:#,0}", CartModel.TotalConLai)<sup>VNĐ</sup>
+                    <td>
+                        @String.Format("{0:#,0}", CartModel.VourcerMoney)<sup>VNĐ</sup>
+                    </td>
+                    <td>
+                        @String.Format("{0:#,0}", CartModel.ShipDelivery)<sup>VNĐ</sup>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h5>
+            <b>Thông tin nhận hàng</b>
+        </h5>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Tên người nhận
+                    </th>
+                    <th>
+                        Số điện thoại
+                    </th>
+                    <th>
+                        Địa chỉ nhận
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @CartModel.CustomerOrder.CustName
+                    </td>
+                    <td>
+                        @CartModel.CustomerOrder.CustPhone
+                    </td>
+                    <td>
+                        @CartModel.AddresDelivery
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <h5>
+            <b>Chi tiết sản phẩm </b>
+        </h5>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Tên sản phẩm
+                    </th>
+                    <th>
+                        Số lượng
+                    </th>
+                    <th>
+                        Giá
+                    </th>
+                    <th>
+                        Thành tiền
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var q in Model.cartDetails)
+                {
+                    <tr>
+                        <td>
+                            @q.Product.ProductName
+                        </td>
+                        <td>
+                            @q.Qty
+                        </td>
+                        <td>
+                            @String.Format("{0:#,0}", q.Price)<sup>VNĐ</sup>
+                        </td>
+                        <td>
+                            @String.Format("{0:#,0}", q.Price * q.Qty)<sup>VNĐ</sup>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
 
 <div class="row">
     <div class="col-md-12">

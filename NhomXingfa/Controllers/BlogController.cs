@@ -38,11 +38,16 @@ namespace NhomXingfa.Controllers
         public ActionResult Detail(int? id)
         {
             var model = new DetailNewsViewModel();
+            var x = db.Blogs.Find(id);
 
-            model.blog = db.Blogs.Find(id);
+            x.CountView += 1;
+            db.SaveChanges();
+
+            model.blog = x;
             model.category = db.Categories.Find(model.blog.CategoryID);
             model.categories = db.Categories.Where(q => q.TypeCate == WebConstants.CategoryNews).ToList();
-            model.recents = db.Blogs.Where(q => q.CategoryID == model.blog.CategoryID && q.IsActive == true && q.CategoryID != id).ToList();
+            model.recents = db.Blogs.Where(q => q.CategoryID == model.blog.CategoryID && q.IsActive == true && q.CategoryID != id).Take(8).ToList();
+            model.docnhieu = db.Blogs.Where(q => q.CategoryID == model.blog.CategoryID && q.IsActive == true && q.CategoryID != id).OrderByDescending(o => o.CountView).Take(8).ToList();
 
             return View(model);
         }

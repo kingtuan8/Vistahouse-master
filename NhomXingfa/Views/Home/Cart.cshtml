@@ -23,6 +23,7 @@
         logged = "1";
     }
 
+   
 
 }
 
@@ -187,6 +188,38 @@
                                 </span>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="txtDiaChi" class="col-sm-4 control-label"><span>*</span> Giờ giao hàng</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="slGioGiaoHang">
+                                    <option value="0">-- Chọn giờ giao hàng --</option>
+                                    @for (int i = 7; i <= 19; i++)
+                                    {
+
+                                        string hour = "";
+                                        string text = "";
+                                        if (i < 10)
+                                        {
+                                            hour = "0" + i.ToString();
+                                        }
+                                        else
+                                        {
+                                            hour = i.ToString();
+                                        }
+                                        { text = hour + ":00";}
+                                        <option value="@text">@text</option>
+                                        { text = hour + ":30";}
+                                        <option value="@text">@text</option>
+                                    }
+                                </select>
+                                    <br />
+                                    <span style="color:#30ba15">
+                                        Thời gian giao hàng từ 7h -> 19h
+                                    </span>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="txtDiaChi" class="col-sm-4 control-label"><span>*</span> Địa chỉ giao hàng</label>
                             <div class="col-sm-8">

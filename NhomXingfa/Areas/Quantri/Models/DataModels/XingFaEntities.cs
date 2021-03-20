@@ -1,10 +1,10 @@
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Linq;
+
 namespace NhomXingfa.Areas.Quantri.Models.DataModels
 {
-    using System;
-    using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
-
     public partial class XingFaEntities : DbContext
     {
         public XingFaEntities()
@@ -65,15 +65,15 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
             modelBuilder.Entity<Cart>()
                 .Property(e => e.ShipDelivery)
-                .HasPrecision(30, 10);
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Cart>()
                 .Property(e => e.Total)
-                .HasPrecision(30, 10);
+                .HasPrecision(16, 9);
 
             modelBuilder.Entity<Cart>()
                 .Property(e => e.TotalConLai)
-                .HasPrecision(30, 10);
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Cart>()
                 .HasMany(e => e.CartDetails)
@@ -82,11 +82,11 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
             modelBuilder.Entity<CartDetail>()
                 .Property(e => e.Price)
-                .HasPrecision(30, 10);
+                .HasPrecision(16, 9);
 
             modelBuilder.Entity<CartDetail>()
                 .Property(e => e.Total)
-                .HasPrecision(30, 10);
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<CartDetail>()
                 .Property(e => e.ml)

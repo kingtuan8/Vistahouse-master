@@ -1,0 +1,19 @@
+﻿
+
+@model List<NhomXingfa.Areas.Quantri.Models.DataModels.Blog>
+<div class="baiviettitle">
+    <span>Đọc Nhiều</span>
+</div>
+<ul>
+    @foreach (var q in Model)
+    {
+        <li>
+            <a href="/tin-tuc/@q.SEOUrlRewrite-@q.BlogID">
+                @*<i class="glyphicon glyphicon-pushpin"></i>*@
+                @q.BlogName
+            </a>
+        </li>
+    }
+
+
+</ul>

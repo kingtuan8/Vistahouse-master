@@ -19,5 +19,6 @@ namespace NhomXingfa.Models
         public List<Category> categories { get; set; }
         public Category category { get; set; }
         public List<Blog> recents { get; set; }
+        public List<Blog> docnhieu { get; set; }
     }
 }
