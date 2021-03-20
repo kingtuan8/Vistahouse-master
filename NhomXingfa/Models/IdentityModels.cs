@@ -21,7 +21,7 @@ namespace NhomXingfa.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("XingFaEntities", throwIfV1Schema: false)
         {
         }
 
