@@ -51,5 +51,28 @@ namespace NhomXingfa.Controllers
 
             return View(model);
         }
+
+        public ActionResult ChuyenMuc(int? id)
+        {
+            NewsViewModel model = new NewsViewModel();
+
+            model.categories = db.Categories.Where(q => q.IsActive == true && q.TypeCate == WebConstants.CategoryNews).ToList();
+
+            model.category = db.Categories.Find(id);
+
+            if (id == null)
+            {
+                model.blogs = db.Blogs.Where(q => q.IsActive == true && q.TypeBlog == WebConstants.BlogNews).OrderByDescending(a => a.LastModify).ToList();
+
+                model.recent = db.Blogs.Where(q => q.IsActive == true && q.TypeBlog == WebConstants.BlogNews).OrderByDescending(a => a.LastModify).ToList();
+            }
+            else
+            {
+                model.blogs = db.Blogs.Where(q => q.IsActive == true && q.TypeBlog == WebConstants.BlogNews && q.CategoryID == id).OrderByDescending(a => a.LastModify).ToList();
+                model.recent = db.Blogs.Where(q => q.IsActive == true && q.TypeBlog == WebConstants.BlogNews && q.CategoryID == id).OrderByDescending(a => a.LastModify).ToList();
+            }
+            //System.Globalization.CultureInfo
+            return View(model);
+        }
     }
 }

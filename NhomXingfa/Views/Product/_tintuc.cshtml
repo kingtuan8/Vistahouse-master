@@ -1,0 +1,40 @@
+﻿@model List<NhomXingfa.Areas.Quantri.Models.DataModels.Blog>
+@using NhomXingfa.Areas.Quantri.Utilities
+<div class="listtintuc">
+    <div class="titletintuc">
+        Tin Tức
+    </div>
+    @foreach (var q in Model)
+    {
+
+        <div class="listtt">
+            <a href="#">
+                <div class="img">
+                    <img src="@WebConstants.imgNewsURLShow/@q.ImageURL" title="@q.BlogName"/>
+                </div>
+                <div class="titlebanner">
+                    @q.BlogName
+                </div>
+                <div class="dscbanner">
+                    @if(q.Descript.Length > 100)
+                    {
+                        <span>@q.Descript.Substring(0,98) ...</span>
+                    }
+                    else
+                    {
+                        <span>
+                            @q.Descript
+                        </span>
+                    }
+                </div>
+                <div class="datebanner">
+                    @q.Created.Value.ToShortDateString()
+                </div>
+            </a>
+        </div>
+    }
+
+
+
+
+</div>

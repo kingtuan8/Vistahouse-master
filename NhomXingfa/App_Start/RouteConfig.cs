@@ -43,6 +43,12 @@ namespace NhomXingfa
                defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional }
            );
 
+            routes.MapRoute(
+              name: "chuyenmuc",
+              url: "chuyen-muc-{id}",
+              defaults: new { controller = "Blog", action = "Index", id = UrlParameter.Optional }
+          );
+
             //Câu hỏi thường gặp
             routes.MapRoute(
                name: "CauHoiThuongGap",
