@@ -1,53 +1,65 @@
-﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Cart
+﻿@using NhomXingfa.Areas.Quantri.Models.DataModels
+@model NhomXingfa.Areas.Quantri.Models.CartViewModel
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
+
 }
 
 <div id="page-heading">
     <ol class="breadcrumb">
         <li><a href="index.html">Trang chủ</a></li>
-        <li class="active">Chi tiết Đơn hàng</li>
+        <li class="active">Chi tiết</li>
 
     </ol>
 
-    <h1>@Model.CarCode</h1>
+    <h1>Chi tiết</h1>
     <div class="options">
         <div class="btn-toolbar">
+            <a href="javascript:" class="btn btn-warning btn-sm btn-label" id="btnAddGroupProduct"><i class="fa fa-shopping-cart"></i>Cập nhật trạng thái giao hàng</a>
+            <a href="/Quantri/Products/Edit/@Model.cart.CarCode" class="btn btn-success btn-sm btn-label"><i class="fa fa-edit"></i>Chỉnh sửa</a>
+            <a href="/Quantri/Products/Index" class="btn btn-primary btn-sm btn-label"><i class="fa fa-backward"></i>Quay Lại</a>
 
-            @*<a href="/Quantri/Products/Create/" class="btn btn-success btn-label"><i class="fa fa-plus"></i>Thêm mới</a>*@
         </div>
     </div>
 </div>
 <div class="container" style="padding:5px; background-color:#ffffff">
     <div class="panel-body">
-        <div class="clearfix">
-            <div class="pull-left">
-                <h4>
-                    Invoice # <br>
-                    <strong>2013-11-13124112</strong>
-                </h4>
-            </div>
-            <div class="pull-right">
-                <h4 class="text-right"><img src="assets/img/logo-big.png" alt="Avant"></h4>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-md-12">
-                <h3 style="background: #85c744; padding: 5px 10px; color: #fff; border-radius: 1px; margin: 20px 0 20px; text-align:center">Customer Invoice</h3>
+                <h3 style="background: #85c744; padding: 5px 10px; color: #fff; border-radius: 1px; margin: 20px 0 20px; text-align:center">Đơn hàng - @Model.cart.CarCode</h3>
                 <div class="pull-left">
                     <address>
-                        <strong>Customer Company, Inc.</strong><br>
-                        795 Folsom Ave, Suite 600<br>
-                        San Francisco, CA 94107<br>
+                        Tên KH: <strong>@Model.cust.CustName</strong><br>
+                        Địa Chỉ: <strong>
+                            @Model.cust.CustAddress
+                        </strong>
+                        <br>
+                        Phone: <strong> @Model.cust.CustPhone</strong><br>
                     </address>
                 </div>
                 <div class="pull-right">
                     <ul class="text-right list-unstyled">
-                        <li><strong>Date:</strong> 14/11/2013</li>
-                        <li><strong>Due:</strong> 24/12/2013</li>
-                        <li><strong>Late Fee:</strong> 0.5%</li>
+                        <li>
+                            <strong>Trạng thái:</strong>
+                            @if (Model.cart.StatusOrder == 1)
+                            {
+                                <span class="badge badge-success">Mới</span>
+                            }
+                            @if (Model.cart.StatusOrder == 2)
+                            {
+                                <span class="badge badge-info">Đang xử lý giao hàng</span>
+                            }
+                            @if (Model.cart.StatusOrder == 3)
+                            {
+                                <span class="badge badge-primary">Hoàn thành/closed</span>
+                            }
+                        </li>
+                        <li><strong>Thời gian Order:</strong> @Convert.ToDateTime(Model.cart.Created).ToShortDateString()</li>
+                        <li><strong>Ngày Giao hàng:</strong>  @Convert.ToDateTime(Model.cart.TimeDelivery).ToShortDateString()</li>
+
                     </ul>
                 </div>
             </div>
@@ -59,211 +71,58 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Item</th>
-                                <th>Description</th>
-                                <th>Quantity</th>
-                                <th>Unit Cost</th>
-                                <th>Total</th>
+                                <th>Category</th>
+                                <th>Tên SP</th>
+                                <th>Số lượng</th>
+                                <th>Đơn giá</th>
+                                <th>Thành tiền</th>
                             </tr>
                         </thead>
+
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Dolor</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
-                                <td>3</td>
-                                <td>$35.50</td>
-                                <td>$150</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Dolor</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
-                                <td>3</td>
-                                <td>$35.50</td>
-                                <td>$150</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Dolor</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
-                                <td>3</td>
-                                <td>$35.50</td>
-                                <td>$150</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Dolor</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
-                                <td>3</td>
-                                <td>$35.50</td>
-                                <td>$150</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Dolor</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
-                                <td>3</td>
-                                <td>$35.50</td>
-                                <td>$150</td>
-                            </tr>
+                            @{ int stt = 1; } 
+                            @foreach (var i in Model.lstDetail)
+                            {
+                                <tr>
+                                    <td>@stt</td>
+                                    <td>
+                                        
+                                            @i.Product.Category.CategoryName
+                                        </td>
+                                    <td><a href="/Quantri/Products/Details/@i.Product.ProductID" alt="@i.Product.Category.CategoryName" target="_blank">@i.Product.ProductName</a></td>
+                                    <td>@i.Qty</td>
+                                    <td>@String.Format("{0:0,0}", i.Price)</td>
+                                    <td>@String.Format("{0:0,0}", i.Total) </td>
+                                </tr>
+}
+
+                            
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
         <div class="row" style="border-radius: 0px;">
+            @{ decimal shipFee = 0;
+                if (Model.cart.ShipDelivery == null)
+                {
+                    shipFee = 0;
+                }
+                else
+                {
+                    shipFee = Model.cart.ShipDelivery.Value;
+                }
+                decimal tong = shipFee + @Model.cart.TotalConLai.Value; }
             <div class="col-md-3 col-md-offset-9">
-                <p class="text-right">Sub-total 750.00</p>
-                <p class="text-right">Discout: 12.9%</p>
-                <p class="text-right">VAT: 15%</p>
+                <p class="text-right">Tổng đơn hàng @String.Format("{0:0,0}", @Model.cart.Total) vnd</p>
+                <p class="text-right">Discout: 0%</p>
+                <p class="text-right">Phí GH: @String.Format("{0:0,0}", shipFee)</p>
                 <hr>
-                <h3 class="text-right">USD 751.24</h3>
+
+                <h3 class="text-right">Tổng: @String.Format("{0:0,0}", tong) <span style="color:#000000; font-size:8pt">vnd</span> </h3>
             </div>
         </div>
-        <div class="panel-footer hidden-print">
-            <div class="pull-right">
-                <a href="#" class="btn btn-inverse"><i class="fa fa-print"></i></a>
-                <a href="#" class="btn btn-primary">Submit</a>
-            </div>
-        </div>
+        
     </div>
 </div>
-<div>
-    <h4>Cart</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerOrder.CustName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CustomerOrder.CustName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CarCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CarCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddresDelivery)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddresDelivery)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustPhone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustPhone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeDelivery)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TimeDelivery)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShipDelivery)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShipDelivery)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Qty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Qty)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Total)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VouchersCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VouchersCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VourcerMoney)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VourcerMoney)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalConLai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalConLai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StatusOrder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StatusOrder)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StyleShip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StyleShip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

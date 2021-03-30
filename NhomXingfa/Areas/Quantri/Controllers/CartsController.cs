@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NhomXingfa.Areas.Quantri.Models.DataModels;
+using NhomXingfa.Areas.Quantri.Models;
 using PagedList;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
@@ -86,12 +87,22 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Cart cart = db.Carts.Find(id);
-            if (cart == null)
+            CartViewModel model = new CartViewModel();
+            model.cart = db.Carts.Find(id);
+            model.lstDetail = db.CartDetails.Where(a => a.CarID == id).ToList();
+            if(model.cart.CustID != null)
+            {
+                model.cust = db.CustomerOrders.Where(a => a.Id == model.cart.CustID).FirstOrDefault();
+            }
+            else
+            {
+                model.cust = null;
+            }
+            if (model.cart == null)
             {
                 return HttpNotFound();
             }
-            return View(cart);
+            return View(model);
         }
 
         // GET: Quantri/Carts/Create

@@ -359,10 +359,28 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var prodImage = db.ProductImages.Where(a => a.ProductID == id).ToList();
+            if(prodImage==null)
+            {
+                Product product = db.Products.Find(id);
+                db.Products.Remove(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }    
+            else
+            {
+                foreach(var i in prodImage)
+                {
+                    ProductImage prImage = db.ProductImages.Find(i.ImageID);
+                    db.ProductImages.Remove(prImage);
+                }
+                Product product = db.Products.Find(id);
+                db.Products.Remove(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }    
+
+            
         }
 
         protected override void Dispose(bool disposing)

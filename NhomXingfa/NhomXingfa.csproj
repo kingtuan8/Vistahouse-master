@@ -195,6 +195,7 @@
     <Compile Include="Areas\Quantri\Controllers\Q_AController.cs" />
     <Compile Include="Areas\Quantri\Controllers\SlidesController.cs" />
     <Compile Include="Areas\Quantri\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Quantri\Models\CartViewModel.cs" />
     <Compile Include="Areas\Quantri\Models\DataModels\Advertise.cs" />
     <Compile Include="Areas\Quantri\Models\DataModels\Blog.cs" />
     <Compile Include="Areas\Quantri\Models\DataModels\BlogComment.cs" />

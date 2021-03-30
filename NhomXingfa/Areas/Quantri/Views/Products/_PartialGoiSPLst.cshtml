@@ -18,12 +18,12 @@
                     <tr>
                         
                         <th style="width:30px">STT</th>
-                        <th>Group SP</th>
-                        <th style="width:200px">Tên Sản phẩm</th>
-                        <th>Danh Mục SP</th>
+                        <th>SKU#</th>
+                        <th style="width:250px">Tên Gói Sản phẩm</th>
+                        @*<th>Danh Mục SP</th>*@
                         
                         <th>Hình đại diện</th>
-                        <th style="width:60px">Sản phẩm<br /> mới</th>
+                        <th style="width:60px">SP<br /> mới</th>
                         <th style="width:60px">Hiện thị<br />Website</th>
                         <th style="width:60px">Lượt <br /> Xem</th>
                         <th>Tạo lúc</th>
@@ -44,15 +44,15 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.ProductCode)
                             </td>
-                            <td style="width:200px">
+                            <td style="width:250px">
                                 <a href="/Quantri/Products/Details/@item.ProductID">
                                     @Html.DisplayFor(modelItem => item.ProductName)
                                 </a>
                                 
                             </td>
-                            <td>
+                            @*<td>
                                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                            </td>
+                            </td>*@
                             
                             <td>
                                 <img alt="@item.ProductName" style="height:40px" src="@WebConstants.ImgProductShow/@item.Images" />
