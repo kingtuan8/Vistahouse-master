@@ -52,6 +52,7 @@ namespace NhomXingfa.Controllers
                     if(uname.CustomerID != null)
                     {
                         model = db.Carts.Where(q => q.CustID == uname.CustomerID).OrderByDescending(o => o.Created).ToList();
+                        
                     }
                 }
             }
@@ -133,6 +134,10 @@ namespace NhomXingfa.Controllers
         {
             string check = "null";
 
+            int userid = 0;
+
+            int carid = 0;
+
             if(logged == "0")
             {
                 CustomerOrder o = new CustomerOrder();
@@ -166,6 +171,8 @@ namespace NhomXingfa.Controllers
                 db.Carts.Add(c);
 
                 db.SaveChanges();
+
+                carid = c.Id;
 
                 decimal? total = 0;
                 decimal? phiship = 0;
@@ -215,6 +222,7 @@ namespace NhomXingfa.Controllers
                 var unamex = User.Identity.Name;
                 int? custid = 0;
                 var u = db.Users.FirstOrDefault(q => q.UserName == unamex);
+                userid = u.UserID;
                 if(u != null)
                 {
                     if(u.CustomerID != null)
@@ -267,6 +275,8 @@ namespace NhomXingfa.Controllers
 
                     db.SaveChanges();
 
+                    carid = c.Id;
+
                     decimal? total = 0;
                     decimal? phiship = 0;
 
@@ -311,6 +321,20 @@ namespace NhomXingfa.Controllers
 
                 }  
             }
+
+            CartHistory ccc = new CartHistory();
+            ccc.CartID = carid;
+            ccc.ContentHistory = "Mới đặt hàng";
+            ccc.TimeHistory = DateTime.Now;
+
+            if(Request.IsAuthenticated)
+            {
+                ccc.UserLogin = userid;
+            }
+
+            db.CartHistories.Add(ccc);
+
+            db.SaveChanges();
 
             //check = true;
 
@@ -421,6 +445,7 @@ namespace NhomXingfa.Controllers
         {
             List<CartViewModel> cart = GetCart();
 
+            var prod = db.Products.Find(productid);
             var x = cart.FirstOrDefault(q => q.ID == productid);
             if(x != null)
             {
@@ -432,12 +457,21 @@ namespace NhomXingfa.Controllers
                 {
                     x.Quantity = quantity;
                 }
+
+                if (catespdon == 1)
+                {
+                    x.Price = prod.PriceSale;
+                }
+                else
+                {
+                    x.Price = prod.PriceSale1;
+                }
+                    x.CateSPDon = catespdon;
                 
-                x.CateSPDon = catespdon;
             }
             else
             {
-                var prod = db.Products.Find(productid);
+                
                 CartViewModel child = new CartViewModel();
                 child.CateSPDon = catespdon;
                 child.Descript = prod.ShortDescription;
@@ -446,6 +480,10 @@ namespace NhomXingfa.Controllers
                 child.IsProduct = prod.IsProduct;
                 child.Name = prod.ProductName;
                 child.Price = prod.PriceSale;
+                if(catespdon == 2)
+                {
+                    child.Price = prod.PriceSale1;
+                }
                 if(quantity <= 0)
                 {
                     child.Quantity = 1;
@@ -502,6 +540,7 @@ namespace NhomXingfa.Controllers
             var model = new DetailOrderViewModel();
             model.Cart = db.Carts.Find(id);
             model.cartDetails = db.CartDetails.Where(q => q.CarID == id).ToList();
+            model.carthistory = db.CartHistories.Where(q => q.CartID == id).ToList();
             return PartialView("_detailorder", model);
         }
 
