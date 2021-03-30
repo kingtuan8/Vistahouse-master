@@ -41,6 +41,8 @@ namespace NhomXingfa.Models
     {
         public Cart Cart { get; set; }
         public List<CartDetail> cartDetails { get; set; }
+
+        public List<CartHistory> carthistory { get; set; }
     }
 
     public class DetailPageViewModel

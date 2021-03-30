@@ -231,7 +231,37 @@
                 <h3 class="panel-title">Lịch giao sinh tố / nước ép</h3>
             </div>
             <div class="panel-body">
-               
+               <table class="table table-bordered">
+                   <thead>
+                       <tr>
+                           <th>
+                               Mã đơn hàng
+                           </th>
+                           <th>
+                               Note
+                           </th>
+                           <th>
+                               Date
+                           </th>
+                       </tr>
+                   </thead>
+                   <tbody>
+                       @foreach(var q in Model.carthistory)
+                       {
+                           <tr>
+                               <td>
+                                   @q.Cart.CarCode
+                               </td>
+                               <td>
+                                   @q.ContentHistory
+                               </td>
+                               <td>
+                                   @q.TimeHistory.Value.ToString("HH:mm dd/MM/yyyy")
+                               </td>
+                           </tr>
+                       }
+                   </tbody>
+               </table>
             </div>
         </div>
     </div>
