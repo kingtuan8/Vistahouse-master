@@ -1071,6 +1071,8 @@
     <Content Include="Views\Home\_popuptuvan.cshtml" />
     <Content Include="Views\Blog\_docnhieu.cshtml" />
     <Content Include="Views\Shared\_floatbutton.cshtml" />
+    <Content Include="Views\Product\_tintuc.cshtml" />
+    <Content Include="Views\Blog\ChuyenMuc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
