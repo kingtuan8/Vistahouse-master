@@ -13,6 +13,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public Cart()
         {
             CartDetails = new HashSet<CartDetail>();
+            CartHistories = new HashSet<CartHistory>();
         }
 
         public int Id { get; set; }
@@ -57,5 +58,8 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartDetail> CartDetails { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartHistory> CartHistories { get; set; }
     }
 }

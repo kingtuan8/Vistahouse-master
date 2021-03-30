@@ -12,11 +12,17 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         {
         }
 
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<Advertise> Advertises { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<BlogComment> BlogComments { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<CartDetail> CartDetails { get; set; }
+        public virtual DbSet<CartHistory> CartHistories { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<CustomerContact> CustomerContacts { get; set; }
@@ -54,6 +60,21 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
             modelBuilder.Entity<Advertise>()
                 .Property(e => e.AdvertiseURL)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<AspNetRole>()
+                .HasMany(e => e.AspNetUsers)
+                .WithMany(e => e.AspNetRoles)
+                .Map(m => m.ToTable("AspNetUserRoles").MapLeftKey("RoleId").MapRightKey("UserId"));
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.AspNetUserClaims)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.UserId);
+
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.AspNetUserLogins)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.UserId);
 
             modelBuilder.Entity<BlogComment>()
                 .Property(e => e.Images)
@@ -224,6 +245,11 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
                 .HasMany(e => e.Blogs)
                 .WithOptional(e => e.User)
                 .HasForeignKey(e => e.CreatedBy);
+
+            modelBuilder.Entity<User>()
+                .HasMany(e => e.CartHistories)
+                .WithOptional(e => e.User)
+                .HasForeignKey(e => e.UserLogin);
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.Products)

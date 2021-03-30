@@ -1,0 +1,51 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.CartHistory
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CartHistory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cart.CarCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cart.CarCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeHistory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeHistory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContentHistory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContentHistory)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

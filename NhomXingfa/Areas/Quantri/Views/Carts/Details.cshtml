@@ -17,8 +17,8 @@
     <h1>Chi tiết</h1>
     <div class="options">
         <div class="btn-toolbar">
-            <a href="javascript:" class="btn btn-warning btn-sm btn-label" id="btnAddGroupProduct"><i class="fa fa-shopping-cart"></i>Cập nhật trạng thái giao hàng</a>
-            <a href="/Quantri/Products/Edit/@Model.cart.CarCode" class="btn btn-success btn-sm btn-label"><i class="fa fa-edit"></i>Chỉnh sửa</a>
+            <a href="javascript:" class="btn btn-warning btn-sm btn-label" id="btnAddGroupProduct" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-shopping-cart"></i>Cập nhật trạng thái giao hàng</a>
+            <a href="/Quantri/Products/Edit/@Model.cart.CarCode" class="btn btn-danger btn-sm btn-label"><i class="fa fa-trash-o"></i>Xóa</a>
             <a href="/Quantri/Products/Index" class="btn btn-primary btn-sm btn-label"><i class="fa fa-backward"></i>Quay Lại</a>
 
         </div>
@@ -30,41 +30,90 @@
         <div class="row">
             <div class="col-md-12">
                 <h3 style="background: #85c744; padding: 5px 10px; color: #fff; border-radius: 1px; margin: 20px 0 20px; text-align:center">Đơn hàng - @Model.cart.CarCode</h3>
-                <div class="pull-left">
-                    <address>
-                        Tên KH: <strong>@Model.cust.CustName</strong><br>
-                        Địa Chỉ: <strong>
-                            @Model.cust.CustAddress
-                        </strong>
-                        <br>
-                        Phone: <strong> @Model.cust.CustPhone</strong><br>
-                    </address>
-                </div>
-                <div class="pull-right">
-                    <ul class="text-right list-unstyled">
-                        <li>
-                            <strong>Trạng thái:</strong>
-                            @if (Model.cart.StatusOrder == 1)
-                            {
-                                <span class="badge badge-success">Mới</span>
-                            }
-                            @if (Model.cart.StatusOrder == 2)
-                            {
-                                <span class="badge badge-info">Đang xử lý giao hàng</span>
-                            }
-                            @if (Model.cart.StatusOrder == 3)
-                            {
-                                <span class="badge badge-primary">Hoàn thành/closed</span>
-                            }
-                        </li>
-                        <li><strong>Thời gian Order:</strong> @Convert.ToDateTime(Model.cart.Created).ToShortDateString()</li>
-                        <li><strong>Ngày Giao hàng:</strong>  @Convert.ToDateTime(Model.cart.TimeDelivery).ToShortDateString()</li>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <h3><strong>Thông tin KH</strong></h3><table class="table table-condensed">
 
-                    </ul>
+                        <tbody>
+                            <tr>
+                                <td>Tên KH</td>
+                                <td><a href="#">@Model.cust.CustName</a></td>
+                            </tr>
+                            <tr>
+                                <td>Địa chỉ</td>
+                                <td><a href="#">@Model.cust.CustAddress</a></td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>@Model.cust.CustPhone</td>
+                            </tr>
+                            <tr>
+                                <td>Địa chỉ giao hàng</td>
+                                <td><a href="#">@Model.cart.AddresDelivery</a></td>
+                            </tr>
+                            <tr>
+                                <td>Thông tin người nhận</td>
+                                <td>@Model.cust.CustName (@Model.cart.CustPhone)</td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <h3><strong>Đơn hàng</strong></h3><table class="table table-condensed">
+
+                        <tbody>
+                            <tr>
+                                <td>Trạng thái</td>
+                                <td>
+                                    @if (Model.cart.StatusOrder == 1)
+                                    {
+                                        <span class="badge badge-success">Mới</span>
+                                    }
+                                    @if (Model.cart.StatusOrder == 2)
+                                    {
+                                        <span class="badge badge-info">Đã xác nhận đơn hàng</span>
+                                    }
+                                    @if (Model.cart.StatusOrder == 3)
+                                    {
+                                        <span class="badge badge-primary">Đang giao hàng</span>
+                                    }
+                                    @if (Model.cart.StatusOrder == 4)
+                                    {
+                                        <span class="badge badge-primary">Hoàn thành</span>
+                                    }
+                                    @if (Model.cart.StatusOrder == -1)
+                                    {
+                                        <span class="badge badge-dark">Hủy đơn hàng</span>
+                                    }
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Thời gian đặt hàng</td>
+                                <td><a href="#">@Convert.ToDateTime(Model.cart.Created).ToShortDateString()</a></td>
+                            </tr>
+                            <tr>
+                                <td>Ngày giao hàng</td>
+                                <td>@Convert.ToDateTime(Model.cart.TimeDelivery).ToShortDateString()</td>
+                            </tr>
+                            <tr>
+                                <td>Phí vận chuyển</td>
+                                <td><a href="#">@Model.cart.ShipDelivery</a></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
         <div class="row">
+
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped table-hover">
@@ -80,23 +129,23 @@
                         </thead>
 
                         <tbody>
-                            @{ int stt = 1; } 
+                            @{ int stt = 1; }
                             @foreach (var i in Model.lstDetail)
                             {
                                 <tr>
                                     <td>@stt</td>
                                     <td>
-                                        
-                                            @i.Product.Category.CategoryName
-                                        </td>
+
+                                        @i.Product.Category.CategoryName
+                                    </td>
                                     <td><a href="/Quantri/Products/Details/@i.Product.ProductID" alt="@i.Product.Category.CategoryName" target="_blank">@i.Product.ProductName</a></td>
                                     <td>@i.Qty</td>
                                     <td>@String.Format("{0:0,0}", i.Price)</td>
                                     <td>@String.Format("{0:0,0}", i.Total) </td>
                                 </tr>
-}
+                            }
 
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -122,7 +171,45 @@
                 <h3 class="text-right">Tổng: @String.Format("{0:0,0}", tong) <span style="color:#000000; font-size:8pt">vnd</span> </h3>
             </div>
         </div>
-        
+
     </div>
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Cập nhật đơn hàng: <span style="color:#ff6a00"> @Model.cart.CarCode</span></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("AddHistory", "CartHistories", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+        <div class="modal-body">
+
+            <input type="hidden" id="CartID" name="CartID" value="@Model.cart.Id" />
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Status:</label>
+                <select id="drCartStatus" name="drCartStatus" class="form-control">
+                    <option value="2">Đã xác nhận đơn hàng</option>
+                    <option value="3">Tình trạng giao hàng</option>
+                    <option value="4">Hoàn thành</option>
+                    <option value="-1">Hủy đơn hàng</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="message-text" class="col-form-label">Message:</label>
+                <textarea class="form-control" id="ContentHistory" name="ContentHistory"></textarea>
+            </div>
+
+        </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

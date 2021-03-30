@@ -12,6 +12,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public User()
         {
             Blogs = new HashSet<Blog>();
+            CartHistories = new HashSet<CartHistory>();
             Products = new HashSet<Product>();
             RolesUsers = new HashSet<RolesUser>();
             Slides = new HashSet<Slide>();
@@ -36,6 +37,9 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Blog> Blogs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartHistory> CartHistories { get; set; }
 
         public virtual CustomerOrder CustomerOrder { get; set; }
 
