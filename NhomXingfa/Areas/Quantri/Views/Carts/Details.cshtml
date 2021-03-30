@@ -165,13 +165,36 @@
             <div class="col-md-3 col-md-offset-9">
                 <p class="text-right">Tổng đơn hàng @String.Format("{0:0,0}", @Model.cart.Total) vnd</p>
                 <p class="text-right">Discout: 0%</p>
-                <p class="text-right">Phí GH: @String.Format("{0:0,0}", shipFee)</p>
+                <p class="text-right">Phí Vận chuyển: @String.Format("{0:0,0}", shipFee)</p>
                 <hr>
 
                 <h3 class="text-right">Tổng: @String.Format("{0:0,0}", tong) <span style="color:#000000; font-size:8pt">vnd</span> </h3>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="timeline-month"><span>Lịch sử</span></h4>
+                <ul class="timeline">
+                    @foreach (var h in Model.lstHistory)
+                    {
+                        <li class="timeline-orange">
 
+                            <div class="timeline-body">
+                                <div class="timeline-header">
+
+                                    <span class="date">@h.User.UserName - @h.TimeHistory</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <p>@h.ContentHistory</p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+        </div>
     </div>
 </div>
 

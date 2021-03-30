@@ -11,5 +11,6 @@ namespace NhomXingfa.Areas.Quantri.Models
         public Cart cart { get; set; }
         public List<CartDetail> lstDetail { get; set; }
         public CustomerOrder cust { get; set; }
+        public List<CartHistory> lstHistory { get; set; }
     }
 }

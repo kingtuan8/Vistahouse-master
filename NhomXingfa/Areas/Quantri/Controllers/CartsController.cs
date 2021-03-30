@@ -90,6 +90,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             CartViewModel model = new CartViewModel();
             model.cart = db.Carts.Find(id);
             model.lstDetail = db.CartDetails.Where(a => a.CarID == id).ToList();
+            model.lstHistory = db.CartHistories.Where(a => a.CartID == id).OrderByDescending(a=>a.Id).ToList();
             if(model.cart.CustID != null)
             {
                 model.cust = db.CustomerOrders.Where(a => a.Id == model.cart.CustID).FirstOrDefault();
