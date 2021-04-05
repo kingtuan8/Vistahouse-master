@@ -104,8 +104,29 @@
                                 @Html.EditorFor(model => model.Sort, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.Sort, "", new { @class = "text-danger" })
                             </div>
-                            <label class="control-label col-md-4 labelRedColor">Nhập số nguyên 1, 2, 3,...</label>
+                            @*<label class="control-label col-md-4 labelRedColor">Nhập số nguyên 1, 2, 3,...</label>*@
+                            @Html.LabelFor(model => model.IsActive, "Cho Loại", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-3">
+                                <div class="checkbox">
 
+                                    @if (Model.IsLe == true)
+                                    {
+                                        <select class="form-control" id="IsLe" name="IsLe" disabled>
+                                            <option selected value="true">Sản phẩm Lẻ</option>
+                                            <option value="false">Sản phẩm gói</option>
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select class="form-control" id="IsLe" name="IsLe" disabled>
+                                            <option value="true">Sản phẩm Lẻ</option>
+                                            <option selected value="false">Sản phẩm gói</option>
+                                        </select>
+                                    }
+                                    
+                                    @Html.ValidationMessageFor(model => model.IsLe, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
                         </div>
 
 

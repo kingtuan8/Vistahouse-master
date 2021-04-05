@@ -37,23 +37,25 @@
 
         </div>
         <div class="spdscription">
-            @if (Model.product.IsProduct == false)
+            @*@if (Model.product.IsProduct == false)
             {
                 <span>Giá gói: @String.Format("{0:#,0}", Model.product.PriceSale)<sup>đ</sup> </span><br />
                 <span>Phí ship: @String.Format("{0:#,0}", Model.product.PhiShip)<sup>đ</sup>/ @Model.product.SoNgayShip ngày</span> <br />
                 <span>Số chai: @Model.product.SoLuongChai chai (Sinh tố: size 500ml, Nước ép: size 350ml) </span><br />
-            }
+            }*@
             @Html.Raw(Model.product.ShortDescription)
         </div>
 
-        @if (Model.product.IsProduct == true)
-        {
+        @*@if (Model.product.IsProduct == true)
+        {*@
 
             <div class="thetichgia">
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" value="1" id="pricesaleso1">
-                        <span class="t1">350ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale)<sup>VNĐ</sup></span>
+                        <span class="t1">350ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale)<sup>VNĐ</sup>
+                        
+                        </span>
                     </label>
                 </div>
                 <div class="radio">
@@ -63,7 +65,7 @@
                     </label>
                 </div>
             </div>
-        }
+        @*}*@
 
         <input type="hidden" id="hdCateSpDon" value="1" />
 

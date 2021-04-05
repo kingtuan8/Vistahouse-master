@@ -48,8 +48,8 @@
 
                                                         <div class="col-md-6">
                                                             <select class="form-control" id="IsProduct" name="IsProduct">
-                                                                <option selected value="true">Sản phẩm LẺ</option>
-                                                                <option value="false">Sản phẩm GÓI</option>
+                                                                <option selected value="True">Sản phẩm LẺ</option>
+                                                                <option value="False">Sản phẩm GÓI</option>
 
                                                             </select>
                                                             @Html.ValidationMessageFor(model => model.IsProduct, "", new { @class = "text-danger" })
@@ -63,10 +63,12 @@
                                                             @Html.ValidationMessageFor(model => model.CategoryIDParent, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
-                                                    <div class="form-group" id="divCategoryID">
+                                                    <div class="form-group">
+                                                        @*id="divCategoryID"*@
+
                                                         @Html.LabelFor(model => model.CategoryID, "Chủng loại SP", htmlAttributes: new { @class = "control-label col-md-3" })
                                                         <div class="col-md-9">
-                                                             
+
                                                             @Html.DropDownList("CategoryID", null, "--Chọn Danh SP--", htmlAttributes: new { @class = "form-control" })
                                                             @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
                                                         </div>
@@ -98,6 +100,13 @@
                                                             @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
+                                                    @*<div class="form-group">
+                                                        @Html.LabelFor(model => model.Images, "Hình đại diện 2", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-9">
+                                                            <input type="file" id="HinhAnh1" name="HinhAnh1" />
+                                                            @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>*@
 
                                                     <div class="form-group" id="divIsSale">
                                                         @Html.LabelFor(model => model.IsSale, "Sản phẩm Sale", htmlAttributes: new { @class = "control-label col-md-3" })
@@ -173,8 +182,8 @@
                                             <div class="col-md-6">
                                                 <div class="form-horizontal">
                                                     <h4 style="border-bottom:1px solid #808080">Giá Sản phẩm</h4>
-
-                                                    <div class="row" id="rowSPLe">
+                                                    @*id="rowSPLe"*@
+                                                    <div class="row">
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.Capacity, "Dung tích", htmlAttributes: new { @class = "control-label col-md-3" })
 
@@ -210,7 +219,8 @@
                                                             @Html.LabelFor(model => model.Capacity1, "Dung tích", htmlAttributes: new { @class = "control-label col-md-3" })
 
                                                             <div class="col-md-2">
-                                                                @Html.EditorFor(model => model.Capacity1, new { htmlAttributes = new { @class = "form-control", type = "number" } })
+                                                                <input type="number" id="Capacity1" name="Capacity1" value="500" class="form-control" />
+                                                                @*@Html.EditorFor(model => model.Capacity1, new { htmlAttributes = new { @class = "form-control", type = "number" } })*@
                                                                 @Html.ValidationMessageFor(model => model.Capacity1, "", new { @class = "text-danger" })
                                                             </div>
                                                             @Html.LabelFor(model => model.Capacity1, "(ml)", htmlAttributes: new { @class = "control-label col-md-1" })
@@ -235,33 +245,33 @@
                                                             </div>
                                                         </div>
                                                     </div>
-
+                                                    @*id="rowSPGoi"*@
                                                     <div class="row" id="rowSPGoi">
+                                                        @*<div class="form-group">
+                                                            @Html.LabelFor(model => model.PhiShip, "Phí Ship", htmlAttributes: new { @class = "control-label col-md-3" })
+
+                                                            <div class="col-md-3">
+
+                                                                <input type="number" id="PhiShip" name="PhiShip" value="350" class="form-control" />
+                                                                @Html.ValidationMessageFor(model => model.PhiShip, "", new { @class = "text-danger" })
+                                                            </div>
+                                                            @Html.LabelFor(model => model.Price, "Giá", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                                <div class="col-md-3">
+
+                                                                    <input type="number" id="PriceSi" name="PriceSi" placeholder="0" value="0" class="form-control" />
+                                                                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                                                </div>
+
+                                                        </div>*@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.SoLuongChai, "SL Chai", htmlAttributes: new { @class = "control-label col-md-3" })
 
                                                             <div class="col-md-2">
-                                                                @*@Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control", type = "number" } })*@
                                                                 <input type="number" id="SoLuongChai" name="SoLuongChai" value="350" class="form-control" />
                                                                 @Html.ValidationMessageFor(model => model.SoLuongChai, "", new { @class = "text-danger" })
                                                             </div>
                                                             @Html.LabelFor(model => model.SoLuongChai, "(Chai)", htmlAttributes: new { @class = "control-label col-md-1" })
-                                                            @Html.LabelFor(model => model.Price, "Giá", htmlAttributes: new { @class = "control-label col-md-3" })
-                                                            <div class="col-md-3">
-                                                                @*@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", type = "number"} })*@
-                                                                <input type="number" id="PriceSi" name="PriceSi" placeholder="0" value="0" class="form-control" />
-                                                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-                                                            </div>
 
-                                                        </div>
-                                                        <div class="form-group">
-                                                            @Html.LabelFor(model => model.PhiShip, "Phí Ship", htmlAttributes: new { @class = "control-label col-md-3" })
-
-                                                            <div class="col-md-3">
-                                                                @*@Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control", type = "number" } })*@
-                                                                <input type="number" id="PhiShip" name="PhiShip" value="350" class="form-control" />
-                                                                @Html.ValidationMessageFor(model => model.PhiShip, "", new { @class = "text-danger" })
-                                                            </div>
                                                             @Html.LabelFor(model => model.SoNgayShip, "Số Ngày", htmlAttributes: new { @class = "control-label col-md-3" })
                                                             <div class="col-md-3">
                                                                 @*@Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", type = "number"} })*@
@@ -272,7 +282,7 @@
                                                     </div>
 
 
-                                                   
+
                                                     <h4 style="border-bottom:1px solid #808080">SEO Google</h4>
                                                     <div class="form-group">
                                                         @Html.LabelFor(model => model.SEOTitle, "Page Title", htmlAttributes: new { @class = "control-label col-md-3" })
@@ -303,7 +313,7 @@
                                         <div class="row">
                                             <b> Mô tả ngắn </b><br />
                                             <textarea id="ShortDescription" placeholder="Mô tả ngắn" name="ShortDescription"></textarea>
-                                            
+
                                         </div>
                                     </div>
 
@@ -341,10 +351,10 @@
 
         $(document).ready(function () {
 
-            $("#rowSPLe").show();
+            //$("#rowSPLe").show();
             $("#rowSPGoi").hide();
-            $("#divCategoryID").show();
-            $("#divIsSale").show();
+            //$("#divCategoryID").show();
+            //$("#divIsSale").show();
 
             $("#ProductName").focusout(function () {
                 var ProductName = $("#ProductName").val();
@@ -415,19 +425,44 @@
 
             // Dropy Kieu SP Change
             $('#IsProduct').on('change', function () {
-                if (this.value == "true") {
+                if (this.value == "True") {
 
-                    $("#rowSPLe").show();
+                    //$("#rowSPLe").show();
                     $("#rowSPGoi").hide();
-                    $("#divCategoryID").show();
-                    $("#divIsSale").show();
+                    //$("#divCategoryID").show();
+                    //$("#divIsSale").show();
                 }
-                else if(this.value == "false") {
-                    $("#rowSPLe").hide();
+                else if (this.value == "False") {
+                    //$("#rowSPLe").hide();
                     $("#rowSPGoi").show();
-                    $("#divCategoryID").hide();
-                    $("#divIsSale").hide();
+                    //$("#divCategoryID").hide();
+                    //$("#divIsSale").hide();
                 }
+
+                var IsLe = $('#IsProduct').val();
+                var clearmoldid = $("#CategoryID");
+                clearmoldid.empty();
+
+                $.ajax(
+                    {
+                        url: "/Products/FillChungLoaiSP",
+                        type: 'GET',
+                        cache: false,
+                        data: { IsLe: IsLe },
+
+                        success: function (data) {
+                            var optionhtml1 = '<option value="' +
+                                "" + '">' + "-- All --" + '</option>';
+                            $('#CategoryID').append(optionhtml1);
+
+                            $.each(data, function (i) {
+
+                                var optionhtml = '<option value="' +
+                                    data[i].Value + '">' + data[i].Text + '</option>';
+                                $('#CategoryID').append(optionhtml);
+                            });
+                        }
+                    });
             });
         });
     </script>

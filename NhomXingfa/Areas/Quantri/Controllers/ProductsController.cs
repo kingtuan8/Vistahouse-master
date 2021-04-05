@@ -172,7 +172,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         public ActionResult Create()
         {
             ViewBag.CategoryIDParent = new SelectList(db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct), "CategoryID", "CategoryName");
-            ViewBag.CategoryID = new SelectList(db.Categories.Where(c => c.TypeCate == WebConstants.CategoryProduct), "CategoryID", "CategoryName");
+            ViewBag.CategoryID = new SelectList(db.Categories.Where(c => c.TypeCate == WebConstants.CategoryProduct && c.IsLe == true), "CategoryID", "CategoryName");
             ViewBag.CreatedBy = new SelectList(db.Users, "UserID", "UserName");
             return View();
         }
@@ -253,12 +253,13 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Products.Find(id);
+            
             if (product == null)
             {
                 return HttpNotFound();
             }
             ViewBag.CategoryIDParent = new SelectList(db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct), "CategoryID", "CategoryName", product.CategoryIDParent);
-            ViewBag.CategoryID = new SelectList(db.Categories.Where(c => c.TypeCate == WebConstants.CategoryProduct), "CategoryID", "CategoryName", product.CategoryID);
+            ViewBag.CategoryID = new SelectList(db.Categories.Where(c => c.TypeCate == WebConstants.CategoryProduct && c.IsLe == product.Category.IsLe), "CategoryID", "CategoryName", product.CategoryID);
             ViewBag.CreatedBy = new SelectList(db.Users, "UserID", "UserName", product.CreatedBy);
             return View(product);
         }
@@ -631,6 +632,19 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         {
             var model = db.ProductGroups.Where(q => q.GroupCode == 4).ToList();
             return View(model);
+        }
+
+        public JsonResult FillChungLoaiSP(bool IsLe)
+        {
+            //var tmp = from s in db.MODELDEVICEs
+            //          where s.IDCate == idCate
+            //          select s.NameModel;
+            //var sItems = new SelectList(tmp);
+            //return Json(sItems, JsonRequestBehavior.AllowGet);
+            //ViewBag.CategoryID = new SelectList(db.Categories.Where(c => c.TypeCate == WebConstants.CategoryProduct), "CategoryID", "CategoryName");
+            var le = Convert.ToBoolean(IsLe);
+            var result = new SelectList(db.Categories.Where(c => c.TypeCate == WebConstants.CategoryProduct && c.IsLe == le), "CategoryID", "CategoryName");
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

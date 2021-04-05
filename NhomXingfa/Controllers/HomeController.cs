@@ -69,6 +69,8 @@ namespace NhomXingfa.Controllers
             //Response.Cookies.Add(cookie);
 
             var model = new CartDetailViewModel();
+            model.thongtinthanhtoan = db.Blogs.Where(b => b.BlogID == 23 && (b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more)).FirstOrDefault();
+
             model.cart = GetCart();
             if(User.Identity.Name != "")
             {

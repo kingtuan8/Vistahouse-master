@@ -263,7 +263,7 @@
 
         <div class="thongtinthanhtoan">
             <div class="titleinput">
-                Thông tin thanh toán
+                @Model.thongtinthanhtoan.BlogName
             </div>
 
             <div class="row">
@@ -271,23 +271,8 @@
                     &nbsp;
                 </div>
                 <div class="col-md-10">
-                    <p style="line-height:26px; font-weight:bold; border-bottom:1px solid #ccc; padding-left:18px; padding-right:18px;">
-                        Bạn có thể chuyển khoản vào một trong các tài khoản dưới đây. Sau đó thông báo lại cho admin. Website sẽ liên hệ lại với bạn trong thời gian sớm nhất sau khi nhận được đơn hàng.
-                    </p>
                     <p>
-                        1) Chủ Tài Khoản: Cao Quốc Đạt <br />
-                        Số Tài Khoản: 0123 456 789 <br />
-                        Ngân Hàng Công Thương Việt Nam (Vietcombank)
-                    </p>
-                    <p>
-                        2) Chủ Tài Khoản: Cao Quốc Đạt <br />
-                        Số Tài Khoản: 0123 456 789 <br />
-                        Ngân Hàng Ngoại Thương Việt Nam (Sacombank)
-                    </p>
-                    <p>
-                        1) Chủ Tài Khoản: Cao Quốc Đạt <br />
-                        Số Tài Khoản: 0123 456 789 <br />
-                        Ngân Hàng Đầu Tư & Phát Triển Việt Nam (BIDV)
+                        @Html.Raw(Model.thongtinthanhtoan.Content)
                     </p>
                 </div>
             </div>

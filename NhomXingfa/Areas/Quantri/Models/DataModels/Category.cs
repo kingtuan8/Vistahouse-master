@@ -44,6 +44,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public string SEOKeywords { get; set; }
 
         public string SEOMetadescription { get; set; }
+        public bool? IsLe { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Blog> Blogs { get; set; }

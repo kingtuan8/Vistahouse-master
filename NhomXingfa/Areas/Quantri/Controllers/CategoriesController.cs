@@ -24,7 +24,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             return View(db.Categories.ToList());
         }
 
-        public ActionResult _PartialIndex(int? pageNumber, int? pageSize, string TenChungLoai, int? DanhMucCha,
+        public ActionResult _PartialIndex(int? pageNumber, int? pageSize, string TenChungLoai, int? DanhMucCha, string IsLe,
                                           string SEOKeywords)
         {
             TenChungLoai = TenChungLoai ?? "";
@@ -48,6 +48,12 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             if (!string.IsNullOrEmpty(DanhMucCha.ToString()))
             {
                 lstCates = lstCates.Where(s => s.Parent == DanhMucCha).ToList();
+            }
+            ViewBag.DanhMucCha = DanhMucCha;
+
+            if (!string.IsNullOrEmpty(IsLe.ToString()))
+            {
+                lstCates = lstCates.Where(s => s.IsLe == Convert.ToBoolean(IsLe)).ToList();
             }
             ViewBag.DanhMucCha = DanhMucCha;
 
@@ -98,7 +104,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoryID,CategoryName,Parent,DisplayMenu,IsActive,Sort,TypeCate,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription")] Category category)
+        public ActionResult Create([Bind(Include = "CategoryID,CategoryName,Parent,DisplayMenu,IsActive,Sort,TypeCate,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription,IsLe")] Category category)
         {
             if (ModelState.IsValid)
             {

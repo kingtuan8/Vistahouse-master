@@ -18,6 +18,7 @@
                     <tr>
                         <th style="width:30px">STT</th>
                         <th>Tên Chủng Loại</th>
+                        <th>Loại</th>
                         <th>Danh Mục Cha</th>
                         <th style="width:60px">Ẩn/hiện <br />Menu Trang Chủ</th>
                         <th style="width:50px">Ẩn/Hiện <br />Website</th>
@@ -34,15 +35,25 @@
                     @foreach (var item in Model)
                     {
                         <tr>
-                           <td style="width:30px">@stt</td>
+                            <td style="width:30px">@stt</td>
                             <td>
                                 @item.CategoryName
+                            </td>
+                            <td>
+                                @if (item.IsLe == true)
+                                {
+                                    <span class="badge badge-success">Sản phẩm lẻ</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-info">Sản phẩm Gói</span>
+                                }
                             </td>
                             <td>
                                 @h.GetParentMenu(item.Parent)
                             </td>
                             <td style="width:60px">
-                                
+
                                 @if (item.DisplayMenu == true)
                                 {
                                     <span class="badge badge-success">Hiện thị</span>

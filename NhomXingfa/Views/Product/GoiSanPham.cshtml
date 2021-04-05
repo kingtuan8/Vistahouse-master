@@ -28,8 +28,31 @@
                         @q.ProductName
                     </h2>
                     <div class="giashipdk">
-                        <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup></span>
-                        <span class="dkship">Freeship - <span>@String.Format("{0:#,0}", q.PhiShip)<sup>VNĐ</sup></span></span>
+                        <span id="gia1">
+                            <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup></span>
+                            @if (q.PricePhanTram != null || q.PricePhanTram > 0)
+                            {
+                                <span class="dkship">
+                                    Giá gốc - <span>@String.Format("{0:#,0}", q.Price)<sup>VNĐ</sup></span>
+                                </span>
+                            }
+
+                        </span>
+                        <br />
+                        <span id="gia2">
+                            <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale1)<sup>đ</sup></span>
+                            @if (q.PricePhanTram1 != null || q.PricePhanTram1 > 0)
+                            {
+                                <span class="dkship">
+                                    Giá gốc - <span>@String.Format("{0:#,0}", q.Price1)<sup>VNĐ</sup></span>
+                                </span>
+
+                            }
+                        </span>
+                    </div>
+                    <div class="buttonPrice">
+                        <button type="button" class="btn btn-warning">Primary</button>
+                        <button type="button" class="btn btn-success">Secondary</button>
                     </div>
                     <div class="descriptdk">
                         @Html.Raw(q.ShortDescription.Replace("<p>", "").Replace("</p>", ""))
@@ -57,8 +80,27 @@
                         @q.ProductName
                     </h2>
                     <div class="giashipdk">
-                        <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup></span>
-                        <span class="dkship">Freeship - <span>@String.Format("{0:#,0}", q.PhiShip)<sup>VNĐ</sup></span></span>
+                        <span id="gia1">
+                            <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup></span>
+                            @if (q.PricePhanTram != null || q.PricePhanTram > 0)
+                            {
+                                <span class="dkship">
+                                    Giá gốc - <span>@String.Format("{0:#,0}", q.Price)<sup>VNĐ</sup></span>
+                                </span>
+                            }
+
+                        </span>
+                        <br />
+                        <span id="gia2">
+                            <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale1)<sup>đ</sup></span>
+                            @if (q.PricePhanTram1 != null || q.PricePhanTram1 > 0)
+                            {
+                                <span class="dkship">
+                                    Giá gốc - <span>@String.Format("{0:#,0}", q.Price1)<sup>VNĐ</sup></span>
+                                </span>
+
+                            }
+                        </span>
                     </div>
                     <div class="descriptdk">
                         @q.ShortDescription
@@ -194,10 +236,10 @@
                         <img src="@WebConstants.imgCusFeedbackShow/@q.CustomerImage" style="height:270px" />
                     </div>
                     <div class="commentkh">
-                       @Html.Raw(q.Feedback)
+                        @Html.Raw(q.Feedback)
                     </div>
                     <div class="authorkh">
-                       @q.CustomerName 
+                        @q.CustomerName
                         <br />
                         <span style="font-style:italic">@q.CustomerInfo</span>
                     </div>
@@ -206,28 +248,28 @@
 
 
             @*<div class="col-md-4">
-                <div class="imagekh">
-                    <img src="~/images/kh2.63e24508.jpg" />
+                    <div class="imagekh">
+                        <img src="~/images/kh2.63e24508.jpg" />
+                    </div>
+                    <div class="commentkh">
+                        Nhờ gói giảm cân nhanh của Green O mà mình đã giảm được hơn 2kg chỉ sau 10 ngày. Da dẻ lại mịn màng nữa chứ. Trong 6 món của Green O, mình thích nhất vị sinh tố rau Vẻ đẹp tỏa sáng, vừa dễ uống vừa đẹp da lại giảm được ký nữa.
+                    </div>
+                    <div class="authorkh">
+                        - LÊ HOÀNG HÀ -
+                    </div>
                 </div>
-                <div class="commentkh">
-                    Nhờ gói giảm cân nhanh của Green O mà mình đã giảm được hơn 2kg chỉ sau 10 ngày. Da dẻ lại mịn màng nữa chứ. Trong 6 món của Green O, mình thích nhất vị sinh tố rau Vẻ đẹp tỏa sáng, vừa dễ uống vừa đẹp da lại giảm được ký nữa.
-                </div>
-                <div class="authorkh">
-                    - LÊ HOÀNG HÀ -
-                </div>
-            </div>
 
-            <div class="col-md-4">
-                <div class="imagekh">
-                    <img src="~/images/kh3.c8cf21f7.jpg" />
-                </div>
-                <div class="commentkh">
-                    Mình rất khó tính trong việc ăn uống sạch. Mình đã trải nghiệm nhiều nơi nhưng đều cảm thấy không hài lòng vì hương vị rất “công nghiệp”. Đến khi uống thử Green O thì mình rất thích vì hương vị tự nhiên, fresh và rất ngon miệng. Mình đã đặt 2 gói rồi đấy
-                </div>
-                <div class="authorkh">
-                    - BÙI THẢO THIỆN -
-                </div>
-            </div>*@
+                <div class="col-md-4">
+                    <div class="imagekh">
+                        <img src="~/images/kh3.c8cf21f7.jpg" />
+                    </div>
+                    <div class="commentkh">
+                        Mình rất khó tính trong việc ăn uống sạch. Mình đã trải nghiệm nhiều nơi nhưng đều cảm thấy không hài lòng vì hương vị rất “công nghiệp”. Đến khi uống thử Green O thì mình rất thích vì hương vị tự nhiên, fresh và rất ngon miệng. Mình đã đặt 2 gói rồi đấy
+                    </div>
+                    <div class="authorkh">
+                        - BÙI THẢO THIỆN -
+                    </div>
+                </div>*@
 
         </div>
     </div>

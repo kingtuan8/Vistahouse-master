@@ -35,6 +35,7 @@ namespace NhomXingfa.Models
     {
         public List<CartViewModel> cart { get; set; }
         public CustomerOrder customer { get; set; }
+        public Blog thongtinthanhtoan { get; set; }
     }
 
     public class DetailOrderViewModel

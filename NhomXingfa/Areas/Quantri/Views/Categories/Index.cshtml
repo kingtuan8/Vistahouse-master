@@ -49,6 +49,16 @@
 
                 </select>
             </div>
+            <div class="col-xs-2">
+                Loại<br />
+
+                    <select class="form-control drChange" id="IsLe" name="IsLe">
+                        <option value="">Tất cả</option>
+                        <option value="true">Sản phẩm Lẻ</option>
+                        <option value="false">Sản phẩm gói</option>
+                    </select>
+            </div>
+
             <div class="col-xs-4">
                 Tìm theo từ khóa
                 <br />
@@ -99,6 +109,7 @@
 
         var TenChungLoai = $("#txtTenChungLoai").val();
         var DanhMucCha = $("#ParentId").val();
+        var IsLe = $("#IsLe").val();
         var SEOKeywords = $("#SEOKeywords").val();
         $.ajax({
             //url: '~/Areas/Quantri/Views/Categories/_PartialIndex.cshtml',
@@ -107,6 +118,7 @@
                 pageSize: parseInt($('#ddlPageSize').val()),
                 TenChungLoai: TenChungLoai,
                 DanhMucCha: DanhMucCha,
+                IsLe: IsLe,
                 SEOKeywords:SEOKeywords
             },
             method: 'GET',

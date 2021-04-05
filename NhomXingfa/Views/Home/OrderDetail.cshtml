@@ -24,22 +24,53 @@
                 {
                     <span class="axql3">
                         <i class="glyphicon glyphicon-triangle-right"></i>
-                        Đang xử lý
+                        Mới
                     </span>
                 }
-                else
+                @if (q.StatusOrder == 1)
+                {
+                    <span class="axql3">
+                        <i class="glyphicon glyphicon-triangle-right"></i>
+                        Mới
+                    </span>
+                }
+                @if (q.StatusOrder == 2)
+                {
+                    <span class="axql3">
+                        <i class="glyphicon glyphicon-triangle-right"></i>
+                        Xác nhận
+                    </span>
+                }
+                @if (q.StatusOrder == 3)
+                {
+                    <span class="axql3">
+                        <i class="glyphicon glyphicon-triangle-right"></i>
+                       Giao hàng
+                    </span>
+                }
+                @if (q.StatusOrder == 4)
                 {
                     <span class="axql3">
                         <i class="glyphicon glyphicon-triangle-right"></i>
                         Hoàn thành
                     </span>
                 }
+                @if (q.StatusOrder == -1)
+                {
+                    <span class="axql3">
+                        <i class="glyphicon glyphicon-triangle-right"></i>
+                        Hủy
+                    </span>
+                }
+                
+
+
             </li>
                 count++;
             }
         </ul>
 
-        <div class="text-right" id="pagelist">
+        @*<div class="text-right" id="pagelist">
             <div class="btn-group" role="group" aria-label="...">
                 <button type="button" class="btn btn-default">
                     <i class="glyphicon glyphicon-chevron-left"></i>
@@ -49,7 +80,7 @@
                     <i class="glyphicon glyphicon-chevron-right"></i>
                 </button>
             </div>
-        </div>
+        </div>*@
 
     </div>
     <div class="col-md-9" id="rightql">

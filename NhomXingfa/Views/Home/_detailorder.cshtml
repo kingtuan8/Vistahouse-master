@@ -84,21 +84,40 @@
                         @if (CartModel.StatusOrder == 0)
                         {
                             <span class="label label-info">
-                                Đang xử lý
+                                Mới
                             </span>
                         }
-                        else if (CartModel.StatusOrder == 1)
+                        @if (CartModel.StatusOrder == 1)
+                        {
+                            <span class="label label-info">
+                                Mới
+                            </span>
+                        }
+                        else if (CartModel.StatusOrder == 2)
                         {
                             <span class="label label-warning">
-                                Chưa thanh toán
+                                Xác nhận đơn hàng
                             </span>
                         }
-                        else
+                        @if (CartModel.StatusOrder == 3)
+                        {
+                            <span class="label label-info">
+                                Đang Giao hàng
+                            </span>
+                        }
+                        @if (CartModel.StatusOrder == 4)
                         {
                             <span class="label label-success">
-                                Hoàn thành
+                                Hoàn Thành
                             </span>
                         }
+                        @if (CartModel.StatusOrder == -1)
+                        {
+                    <span class="label label-default">
+                        Đã Hủy
+                    </span>
+                        }
+                        
                     </td>
                 </tr>
             </tbody>
