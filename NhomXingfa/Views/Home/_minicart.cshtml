@@ -1,8 +1,8 @@
 ﻿@model List<NhomXingfa.Models.CartViewModel>
-    @{ 
-        int count = 0;
-        decimal? total = 0;
-    }
+@{
+    int count = 0;
+    decimal? total = 0;
+}
 
 <div class="row minicart">
     <div class="col-md-8">
@@ -36,23 +36,23 @@
                                     <span class="removesp btnRemoveCart" productid="@q.ID">
                                         <i class="glyphicon glyphicon-remove"></i>
                                     </span>
-                                    @if (q.IsProduct == true)
-                                    {
-                                <span class="btn-group btn-group-sm cateml" role="group" aria-label="...">
-                                    <span class="piddata">@q.ID</span>
-                                    @if (q.CateSPDon == 1)
-                                    {
-                                        <button type="button" class="btn btn-default changeml actived" changeml="1">350ml</button>
-                                        <button type="button" class="btn btn-default changeml" changeml="2">550ml</button>
-                                    }
-                                    else
-                                    {
-                                        <button type="button" class="btn btn-default changeml" changeml="1">350ml</button>
-                                        <button type="button" class="btn btn-default changeml actived" changeml="2">550ml</button>
-                                    }
+                                    @*@if (q.IsProduct == true)
+                                    {*@
+                                        <span class="btn-group btn-group-sm cateml" role="group" aria-label="...">
+                                            <span class="piddata">@q.ID</span>
+                                            @if (q.CateSPDon == 1)
+                                            {
+                                                <button type="button" class="btn btn-default changeml actived" changeml="1">350ml</button>
+                                                <button type="button" class="btn btn-default changeml" changeml="2">550ml</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="button" class="btn btn-default changeml" changeml="1">350ml</button>
+                                                <button type="button" class="btn btn-default changeml actived" changeml="2">550ml</button>
+                                            }
 
-                                </span>
-                                    }
+                                        </span>
+                                    @*}*@
                                     <div class="form-inline text-right">
                                         <a class="btn btn-xs btn-default btnTruSL" productid="@q.ID" catesp="@q.CateSPDon">
                                             <i class="glyphicon glyphicon-minus"></i>
@@ -85,7 +85,7 @@
                     <p class="numbersl">
                         @count
                     </p>
-                    
+
                 </div>
                 <div class="col-md-6">
                     <p class="texttong">
@@ -96,7 +96,7 @@
                     </p>
                     <p class="notecart">
                         ** chưa bao gồm phí ship (nếu có)
-                    </p>                    
+                    </p>
                 </div>
             </div>
             <div class="row">
