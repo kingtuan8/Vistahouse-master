@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<NhomXingfa.Areas.Quantri.Models.DataModels.Product>
 @{
-    ViewBag.Title = "GoiSPLst";
+    ViewBag.Title = "Danh sách Gói Định kì";
     Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
 }
 <div id="page-heading">
     <ol class="breadcrumb">
         <li><a href="index.html">Trang chủ</a></li>
-        <li class="active">Danh sách Sản phẩm</li>
+        <li class="active">Danh sách Gói Định kì</li>
 
     </ol>
 
@@ -31,12 +31,12 @@
                     <option value="-1">Tất cả</option>
                 </select>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-1">
                 SKU<br />
                 <input type="text" id="txtMaSP" name="txtMaSP" class="form-control txtSearch" placeholder="Nhập Mã Sản phẩm...">
             </div>
             <div class="col-xs-2">
-                Tên SP<br />
+                Tên Gói<br />
                 <input type="text" id="txtSanPham" name="txtSanPham" class="form-control txtSearch" placeholder="Nhập tên...">
             </div>
             <div class="col-xs-2">
@@ -51,7 +51,7 @@
 
                 </select>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xs-2" style="display:none">
                 Danh Mục Con<br />
 
                 <select class="form-control drChange" id="CategoryID" name="CategoryID">

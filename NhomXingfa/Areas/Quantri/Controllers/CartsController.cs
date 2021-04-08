@@ -12,7 +12,7 @@ using PagedList;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
-    public class CartsController : Controller
+    public class CartsController : BaseController
     {
         private XingFaEntities db = new XingFaEntities();
 
@@ -184,9 +184,25 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            var h = db.CartHistories.Where(a => a.CartID == id).ToList();
+            foreach(var i in h)
+            {
+                CartHistory h1 = db.CartHistories.Find(i.Id);
+                db.CartHistories.Remove(h1);
+                db.SaveChanges();
+            }
+
+            var de = db.CartDetails.Where(a => a.CarID == id).ToList();
+            foreach (var j in de)
+            {
+                CartDetail de1 = db.CartDetails.Find(j.Id);
+                db.CartDetails.Remove(de1);
+                db.SaveChanges();
+            }
             Cart cart = db.Carts.Find(id);
             db.Carts.Remove(cart);
             db.SaveChanges();
+            Success(string.Format("Xóa đơn hàng thành công."), true);
             return RedirectToAction("Index");
         }
 

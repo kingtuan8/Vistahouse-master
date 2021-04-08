@@ -1,4 +1,5 @@
-﻿
+﻿@using NhomXingfa.Areas.Quantri.Models
+@model IndexViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
@@ -17,22 +18,22 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-3 col-xs-12 col-sm-6">
-                    <a class="info-tiles tiles-toyo" href="#">
+                    <a class="info-tiles tiles-toyo" href="/Quantri/Products/Index">
                         <div class="tiles-heading">Tổng số sản phẩm</div>
                         <div class="tiles-body-alt">
                             <!--i class="fa fa-bar-chart-o"></i-->
-                            <div class="text-center">854</div>
+                            <div class="text-center">@Model.TongSP</div>
                             <small>Sản phẩm</small>
                         </div>
                         <div class="tiles-footer">more info</div>
                     </a>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
-                    <a class="info-tiles tiles-success" href="#">
+                    <a class="info-tiles tiles-success" href="/Quantri/CustomerContacts/Index">
                         <div class="tiles-heading">KH liên hệ tư vấn</div>
                         <div class="tiles-body-alt">
                             <!--i class="fa fa-money"></i-->
-                            <div class="text-center">22.7</div>
+                            <div class="text-center">@Model.KHContact</div>
                             <small>Đang chờ đợi</small>
                         </div>
                         <div class="tiles-footer">Tới trang quản lý</div>
@@ -43,18 +44,18 @@
                         <div class="tiles-heading">Thành viên</div>
                         <div class="tiles-body-alt">
                             <i class="fa fa-group"></i>
-                            <div class="text-center">109</div>
+                            <div class="text-center">@Model.TongThanhVien</div>
                             <small>new users registered</small>
                         </div>
                         <div class="tiles-footer">manage members</div>
                     </a>
                 </div>
                 <div class="col-md-3 col-xs-12 col-sm-6">
-                    <a class="info-tiles tiles-alizarin" href="#">
+                    <a class="info-tiles tiles-alizarin" href="/Quantri/Carts/Index">
                         <div class="tiles-heading">Đơn hàng</div>
                         <div class="tiles-body-alt">
                             <i class="fa fa-shopping-cart"></i>
-                            <div class="text-center">57</div>
+                            <div class="text-center">@Model.TongDonHang</div>
                             <small>Chưa xử lý</small>
                         </div>
                         <div class="tiles-footer">manage orders</div>
@@ -68,63 +69,59 @@
         <div class="col-md-6">
             <div class="panel panel-indigo">
                 <div class="panel-heading">
-                    <h4>Thành viên mới đăng ký</h4>
-                    <div class="options">
-                        <a href="javascript:;"><i class="fa fa-cog"></i></a>
-                        <a href="javascript:;"><i class="fa fa-wrench"></i></a>
-                        <a href="javascript:;" class="panel-collapse"><i class="fa fa-chevron-down"></i></a>
-                    </div>
+                    <h4>Đơn hàng đang chờ xử lý</h4>
+                    @*<div class="options">
+                            <a href="javascript:;"><i class="fa fa-cog"></i></a>
+                            <a href="javascript:;"><i class="fa fa-wrench"></i></a>
+                            <a href="javascript:;" class="panel-collapse"><i class="fa fa-chevron-down"></i></a>
+                        </div>*@
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table" style="margin-bottom: 0px;">
                             <thead>
                                 <tr>
-                                    <th class="col-xs-1 col-sm-1"><input type="checkbox" id="select-all"></th>
-                                    <th class="col-xs-9 col-sm-3">User ID</th>
-                                    <th class="col-sm-6 hidden-xs">Email Address</th>
+                                    <th class="col-xs-1 col-sm-1">Mã Đơn</th>
+                                    <th class="col-xs-9 col-sm-3">Khách hàng</th>
+                                    <th class="col-sm-6 hidden-xs">Điện thoại</th>
                                     <th class="col-xs-2 col-sm-2">Status</th>
                                 </tr>
                             </thead>
                             <tbody class="selects">
-                                <tr>
-                                    <td><input type="checkbox" class=""></td>
-                                    <td>cranston</td>
-                                    <td class="hidden-xs">cranstonb@gnail.com</td>
-                                    <td><span class="label label-success">Approved</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class=""></td>
-                                    <td>aaron</td>
-                                    <td class="hidden-xs">ppaul@lime.com</td>
-                                    <td><span class="label label-grape">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class=""></td>
-                                    <td>norris</td>
-                                    <td class="hidden-xs">j.norris@gnail.com</td>
-                                    <td><span class="label label-warning">Suspended</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class=""></td>
-                                    <td>gunner</td>
-                                    <td class="hidden-xs">gunner@outluk.com</td>
-                                    <td><span class="label label-danger">Blocked</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class=""></td>
-                                    <td>mrford</td>
-                                    <td class="hidden-xs">fordm@gnail.com</td>
-                                    <td><span class="label label-grape">Pending</span></td>
-                                </tr>
-                                <tr>
-                                    <td><input type="checkbox" class=""></td>
-                                    <td>stewrtt</td>
-                                    <td class="hidden-xs">swttrs@outluk.com</td>
-                                    <td><span class="label label-danger">Blocked</span></td>
-                                </tr>
+                                @foreach (var i in Model.lstCart)
+                                {
+                                    <tr>
+                                        <td>@i.CarCode</td>
+                                        <td>@i.CustomerOrder.CustName</td>
+                                        <td class="hidden-xs">@i.CustPhone</td>
+                                        <td>
+                                            @if (i.StatusOrder == 1)
+                                            {
+                                                <span class="badge badge-success">Mới</span>
+                                            }
+                                            @if (i.StatusOrder == 2)
+                                            {
+                                                <span class="badge badge-info">Đã xác nhận đơn hàng</span>
+                                            }
+                                            @if (i.StatusOrder == 3)
+                                            {
+                                                <span class="badge badge-primary">Đang giao hàng</span>
+                                            }
+                                            @if (i.StatusOrder == 4)
+                                            {
+                                                <span class="badge badge-primary">Hoàn thành</span>
+                                            }
+                                            @if (i.StatusOrder == -1)
+                                            {
+                                                <span class="badge badge-dark">Hủy đơn hàng</span>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+
+
                             </tbody>
-                            
+
                         </table>
                     </div>
                 </div>
@@ -134,7 +131,7 @@
         <div class="col-md-6">
             <div class="panel panel-grape">
                 <div class="panel-heading">
-                    <h4><i class="icon-highlight fa fa-check"></i> To-do List</h4>
+                    <h4><i class="icon-highlight fa fa-check"></i> Khách hàng đợi phản hồi</h4>
                     <!-- <div class="options">
                       <a href="javascript:;"><i class="fa fa-cog"></i></a>
                       <a href="javascript:;"><i class="fa fa-wrench"></i></a>
@@ -143,108 +140,32 @@
                 </div>
                 <div class="panel-body">
                     <ul class="panel-tasks ui-sortable">
-                        <li class="item-danger">
-                            <label>
-                                <i class="fa fa-ellipsis-v icon-dragtask"></i>
-                                <input type="checkbox">
-                                <span class="task-description">Write documentation for theme</span>
-                                <span class="label label-info">6 Days</span>
-                            </label>
-                            <div class="options todooptions">
-                                <div class="btn-group">
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-primary">
-                            <label>
-                                <i class="fa fa-ellipsis-v icon-dragtask"></i>
-                                <input type="checkbox">
-                                <span class="task-description">Compile code</span>
-                                <span class="label label-primary">3 Days</span>
-                            </label>
-                            <div class="options todooptions">
-                                <div class="btn-group">
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-info">
-                            <label>
-                                <i class="fa fa-ellipsis-v icon-dragtask"></i>
-                                <input type="checkbox">
-                                <span class="task-description">Upload files to server</span>
-                                <span class="label label-orange">Tomorrow</span>
-                            </label>
-                            <div class="options todooptions">
-                                <div class="btn-group">
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="item-success">
-                            <label>
-                                <i class="fa fa-ellipsis-v icon-dragtask"></i>
-                                <input type="checkbox">
-                                <span class="task-description">Call client</span>
-                                <span class="label label-danger">Today</span>
-                            </label>
-                            <div class="options todooptions">
-                                <div class="btn-group">
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <label>
-                                <i class="fa fa-ellipsis-v icon-dragtask"></i>
-                                <input type="checkbox">
-                                <span class="task-description">Buy some milk</span>
-                                <span class="label label-danger">Today</span>
-                            </label>
-                            <div class="options todooptions">
-                                <div class="btn-group">
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <label>
-                                <i class="fa fa-ellipsis-v icon-dragtask"></i>
-                                <input type="checkbox">
-                                <span class="task-description">Setup meeting with client</span>
-                                <span class="label label-sky">2 Weeks</span>
-                            </label>
-                            <div class="options todooptions">
-                                <div class="btn-group">
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <label>
-                                <i class="fa fa-ellipsis-v icon-dragtask"></i>
-                                <input type="checkbox">
-                                <span class="task-description">Pay office rent and bills</span>
-                                <span class="label label-sky">3 Weeks</span>
-                            </label>
-                            <div class="options todooptions">
-                                <div class="btn-group">
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
-                                    <button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button>
-                                </div>
-                            </div>
-                        </li>
+                        @foreach (var j in Model.lstCusContact)
+                        {
+                            <li class="item-danger">
+                                <label>
+                                    <i class="fa fa-ellipsis-v icon-dragtask"></i>
+
+                                    <span>@j.CustomerName - @j.CustomerPhone</span><br />
+                                    <span class="task-description">@j.CustomerContent</span>
+                                    <span class="label label-info">
+                                        @j.Created.ToString()
+                                    </span>
+                                </label>
+                                @*<div class="options todooptions">
+                                    <div class="btn-group">
+                                        <button class="btn btn-default btn-xs"><i class="fa fa-check"></i></button>
+                                        <button class="btn btn-default btn-xs"><i class="fa fa-cog"></i></button>
+                                    </div>
+                                </div>*@
+                            </li>
+                        }
+
+                        
 
                     </ul>
-                    <a href="#" class="btn btn-success btn-sm pull-left">Add Tasks</a>
-                    <a href="#" class="btn btn-default-alt btn-sm pull-right">See All Tasks</a>
+                    
+                    <a href="/Quantri/CustomerFeedbacks/Index" class="btn btn-default-alt btn-sm pull-right">See All</a>
                 </div>
             </div>
         </div>

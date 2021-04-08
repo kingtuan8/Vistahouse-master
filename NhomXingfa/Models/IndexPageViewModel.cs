@@ -16,6 +16,7 @@ namespace NhomXingfa.Models
         public Blog OurStory { get; set; }
         public List<CustomerFeedback> lstCustomerFeedback { get; set; }
         public List<Customer> lstCustomerParner { get; set; }
+        public List<PhotoLibraryLst> lstPhotos { get; set; }
         
     }
 

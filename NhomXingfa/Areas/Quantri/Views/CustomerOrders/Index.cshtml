@@ -1,0 +1,65 @@
+﻿@model IEnumerable<NhomXingfa.Areas.Quantri.Models.DataModels.CustomerOrder>
+
+@{
+    ViewBag.Title = "Index";
+    
+}
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="active">Danh sách Khách hàng</li>
+
+    </ol>
+
+    <h1>Danh sách Khách hàng</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+
+            @*<a href="/Quantri/Categories/Create" class="btn btn-success btn-label"><i class="fa fa-plus"></i>Thêm mới</a>*@
+        </div>
+    </div>
+</div>
+
+<div class="container" style="background-color:#ffffff">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustAddress)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustAddress)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

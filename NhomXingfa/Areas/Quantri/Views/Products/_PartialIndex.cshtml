@@ -16,12 +16,12 @@
             <table>
                 <thead>
                     <tr>
-                        
+
                         <th style="width:30px">STT</th>
                         <th>SKU</th>
                         <th style="width:200px">Tên Sản phẩm</th>
-                        <th>Danh Mục SP</th>
-                        
+                        <th style="width:200px">Danh Mục SP</th>
+
                         <th>Hình đại diện</th>
                         <th style="width:60px">Sản phẩm<br /> mới</th>
                         <th style="width:60px">Hiện thị<br />Website</th>
@@ -48,12 +48,13 @@
                                 <a href="/Quantri/Products/Details/@item.ProductID">
                                     @Html.DisplayFor(modelItem => item.ProductName)
                                 </a>
-                                
+
                             </td>
-                            <td>
+                            <td style="width:200px">
                                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
+
                             </td>
-                            
+
                             <td>
                                 <img alt="@item.ProductName" style="height:40px" src="@WebConstants.ImgProductShow/@item.Images" />
                                 @*<img alt="@item.ProductName" style="height:40px" src="http://noithattanthoi.com/datafiles/setone/thumb_12307541712874_4.jpg" />*@
@@ -87,7 +88,15 @@
                                 @Html.DisplayFor(modelItem => item.CountView)
                             </td>
                             <td>
-                                @Convert.ToDateTime(item.Created).ToString(WebConstants.DateFormatVI)
+                                @if (item.Created == null)
+                                {
+                                    <span></span>
+                                }
+                                else
+                                {
+                                    @Convert.ToDateTime(item.Created).ToString(WebConstants.DateFormatVI)
+                                }
+
                             </td>
 
 

@@ -111,6 +111,8 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                 category.Parent = 0;
                 category.TypeCate = WebConstants.CategoryProduct;
                 category.SEOUrlRewrite = Helpers.ConvertToUpperLower(category.CategoryName);
+                if (category.SEOKeywords == null)
+                    category.SEOKeywords = " ";
                 db.Categories.Add(category);
                 db.SaveChanges();
                 Success(string.Format("Thêm mới <b>{0}</b> thành công.", category.CategoryName), true);

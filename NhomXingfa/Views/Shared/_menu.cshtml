@@ -1,0 +1,34 @@
+﻿@using NhomXingfa.Areas.Quantri.Models.DataModels
+@using NhomXingfa.Models
+@model MenuViewModel
+<li class="dropdown">
+    <a href="/san-pham" class="dropbtn">
+        Sản phẩm <i class="glyphicon glyphicon-triangle-bottom" id="menudown"></i>
+    </a>
+    <div class="dropdown-content">
+        @foreach (var i in Model.lstCate)
+        {
+            <a href="/">
+                <i class="glyphicon glyphicon-triangle-right"></i> @i.CategoryName
+            </a>
+        }
+
+    </div>
+</li>
+<li>
+    <a href="/goi-dinh-ki">Gói định kỳ</a>
+</li>
+
+<li>
+    <a href="/tin-tuc">Blogs</a>
+</li>
+<li class="dropdown">
+    <a href="#" class="dropbtn">
+        Về chúng tôi <i class="glyphicon glyphicon-triangle-bottom" id="menudown"></i>
+    </a>
+    <div class="dropdown-content">
+        <a href="/thong-tin-dinh-duong"><i class="glyphicon glyphicon-triangle-right"></i> Thông tin dinh dưỡng</a>
+        <a href="/cau-hoi-thuong-gap"><i class="glyphicon glyphicon-triangle-right"></i> Câu hỏi thường gặp</a>
+        <a href="/chinh-sach-ban-hang"><i class="glyphicon glyphicon-triangle-right"></i> Chính sách bán hàng</a>
+    </div>
+</li>

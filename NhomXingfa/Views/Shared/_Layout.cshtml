@@ -48,9 +48,9 @@
                 <a href="javascript:" class="dropdown">Chào, @User.Identity.Name</a>
                 <a href="~/account/LogOffCust">Thoát</a>
             }
-            <a href="#">
-                <sub>GB</sub>English
-            </a>
+            @*<a href="#">
+                    <sub>GB</sub>English
+                </a>*@
 
         </div>
 
@@ -69,36 +69,10 @@
                 </a>
             </div>
             <div class="navbar-collapse collapse">
-                @*<ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>*@
-                @*@Html.Partial("_LoginPartial")*@
-
+               
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/san-pham">Sản phẩm</a>
-                    </li>
-                    <li>
-                        <a href="/goi-dinh-ki">Gói định kỳ</a>
-                    </li>
-                    @*<li>
-                            <a href="#">Thông tin dinh dưỡng</a>
-                        </li>*@
-                    <li>
-                        <a href="/tin-tuc">Blogs</a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropbtn">
-                            Về chúng tôi <i class="glyphicon glyphicon-triangle-bottom" id="menudown"></i>
-                        </a>
-                        <div class="dropdown-content">
-                            <a href="/thong-tin-dinh-duong"><i class="glyphicon glyphicon-triangle-right"></i> Thông tin dinh dưỡng</a>
-                            <a href="/cau-hoi-thuong-gap"><i class="glyphicon glyphicon-triangle-right"></i> Câu hỏi thường gặp</a>
-                            <a href="/chinh-sach-ban-hang"><i class="glyphicon glyphicon-triangle-right"></i> Chính sách bán hàng</a>
-                        </div>
-                    </li>
+                    @{Html.RenderAction("menuSanPham", "Home");}
+                    
                     <li>
                         <a href="/home/cart">
                             <i class="glyphicon glyphicon-shopping-cart" id="shopicon" style="position:relative;">

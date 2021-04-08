@@ -11,6 +11,7 @@
     @Html.HiddenFor(model => model.IsProduct)
     @Html.HiddenFor(model => model.Created)
     @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.Images)
     <div id="page-heading">
         <ol class="breadcrumb">
             <li><a href="index.html">Trang chủ</a></li>
@@ -119,20 +120,20 @@
                                                             </div>
                                                         </div>
                                                         @*<div class="form-group">
-                @Html.LabelFor(model => model.PhiShip, "Phí Ship", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                                @Html.LabelFor(model => model.PhiShip, "Phí Ship", htmlAttributes: new { @class = "control-label col-md-3" })
 
-                <div class="col-md-3">
+                                                                <div class="col-md-3">
 
-                    <input type="number" id="PhiShip" name="PhiShip" value="@Model.PhiShip" class="form-control" />
-                    @Html.ValidationMessageFor(model => model.PhiShip, "", new { @class = "text-danger" })
-                </div>
-                @Html.LabelFor(model => model.Price, "Giá", htmlAttributes: new { @class = "control-label col-md-3" })
-                <div class="col-md-3">
+                                                                    <input type="number" id="PhiShip" name="PhiShip" value="@Model.PhiShip" class="form-control" />
+                                                                    @Html.ValidationMessageFor(model => model.PhiShip, "", new { @class = "text-danger" })
+                                                                </div>
+                                                                @Html.LabelFor(model => model.Price, "Giá", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                                <div class="col-md-3">
 
-                    <input type="number" id="PriceSale" name="PriceSale" placeholder="0" value="@Model.PriceSale" class="form-control" />
-                    @Html.ValidationMessageFor(model => model.PriceSale, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
+                                                                    <input type="number" id="PriceSale" name="PriceSale" placeholder="0" value="@Model.PriceSale" class="form-control" />
+                                                                    @Html.ValidationMessageFor(model => model.PriceSale, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>*@
                                                     }
                                                     <h4 style="border-bottom:1px solid #808080">Giá Sản phẩm</h4>
 

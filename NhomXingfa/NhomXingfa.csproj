@@ -187,6 +187,7 @@
     <Compile Include="Areas\Quantri\Controllers\CollectionsController.cs" />
     <Compile Include="Areas\Quantri\Controllers\CustomerContactsController.cs" />
     <Compile Include="Areas\Quantri\Controllers\CustomerFeedbacksController.cs" />
+    <Compile Include="Areas\Quantri\Controllers\CustomerOrdersController.cs" />
     <Compile Include="Areas\Quantri\Controllers\CustomersController.cs" />
     <Compile Include="Areas\Quantri\Controllers\HomePageController.cs" />
     <Compile Include="Areas\Quantri\Controllers\PhotoLibraryCategoriesController.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Areas\Quantri\Models\FilesHelper.cs" />
     <Compile Include="Areas\Quantri\Models\FilesHelper2.cs" />
     <Compile Include="Areas\Quantri\Models\ImageHandler.cs" />
+    <Compile Include="Areas\Quantri\Models\IndexViewModel.cs" />
     <Compile Include="Areas\Quantri\Models\JsonFiles.cs" />
     <Compile Include="Areas\Quantri\QuantriAreaRegistration.cs" />
     <Compile Include="Areas\Quantri\Utilities\Alert.cs" />
@@ -258,6 +260,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IndexPageViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\NewsViewModel.cs" />
     <Compile Include="Models\QAViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -891,6 +894,11 @@
     <Content Include="Areas\Quantri\Views\CartHistories\Details.cshtml" />
     <Content Include="Areas\Quantri\Views\CartHistories\Edit.cshtml" />
     <Content Include="Areas\Quantri\Views\CartHistories\Index.cshtml" />
+    <Content Include="Areas\Quantri\Views\CustomerOrders\Create.cshtml" />
+    <Content Include="Areas\Quantri\Views\CustomerOrders\Delete.cshtml" />
+    <Content Include="Areas\Quantri\Views\CustomerOrders\Details.cshtml" />
+    <Content Include="Areas\Quantri\Views\CustomerOrders\Edit.cshtml" />
+    <Content Include="Areas\Quantri\Views\CustomerOrders\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
@@ -1085,6 +1093,7 @@
     <Content Include="Views\Shared\_floatbutton.cshtml" />
     <Content Include="Views\Product\_tintuc.cshtml" />
     <Content Include="Views\Blog\ChuyenMuc.cshtml" />
+    <Content Include="Views\Shared\_menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

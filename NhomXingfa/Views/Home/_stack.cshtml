@@ -1,17 +1,21 @@
-﻿
-
+﻿@using NhomXingfa.Areas.Quantri.Utilities;
+@model List<NhomXingfa.Areas.Quantri.Models.DataModels.PhotoLibraryLst>
 
 <section id="photostack-3" class="photostack">
     <div>
-        <figure>
-            <a href="http://goo.gl/NJ1Dhf" class="photostack-img"><img src="../img/5.jpg" alt="img05" /></a>
-            <figcaption>
-                <h2 class="photostack-title">Speed Racer</h2>
-                <div class="photostack-back">
-                    <p>Here he comes Here comes Speed Racer. He's a demon on wheels. Wouldn't you like to get away? Sometimes you want to go where everybody knows <span>the</span> your name. And they're always glad you came! </p>
-                </div>
-            </figcaption>
-        </figure>
+        @foreach (var i in Model)
+        {
+            <figure>
+                <a href="#" class="photostack-img"><img src="@WebConstants.PhotoLibShow/@i.URLImage" style="height:240px" alt="@i.Title" /></a>
+                <figcaption>
+                    <h2 class="photostack-title">@i.Title</h2>
+                    <div class="photostack-back">
+                        <p> The Vitahouse </p>
+                    </div>
+                </figcaption>
+            </figure>
+        }
+
         <figure>
             <a href="http://goo.gl/fhwlSP" class="photostack-img"><img src="../img/2.jpg" alt="img02" /></a>
             <figcaption>

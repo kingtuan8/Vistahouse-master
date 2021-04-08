@@ -1,146 +1,15 @@
 ﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.Cart
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa đơn hàng";
     Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Cart</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CustomerOrder.CustName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustomerOrder.CustName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CarCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CarCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AddresDelivery)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AddresDelivery)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustPhone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustPhone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeDelivery)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TimeDelivery)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ShipDelivery)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ShipDelivery)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Qty)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Qty)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Total)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VouchersCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VouchersCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VourcerMoney)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VourcerMoney)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalConLai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalConLai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Notes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Notes)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StatusOrder)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StatusOrder)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StyleShip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StyleShip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Created)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Created)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-
-    </dl>
+<h2>Xóa đơn hàng</h2>
+<div class="alert alert-dismissable alert-danger">
+    <strong>Mã đơn hàng: @Model.CarCode</strong> Bạn có chắc chắn xóa nó không?
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+</div>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()

@@ -20,7 +20,9 @@
                         <th style="width:30px">STT</th>
                         <th>SKU#</th>
                         <th style="width:250px">Tên Gói Sản phẩm</th>
-                        @*<th>Danh Mục SP</th>*@
+                        <td style="width:200px">
+                            Chủng loại
+                        </td>
                         
                         <th>Hình đại diện</th>
                         <th style="width:60px">SP<br /> mới</th>
@@ -50,9 +52,10 @@
                                 </a>
                                 
                             </td>
-                            @*<td>
+                            <td style="width:200px">
                                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                            </td>*@
+
+                            </td>
                             
                             <td>
                                 <img alt="@item.ProductName" style="height:40px" src="@WebConstants.ImgProductShow/@item.Images" />
@@ -87,7 +90,14 @@
                                 @Html.DisplayFor(modelItem => item.CountView)
                             </td>
                             <td>
-                                @Convert.ToDateTime(item.Created).ToString(WebConstants.DateFormatVI)
+                                @if (item.Created == null)
+                                {
+                                    <span></span>
+                                }
+                                else
+                                {
+                                    @Convert.ToDateTime(item.Created).ToString(WebConstants.DateFormatVI)
+                                }
                             </td>
 
 

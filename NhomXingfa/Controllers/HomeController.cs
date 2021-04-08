@@ -27,7 +27,7 @@ namespace NhomXingfa.Controllers
             model.OurStory = db.Blogs.Where(b => b.IsActive == true && b.BlogID == 3).FirstOrDefault();
             model.lstCustomerFeedback = db.CustomerFeedbacks.Where(c => c.IsActive == true).OrderBy(c => c.ThuTu).ToList();
             model.lstCustomerParner = db.Customers.Where(a => a.IsActive == true).ToList();
-
+            model.lstPhotos = db.PhotoLibraryLsts.OrderByDescending(a => a.Created).ToList();
             return View(model);
 
             //return Redirect("https://thevitahouse.vn/comming/");
@@ -584,5 +584,15 @@ namespace NhomXingfa.Controllers
             return PartialView("_footer", model);
         }
         #endregion
+
+        public PartialViewResult menuSanPham()
+        {
+            //var model = db.MENUs.Where(q => q.IdCha == 0).OrderBy(o => o.ThuTu);
+
+            MenuViewModel model = new MenuViewModel();
+            model.lstCate = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct && c.IsLe == false).ToList();
+
+            return PartialView("_menu", model);
+        }
     }
 }

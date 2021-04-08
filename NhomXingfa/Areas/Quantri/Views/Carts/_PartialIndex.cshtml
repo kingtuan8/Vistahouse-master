@@ -16,20 +16,20 @@
             <table>
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>
+                        <th style="width:80px"></th>
+                        <th style="width:200px">
                             Tên KH
                         </th>
                         <th>
                             Mã đơn
                         </th>
-                        <th>
+                        <th style="width:400px">
                             Địa chỉ GH
                         </th>
                         <th>
                             Số điện thoại
                         </th>
-                        <th>
+                        <th style="width:150px">
                             Thời gian giao
                         </th>
                         <th>
@@ -76,24 +76,24 @@
                     @foreach (var item in Model)
                     {
                     <tr>
-                        <td>
+                        <td style="width:80px">
                             
                             @Html.ActionLink("Xem", "Details", new { id = item.Id }) |
                             @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
                         </td>
-                        <td>
+                        <td style="width:200px">
                             @Html.DisplayFor(modelItem => item.CustomerOrder.CustName)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CarCode)
                         </td>
-                        <td>
+                        <td style="width:400px">
                             @Html.DisplayFor(modelItem => item.AddresDelivery)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.CustPhone)
                         </td>
-                        <td>
+                        <td style="width:150px">
                             @Html.DisplayFor(modelItem => item.TimeDelivery)
                         </td>
                         <td>

@@ -25,7 +25,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            ViewData["ListCateParent"] = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct).ToList();
+            ViewData["ListCateParent"] = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct && c.IsLe == false).ToList();
             ViewData["ListCate"] = db.Categories.Where(c => c.Parent != 0 && c.TypeCate == WebConstants.CategoryProduct).ToList();
             return View();
         }
@@ -89,7 +89,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         #region Danh sách gói sản phẩm
         public ActionResult GoiSPLst()
         {
-            ViewData["ListCateParent"] = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct).ToList();
+            ViewData["ListCateParent"] = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct && c.IsLe == false).ToList();
             ViewData["ListCate"] = db.Categories.Where(c => c.Parent != 0 && c.TypeCate == WebConstants.CategoryProduct).ToList();
             return View();
         }

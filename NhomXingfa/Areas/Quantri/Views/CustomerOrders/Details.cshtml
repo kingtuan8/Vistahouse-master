@@ -1,0 +1,66 @@
+﻿@model NhomXingfa.Areas.Quantri.Models.DataModels.CustomerOrder
+
+@{
+    ViewBag.Title = "Details";
+
+}
+<div id="page-heading">
+    <ol class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li class="active"> Khách hàng</li>
+
+    </ol>
+
+    <h1>Chi tiết Khách hàng</h1>
+    <div class="options">
+        <div class="btn-toolbar">
+
+            @*<a href="/Quantri/Categories/Create" class="btn btn-success btn-label"><i class="fa fa-plus"></i>Thêm mới</a>*@
+        </div>
+    </div>
+</div>
+
+<div>
+    <h4>CustomerOrder</h4>
+    <hr />
+    <table class="table table-condensed">
+
+        <tbody>
+            <tr>
+                <td>Họ tên KH</td>
+                <td>
+                    <span class="badge badge-info">@Model.CustName</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Số điện thoại</td>
+                <td>
+                    <span class="badge badge-success">@Model.CustPhone</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td>
+                    @Model.CustEmail
+                </td>
+            </tr>
+            <tr>
+                <td>Địa chỉ</td>
+                <td>
+                    @Model.CustAddress
+                </td>
+            </tr>
+            <tr>
+                <td>User</td>
+                <td>
+                    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

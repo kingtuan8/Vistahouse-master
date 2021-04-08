@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<NhomXingfa.Areas.Quantri.Models.DataModels.Cart>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách Đơn hàng";
     Layout = "~/Areas/Quantri/Views/Shared/_Layout.cshtml";
 }
 
@@ -20,6 +20,7 @@
             @*<a href="/Quantri/Products/Create/" class="btn btn-success btn-label"><i class="fa fa-plus"></i>Thêm mới</a>*@
         </div>
     </div>
+    @{ Html.RenderPartial("_Alerts"); }
 </div>
 <div class="container" style="padding:5px">
     <div class="form-group">
