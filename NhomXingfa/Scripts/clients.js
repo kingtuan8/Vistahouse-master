@@ -54,6 +54,26 @@ $(document).ready(function () {
 
     });
 
+    $(document).on("click", ".btnGoiDKStyle", function () {
+
+        var xtype = $(this).attr("xtype");
+
+        var kele = $(this).parent().parent().find(".giashipdk");
+
+        if (xtype == 1) {
+            kele.find(".gia1").show();
+            kele.find(".gia2").hide();
+        }
+        else {
+            kele.find(".gia2").show();
+            kele.find(".gia1").hide();
+        }
+
+        //alert("1");
+
+
+    });
+
     $(document).on("click", "#btnLuuThongTin", function () {
         var hoten = $("#txtHoTen").val().trim();
         var sdt = $("#txtSDT").val().trim();

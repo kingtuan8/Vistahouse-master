@@ -28,7 +28,7 @@
                         @q.ProductName
                     </h2>
                     <div class="giashipdk">
-                        <span id="gia1">
+                        <span class="gia1">
                             <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup></span>
                             @if (q.PricePhanTram != null || q.PricePhanTram > 0)
                             {
@@ -38,8 +38,8 @@
                             }
 
                         </span>
-                        <br />
-                        <span id="gia2">
+                        
+                        <span class="gia2">
                             <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale1)<sup>đ</sup></span>
                             @if (q.PricePhanTram1 != null || q.PricePhanTram1 > 0)
                             {
@@ -51,8 +51,8 @@
                         </span>
                     </div>
                     <div class="buttonPrice">
-                        <button type="button" class="btn btn-warning">Primary</button>
-                        <button type="button" class="btn btn-success">Secondary</button>
+                        <button type="button" class="btn btn-sm btn-warning btnGoiDKStyle" xtype="1">350ml</button>
+                        <button type="button" class="btn btn-sm btn-success btnGoiDKStyle" xtype="2">500ml</button>
                     </div>
                     <div class="descriptdk">
                         @Html.Raw(q.ShortDescription.Replace("<p>", "").Replace("</p>", ""))
@@ -80,7 +80,7 @@
                         @q.ProductName
                     </h2>
                     <div class="giashipdk">
-                        <span id="gia1">
+                        <span class="gia1">
                             <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup></span>
                             @if (q.PricePhanTram != null || q.PricePhanTram > 0)
                             {
@@ -90,8 +90,7 @@
                             }
 
                         </span>
-                        <br />
-                        <span id="gia2">
+                        <span class="gia2">
                             <span class="dkgia">Giá: @String.Format("{0:#,0}", q.PriceSale1)<sup>đ</sup></span>
                             @if (q.PricePhanTram1 != null || q.PricePhanTram1 > 0)
                             {
@@ -102,8 +101,12 @@
                             }
                         </span>
                     </div>
+                    <div class="buttonPrice">
+                        <button type="button" class="btn btn-sm btn-warning btnGoiDKStyle" xtype="1">350ml</button>
+                        <button type="button" class="btn btn-sm btn-success btnGoiDKStyle" xtype="2">500ml</button>
+                    </div>
                     <div class="descriptdk">
-                        @q.ShortDescription
+                        @Html.Raw(q.ShortDescription.Replace("<p>", "").Replace("</p>", ""))
                     </div>
                     <p>
                         <b>
