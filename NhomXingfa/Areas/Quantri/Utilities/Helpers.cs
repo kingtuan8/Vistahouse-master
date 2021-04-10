@@ -159,5 +159,12 @@ namespace NhomXingfa.Areas.Quantri.Utilities
             return data;
         }
 
+        public User GetUserByCusID(int CustID)
+        {
+            
+            User u = db.Users.Find(CustID);
+            return u;
+        }
+
     }
 }
