@@ -148,7 +148,7 @@ namespace NhomXingfa.Areas.Quantri.Utilities
 
             string data = "";
 
-            foreach(var q in x)
+            foreach(var q in x) 
             {
                 data += q.Permission.PermissionName + ", ";
             }
