@@ -41,5 +41,13 @@ namespace NhomXingfa.Controllers
             var model = db.Products.Where(q => q.IsProduct == true).Take(12).ToList();
             return View(model);
         }
+
+        public ActionResult SanPham(int? id)
+        {
+            var model = new SanPhamDonDM();
+            model.spdon = db.Products.Where(q => q.IsProduct == true && q.CategoryID == id).Take(12).ToList();
+            model.Title = db.Categories.Find(id).CategoryName;
+            return View(model);
+        }
     }
 }

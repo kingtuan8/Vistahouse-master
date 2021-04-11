@@ -1,0 +1,19 @@
+﻿@model NhomXingfa.Models.SanPhamDonDM
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<style type="text/css">
+    #titlespcon {
+        display: none;
+    }
+</style>
+
+<div class="text-center fontstyle" id="titlespcon2">
+    <h2>
+        @Model.Title
+    </h2>
+</div>
+
+@Html.Partial("~/Views/Home/_sanphamdon.cshtml", Model.spdon)
+

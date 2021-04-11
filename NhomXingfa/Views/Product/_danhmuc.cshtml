@@ -1,0 +1,58 @@
+﻿@model List<NhomXingfa.Areas.Quantri.Models.DataModels.Product>
+
+
+<div class="row" id="goispdon">
+
+    @foreach (var q in Model)
+    {
+        <div class="col-md-3">
+            <div class="divtongd">
+
+                <a href="/product/detail/@q.ProductID">
+                    <div class="imggoidon">
+                        <img src="~/Photos/Products/@q.Images" />
+                        <img src="~/images/hover.png" class="imghover" />
+                    </div>
+
+                    <div class="namegoidon">
+                        <div class="namegoidon1">
+                            @q.ProductName
+                        </div>
+                        <div class="namegoidon2">
+                            Protein Tốt Lắm
+                        </div>
+                    </div>
+                </a>
+
+                <div class="goidonbutton">
+                    <input type="button" class="btn btn-lg btn-info btnAddCartDon" productid="@q.ProductID" value="thêm vào giỏ hàng" />
+                </div>
+                <div class="goidonthetich">
+                    <div class="thetich1">
+                        @String.Format("{0:#,0}", q.PriceSale)<sup>VNĐ</sup> - 350ml
+                    </div>
+                    <div class="thetich2">
+                        @String.Format("{0:#,0}", q.PriceSale1)<sup>VNĐ</sup> - 500ml
+                    </div>
+                    <div class="goidonxemthem">
+                        <a href="/product/detail/@q.ProductID">
+                            <span>Xem Thêm ></span>
+                        </a>
+                    </div>
+                </div>
+                @if (q.IsSale == true)
+                {
+                    <span class="iconbanchay fontstyle">
+                        <img src="~/images/banchay.png" /> <br />
+                        Bán chạy nhất
+                    </span>
+                }
+            </div>
+        </div>
+    }
+
+
+
+
+
+</div>

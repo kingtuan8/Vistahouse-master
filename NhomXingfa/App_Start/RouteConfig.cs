@@ -32,6 +32,12 @@ namespace NhomXingfa
              );
 
             routes.MapRoute(
+                 name: "product5",
+                 url: "danh-muc/{url}-{id}",
+                 defaults: new { controller = "product", action = "sanpham", id = UrlParameter.Optional }
+             );
+
+            routes.MapRoute(
                 name: "chitiet",
                 url: "san-pham-ct/{url}-{id}",
                 defaults: new { controller = "product", action = "detail", id = UrlParameter.Optional }

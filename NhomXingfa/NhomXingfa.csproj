@@ -1094,6 +1094,8 @@
     <Content Include="Views\Product\_tintuc.cshtml" />
     <Content Include="Views\Blog\ChuyenMuc.cshtml" />
     <Content Include="Views\Shared\_menu.cshtml" />
+    <Content Include="Views\Product\SanPham.cshtml" />
+    <Content Include="Views\Product\_danhmuc.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
