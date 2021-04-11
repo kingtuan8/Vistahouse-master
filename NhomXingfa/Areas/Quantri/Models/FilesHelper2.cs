@@ -12,7 +12,7 @@ namespace NhomXingfa.Areas.Quantri.Models
 
     public class FilesHelper2
     {
-        string DeleteURL = null;
+        string DeleteURL = null; 
         string DeleteType = null;
         string StorageRoot = null;
         string UrlBase = null;
