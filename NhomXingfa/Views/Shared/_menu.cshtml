@@ -8,7 +8,7 @@
     <div class="dropdown-content">
         @foreach (var i in Model.lstCate)
         {
-            <a href="/">
+            <a href="/danh-muc/@i.SEOUrlRewrite-@i.CategoryID">
                 <i class="glyphicon glyphicon-triangle-right"></i> @i.CategoryName
             </a>
         }

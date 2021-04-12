@@ -62,6 +62,12 @@ namespace NhomXingfa.Models
         public List<CustomerFeedback> lstCustomerFeed { get; set; }
     }
 
+    public class SanPhamDonDM
+    {
+        public List<Product> spdon { get; set; }
+        public string Title { get; set; }
+    }
+
     //Danny
     public class FooterViewModel
     {
