@@ -134,7 +134,7 @@ namespace NhomXingfa.Areas.Quantri.Utilities
 
             if(u == null)
             {
-                return 1;
+                return 1; 
             }
             else
             {
