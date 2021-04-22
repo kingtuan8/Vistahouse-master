@@ -37,6 +37,7 @@
                 <div class="tab-pane active" id="home1">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     @Html.HiddenFor(model => model.CategoryID)
+                    @Html.HiddenFor(model => model.IsLe)
                     <div class="form-horizontal">
 
                         <div class="form-group">
@@ -123,7 +124,7 @@
                                             <option selected value="false">Sản phẩm gói</option>
                                         </select>
                                     }
-                                    
+
                                     @Html.ValidationMessageFor(model => model.IsLe, "", new { @class = "text-danger" })
                                 </div>
                             </div>

@@ -14,6 +14,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My Juice</title>
+    @RenderSection("metatags", false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -26,12 +27,12 @@
 <body>
     <div class="toptran container-fluid">
 
-        <div class="col-md-2">
-            &nbsp;
+        <div class="col-md-2" style="font-weight:bold; color:#ffffff">
+            Hotline: 0898 77 22 70
         </div>
         <div class="col-md-10">
             <h4>
-                Hotline: 1900 63 67 91 - 0909 09 60 60 - 0909 44 80 60
+                @*Hotline: 0898 77 22 70*@
             </h4>
             <a href="~/home/orderdetail">
                 <i class="glyphicon glyphicon-list"></i>

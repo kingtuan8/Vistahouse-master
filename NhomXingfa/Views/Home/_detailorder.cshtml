@@ -197,9 +197,11 @@
                     <th>
                         Tên sản phẩm
                     </th>
+                    <th>Số chai/số ngày</th>
                     <th>
                         Số lượng
                     </th>
+
                     <th>
                         Giá
                     </th>
@@ -211,20 +213,35 @@
             <tbody>
                 @foreach (var q in Model.cartDetails)
                 {
-                    <tr>
-                        <td>
-                            @q.Product.ProductName
-                        </td>
-                        <td>
-                            @q.Qty
-                        </td>
-                        <td>
-                            @String.Format("{0:#,0}", q.Price)<sup>VNĐ</sup>
-                        </td>
-                        <td>
-                            @String.Format("{0:#,0}", q.Price * q.Qty)<sup>VNĐ</sup>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>
+                        @q.Product.ProductName
+                        @if (q.Product.IsProduct == true)
+                        {
+                            <span class="label label-info">Lẻ</span>
+                        }
+                        else
+                        {
+                            <span class="label label-info">Gói</span>
+                        }
+                    </td>
+                    <td>
+                        @if (q.Product.IsProduct == false)
+                        {
+                            <span>@q.Product.SoLuongChai / @q.Product.SoNgayShip</span>
+                        }
+                    </td>
+                    <td>
+                        @q.Qty
+                    </td>
+
+                    <td>
+                        @String.Format("{0:#,0}", q.Price)<sup>VNĐ</sup>
+                    </td>
+                    <td>
+                        @String.Format("{0:#,0}", q.Price * q.Qty)<sup>VNĐ</sup>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>

@@ -30,7 +30,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h3 style="background: #85c744; padding: 5px 10px; color: #fff; border-radius: 1px; margin: 20px 0 20px; text-align:center">Đơn hàng - @Model.cart.CarCode</h3>
-                
+
             </div>
         </div>
         <div class="row">
@@ -59,7 +59,7 @@
                                 <td>Thông tin người nhận</td>
                                 <td>@Model.cust.CustName (@Model.cart.CustPhone)</td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -103,10 +103,16 @@
                                 <td>@Convert.ToDateTime(Model.cart.TimeDelivery).ToShortDateString()</td>
                             </tr>
                             <tr>
-                                <td>Phí vận chuyển</td>
-                                <td><a href="#">@Model.cart.ShipDelivery</a></td>
+                                <td>
+                                    Phí vận chuyển
+                                    <a href="javascript:" data-toggle="modal" data-target="#AddShipFee"><i class="fa fa-pencil"></i></a>
+                                </td>
+                                <td><a href="#">
+    
+                                @String.Format("{0:0,0}", Model.cart.ShipDelivery)
+                            </a></td>
                             </tr>
-                            
+
                         </tbody>
                     </table>
                 </div>
@@ -197,7 +203,7 @@
         </div>
     </div>
 </div>
-
+@*Add status*@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -210,24 +216,56 @@
             @using (Html.BeginForm("AddHistory", "CartHistories", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-        <div class="modal-body">
+                <div class="modal-body">
 
-            <input type="hidden" id="CartID" name="CartID" value="@Model.cart.Id" />
-            <div class="form-group">
-                <label for="message-text" class="col-form-label">Status:</label>
-                <select id="drCartStatus" name="drCartStatus" class="form-control">
-                    <option value="2">Đã xác nhận đơn hàng</option>
-                    <option value="3">Tình trạng giao hàng</option>
-                    <option value="4">Hoàn thành</option>
-                    <option value="-1">Hủy đơn hàng</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="ContentHistory" name="ContentHistory"></textarea>
-            </div>
+                    <input type="hidden" id="CartID" name="CartID" value="@Model.cart.Id" />
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Status:</label>
+                        <select id="drCartStatus" name="drCartStatus" class="form-control">
+                            <option value="2">Đã xác nhận đơn hàng</option>
+                            <option value="3">Tình trạng giao hàng</option>
+                            <option value="4">Hoàn thành</option>
+                            <option value="-1">Hủy đơn hàng</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="ContentHistory" name="ContentHistory"></textarea>
+                    </div>
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Lưu</button>
+                </div>
+            }
         </div>
+    </div>
+</div>
+
+@*Add Fee Ship Delivery*@
+<div class="modal fade" id="AddShipFee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Cập nhật tiền Ship: <span style="color:#ff6a00"> @Model.cart.CarCode</span></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @using (Html.BeginForm("AddShipFee", "Carts", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+
+                    <input type="hidden" id="CartID" name="CartID" value="@Model.cart.Id" />
+                   
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Phí Ship:</label>
+                        <textarea class="form-control" id="ShipDelivery" name="ShipDelivery"></textarea>
+                    </div>
+
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Lưu</button>

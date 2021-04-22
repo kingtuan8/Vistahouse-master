@@ -17,11 +17,20 @@ namespace NhomXingfa.Controllers
             return View();
         }
 
-        public ActionResult GoiSanPham()
+        public ActionResult GoiSanPham(int? id)
         {
             var model = new GoiDinhKyViewModel();
-            model.products = db.Products.Where(q => q.IsProduct == false).ToList();
-            model.lstQAs= db.Q_A.Where(a => a.IsActive == true).OrderBy(a => a.ThuTu).ToList();
+            if (id == null || id == 0)
+            {
+                model.products = db.Products.Where(q => q.IsProduct == false).ToList();
+            }
+            else
+            {
+                model.products = db.Products.Where(q => q.IsProduct == false && q.CategoryID == id).ToList();
+            }
+
+
+            model.lstQAs = db.Q_A.Where(a => a.IsActive == true).OrderBy(a => a.ThuTu).ToList();
             model.lstCustomerFeed = db.CustomerFeedbacks.Where(c => c.IsActive == true).OrderBy(c => c.ThuTu).ToList();
             return View(model);
         }

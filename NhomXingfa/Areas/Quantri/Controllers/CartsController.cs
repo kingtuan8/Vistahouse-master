@@ -206,6 +206,25 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddShipFee(FormCollection f)
+        {
+            int carid = Convert.ToInt32(f["CartID"]);
+            var cart = db.Carts.Find(carid);
+            cart.ShipDelivery = Convert.ToDecimal(f["ShipDelivery"]);
+            db.Entry(cart).State = EntityState.Modified;
+            db.SaveChanges();
+
+            CartHistory h = new CartHistory();
+            h.CartID = carid;
+            h.TimeHistory = DateTime.Now;
+            h.ContentHistory = "Cập nhật phí giao hàng";
+            h.UserLogin = db.Users.FirstOrDefault(q => q.UserName == User.Identity.Name).UserID;
+            db.CartHistories.Add(h);
+            db.SaveChanges();
+
+            return Redirect(Request.UrlReferrer.PathAndQuery);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

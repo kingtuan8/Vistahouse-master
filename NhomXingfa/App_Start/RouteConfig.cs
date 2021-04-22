@@ -13,11 +13,11 @@ namespace NhomXingfa
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                 name: "product",
-                 url: "goi-dinh-ki",
-                 defaults: new { controller = "Product", action = "GoiSanPham", id = UrlParameter.Optional }
-             );
+            //routes.MapRoute(
+            //     name: "product",
+            //     url: "goi-dinh-ki",
+            //     defaults: new { controller = "Product", action = "GoiSanPham", id = UrlParameter.Optional }
+            // );
 
             routes.MapRoute(
                 name: "product4",
@@ -36,6 +36,12 @@ namespace NhomXingfa
                  url: "danh-muc/{url}-{id}",
                  defaults: new { controller = "product", action = "sanpham", id = UrlParameter.Optional }
              );
+
+            routes.MapRoute(
+                name: "product",
+                url: "goi-dinh-ki/{url}-{id}",
+                defaults: new { controller = "product", action = "GoiSanPham", id = UrlParameter.Optional }
+            );
 
             routes.MapRoute(
                 name: "chitiet",

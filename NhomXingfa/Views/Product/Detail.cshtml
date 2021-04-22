@@ -31,18 +31,24 @@
         </ul>
     </div>
     <div class="col-md-6">
-        <h5>Gói Thải độc - Giảm cân</h5>
+        <h5>@Model.product.Category1.CategoryName</h5>
         <h2 class="fontstyle">@Model.product.ProductName</h2>
         <div class="ratingx">
 
         </div>
+
         <div class="spdscription">
-            @*@if (Model.product.IsProduct == false)
+            @if (Model.product.IsProduct == false)
             {
-                <span>Giá gói: @String.Format("{0:#,0}", Model.product.PriceSale)<sup>đ</sup> </span><br />
-                <span>Phí ship: @String.Format("{0:#,0}", Model.product.PhiShip)<sup>đ</sup>/ @Model.product.SoNgayShip ngày</span> <br />
-                <span>Số chai: @Model.product.SoLuongChai chai (Sinh tố: size 500ml, Nước ép: size 350ml) </span><br />
-            }*@
+                <span style="font-size:10pt; font-weight:bold">Số chai: @Model.product.SoLuongChai chai </span><br />
+                <span style="font-size:10pt; font-weight:bold">Số Ngày: @Model.product.SoNgayShip Ngày </span><br />
+            }
+            @*@if (Model.product.IsProduct == false)
+        {
+            <span>Giá gói: @String.Format("{0:#,0}", Model.product.PriceSale)<sup>đ</sup> </span><br />
+            <span>Phí ship: @String.Format("{0:#,0}", Model.product.PhiShip)<sup>đ</sup>/ @Model.product.SoNgayShip ngày</span> <br />
+            <span>Số chai: @Model.product.SoLuongChai chai (Sinh tố: size 500ml, Nước ép: size 350ml) </span><br />
+        }*@
             @Html.Raw(Model.product.ShortDescription)
         </div>
 
@@ -61,7 +67,7 @@
                 <div class="radio">
                     <label>
                         <input type="radio" name="optionsRadios" value="2">
-                        <span class="t1">550ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale1)<sup>VNĐ</sup></span>
+                        <span class="t1">500ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale1)<sup>VNĐ</sup></span>
                     </label>
                 </div>
             </div>

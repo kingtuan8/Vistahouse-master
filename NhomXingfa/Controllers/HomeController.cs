@@ -154,7 +154,7 @@ namespace NhomXingfa.Controllers
                 var cart = GetCart();
 
                 Cart c = new Cart();
-                c.CarCode = "";
+                c.CarCode = o.Id.ToString()+"-"+DateTime.Now.ToString("yyMMddhhmmss");
                 c.CustID = o.Id;
                 c.AddresDelivery = dchi;
                 c.CustPhone = sdt;
@@ -257,7 +257,7 @@ namespace NhomXingfa.Controllers
                     var cart = GetCart();
 
                     Cart c = new Cart();
-                    c.CarCode = "";
+                    c.CarCode = userid.ToString() + "-" + DateTime.Now.ToString("yyMMddhhmmss");
                     c.CustID = custid;
                     c.AddresDelivery = dchi;
                     c.CustPhone = sdt;
@@ -590,7 +590,7 @@ namespace NhomXingfa.Controllers
             //var model = db.MENUs.Where(q => q.IdCha == 0).OrderBy(o => o.ThuTu);
 
             MenuViewModel model = new MenuViewModel();
-            model.lstCate = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct && c.IsLe == false).ToList();
+            model.lstCate = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct).ToList();
 
             return PartialView("_menu", model);
         }
