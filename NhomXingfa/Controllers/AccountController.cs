@@ -9,6 +9,7 @@ using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using NhomXingfa.Areas.Quantri.Models.DataModels;
 using NhomXingfa.Areas.Quantri.Utilities;
 using NhomXingfa.Models;
 
@@ -19,6 +20,8 @@ namespace NhomXingfa.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+
+        private XingFaEntities db = new XingFaEntities();
 
         public AccountController()
         {
@@ -406,7 +409,8 @@ namespace NhomXingfa.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Manage");
+                //return RedirectToAction("Index", "Manage");
+                return RedirectToAction("Index", "Home");
             }
 
             if (ModelState.IsValid)
@@ -421,6 +425,17 @@ namespace NhomXingfa.Controllers
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+
+                    var userx = new User();
+                    userx.UserName = model.Email;
+                    userx.HashPass = "forgoogle";
+                    userx.Active = true;
+                    userx.Created = DateTime.Now;
+
+                    db.Users.Add(userx);
+
+                    db.SaveChanges();
+
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
