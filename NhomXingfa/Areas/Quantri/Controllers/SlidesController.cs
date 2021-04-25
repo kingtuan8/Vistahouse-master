@@ -11,6 +11,7 @@ using NhomXingfa.Areas.Quantri.Models.DataModels;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
+    [AuthorizeCustom(Roles = "Admin")]
     public class SlidesController : Controller
     {
         private XingFaEntities db = new XingFaEntities();

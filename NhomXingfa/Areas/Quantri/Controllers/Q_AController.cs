@@ -10,6 +10,7 @@ using NhomXingfa.Areas.Quantri.Models.DataModels;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
+    [AuthorizeCustom(Roles = "Admin")]
     public class Q_AController : Controller
     {
         private XingFaEntities db = new XingFaEntities();

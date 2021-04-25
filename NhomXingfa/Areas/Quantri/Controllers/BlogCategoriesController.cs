@@ -11,6 +11,7 @@ using System.Data.Entity;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
+    [AuthorizeCustom(Roles = "Admin")]
     public class BlogCategoriesController : BaseController
     {
         private XingFaEntities db = new XingFaEntities();

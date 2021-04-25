@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NhomXingfa.Areas.Quantri.Models.DataModels;
+using NhomXingfa.Areas.Quantri.Utilities;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
+    [AuthorizeCustom(Roles = "Admin")]
     public class CustomerOrdersController : Controller
     {
         private XingFaEntities db = new XingFaEntities();

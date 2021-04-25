@@ -12,6 +12,7 @@ using PagedList;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
+    [AuthorizeCustom(Roles = "Admin")]
     public class CollectionsController : BaseController
     {
         private XingFaEntities db = new XingFaEntities();
