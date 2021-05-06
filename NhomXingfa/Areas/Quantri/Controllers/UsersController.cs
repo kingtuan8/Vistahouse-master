@@ -12,7 +12,7 @@ using NhomXingfa.Models;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
-    [AuthorizeCustom]
+    [AuthorizeCustom (Roles = "Admin")]
     public class UsersController : Controller
     {
         private XingFaEntities db = new XingFaEntities();
@@ -175,7 +175,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         public PartialViewResult GetUpdateRole(int? roleid)
         {
             var model = DataUpdateRole(roleid);
-            return PartialView("_updaterole", model);
+            return PartialView("~/Areas/Quantri/Views/Users/_updaterole.cshtml", model);
         }
 
         public PartialViewResult SetNewPermission(int? permissionid, int? roleid)
@@ -188,7 +188,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
 
             db.SaveChanges();
 
-            return PartialView("_updaterole", DataUpdateRole(roleid));
+            return PartialView("~/Areas/Quantri/Views/Users/_updaterole.cshtml", DataUpdateRole(roleid));
         }
 
         public PartialViewResult SetDeleteRole(int? roleid, int? permissionid)
@@ -198,7 +198,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
 
             db.SaveChanges();
 
-            return PartialView("_updaterole", DataUpdateRole(roleid));
+            return PartialView("~/Areas/Quantri/Views/Users/_updaterole.cshtml", DataUpdateRole(roleid));
         }
 
 
@@ -254,7 +254,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         public PartialViewResult GetRoleUser(int? userid)
         {
             var model = DataRoleUser(userid);
-            return PartialView("_roleuser", model);
+            return PartialView("~/Areas/Quantri/Views/Users/_roleuser.cshtml", model);
         }
 
         public PartialViewResult SetNewRole(int? userid, int? roleid)
@@ -268,7 +268,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             db.SaveChanges();
 
             var model = DataRoleUser(userid);
-            return PartialView("_roleuser", model);
+            return PartialView("~/Areas/Quantri/Views/Users/_roleuser.cshtml", model);
         }
 
         public PartialViewResult SetDeleteRoleUser(int? roleid, int? userid)
@@ -279,7 +279,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             db.SaveChanges();
 
             var model = DataRoleUser(userid);
-            return PartialView("_roleuser", model);
+            return PartialView("~/Areas/Quantri/Views/Users/_roleuser.cshtml", model);
         }
 
         public ActionResult ChangePass(int? userid, string password)

@@ -55,8 +55,8 @@ namespace NhomXingfa
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-              appId: "501550580008785",
-              appSecret: "a506b7d15bfe24da2f65fb8472a43491");
+              appId: "277844970600355",
+              appSecret: "e98926f5327bfea2e6a52ffcef879c83");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {

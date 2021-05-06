@@ -197,7 +197,7 @@ $(document).ready(function () {
                     $.ajax({
                         url: '/home/AddCartData',
                         contentType: 'application/html; charset=utf-8',
-                        data: {  },
+                        data: {},
                         type: 'GET',
                         headers: { 'Access-Control-Allow-Origin': '*' },
                         //cache: false,

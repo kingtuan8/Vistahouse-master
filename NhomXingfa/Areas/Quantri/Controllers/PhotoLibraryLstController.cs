@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
+    [AuthorizeCustom(Roles = "Admin")]
     public class PhotoLibraryLstController : Controller
     {
         FilesHelper2 h;

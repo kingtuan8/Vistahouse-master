@@ -7,6 +7,7 @@ using NhomXingfa.Areas.Quantri.Utilities;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
+    [AuthorizeCustom(Roles = "Admin")]
     public class BaseController : Controller
     {
         public void Success(string message, bool dismissable = false)

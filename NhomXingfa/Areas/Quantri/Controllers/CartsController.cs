@@ -9,9 +9,11 @@ using System.Web.Mvc;
 using NhomXingfa.Areas.Quantri.Models.DataModels;
 using NhomXingfa.Areas.Quantri.Models;
 using PagedList;
+using NhomXingfa.Areas.Quantri.Utilities;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
+    [AuthorizeCustom(Roles = "Admin")]
     public class CartsController : BaseController
     {
         private XingFaEntities db = new XingFaEntities();

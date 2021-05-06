@@ -1,5 +1,6 @@
 ﻿using NhomXingfa.Areas.Quantri.Models;
 using NhomXingfa.Areas.Quantri.Models.DataModels;
+using NhomXingfa.Areas.Quantri.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
-    
+    [AuthorizeCustom(Roles = "Admin")]
     public class ProductImageController : Controller
     {
         //WNKEntities db = new WNKEntities();
