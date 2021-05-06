@@ -613,6 +613,7 @@
     <Content Include="images\kh2.63e24508.jpg" />
     <Content Include="images\kh3.c8cf21f7.jpg" />
     <Content Include="images\la.jpg" />
+    <Content Include="images\maker.png" />
     <Content Include="images\Message-icon.png" />
     <Content Include="images\ny.jpg" />
     <Content Include="images\our-story-home-cover.jpg" />
@@ -1096,6 +1097,8 @@
     <Content Include="Views\Shared\_menu.cshtml" />
     <Content Include="Views\Product\SanPham.cshtml" />
     <Content Include="Views\Product\_danhmuc.cshtml" />
+    <Content Include="Scripts\moment.min.js.map" />
+    <Content Include="Scripts\moment-with-locales.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

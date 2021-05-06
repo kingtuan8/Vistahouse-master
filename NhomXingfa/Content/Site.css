@@ -51,12 +51,12 @@ blockquote {
     /*z-index: 99999;*/
     width: 100%;
 }
-    .toptran .col-md-10
+    .toptran .col-md-12
     {
         color:#fff;  
-        text-align:right;
+        /*text-align:right;*/
     }
-    .toptran .col-md-10 h4 {
+    .toptran .col-md-12 h4 {
         font-size:14px;
         font-weight:bold;
         margin-bottom:0px;
@@ -64,13 +64,17 @@ blockquote {
         display:inline-block;
         padding-right:62px;
     }
-        .toptran .col-md-10 a
+        .toptran .col-md-12 a
         {
             font-size:14px;
             color:#fff;
             padding-right:22px;
         }
-            .toptran .col-md-10 a:hover
+        .toptran .col-md-12 a:last-child
+        {
+            padding-right:2px;
+        }
+            .toptran .col-md-12 a:hover
             {
                 color:#efefef;
                 text-decoration:none;
