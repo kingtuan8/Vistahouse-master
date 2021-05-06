@@ -47,7 +47,7 @@ namespace NhomXingfa.Controllers
 
         public ActionResult SanPhamDon()
         {
-            var model = db.Products.Where(q => q.IsProduct == true).Take(12).ToList();
+            var model = db.Products.Where(q => q.IsProduct == true).OrderByDescending(a=>a.ProductID).ToList();
             return View(model);
         }
 

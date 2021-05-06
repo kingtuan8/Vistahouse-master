@@ -57,6 +57,12 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         [StringLength(100)]
         public string ImagesThumb { get; set; }
 
+        [StringLength(100)]
+        public string Images1 { get; set; }
+
+        [StringLength(100)]
+        public string ImagesThumb1 { get; set; }
+
         [StringLength(400)]
         public string ShortDescription { get; set; }
 

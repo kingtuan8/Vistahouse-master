@@ -38,7 +38,11 @@
                             @q.ProductName
                         </h4>
                         <h4 class="goiname2">
-                            14 Ngày - 4 Chai  / 1 Ngày
+                            @{ 
+                                var sl = q.SoLuongChai / q.SoNgayShip;
+                            }
+                            @q.SoNgayShip Ngày - @sl Chai/Ngày 
+
                         </h4>
                     </a>
                     <div class="buttondathanggoi">
@@ -46,10 +50,10 @@
                     </div>
                     <div class="actionhover">
                         <div class="giagoi">
-                            <span style="color:#f1ee5a">Giá:</span> @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup>
+                            <span style="color: #124f27">Giá:</span> @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup>
                         </div>
                         <div class="giaship">
-                            Ship: <span>0<sup>đ</sup></span><span class="shipdagiam">@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
+                            Giá gốc: <span class="shipdagiam">@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
                         </div>
                         <div class="xemthem">
                             <a href="/product/detail/@q.ProductID">

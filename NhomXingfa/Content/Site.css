@@ -1267,12 +1267,12 @@ i.goldstar
     /*font-size:15px;*/
     padding-bottom:8px;
 }
-    .thetichgia .radio span.t1
-    {
-        color:#888;
+    .thetichgia .radio span.t1 {
+        color: #084f1f;
+        font-size:11pt;
     }
     .thetichgia .radio span.t2 {
-        color: #333;
+        color: #f3b302;
         font-weight:bold;
         width:100px;
         text-align:right;

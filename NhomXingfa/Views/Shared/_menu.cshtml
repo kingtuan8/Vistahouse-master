@@ -6,12 +6,12 @@
         Sản phẩm <i class="glyphicon glyphicon-triangle-bottom" id="menudown"></i>
     </a>
     <div class="dropdown-content">
-        @foreach (var i in Model.lstCate.Where(a=>a.IsLe == true))
-        {
+        @foreach (var i in Model.lstCate.Where(a=>a.IsLe == true).OrderBy(a => a.Sort))
+                    {
             <a href="/danh-muc/@i.SEOUrlRewrite-@i.CategoryID">
                 <i class="glyphicon glyphicon-triangle-right"></i> @i.CategoryName
             </a>
-        }
+            }
 
     </div>
 </li>
@@ -20,7 +20,7 @@
         Gói định kỳ<i class="glyphicon glyphicon-triangle-bottom" id="menudown"></i>
     </a>
     <div class="dropdown-content">
-        @foreach (var i in Model.lstCate.Where(a => a.IsLe == false))
+        @foreach (var i in Model.lstCate.Where(a => a.IsLe == false).OrderBy(a=>a.Sort))
         {
             <a href="/goi-dinh-ki/@i.SEOUrlRewrite-@i.CategoryID">
                 <i class="glyphicon glyphicon-triangle-right"></i> @i.CategoryName

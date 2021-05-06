@@ -184,9 +184,63 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
+            var lstprod = db.Products.Where(a => a.CategoryID == id).ToList();
+            if(lstprod ==null)
+            {
+                db.Categories.Remove(category);
+                db.SaveChanges();
+            }  
+            else
+            {
+                foreach(var i in lstprod)
+                {
+                    Product product = db.Products.Find(i.ProductID);
+                   
+                    var prodImage = db.ProductImages.Where(a => a.ProductID == i.ProductID).ToList();
+                    var prodGroup = db.ProductGroups.Where(a => a.ProductID == i.ProductID).ToList();
+                    var prodCart = db.CartDetails.Where(a => a.ProductID == i.ProductID).ToList();
+                    if (prodImage == null && prodGroup == null && prodCart == null)
+                    {
+
+                        db.Products.Remove(product);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                    else if (prodGroup != null)
+                    {
+                        foreach (var j in prodGroup)
+                        {
+                            ProductGroup proGro = db.ProductGroups.Find(j.ProductGroupID);
+                            db.ProductGroups.Remove(proGro);
+                        }
+                    }
+                    else if (prodCart != null)
+                    {
+                        foreach (var k in prodCart)
+                        {
+                            CartDetail cdetail = db.CartDetails.Find(k.Id);
+                            Cart c = db.Carts.Find(cdetail.CarID);
+                            db.Carts.Remove(c);
+                            db.CartDetails.Remove(cdetail);
+                        }
+                    }
+                    else
+                    {
+                        foreach (var l in prodImage)
+                        {
+                            ProductImage prImage = db.ProductImages.Find(l.ImageID);
+                            db.ProductImages.Remove(prImage);
+                        }
+
+                    }
+                    db.Products.Remove(product);
+                    db.SaveChanges();
+                }    
+            }    
             db.Categories.Remove(category);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            Danger(string.Format(" Đã xóa thành công.", ""), true);
+            return RedirectToAction("Index", "Categories");
         }
 
         protected override void Dispose(bool disposing)

@@ -2,6 +2,11 @@
 @{
     ViewBag.Title = "Thực Đơn Lẻ";
 }
+@section metatags
+{
+    <meta name="keywords" content="sinh tố rau sạch, nước ép rau sạch, sinh tố giảm cân, nước ép giảm cân, thực đơn giảm cân, thực đơn giảm cân trong 7 ngày, thực đơn giảm cân trong 10 ngày, thực đơn giảm cân cho nam, thực đơn giảm cân cho sinh viên, thực đơn giảm cân 1 tuần 2kg, thực đơn giảm cân trong 7 ngày, thực đơn giảm cân trong 1 ngày, thực đơn giảm cân ngon miệng" />
+    <meta name="description" content="The Vitahouse - Sinh tố, nước ép xay tươi mỗi ngày từ rau củ quả sạch chuẩn VietGap" />
+}
 <style type="text/css">
     #titlespcon {
         display: none;
@@ -10,17 +15,17 @@
 
 <div class="text-center fontstyle" id="titlespcon2">
     <h2>
-        Thải độc - Giảm cân hiệu quả
+        Tất cả sản phẩm
     </h2>
 </div>
 
 @Html.Partial("~/Views/Home/_sanphamdon.cshtml")
 
-<div class="text-center fontstyle" id="titlespcon3">
+@*<div class="text-center fontstyle" id="titlespcon3">
     <h2>
         Thải độc - Giảm cân - Dễ uống
     </h2>
 </div>
 
-@Html.Partial("~/Views/Home/_sanphamdon.cshtml")
+@Html.Partial("~/Views/Home/_sanphamdon.cshtml")*@
 

@@ -12,6 +12,7 @@
     @Html.HiddenFor(model => model.Created)
     @Html.HiddenFor(model => model.CreatedBy)
     @Html.HiddenFor(model => model.Images)
+    @Html.HiddenFor(model => model.Images1)
     <div id="page-heading">
         <ol class="breadcrumb">
             <li><a href="index.html">Trang chủ</a></li>
@@ -287,7 +288,20 @@
                                                             @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Images1, "Hình hiệu ứng", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-9">
+                                                            <img src="@WebConstants.ImgProductShow/@Model.Images1" alt="" class="pull-left" style="margin: 0 20px 20px 0; height:100px">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        @Html.LabelFor(model => model.Images1, "Chọn hình khác", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-9">
+                                                            <input type="file" id="HinhAnh1" name="HinhAnh1" />
 
+                                                            @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
 
                                                     <h4 style="border-bottom:1px solid #808080">SEO Google</h4>
                                                     <div class="form-group">
@@ -309,7 +323,7 @@
                                                     <div class="form-group">
                                                         @Html.LabelFor(model => model.SEOMetadescription, "Meta Description", htmlAttributes: new { @class = "control-label col-md-3" })
                                                         <div class="col-md-9">
-                                                            <textarea class="form-control" id="SEOMetadescription" name="SEOMetadescription" rows="4"></textarea>
+                                                            <textarea class="form-control" id="SEOMetadescription" name="SEOMetadescription" rows="4">@Model.SEOMetadescription</textarea>
                                                             @Html.ValidationMessageFor(model => model.SEOMetadescription, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>

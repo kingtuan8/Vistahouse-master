@@ -17,7 +17,7 @@ namespace NhomXingfa.Controllers
         {
             NewsViewModel model = new NewsViewModel();
 
-            model.categories = db.Categories.Where(q => q.IsActive == true && q.TypeCate == WebConstants.CategoryNews).ToList();
+            model.categories = db.Categories.Where(q => q.IsActive == true && q.TypeCate == WebConstants.CategoryNews).OrderBy(a=>a.Sort).ToList();
 
             model.category = db.Categories.Find(id);
 

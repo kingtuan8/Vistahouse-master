@@ -199,6 +199,7 @@ $(document).ready(function () {
                         contentType: 'application/html; charset=utf-8',
                         data: {  },
                         type: 'GET',
+                        headers: { 'Access-Control-Allow-Origin': '*' },
                         //cache: false,
                         dataType: 'html'
                         , success: function (data) {

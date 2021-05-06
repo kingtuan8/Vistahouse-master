@@ -10,7 +10,7 @@ using NhomXingfa.Areas.Quantri.Models.DataModels;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
-    public class CustomerOrdersController : Controller
+    public class CustomerOrdersController : BaseController
     {
         private XingFaEntities db = new XingFaEntities();
 
@@ -110,9 +110,24 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             CustomerOrder customerOrder = db.CustomerOrders.Find(id);
-            db.CustomerOrders.Remove(customerOrder);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var lstus = db.Users.Where(a => a.CustomerID == id && a.CustomerID != null).ToList();
+            if (lstus == null)
+            {
+                db.CustomerOrders.Remove(customerOrder);
+                db.SaveChanges();
+            }
+            else
+            {
+                foreach (var i in lstus)
+                {
+                    User u = db.Users.Find(i.UserID);
+                    db.Users.Remove(u);
+                }
+                db.CustomerOrders.Remove(customerOrder);
+                db.SaveChanges();
+            }
+            Danger(string.Format(" Đã xóa thành công.", ""), true);
+            return RedirectToAction("Index", "CustomerOrders");
         }
 
         protected override void Dispose(bool disposing)

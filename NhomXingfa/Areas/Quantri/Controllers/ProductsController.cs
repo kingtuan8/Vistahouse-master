@@ -184,12 +184,13 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "ProductID,ProductCode,ProductName,IsProduct,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
-            "CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription," +
+            "CategoryIDParent,CategoryID,Images,ImagesThumb,Images1, ImagesThumb1, ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription," +
             "SoLuongChai,PhiShip,SoNgayShip")] Product product,
-                                   HttpPostedFileBase HinhAnh)
+                                   HttpPostedFileBase HinhAnh, HttpPostedFileBase HinhAnh1)
         {
             if (ModelState.IsValid)
             {
+
                 var allowedExtensions = new[] {
             ".Jpg", ".png", ".jpg", "jpeg"
                 };
@@ -206,9 +207,9 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                     {
                         string name = Path.GetFileNameWithoutExtension(fileName); //getting file name without extension  
                         string myfile = name + "_" + DateTime.Now.Millisecond + ext; //appending the name with id  
-                                                                                     // store the file inside ~/project folder(Img)  
+                        var path = Path.Combine(Server.MapPath(WebConstants.ImgProduct), myfile);                                              // store the file inside ~/project folder(Img)  
 
-                        var path = Path.Combine(Server.MapPath(WebConstants.ImgProduct), myfile);
+                        //var path = Path.Combine(Server.MapPath(WebConstants.ImgProduct), myfile);
                         //var dir = Directory.CreateDirectory(path);
                         //HinhAnh.SaveAs(Path.Combine(path, myfile));
 
@@ -222,10 +223,39 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                         ViewBag.message = "Please choose only Image file";
                     }
                 }
+                if (HinhAnh1 == null)
+                {
+                    product.Images1 = "NoImage.png";
+                }
+                else
+                {
+                    var fileName1 = Path.GetFileName(HinhAnh1.FileName);
+
+                    var ext = Path.GetExtension(HinhAnh1.FileName);
+                    if (allowedExtensions.Contains(ext)) //check what type of extension  
+                    {
+                        string name = Path.GetFileNameWithoutExtension(fileName1); //getting file name without extension  
+                        string myfile = name + "_" + DateTime.Now.Millisecond + ext; //appending the name with id  
+                                                                                     // store the file inside ~/project folder(Img)  
+                        var path = Path.Combine(Server.MapPath(WebConstants.ImgProduct), myfile);
+
+                        //var dir = Directory.CreateDirectory(path);
+                        //HinhAnh.SaveAs(Path.Combine(path, myfile));
+
+                        product.Images1 = myfile;
+                        HinhAnh1.SaveAs(path);
+
+                        product.ImagesThumb1 = CreateThumb(myfile);
+                    }
+                    else
+                    {
+                        ViewBag.message = "Please choose only Image file";
+                    }
+                }
                 product.CategoryIDParent = product.CategoryID;
                 //product.IsProduct = true;
 
-                
+
                 product.SEOUrlRewrite = Helpers.ConvertToUpperLower(product.ProductName);
                 product.Created = DateTime.Now;
                 product.CreatedBy = db.Users.FirstOrDefault(q => q.UserName == User.Identity.Name).UserID;
@@ -253,7 +283,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Products.Find(id);
-            
+
             if (product == null)
             {
                 return HttpNotFound();
@@ -272,9 +302,9 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "ProductID,ProductCode,ProductName,IsProduct,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
-            "CategoryIDParent,CategoryID,Images,ImagesThumb,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription," +
+            "CategoryIDParent,CategoryID,Images,ImagesThumb,Images1,ImagesThumb1,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription," +
             "SoLuongChai,PhiShip,SoNgayShip")] Product product,
-            HttpPostedFileBase HinhAnh)
+            HttpPostedFileBase HinhAnh, HttpPostedFileBase HinhAnh1)
         {
             if (ModelState.IsValid)
             {
@@ -320,11 +350,49 @@ namespace NhomXingfa.Areas.Quantri.Controllers
                     }
                 }
 
+                if (HinhAnh1 == null)
+                {
+                    product.Images1 = product.Images1;
+                }
+                else
+                {
+
+                    //Xóa hình ảnh đã tồn tại, trừ hình ảnh mặc định.
+                    if (product.Images1 != "NoImage.png")
+                    {
+                        string fullPath = Request.MapPath(WebConstants.ImgProduct + "/" + product.Images1);
+                        if (System.IO.File.Exists(fullPath))
+                        {
+                            System.IO.File.Delete(fullPath);
+                        }
+                    }
+
+                    var fileName = Path.GetFileName(HinhAnh1.FileName);
+                    var ext = Path.GetExtension(HinhAnh1.FileName);
+                    if (allowedExtensions.Contains(ext)) //check what type of extension  
+                    {
+                        string name = Path.GetFileNameWithoutExtension(fileName); //getting file name without extension  
+                        string myfile = name + "_" + DateTime.Now.Millisecond + ext; //appending the name with id  
+                                                                                     // store the file inside ~/project folder(Img)  
+
+                        var path = Path.Combine(Server.MapPath(WebConstants.ImgProduct), myfile);
+                        //var dir = Directory.CreateDirectory(path);
+                        //HinhAnh.SaveAs(Path.Combine(path, myfile));
+
+                        product.Images1 = myfile;
+                        HinhAnh1.SaveAs(path);
+                    }
+                    else
+                    {
+                        ViewBag.message = "Please choose only Image file";
+                    }
+                }
+
                 //product.IsProduct = true;
-               
+
                 product.Created = product.Created;
                 product.CreatedBy = product.CreatedBy;
-                
+
                 product.SEOUrlRewrite = Helpers.ConvertToUpperLower(product.ProductName);
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
@@ -360,28 +428,60 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var prodImage = db.ProductImages.Where(a => a.ProductID == id).ToList();
-            if(prodImage==null)
+            Product product = db.Products.Find(id);
+            string isGoi = "0";
+            if (product.IsProduct == true)
             {
-                Product product = db.Products.Find(id);
+                isGoi = "1";
+            }
+
+
+            var prodImage = db.ProductImages.Where(a => a.ProductID == id).ToList();
+            var prodGroup = db.ProductGroups.Where(a => a.ProductID == id).ToList();
+            var prodCart = db.CartDetails.Where(a => a.ProductID == id).ToList();
+            if (prodImage == null && prodGroup == null && prodCart == null)
+            {
+
                 db.Products.Remove(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }    
+            }
+            else if (prodGroup != null)
+            {
+                foreach (var i in prodGroup)
+                {
+                    ProductGroup proGro = db.ProductGroups.Find(i.ProductGroupID);
+                    db.ProductGroups.Remove(proGro);
+                }
+            }
+            else if (prodCart != null)
+            {
+                foreach (var i in prodCart)
+                {
+                    CartDetail cdetail = db.CartDetails.Find(i.Id);
+                    Cart c = db.Carts.Find(cdetail.CarID);
+                    db.Carts.Remove(c);
+                    db.CartDetails.Remove(cdetail);
+                }
+            }
             else
             {
-                foreach(var i in prodImage)
+                foreach (var i in prodImage)
                 {
                     ProductImage prImage = db.ProductImages.Find(i.ImageID);
                     db.ProductImages.Remove(prImage);
                 }
-                Product product = db.Products.Find(id);
-                db.Products.Remove(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }    
 
-            
+            }
+
+            db.Products.Remove(product);
+            db.SaveChanges();
+            Success(string.Format(" <b>{0}</b> thành công.", product.ProductName), true);
+            if (isGoi == "1")
+                return RedirectToAction("Index", "Products");
+            else
+                return RedirectToAction("GoiSPLst", "Products");
+
         }
 
         protected override void Dispose(bool disposing)

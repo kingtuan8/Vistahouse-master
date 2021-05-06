@@ -32,7 +32,7 @@
     </div>
     <div class="col-md-6">
         <h5>@Model.product.Category1.CategoryName</h5>
-        <h2 class="fontstyle">@Model.product.ProductName</h2>
+        <h2 class="fontstyle" style="margin-top: 1px; margin-bottom: 1px;">@Model.product.ProductName</h2>
         <div class="ratingx">
 
         </div>
@@ -40,37 +40,47 @@
         <div class="spdscription">
             @if (Model.product.IsProduct == false)
             {
-                <span style="font-size:10pt; font-weight:bold">Số chai: @Model.product.SoLuongChai chai </span><br />
-                <span style="font-size:10pt; font-weight:bold">Số Ngày: @Model.product.SoNgayShip Ngày </span><br />
+                <span style="font-size:12pt; font-weight:bold">Số lương @Model.product.SoLuongChai chai / </span>
+                <span style="font-size:12pt; font-weight:bold">@Model.product.SoNgayShip Ngày </span>
             }
             @*@if (Model.product.IsProduct == false)
-        {
-            <span>Giá gói: @String.Format("{0:#,0}", Model.product.PriceSale)<sup>đ</sup> </span><br />
-            <span>Phí ship: @String.Format("{0:#,0}", Model.product.PhiShip)<sup>đ</sup>/ @Model.product.SoNgayShip ngày</span> <br />
-            <span>Số chai: @Model.product.SoLuongChai chai (Sinh tố: size 500ml, Nước ép: size 350ml) </span><br />
-        }*@
+                {
+                    <span>Giá gói: @String.Format("{0:#,0}", Model.product.PriceSale)<sup>đ</sup> </span><br />
+                    <span>Phí ship: @String.Format("{0:#,0}", Model.product.PhiShip)<sup>đ</sup>/ @Model.product.SoNgayShip ngày</span> <br />
+                    <span>Số chai: @Model.product.SoLuongChai chai (Sinh tố: size 500ml, Nước ép: size 350ml) </span><br />
+                }*@
             @Html.Raw(Model.product.ShortDescription)
         </div>
 
         @*@if (Model.product.IsProduct == true)
-        {*@
+            {*@
 
-            <div class="thetichgia">
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="optionsRadios" value="1" id="pricesaleso1">
-                        <span class="t1">350ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale)<sup>VNĐ</sup>
-                        
-                        </span>
-                    </label>
-                </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="optionsRadios" value="2">
-                        <span class="t1">500ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale1)<sup>VNĐ</sup></span>
-                    </label>
-                </div>
+        <div class="thetichgia">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" value="1" id="pricesaleso1">
+                    <span class="t1">@Model.product.Capacity ml</span> <span>:</span> <span class="t2">
+                        @String.Format("{0:#,0}", Model.product.PriceSale)đ
+
+                    </span>
+                    @if (Model.product.PricePhanTram != 0 || Model.product.PricePhanTram != null)
+                    {
+                <span style="color: #084f1f"> -Giá Gốc </span><span class="shipdagiam" style="text-decoration:line-through">@String.Format("{0:#,0}", Model.product.Price)</span>
+                    }
+
+                </label>
             </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" value="2">
+                    <span class="t1">@Model.product.Capacity1 ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale1)đ</span>
+                    @if (Model.product.PricePhanTram1 != 0 || Model.product.PricePhanTram1 !=null)
+                    {
+                        <span style="color: #084f1f"> - Giá Gốc </span> <span class="shipdagiam" style="text-decoration:line-through">@String.Format("{0:#,0}", Model.product.Price1)</span>
+                    }
+                </label>
+            </div>
+        </div>
         @*}*@
 
         <input type="hidden" id="hdCateSpDon" value="1" />
