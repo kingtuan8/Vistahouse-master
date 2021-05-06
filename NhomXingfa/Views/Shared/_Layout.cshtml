@@ -30,11 +30,22 @@
         @*<div class="col-md-2" style="font-weight:bold; color:#ffffff">
             Hotline: 0898 77 22 70
         </div>*@
-        <div class="col-md-10">
-            <h4 style=" font-size: 14px; font-weight: bold; margin-bottom: 0px; margin-top: 5px; display: inline-block; padding-right: 62px;">
-                Hotline: 0898 77 22 70
+        <div class="col-md-12" style="padding-right:0px;">
+
+
+
+            <h4 style=" font-size: 14px; font-weight: bold; margin-bottom: 0px; margin-top: 5px; display: inline-block; padding-right: 12px;">
+
+                <span style="padding-right:99px;">
+                    <span style="color:#ffd800;"><i class="glyphicon glyphicon-map-marker"></i></span>
+                    72 Dương Đình Hội, Phước Long B, Quận 9, TPHCM
+                </span>
+
+                <span>
+                    Hotline: 0898 77 22 70
+                </span>
             </h4>
-            <div style="float:right">
+            <div style="float:right; padding-top:3px;">
                 <a href="~/home/orderdetail">
                     <i class="glyphicon glyphicon-list"></i>
                     Quản lý Đơn Hàng
@@ -49,10 +60,7 @@
                 {
                     <a href="javascript:" class="dropdown">Chào, @User.Identity.Name</a>
                     <a href="~/account/LogOffCust">Thoát</a>
-                }
-                @*<a href="#">
-            <sub>GB</sub>English
-        </a>*@
+                }              
             </div>
         </div>
 
@@ -75,7 +83,7 @@
             </div>
             <div class="navbar-collapse collapse">
                
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right" style="padding-right:30px;">
                     @{Html.RenderAction("menuSanPham", "Home");}
                     
                     <li>
