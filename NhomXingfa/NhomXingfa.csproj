@@ -900,6 +900,7 @@
     <Content Include="Areas\Quantri\Views\CustomerOrders\Details.cshtml" />
     <Content Include="Areas\Quantri\Views\CustomerOrders\Edit.cshtml" />
     <Content Include="Areas\Quantri\Views\CustomerOrders\Index.cshtml" />
+    <Content Include="fonts\UTM God%27s WordR.ttf" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap-datetimepicker.js" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />

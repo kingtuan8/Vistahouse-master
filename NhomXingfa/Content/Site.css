@@ -99,9 +99,16 @@ blockquote {
     src: url("../fonts/SVN-Larch-Shaded.otf");
 }
 
+@font-face {
+    font-family: "UTMGodWord";
+    src: url("../fonts/UTM God's WordR.ttf");
+}
+
 .fontstyle {
     font-family: 'SVN-LarchShaded';
 }
+
+
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
@@ -355,7 +362,7 @@ textarea {
     bottom: 12px;
     right: 12px;
     font-style: italic;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     width: 80px;
     line-height: 28px;
@@ -371,7 +378,8 @@ textarea {
             background: linear-gradient(to right top,#ebbc5f,#eccf87,#eed791,#dbc364,#cfb925);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size:30px;
+            font-size:24px;
+
         }
 #listgoidinhky .col-md-3 .divtong {
     /*display: block;*/
@@ -390,22 +398,24 @@ textarea {
 #listgoidinhky .col-md-3 h4.goiname1 {
     text-align: center;
     line-height: 26px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     padding: 4px 15px;
     margin-top: 3px;
     margin-bottom: 3px;
-    height:55px;
+    height: 55px;
+    font-family: 'Quicksand', sans-serif;
 }
-    #listgoidinhky .col-md-3 h4.goiname2 {
-        font-weight: bold;
-        color: #124f27;
-        font-size:20px;
-        text-align:center;
-        padding-bottom:8px;
-        margin-top:3px;
-        margin-bottom:3px;
-    }
+#listgoidinhky .col-md-3 h4.goiname2 {
+    font-weight: bold;
+    color: #124f27;
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 8px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    font-family: "UTMGodWord";
+}
     #listgoidinhky .col-md-3 .buttondathanggoi
     {
         text-align:center;
@@ -426,13 +436,13 @@ textarea {
             }
 #listgoidinhky .col-md-3 .giagoi {
     text-align: center;
-    font-size: 20px;
+    font-size: 17px;
     color: #124f27;
     padding-bottom:4px;
 }
 #listgoidinhky .col-md-3 .giaship {
     text-align: center;
-    font-size: 20px;
+    font-size: 17px;
     color: #124f27;
     padding-bottom: 8px;
 }
