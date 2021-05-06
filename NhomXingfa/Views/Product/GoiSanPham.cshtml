@@ -57,11 +57,7 @@
                     <div class="descriptdk">
                         @Html.Raw(q.ShortDescription.Replace("<p>", "").Replace("</p>", ""))
                     </div>
-                    <p>
-                        <b>
-                            Sinh tố dung tích 500ml và nước ép dung tích 350ml!
-                        </b>
-                    </p>
+                    
                     <p>
                         <a href="/product/detail/@q.ProductID">
                             Xem chi tiết
@@ -120,7 +116,7 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    <img src="~/images/1.27f2e41e.jpg" />
+                    <img src="~/Photos/Products/@q.Images" />
                 </div>
             </div>
         }

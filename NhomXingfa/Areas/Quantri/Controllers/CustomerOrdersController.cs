@@ -11,7 +11,7 @@ using NhomXingfa.Areas.Quantri.Utilities;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
-    public class CustomerOrdersController : Controller
+    public class CustomerOrdersController : BaseController
     {
         private XingFaEntities db = new XingFaEntities();
 

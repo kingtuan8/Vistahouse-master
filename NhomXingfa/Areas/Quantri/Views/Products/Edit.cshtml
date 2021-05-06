@@ -204,9 +204,17 @@
                                                         <div class="col-md-3">
                                                             <div class="checkbox">
                                                                 <select class="form-control" id="IsSale" name="IsSale">
+                                                                    @if (Model.IsSale == true)
+                                                                    {
+                                                                        <option selected value="true">Có</option>
+                                                                        <option value="false">Không</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="true">Có</option>
+                                                                        <option selected value="false">Không</option>
+                                                                    }
 
-                                                                    <option selected value="true">Có</option>
-                                                                    <option value="false">Không</option>
                                                                 </select>
                                                                 @Html.ValidationMessageFor(model => model.IsSale, "", new { @class = "text-danger" })
                                                             </div>
@@ -215,9 +223,17 @@
                                                         <div class="col-md-3">
                                                             <div class="checkbox">
                                                                 <select class="form-control" id="IsNew" name="IsNew">
+                                                                    @if (Model.IsNew == true)
+                                                                    {
+                                                                        <option selected value="true">Có</option>
+                                                                        <option value="false">Không</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="true">Có</option>
+                                                                        <option selected value="false">Không</option>
+                                                                    }
 
-                                                                    <option selected value="true">Có</option>
-                                                                    <option value="false">Không</option>
                                                                 </select>
                                                                 @Html.ValidationMessageFor(model => model.IsNew, "", new { @class = "text-danger" })
                                                             </div>
@@ -230,9 +246,17 @@
                                                         <div class="col-md-3">
                                                             <div class="checkbox">
                                                                 <select class="form-control" id="InStock" name="InStock">
+                                                                    @if (Model.InStock == true)
+                                                                    {
+                                                                        <option selected value="true">Còn hàng</option>
+                                                                        <option value="false">Tạm hết hàng</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="true">Còn hàng</option>
+                                                                        <option selected value="false">Tạm hết hàng</option>
+                                                                    }
 
-                                                                    <option selected value="true">Còn hàng</option>
-                                                                    <option value="false">Tạm hết hàng</option>
                                                                 </select>
                                                                 @Html.ValidationMessageFor(model => model.InStock, "", new { @class = "text-danger" })
                                                             </div>
@@ -241,8 +265,16 @@
                                                         <div class="col-md-3">
                                                             <div class="checkbox">
                                                                 <select class="form-control" id="IsActive" name="IsActive">
-                                                                    <option selected value="true">Hiện thị</option>
-                                                                    <option value="false">Ẩn</option>
+                                                                    @if (Model.IsActive == true)
+                                                                    {
+                                                                        <option selected value="true">Hiện thị</option>
+                                                                        <option value="false">Ẩn</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option value="true">Hiện thị</option>
+                                                                        <option selected value="false">Ẩn</option>
+                                                                    }
                                                                 </select>
                                                                 @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
                                                             </div>
@@ -253,11 +285,47 @@
 
                                                         <div class="col-md-3">
                                                             <select class="form-control" id="Rating" name="Rating">
-                                                                <option value="5">5</option>
-                                                                <option value="4">4</option>
-                                                                <option selected value="3">3</option>
-                                                                <option value="2">2</option>
-                                                                <option value="1">1</option>
+                                                                @if (Model.Rating == 5)
+                                                                {
+                                                                    <option selected value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                }
+                                                                @if (Model.Rating == 4)
+                                                                {
+                                                                    <option value="5">5</option>
+                                                                    <option selected value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                }
+                                                                @if (Model.Rating == 3)
+                                                                {
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option selected value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                }
+                                                                @if (Model.Rating == 2)
+                                                                {
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option selected value="2">2</option>
+                                                                    <option value="1">1</option>
+                                                                }
+                                                                @if (Model.Rating == 1 || Model.Rating == 0 || Model.Rating == null)
+                                                                {
+                                                                    <option value="5">5</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="2">2</option>
+                                                                    <option selected value="1">1</option>
+                                                                }
+
                                                             </select>
                                                             @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
                                                         </div>

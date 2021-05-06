@@ -37,10 +37,10 @@
                 <input type="text" id="txtTieuDe" name="txtTieuDe" class="form-control txtSearch" placeholder="Nhập tên...">
             </div>
 
-            <div class="col-xs-2">
+            <div class="col-xs-2" style="display:none">
                 Danh Mục Con<br />
 
-                <select class="form-control drChange" id="CategoryID" name="CategoryID">
+                <select class="form-control drChange" id="CategoryID" name="CategoryID" >
                     <option value="">--Tất cả--</option>
 
                     @foreach (var i in (List<NhomXingfa.Areas.Quantri.Models.DataModels.Category>)ViewData["ListCate"])

@@ -8,27 +8,24 @@
 <div class="row" id="detailsp">
 
     <div class="col-md-6">
-        <ul class="detailslider">
-            @foreach (var q in Model.images)
-            {
-                <li>
-                    <img src="~/Photos/Products/@q.URLImage">
-                    @*<span>@q.Title</span>*@
-                </li>
-            }
-            @*<li><img src="~/images/900-x-603-2.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
-                <li><img src="~/images/1438480.jpg" alt="Montréal, QC, Canada" data-large-src="/images/1438480.jpg"></li>
-                <li>
-                    <img src="~/images/chicago.jpg">
-                    <span>Shanghai, China</span>
-                </li>
-                <li>
-                    <a href="http://www.nyc.gov" target="_blank">
-                        <img src="~/images/kh2.63e24508.jpg">
-                        <span>New York, NY, USA</span>
-                    </a>
-                </li>*@
-        </ul>
+        @if (Model.images.Count == 0)
+        {
+            <img src="~/Photos/Products/@Model.product.Images" style="width:440px; padding-left:140px">
+        }
+        else
+        {
+            <ul class="detailslider">
+                @foreach (var q in Model.images)
+                {
+                    <li>
+                        <img src="~/Photos/Products/@q.URLImage">
+                        @*<span>@q.Title</span>*@
+                    </li>
+                }
+
+            </ul>
+        }
+
     </div>
     <div class="col-md-6">
         <h5>@Model.product.Category1.CategoryName</h5>
@@ -65,7 +62,7 @@
                     </span>
                     @if (Model.product.PricePhanTram != 0 || Model.product.PricePhanTram != null)
                     {
-                <span style="color: #084f1f"> -Giá Gốc </span><span class="shipdagiam" style="text-decoration:line-through">@String.Format("{0:#,0}", Model.product.Price)</span>
+                <span style="color: #084f1f"> - Giá Gốc </span><span class="shipdagiam" style="text-decoration:line-through">@String.Format("{0:#,0}", Model.product.Price)</span>
                     }
 
                 </label>

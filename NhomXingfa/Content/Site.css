@@ -840,8 +840,8 @@ i.goldstar
     color: #084f1f;
     font-size: 50px;
     line-height: 76px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     /*margin-bottom:50px;*/
 }
 #listgoipagedinhky
@@ -1070,7 +1070,7 @@ i.goldstar
         }
 #dtsldh
 {
-    padding-top:12px;
+    padding-top:2px;
 }
 #dtsldh input[type="text"]
 {
@@ -1118,12 +1118,12 @@ i.goldstar
     font-size:15px;
 }
 #detailsp {
-    margin-top: 22px;
+    margin-top: 0px;
     /*min-height: 500px;*/
     padding-top: 10px;
     padding-left:12px;
     background-color: #eaf1e1;
-    margin-bottom:22px;
+    margin-bottom:0px;
 }
 #detailsp .col-md-6 h5 {
     font-weight: bold;
@@ -1269,7 +1269,7 @@ i.goldstar
 }
     .thetichgia .radio span.t1 {
         color: #084f1f;
-        font-size:11pt;
+        font-size:12pt;
     }
     .thetichgia .radio span.t2 {
         color: #f3b302;
