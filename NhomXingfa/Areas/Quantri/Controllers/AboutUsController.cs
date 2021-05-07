@@ -39,7 +39,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             }
             ViewBag.PageSize = pageSize;
 
-            var lstprod = db.Blogs.Where(b => b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more).OrderBy(b=>b.Sort).ToList();
+            var lstprod = db.Blogs.Where(b => b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more).ToList();
 
 
 
@@ -62,7 +62,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             }
             ViewBag.SEOKeywords = SEOKeywords;
 
-            lstprod = lstprod.OrderBy(s => s.Created).ToList();
+            lstprod = lstprod.OrderBy(b => b.Sort).ToList();
             ViewBag.STT = pageNumber * pageSize - pageSize + 1;
             int count = lstprod.ToList().Count();
             ViewBag.TotalRow = count;

@@ -202,6 +202,14 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
+                .Property(e => e.Images1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.ImagesThumb1)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
                 .Property(e => e.SEOUrlRewrite)
                 .IsUnicode(false);
 
