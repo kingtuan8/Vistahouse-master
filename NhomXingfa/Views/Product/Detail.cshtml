@@ -62,7 +62,7 @@
                     </span>
                     @if (Model.product.PricePhanTram != 0 || Model.product.PricePhanTram != null)
                     {
-                <span style="color: #084f1f"> - Giá Gốc </span><span class="shipdagiam" style="text-decoration:line-through">@String.Format("{0:#,0}", Model.product.Price)</span>
+                <span style="color: #084f1f"> - Giá Gốc </span><span class="shipdagiam" style="text-decoration:line-through; text-decoration-color:#000;">@String.Format("{0:#,0}", Model.product.Price)</span>
                     }
 
                 </label>
@@ -73,7 +73,7 @@
                     <span class="t1">@Model.product.Capacity1 ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale1)đ</span>
                     @if (Model.product.PricePhanTram1 != 0 || Model.product.PricePhanTram1 !=null)
                     {
-                        <span style="color: #084f1f"> - Giá Gốc </span> <span class="shipdagiam" style="text-decoration:line-through">@String.Format("{0:#,0}", Model.product.Price1)</span>
+                        <span style="color: #084f1f"> - Giá Gốc </span> <span class="shipdagiam" style="text-decoration:line-through;text-decoration-color:#000;">@String.Format("{0:#,0}", Model.product.Price1)</span>
                     }
                 </label>
             </div>

@@ -374,13 +374,13 @@ textarea {
     vertical-align: middle;
     padding-top: 10px;
 }
-        #listgoidinhky .col-md-3 .toppin span.slchai .numberchai {
-            background: linear-gradient(to right top,#ebbc5f,#eccf87,#eed791,#dbc364,#cfb925);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size:24px;
-
-        }
+    #listgoidinhky .col-md-3 .toppin span.slchai .numberchai {
+        background: linear-gradient(to right top,#ebbc5f,#eccf87,#eed791,#dbc364,#cfb925);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 24px;
+        font-family: 'SVN-LarchShaded';
+    }
 #listgoidinhky .col-md-3 .divtong {
     /*display: block;*/
     text-decoration: none;
@@ -906,7 +906,7 @@ i.goldstar
     }
 
     #listgoipagedinhky .goidinhky .col-md-6 .giashipdk {
-        font-size: 20px;
+        font-size: 18px;
         color: #261b1b;
     }
         #listgoipagedinhky .goidinhky .col-md-6 .giashipdk .dkgia {
