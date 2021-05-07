@@ -378,8 +378,9 @@ textarea {
         background: linear-gradient(to right top,#ebbc5f,#eccf87,#eed791,#dbc364,#cfb925);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        font-size: 24px;
+        font-size: 27px;
         font-family: 'SVN-LarchShaded';
+        padding-right: 6px;
     }
 #listgoidinhky .col-md-3 .divtong {
     /*display: block;*/
