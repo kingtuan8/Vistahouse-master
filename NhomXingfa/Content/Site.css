@@ -449,6 +449,7 @@ textarea {
     #listgoidinhky .col-md-3 .giaship .shipdagiam {
         color: #124f27;
         text-decoration: line-through;
+        text-decoration-color:#000;
         padding-left: 8px;
     }
 #listgoidinhky .col-md-3 .divtong:hover .giagoi {
