@@ -62,7 +62,7 @@
                     </span>
                     @if (Model.product.PricePhanTram != 0 || Model.product.PricePhanTram != null)
                     {
-                <span style="color: #084f1f"> - Giá Gốc </span><span class="shipdagiam" style="text-decoration:line-through; text-decoration-color:#000;">@String.Format("{0:#,0}", Model.product.Price)</span>
+                        <span style="color: #084f1f"> - Giá Gốc </span><span class="shipdagiam" style="text-decoration:line-through; text-decoration-color:#000;">@String.Format("{0:#,0}", Model.product.Price)</span>
                     }
 
                 </label>
@@ -71,7 +71,7 @@
                 <label>
                     <input type="radio" name="optionsRadios" value="2">
                     <span class="t1">@Model.product.Capacity1 ml</span> <span>:</span> <span class="t2">@String.Format("{0:#,0}", Model.product.PriceSale1)đ</span>
-                    @if (Model.product.PricePhanTram1 != 0 || Model.product.PricePhanTram1 !=null)
+                    @if (Model.product.PricePhanTram1 != 0 || Model.product.PricePhanTram1 != null)
                     {
                         <span style="color: #084f1f"> - Giá Gốc </span> <span class="shipdagiam" style="text-decoration:line-through;text-decoration-color:#000;">@String.Format("{0:#,0}", Model.product.Price1)</span>
                     }
@@ -120,7 +120,67 @@
 @Html.Partial("~/Views/Home/_box.cshtml")
 
 
-@Html.Partial("~/Views/Home/_sanphamdon.cshtml", Model.products)
+<div class="text-center fontstyle" id="titlespcon">
+    <h2>
+        @Model.CategoryTitle
+    </h2>
+</div>
+
+<div class="row" id="goispdon">
+
+    @foreach (var q in Model.products)
+    {
+        <div class="col-md-3">
+            <div class="divtongd">
+
+                <a href="/product/detail/@q.ProductID">
+                    <div class="imggoidon">
+                        <img src="~/Photos/Products/@q.Images" />
+                        <img src="~/Photos/Products/@q.Images1" class="imghover" />
+                    </div>
+
+                    <div class="namegoidon">
+                        <div class="namegoidon1">
+                            @q.Category1.CategoryName
+                        </div>
+                        <div class="namegoidon2">
+                            @q.ProductName
+                        </div>
+                    </div>
+                </a>
+
+                <div class="goidonbutton">
+                    <input type="button" class="btn btn-lg btn-info btnAddCartDon" productid="@q.ProductID" value="thêm vào giỏ hàng" />
+                </div>
+                <div class="goidonthetich">
+                    <div class="thetich1">
+                        @String.Format("{0:#,0}", q.PriceSale)<sup>VNĐ</sup> - 350ml
+                    </div>
+                    <div class="thetich2">
+                        @String.Format("{0:#,0}", q.PriceSale1)<sup>VNĐ</sup> - 500ml
+                    </div>
+                    <div class="goidonxemthem">
+                        <a href="/product/detail/@q.ProductID">
+                            <span>Xem Thêm ></span>
+                        </a>
+                    </div>
+                </div>
+                @if (q.IsSale == true)
+                {
+                    <span class="iconbanchay fontstyle">
+                        <img src="~/images/banchay.png" /> <br />
+                        Bán chạy nhất
+                    </span>
+                }
+            </div>
+        </div>
+    }
+
+
+
+
+
+</div>
 
 @section scripts
 {

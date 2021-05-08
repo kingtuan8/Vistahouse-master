@@ -24,7 +24,7 @@
                     count++;
                     total = total + (q.Price * q.Quantity);
                     <li>
-                        <div class="row">
+                        <div class="row" style="position:relative;">
                             <div class="col-md-9 col-xs-9">
                                 <h5 class="titlesp">
                                     <span>@count</span>. @q.Name
@@ -43,12 +43,12 @@
                                             @if (q.CateSPDon == 1)
                                             {
                                                 <button type="button" class="btn btn-default changeml actived" changeml="1">350ml</button>
-                                                <button type="button" class="btn btn-default changeml" changeml="2">550ml</button>
+                                                <button type="button" class="btn btn-default changeml" changeml="2">500ml</button>
                                             }
                                             else
                                             {
                                                 <button type="button" class="btn btn-default changeml" changeml="1">350ml</button>
-                                                <button type="button" class="btn btn-default changeml actived" changeml="2">550ml</button>
+                                                <button type="button" class="btn btn-default changeml actived" changeml="2">500ml</button>
                                             }
 
                                         </span>
@@ -64,9 +64,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-xs-3">
+                            <div class="col-md-3 col-xs-3" style="position:unset;">
                                 <img src="~/Photos/Products/@q.Image" />
-                                <div class="cartprice">
+                                <div class="cartprice" style="position:absolute; bottom:3px; right:5px;">
                                     <span>@String.Format("{0:#,0}", q.Price)</span><sup>VNĐ</sup>
                                 </div>
                             </div>

@@ -92,6 +92,11 @@
                         <div class="dscitem">
                             @Html.Raw(q.Descript.Replace("<p>", "").Replace("</p>", ""))
                         </div>
+
+                        <div class="itemdata">
+
+                        </div>
+
                     </div>
                     <div class="floatright cartitemright">
                         <img src="~/Photos/Products/@q.Image" />
@@ -104,19 +109,19 @@
                             <i class="glyphicon glyphicon-remove"></i>
                         </span>
 
-                        @if (q.IsProduct == true)
+                        @if (q.IsProduct == true || q.IsProduct == false)
                         {
                             <span class="btn-group btn-group-sm cateml" role="group" aria-label="...">
                                 <span class="piddata">@q.ID</span>
                                 @if (q.CateSPDon == 1)
                                 {
                                     <button type="button" class="btn btn-default changeml actived" changeml="1">350ml</button>
-                                    <button type="button" class="btn btn-default changeml" changeml="2">550ml</button>
+                                    <button type="button" class="btn btn-default changeml" changeml="2">500ml</button>
                                 }
                                 else
                                 {
                                     <button type="button" class="btn btn-default changeml" changeml="1">350ml</button>
-                                    <button type="button" class="btn btn-default changeml actived" changeml="2">550ml</button>
+                                    <button type="button" class="btn btn-default changeml actived" changeml="2">500ml</button>
                                 }
 
                             </span>

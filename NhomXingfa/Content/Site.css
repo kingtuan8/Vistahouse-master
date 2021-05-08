@@ -412,7 +412,8 @@ textarea {
     color: #124f27;
     font-size: 20px;
     text-align: center;
-    padding-bottom: 8px;
+    padding-bottom: 12px;
+    padding-top:8px;
     margin-top: 3px;
     margin-bottom: 3px;
     font-family: "UTMGodWord";
@@ -1475,7 +1476,7 @@ i.goldstar
                 padding-top:28px;
                 text-align:center;
                 font-weight:700;
-                color:#c30;
+                color:#124f27;
                 font-family:'Trebuchet MS';
             }
 
