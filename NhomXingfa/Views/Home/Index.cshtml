@@ -18,7 +18,7 @@
                 <i class="glyphicon glyphicon-remove-circle"></i>
             </span>
             <div class="">
-                <iframe frameborder="0" allowfullscreen="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="300" height="130" src="https://www.youtube.com/embed/psZ1g9fMfeo?autoplay=1&amp;muted=1&amp;origin=https%3A%2F%2Fwww.greeno.vn&amp;enablejsapi=1&amp;widgetid=1" id="widget2"></iframe>
+                @*<iframe frameborder="0" allowfullscreen="1" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="300" height="130" src="https://www.youtube.com/embed/psZ1g9fMfeo?autoplay=1&amp;muted=1&amp;origin=https%3A%2F%2Fwww.greeno.vn&amp;enablejsapi=1&amp;widgetid=1" id="widget2"></iframe>*@
             </div>
         </div>
     </div>
@@ -36,7 +36,7 @@
 @Html.Partial("_Partners", Model.lstCustomerParner)
 @Html.Partial("_congdong", Model.lstCustomerFeedback)
 
-@Html.Partial("_sanphamdon", Model.products.Where(a=>a.IsNew == true))
+@Html.Partial("_sanphamdon", Model.products)
 
 <div class="row">
     <div class="col-md-12">

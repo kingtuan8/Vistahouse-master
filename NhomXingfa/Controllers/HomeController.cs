@@ -20,8 +20,8 @@ namespace NhomXingfa.Controllers
         public ActionResult Index()
         {
             var model = new IndexPageViewModel();
-            model.goidinhky = db.Products.Where(q => q.IsActive == true && q.IsProduct == false).ToList();
-            model.products = db.Products.Where(q => q.IsActive == true && q.IsProduct == true).ToList();
+            model.goidinhky = db.Products.Where(q => q.IsActive == true && q.IsProduct == false && q.IsNew == true).OrderBy(c => c.ThuTu).ToList();
+            model.products = db.Products.Where(q => q.IsActive == true && q.IsProduct == true && q.IsNew == true).OrderBy(a=>a.ThuTu).ToList();
             model.lstBannerHomePage = db.Slides.Where(q => q.CategoryID == 0).OrderBy(q => q.Sort).ToList();
             model.lstLuaChon = db.Blogs.Where(b => b.IsActive == true && (b.BlogID == 6 || b.BlogID == 5 || b.BlogID == 4)).OrderBy(b => b.Sort).ToList();
             model.OurStory = db.Blogs.Where(b => b.IsActive == true && b.BlogID == 3).FirstOrDefault();

@@ -24,7 +24,8 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public string ImagesThumb { get; set; }
 
         public DateTime? Created { get; set; }
-
+        public int? ThuTu { get; set; }
         public virtual Product Product { get; set; }
+        
     }
 }
