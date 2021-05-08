@@ -39,9 +39,10 @@ namespace NhomXingfa.Controllers
         {
             var model = new DetailPageViewModel();
             model.product = db.Products.Find(id);
-            model.products = db.Products.Where(q => q.IsProduct == true && q.IsActive == true && q.ProductID != id).ToList();
+            model.products = db.Products.Where(q => q.IsActive == true && q.ProductID != id && q.CategoryID == model.product.CategoryID).ToList();
             model.images = db.ProductImages.Where(q => q.ProductID == id).ToList();
             model.tintuc = db.Blogs.Where(q => q.Category.TypeCate == 3 && q.IsActive == true).OrderByDescending(o => o.Created).Take(4).ToList();
+            model.CategoryTitle = db.Categories.Find(model.product.CategoryID).CategoryName;
             return View(model);
         }
 

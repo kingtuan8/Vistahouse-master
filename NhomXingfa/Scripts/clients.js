@@ -177,7 +177,7 @@ $(document).ready(function () {
 
         var productid = $(this).attr("productid");
 
-        var catespdon = 0;
+        var catespdon = 1;
 
         var quantity = 0;
 
