@@ -25,12 +25,13 @@
                 <td class="imgtitle">
                     @q.Title
                 </td>
-                <td>
-                    <input type="text" id="ThuTu" />
+                <td class="imgthutu">
+                    <input type="text" class="ThuTuIMG" value="@q.ThuTu"/>
                 </td>
                 <td>
                     @*<a href="javascript:" class="edittitleimage" imageid="@q.ImageID">Sửa tiêu đề</a> |*@
                     @*<a href="javascript:" class="changeavatar" imageid="@q.ImageID">Chọn làm đại diện</a> |*@
+                    <a href="javascript:" class="updatethutu" imageid="@q.ImageID">Cập Nhập</a> | 
                     <a href="javascript:" class="deleteimage" imageid="@q.ImageID">Xóa</a>
                 </td>
             </tr>

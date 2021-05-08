@@ -65,6 +65,34 @@
 
 
     //});
+    $(document).on("click", ".deleteimagedt", function () {
+
+        if (confirm("Bạn có chắc chắn xóa không?")) {
+
+            var pid = $(this).attr("pid");
+            //alert(pid);
+            $.ajax({
+                url: "/PhotoLibraryLst/DeleteImage",
+                data: { pid: pid },
+                type: 'GET',
+                success: function (data, textStatus, jqXHR) {
+                    if (data.toString() == "OK") {
+
+                        location.reload();
+                    }
+                    else {
+                        $("#ErrorText").html(data);
+                    }
+                },
+                error: function (data, textStatus, jqXHR) { alert(textStatus); }
+            });
+
+            // your deletion code
+        }
+
+
+    });
+
     $(document).on("change", "#ParentSelect", function () {
 
         var cateid = $(this).children("option:selected").val();
@@ -76,11 +104,11 @@
             $("#FormUpload").show();
         }
         else {
-            $("#ChildSelect").empty();
+            //$("#ChildSelect").empty();
 
-            var html = "<option value=0>-- Chọn loại sản phẩm con --</option>"
+            //var html = "<option value=0>-- Chọn loại sản phẩm con --</option>"
 
-            $("#ChildSelect").html(html);
+            //$("#ChildSelect").html(html);
 
             $("#FormUpload").hide();
         }
@@ -494,6 +522,38 @@
         $("#txtTitleEdit").val(title);
         $("#hdImageID").val(imageid);
         $('#EditTitle').modal({ backdrop: 'static', keyboard: false });
+    });
+
+    $(document).on("click", ".updatethutu", function () {
+
+        var imageid = $(this).attr("imageid");
+        var thutu = $(this).parent().parent().find("td.imgthutu .ThuTuIMG").val().trim();
+
+        $.ajax({
+            url: '/Quantri/products/UpdateThuTuProductImage',
+            contentType: 'application/html; charset=utf-8',
+            data: { imageid: imageid, thutu: thutu },
+            type: 'GET',
+            dataType: 'json'
+            , success: function (data) {
+
+
+                if (data == "DONE") {
+
+                    alert("Update thành công !");
+                }
+                else {
+                    alert("Có lỗi khi ghi data lên hệ thống ! Vui lòng thử lại !");
+                }
+            },
+            error: function (xhr, status) {
+                alert("Fail connect to system server. Please try again or check internet connection.");
+            },
+            complete: function (xhr, status) {
+
+            }
+        });
+
     });
 
 
