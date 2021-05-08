@@ -15,7 +15,7 @@
     <h1>Chi tiết</h1>
     <div class="options">
         <div class="btn-toolbar">
-            <a href="javascript:" class="btn btn-warning btn-sm btn-label" id="btnAddGroupProduct"><i class="fa fa-shopping-cart"></i>Nhóm sản phẩm</a>
+            @*<a href="javascript:" class="btn btn-warning btn-sm btn-label" id="btnAddGroupProduct"><i class="fa fa-shopping-cart"></i>Nhóm sản phẩm</a>*@
             <a href="javascript:" class="btn btn-label btn-sm btn-info" id="btnUploadImage" productid="@Model.ProductID"><i class="fa fa-upload"></i>Upload ảnh</a>
             <a href="/Quantri/Products/Edit/@Model.ProductID" class="btn btn-success btn-sm btn-label"><i class="fa fa-edit"></i>Sửa</a>
             <a href="/Quantri/Products/Index" class="btn btn-primary btn-sm btn-label"><i class="fa fa-backward"></i>Quay Lại</a>
@@ -136,11 +136,11 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>SP Mới</td>
+                                            <td>SP bán chạy</td>
                                             <td>
-                                                @if (Model.IsNew == true)
+                                                @if (Model.IsSale == true)
                                                 {
-                                                    <span class="badge badge-danger">Sản Phẩm mới</span>
+                                                    <span class="badge badge-danger">Sản Phẩm bán chạy</span>
                                                 }
                                                 else
                                                 {
@@ -149,15 +149,15 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>SP Hot</td>
+                                            <td>Hiện thị trang chủ</td>
                                             <td>
                                                 @if (Model.isHot == true)
                                                 {
-                                                    <span class="badge badge-danger">Sản Phẩm Hot</span>
+                                                    <span class="badge badge-danger">Đang hiện thị trang chủ</span>
                                                 }
                                                 else
                                                 {
-                                                    <span class="badge">#</span>
+                                                    <span class="badge">Không</span>
                                                 }
                                             </td>
                                         </tr>
@@ -227,7 +227,7 @@
                                         <td>
                                             @if (Model.IsActive == true)
                                             {
-                                                <span class="badge badge-success">Đang hiện thị</span>
+                                                <span class="badge badge-success">Đang hiện thị</span> <span class="badge badge-info">Vị trí @Model.ThuTu</span>
                                             }
                                             else
                                             {

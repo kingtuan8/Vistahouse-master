@@ -86,13 +86,18 @@
                                                         </div>
                                                     }
 
-                                                    <div class="form-group">
-                                                        @Html.LabelFor(model => model.ProductCode, "SKU", htmlAttributes: new { @class = "control-label col-md-3" })
-                                                        <div class="col-md-9">
-                                                            @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control" } })
-                                                            @Html.ValidationMessageFor(model => model.ProductCode, "", new { @class = "text-danger" })
-                                                        </div>
+                                                <div class="form-group" id="divIsSale">
+                                                    @Html.LabelFor(model => model.ProductCode, "SKU", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                    <div class="col-md-4">
+                                                        @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.ProductCode, "", new { @class = "text-danger" })
                                                     </div>
+                                                    @Html.LabelFor(model => model.ThuTu, "Thứ Tự", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                    <div class="col-md-2">
+                                                        @Html.EditorFor(model => model.ThuTu, new { htmlAttributes = new { @class = "form-control" } })
+                                                        @Html.ValidationMessageFor(model => model.ThuTu, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
 
                                                     <div class="form-group">
                                                         @Html.LabelFor(model => model.ProductName, "Tên SP", htmlAttributes: new { @class = "control-label col-md-3" })
@@ -200,7 +205,7 @@
 
 
                                                     <div class="form-group">
-                                                        @Html.LabelFor(model => model.IsSale, "Sản phẩm Sale", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        @Html.LabelFor(model => model.IsSale, "Sản phẩm Bán Chạy", htmlAttributes: new { @class = "control-label col-md-3" })
                                                         <div class="col-md-3">
                                                             <div class="checkbox">
                                                                 <select class="form-control" id="IsSale" name="IsSale">
@@ -219,7 +224,7 @@
                                                                 @Html.ValidationMessageFor(model => model.IsSale, "", new { @class = "text-danger" })
                                                             </div>
                                                         </div>
-                                                        @Html.LabelFor(model => model.IsNew, "Sản phẩm mới", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        @Html.LabelFor(model => model.IsNew, "Hiện thị trang chủ", htmlAttributes: new { @class = "control-label col-md-3" })
                                                         <div class="col-md-3">
                                                             <div class="checkbox">
                                                                 <select class="form-control" id="IsNew" name="IsNew">

@@ -36,42 +36,48 @@
                 </select>
             </div>
             <div class="col-xs-2">
-                Mã SP<br />
-                <input type="text" id="txtMaSP" name="txtMaSP" class="form-control txtSearch" placeholder="Nhập Mã Sản phẩm...">
+                Mã đơn<br />
+                <input type="text" id="CarCode" name="CarCode" class="form-control txtSearch" placeholder="Nhập Mã đơn hàng...">
             </div>
             <div class="col-xs-2">
-                Tên SP<br />
-                <input type="text" id="txtSanPham" name="txtSanPham" class="form-control txtSearch" placeholder="Nhập tên...">
+                Tên KH<br />
+                <input type="text" id="CustName" name="CustName" class="form-control txtSearch" placeholder="Nhập tên KH...">
             </div>
             <div class="col-xs-2">
-                Danh Mục Cha<br />
+                Phone#<br />
+                <input type="text" id="CustPhone" name="CustPhone" class="form-control txtSearch" placeholder="Nhập Số điện thoại...">
+            </div>
+            <div class="col-xs-2">
+                Trạng thái<br />
 
-                <select class="form-control drChange" id="ParentId" name="ParentId">
+                <select class="form-control drChange" id="OrderStatus" name="OrderStatus">
                     <option value="">--Tất cả--</option>
-                    @*@foreach (var i in (List<NhomXingfa.Areas.Quantri.Models.DataModels.Category>)ViewData["ListCateParent"])
-                        {
-                            <option value="@i.CategoryID">@i.CategoryName</option>
-                        }*@
-
-                </select>
-            </div>
-            <div class="col-xs-2">
-                Danh Mục Con<br />
-
-                <select class="form-control drChange" id="CategoryID" name="CategoryID">
-                    <option value="">--Tất cả--</option>
-
-                    @*@foreach (var i in (List<NhomXingfa.Areas.Quantri.Models.DataModels.Category>)ViewData["ListCate"])
-                        {
-                            <option value="@i.CategoryID">@i.CategoryName</option>
-                        }*@
-
+                    <option value="1">Mới</option>
+                    <option value="2">Đã xác nhận đơn hàng</option>
+                    <option value="3">Đang giao hàng</option>
+                    <option value="4">Hoàn thành</option>
+                    <option value="-1">Hủy</option>
                 </select>
             </div>
             <div class="col-xs-3">
-                Tìm theo từ khóa
+                Địa chỉ<br />
+                <input type="text" id="AddresDelivery" name="AddresDelivery" class="form-control txtSearch" placeholder="Nhập địa chỉ...">
+            </div>
+            <div class="col-xs-2" style="display:none">
+                Từ
                 <br />
-                <input type="text" id="SEOKeywords" class="form-control txtSearch" placeholder="nhập từ khóa">
+                <input type="date" id="datefrom" class="form-control txtSearch" placeholder="nhập ngày">
+            </div>
+            <div class="col-xs-2" style="display:none">
+                đến
+                <br />
+                <input type="date" id="dateto" class="form-control txtSearch" placeholder="nhập ngày">
+
+            </div>
+
+            <div class="col-xs-1" style="display:none">
+                tìm<br />
+                <input id="btnSearch" type="submit" class="btn btn-sm btn-primary" value="Tìm" />
             </div>
 
         </div>
@@ -91,7 +97,10 @@
 
 
 @section scripts{
+    
     <script type="text/javascript">
+
+       
 
     $(document).ready(function () {
          $.ajaxSetup({
@@ -114,26 +123,40 @@
                 filter();
             });
 
+        $('#btnSearch').click(function () {
+            
+            var DateFrom = $('#datefrom').val();
+            var DateTo = $('#dateto').val();
+            if (DateTo < DateFrom) {
+                alert("Chọn sai khung thời gian");
+                return;
+            }
 
+            filter();
+        });
 
     });
 
     function filter() {
-        var MaSP = $("#txtMaSP").val();
-        var SanPham = $("#txtSanPham").val();
-        var DanhMucCha = $("#ParentId").val();
-        var DanhMucCon = $("#CategoryID").val();
-        var SEOKeywords = $("#SEOKeywords").val();
+        var CarCode = $("#CarCode").val();
+        var CustName = $("#CustName").val();
+        var CustPhone = $("#CustPhone").val();
+        var OrderStatus = $("#OrderStatus").val();
+        var AddresDelivery = $("#AddresDelivery").val();        
+        var DateFrom = $("#datefrom").val();
+        var DateTo = $("#dateto").val();
         $.ajax({
             //url: '/BDS_TinTuc/_PartialIndex',
             url: '@Url.Action("_PartialIndex", "Carts", new { Areas = "Quantri" })',
             data: {
                 pageSize: parseInt($('#ddlPageSize').val()),
-                MaSP:MaSP,
-                SanPham: SanPham,
-                DanhMucCha: DanhMucCha,
-                DanhMucCon:DanhMucCon,
-                SEOKeywords:SEOKeywords
+                CarCode: CarCode,
+                CustName: CustName,
+                CustPhone: CustPhone,
+                OrderStatus: OrderStatus,
+                AddresDelivery: AddresDelivery,
+                DateFrom: DateFrom,
+                DateTo: DateTo
             },
             method: 'GET',
             dataType: 'html',

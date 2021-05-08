@@ -10,6 +10,7 @@ using NhomXingfa.Areas.Quantri.Models.DataModels;
 using NhomXingfa.Areas.Quantri.Models;
 using PagedList;
 using NhomXingfa.Areas.Quantri.Utilities;
+using System.Globalization;
 
 namespace NhomXingfa.Areas.Quantri.Controllers
 {
@@ -25,11 +26,11 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             return View(carts.ToList());
         }
 
-        public ActionResult _PartialIndex(int? pageNumber, int? pageSize, string MaSP, string SanPham, int? DanhMucCha, int? DanhMucCon,
-                                          string SEOKeywords)
+        public ActionResult _PartialIndex(int? pageNumber, int? pageSize, string CarCode, string CustName, string CustPhone, int? OrderStatus, 
+                                         string AddresDelivery, string DateFrom, string DateTo)       
         {
-            SanPham = SanPham ?? "";
-            ViewBag.SanPham = SanPham;
+            CustName = CustName ?? "";
+            ViewBag.CustName = CustName;
             pageNumber = pageNumber ?? 1;
             pageSize = pageSize ?? 10;
 
@@ -41,35 +42,59 @@ namespace NhomXingfa.Areas.Quantri.Controllers
 
             var lstprod = db.Carts.ToList();
 
-            if (!string.IsNullOrEmpty(MaSP))
+            if (!string.IsNullOrEmpty(CarCode))
             {
-                lstprod = lstprod.Where(s => s.CarCode.ToUpper().Contains(MaSP.ToUpper())).ToList();
+                lstprod = lstprod.Where(s => s.CarCode.ToUpper().Contains(CarCode.ToUpper())).ToList();
             }
-            ViewBag.MaSP = MaSP;
+            ViewBag.CarCode = CarCode;
 
-            if (!string.IsNullOrEmpty(SanPham))
+            if (!string.IsNullOrEmpty(CustName))
             {
-                lstprod = lstprod.Where(s => s.CustPhone.ToUpper().Contains(SanPham.ToUpper())).ToList();
+                lstprod = lstprod.Where(s => s.CustomerOrder.CustName.ToUpper().Contains(CustName.ToUpper())).ToList();
             }
-            ViewBag.SanPham = SanPham;
+            ViewBag.CustName = CustName;
 
-            //if (!string.IsNullOrEmpty(DanhMucCha.ToString()))
-            //{
-            //    lstprod = lstprod.Where(s => s.CategoryIDParent == DanhMucCha).ToList();
-            //}
-            //ViewBag.DanhMucCha = DanhMucCha;
-
-            //if (!string.IsNullOrEmpty(DanhMucCon.ToString()))
-            //{
-            //    lstprod = lstprod.Where(s => s.CategoryID == DanhMucCon).ToList();
-            //}
-            //ViewBag.DanhMucCon = DanhMucCon;
-
-            if (!string.IsNullOrEmpty(SEOKeywords))
+            if (!string.IsNullOrEmpty(CustPhone))
             {
-                lstprod = lstprod.Where(s => s.CustomerOrder.CustName.ToUpper().Contains(SEOKeywords.ToUpper())).ToList();
+                lstprod = lstprod.Where(s => s.CustPhone.ToUpper().Contains(CustPhone.ToUpper())).ToList();
             }
-            ViewBag.SEOKeywords = SEOKeywords;
+            ViewBag.CustPhone = CustPhone;
+
+            if (!string.IsNullOrEmpty(OrderStatus.ToString()))
+            {
+                lstprod = lstprod.Where(s => s.StatusOrder == OrderStatus).ToList();
+            }
+            ViewBag.OrderStatus = OrderStatus;
+
+            if (!string.IsNullOrEmpty(CustPhone))
+            {
+                lstprod = lstprod.Where(s => s.CustPhone.ToUpper().Contains(CustPhone.ToUpper())).ToList();
+            }
+            ViewBag.CustPhone = CustPhone;
+
+            if (!string.IsNullOrEmpty(AddresDelivery))
+            {
+                lstprod = lstprod.Where(s => s.AddresDelivery.ToUpper().Contains(AddresDelivery.ToUpper())).ToList();
+            }
+            ViewBag.AddresDelivery = AddresDelivery;
+
+            if (!string.IsNullOrEmpty(DateFrom))
+            {
+                DateTime batdau = DateTime.ParseExact(DateFrom, "MM/dd/yyyy", new CultureInfo("en-US"), DateTimeStyles.None);
+
+                lstprod = lstprod.Where(s => s.Created >= batdau).ToList();
+            }
+            ViewBag.DateFrom = DateFrom;
+
+
+            //Date To
+            if (!string.IsNullOrEmpty(DateTo))
+            {
+                DateTime ketthuc = DateTime.ParseExact(DateTo, "MM/dd/yyyy", new CultureInfo("en-US"), DateTimeStyles.None);
+                DateTime kt1 = ketthuc.AddDays(1);
+                lstprod = lstprod.Where(s => s.Created <= kt1).ToList();
+            }
+            ViewBag.DateTo = DateTo;
 
             lstprod = lstprod.OrderByDescending(s => s.Created).ToList();
             ViewBag.STT = pageNumber * pageSize - pageSize + 1;

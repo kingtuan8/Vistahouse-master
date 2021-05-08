@@ -19,7 +19,7 @@
         <div class="options">
             <div class="btn-toolbar">
                 <input type="submit" value="Lưu mới" class="btn btn-success" />
-                <a href="/Products/Index" class="btn btn-primary">Quay Lại</a>
+                <a href="/Quantri/Products/Index" class="btn btn-primary">Quay Lại</a>
             </div>
         </div>
     </div>
@@ -74,11 +74,17 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group">
+
+                                                    <div class="form-group" id="divIsSale">
                                                         @Html.LabelFor(model => model.ProductCode, "SKU", htmlAttributes: new { @class = "control-label col-md-3" })
-                                                        <div class="col-md-9">
+                                                        <div class="col-md-4">
                                                             @Html.EditorFor(model => model.ProductCode, new { htmlAttributes = new { @class = "form-control" } })
                                                             @Html.ValidationMessageFor(model => model.ProductCode, "", new { @class = "text-danger" })
+                                                        </div>
+                                                        @Html.LabelFor(model => model.ThuTu, "Thứ Tự", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        <div class="col-md-2">
+                                                            @Html.EditorFor(model => model.ThuTu, new { htmlAttributes = new { @class = "form-control" } })
+                                                            @Html.ValidationMessageFor(model => model.ThuTu, "", new { @class = "text-danger" })
                                                         </div>
                                                     </div>
 
@@ -109,7 +115,7 @@
                                                     </div>
 
                                                     <div class="form-group" id="divIsSale">
-                                                        @Html.LabelFor(model => model.IsSale, "Sản phẩm Sale", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        @Html.LabelFor(model => model.IsSale, "Sản phẩm Bán Chạy", htmlAttributes: new { @class = "control-label col-md-3" })
                                                         <div class="col-md-3">
                                                             <div class="checkbox">
                                                                 <select class="form-control" id="IsSale" name="IsSale">
@@ -120,7 +126,7 @@
                                                                 @Html.ValidationMessageFor(model => model.IsSale, "", new { @class = "text-danger" })
                                                             </div>
                                                         </div>
-                                                        @Html.LabelFor(model => model.IsNew, "Sản phẩm mới", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                        @Html.LabelFor(model => model.IsNew, "Hiện thị trang chủ", htmlAttributes: new { @class = "control-label col-md-3" })
                                                         <div class="col-md-3">
                                                             <div class="checkbox">
                                                                 <select class="form-control" id="IsNew" name="IsNew">
@@ -248,21 +254,21 @@
                                                     @*id="rowSPGoi"*@
                                                     <div class="row" id="rowSPGoi">
                                                         @*<div class="form-group">
-                                                            @Html.LabelFor(model => model.PhiShip, "Phí Ship", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                                @Html.LabelFor(model => model.PhiShip, "Phí Ship", htmlAttributes: new { @class = "control-label col-md-3" })
 
-                                                            <div class="col-md-3">
-
-                                                                <input type="number" id="PhiShip" name="PhiShip" value="350" class="form-control" />
-                                                                @Html.ValidationMessageFor(model => model.PhiShip, "", new { @class = "text-danger" })
-                                                            </div>
-                                                            @Html.LabelFor(model => model.Price, "Giá", htmlAttributes: new { @class = "control-label col-md-3" })
                                                                 <div class="col-md-3">
 
-                                                                    <input type="number" id="PriceSi" name="PriceSi" placeholder="0" value="0" class="form-control" />
-                                                                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                                                    <input type="number" id="PhiShip" name="PhiShip" value="350" class="form-control" />
+                                                                    @Html.ValidationMessageFor(model => model.PhiShip, "", new { @class = "text-danger" })
                                                                 </div>
+                                                                @Html.LabelFor(model => model.Price, "Giá", htmlAttributes: new { @class = "control-label col-md-3" })
+                                                                    <div class="col-md-3">
 
-                                                        </div>*@
+                                                                        <input type="number" id="PriceSi" name="PriceSi" placeholder="0" value="0" class="form-control" />
+                                                                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                                                    </div>
+
+                                                            </div>*@
                                                         <div class="form-group">
                                                             @Html.LabelFor(model => model.SoLuongChai, "SL Chai", htmlAttributes: new { @class = "control-label col-md-3" })
 

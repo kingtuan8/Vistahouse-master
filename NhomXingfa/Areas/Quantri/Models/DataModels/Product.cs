@@ -102,6 +102,7 @@ namespace NhomXingfa.Areas.Quantri.Models.DataModels
         public decimal? PhiShip { get; set; }
 
         public int? SoNgayShip { get; set; }
+        public int? ThuTu { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartDetail> CartDetails { get; set; }

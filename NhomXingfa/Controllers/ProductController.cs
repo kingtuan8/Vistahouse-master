@@ -22,11 +22,11 @@ namespace NhomXingfa.Controllers
             var model = new GoiDinhKyViewModel();
             if (id == null || id == 0)
             {
-                model.products = db.Products.Where(q => q.IsProduct == false).ToList();
+                model.products = db.Products.Where(q => q.IsProduct == false).OrderBy(a=>a.ThuTu).ToList();
             }
             else
             {
-                model.products = db.Products.Where(q => q.IsProduct == false && q.CategoryID == id).ToList();
+                model.products = db.Products.Where(q => q.IsProduct == false && q.CategoryID == id).OrderBy(a => a.ThuTu).ToList();
             }
 
 
@@ -39,7 +39,7 @@ namespace NhomXingfa.Controllers
         {
             var model = new DetailPageViewModel();
             model.product = db.Products.Find(id);
-            model.products = db.Products.Where(q => q.IsProduct == true && q.IsActive == true && q.ProductID != id).ToList();
+            model.products = db.Products.Where(q => q.IsProduct == true && q.IsActive == true && q.ProductID != id).OrderBy(a => a.ThuTu).ToList();
             model.images = db.ProductImages.Where(q => q.ProductID == id).ToList();
             model.tintuc = db.Blogs.Where(q => q.Category.TypeCate == 3 && q.IsActive == true).OrderByDescending(o => o.Created).Take(4).ToList();
             return View(model);
@@ -47,14 +47,14 @@ namespace NhomXingfa.Controllers
 
         public ActionResult SanPhamDon()
         {
-            var model = db.Products.Where(q => q.IsProduct == true).OrderByDescending(a=>a.ProductID).ToList();
+            var model = db.Products.Where(q => q.IsProduct == true).OrderBy(a => a.ThuTu).ToList();
             return View(model);
         }
 
         public ActionResult SanPham(int? id)
         {
             var model = new SanPhamDonDM();
-            model.spdon = db.Products.Where(q => q.IsProduct == true && q.CategoryID == id).Take(12).ToList();
+            model.spdon = db.Products.Where(q => q.IsProduct == true && q.CategoryID == id).Take(12).OrderBy(a => a.ThuTu).ToList();
             model.Title = db.Categories.Find(id).CategoryName;
             return View(model);
         }

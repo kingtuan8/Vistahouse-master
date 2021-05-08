@@ -33,7 +33,7 @@
                             Thời gian giao
                         </th>
                         <th>
-                            Ship Delivery
+                            Tiền Ship
                         </th>
                         <th>
                             Số lượng
@@ -41,15 +41,15 @@
                         <th>
                             thành tiền
                         </th>
-                        <th>
+                        @*<th>
                             Mã Giảm giá
                         </th>
                         <th>
                             Số tiền giảm
-                        </th>
-                        <th>
+                        </th>*@
+                        @*<th>
                             Còn lại
-                        </th>
+                        </th>*@
                         <th>
                             Note
                         </th>
@@ -57,10 +57,10 @@
                             trạng thái
                         </th>
                         <th>
-                            style SHip
+                            Kiểu GH
                         </th>
                         <th>
-                            created
+                            Đặt vào lúc
                         </th>
                         <th>
                             last updated
@@ -105,35 +105,61 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.Total)
                         </td>
-                        <td>
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.VouchersCode)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.VourcerMoney)
-                        </td>
-                        <td>
+                        </td>*@
+                        @*<td>
                             @Html.DisplayFor(modelItem => item.TotalConLai)
-                        </td>
+                        </td>*@
                         <td>
                             @Html.DisplayFor(modelItem => item.Notes)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.StatusOrder)
+                            @*@Html.DisplayFor(modelItem => item.StatusOrder)*@
+
+                            @if (item.StatusOrder == 1)
+                            {
+                                <span class="badge badge-success">Mới</span>
+                            }
+                            @if (item.StatusOrder == 2)
+                            {
+                                <span class="badge badge-info">Đã xác nhận đơn hàng</span>
+                            }
+                            @if (item.StatusOrder == 3)
+                            {
+                                <span class="badge badge-primary">Đang giao hàng</span>
+                            }
+                            @if (item.StatusOrder == 4)
+                            {
+                                <span class="badge badge-primary">Hoàn thành</span>
+                            }
+                            @if (item.StatusOrder == -1)
+                            {
+                                <span class="badge badge-dark">Hủy đơn hàng</span>
+                            }
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.StyleShip)
+                            
+                            @if (item.StyleShip == 1)
+                            {
+                                <span class="badge badge-primary">Tự Giao Hàng</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-info">KH lấy tại cửa hàng</span>
+                            }
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Created)
+                            @*@Html.DisplayFor(modelItem => item.Created)*@
+                            @String.Format("{0:dd/MM/yyyy}", item.Created)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Updated)
+                            @String.Format("{0:dd/MM/yyyy}", item.Updated)
                         </td>
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        </td>
+                        
                     </tr>
                         stt++;
                     }

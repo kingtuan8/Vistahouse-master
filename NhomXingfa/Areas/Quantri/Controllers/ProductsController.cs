@@ -186,7 +186,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [ValidateInput(false)]
         public ActionResult Create([Bind(Include = "ProductID,ProductCode,ProductName,IsProduct,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
             "CategoryIDParent,CategoryID,Images,ImagesThumb,Images1, ImagesThumb1, ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription," +
-            "SoLuongChai,PhiShip,SoNgayShip")] Product product,
+            "SoLuongChai,PhiShip,SoNgayShip,ThuTu")] Product product,
                                    HttpPostedFileBase HinhAnh, HttpPostedFileBase HinhAnh1)
         {
             if (ModelState.IsValid)
@@ -304,7 +304,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         [ValidateInput(false)]
         public ActionResult Edit([Bind(Include = "ProductID,ProductCode,ProductName,IsProduct,Capacity,Price,PricePhanTram,PriceSale,Capacity1,Price1,PricePhanTram1,PriceSale1," +
             "CategoryIDParent,CategoryID,Images,ImagesThumb,Images1,ImagesThumb1,ShortDescription,Content,InStock,IsSale,IsNew,Rating,IsActive,CountView,Created,CreatedBy,SEOTitle,SEOUrlRewrite,SEOKeywords,SEOMetadescription," +
-            "SoLuongChai,PhiShip,SoNgayShip")] Product product,
+            "SoLuongChai,PhiShip,SoNgayShip,ThuTu")] Product product,
             HttpPostedFileBase HinhAnh, HttpPostedFileBase HinhAnh1)
         {
             if (ModelState.IsValid)
