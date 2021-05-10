@@ -373,6 +373,7 @@ textarea {
     background-size: cover;
     vertical-align: middle;
     padding-top: 10px;
+    font-family: 'SVN-LarchShaded';
 }
     #listgoidinhky .col-md-3 .toppin span.slchai .numberchai {
         background: linear-gradient(to right top,#ebbc5f,#eccf87,#eed791,#dbc364,#cfb925);
@@ -549,7 +550,7 @@ i.goldstar
         display: block;
         margin-bottom: 32px;
         cursor: pointer;
-        min-height:545px;
+        min-height:619px;
         position:relative;
     }
 .divtongd .iconbanchay {
