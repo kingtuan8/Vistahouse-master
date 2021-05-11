@@ -87,7 +87,11 @@
                 <div class="itemlst">
                     <div class="floatleft cartitemleft">
                         <div class="titleitem">
-                            <span>@count</span>. @q.Name
+                            <span>@count</span>. @q.Name <br />
+                            @if(q.IsProduct == false)
+                            {
+                                <span style="font-size:12pt; font-weight:bold">@q.SoLuongChai Chai / @q.SoNgayShip Ngày</span>
+                            }
                         </div>
                         <div class="dscitem">
                             @Html.Raw(q.Descript.Replace("<p>", "").Replace("</p>", ""))

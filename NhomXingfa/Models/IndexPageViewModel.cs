@@ -30,6 +30,8 @@ namespace NhomXingfa.Models
         public bool? IsProduct { get; set; }
         public int? Quantity { get; set; }
         public int? CateSPDon { get; set; }
+        public int? SoLuongChai { get; set; }
+        public int? SoNgayShip { get; set; }
     }
 
     public class CartDetailViewModel

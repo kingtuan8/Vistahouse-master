@@ -37,9 +37,19 @@ namespace NhomXingfa.Controllers
 
         public ActionResult Detail(int? id)
         {
+            var prod = db.Products.Find(id);
+
             var model = new DetailPageViewModel();
+
             model.product = db.Products.Find(id);
-            model.products = db.Products.Where(q => q.IsProduct == true && q.IsActive == true && q.ProductID != id).ToList();
+            if(prod.IsProduct == true)
+            {
+                model.products = db.Products.Where(q => q.IsProduct == true && q.IsActive == true && q.ProductID != id && q.CategoryID == prod.CategoryID).ToList();
+            }    
+            else
+            {
+                model.products = db.Products.Where(q => q.IsProduct == false && q.IsActive == true && q.ProductID != id).ToList();
+            }    
             model.images = db.ProductImages.Where(q => q.ProductID == id).OrderBy(a=>a.ThuTu).ToList();
             model.tintuc = db.Blogs.Where(q => q.Category.TypeCate == 3 && q.IsActive == true).OrderByDescending(o => o.LastModify).Take(4).ToList();
             model.CategoryTitle = db.Categories.Find(model.product.CategoryID).CategoryName;

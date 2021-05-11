@@ -482,6 +482,8 @@ namespace NhomXingfa.Controllers
                 child.IsProduct = prod.IsProduct;
                 child.Name = prod.ProductName;
                 child.Price = prod.PriceSale;
+                child.SoLuongChai = prod.SoLuongChai;
+                child.SoNgayShip = prod.SoNgayShip;
                 if(catespdon == 2)
                 {
                     child.Price = prod.PriceSale1;
