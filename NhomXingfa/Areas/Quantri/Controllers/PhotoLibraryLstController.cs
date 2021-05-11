@@ -124,7 +124,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
 
             var CurrentContext = HttpContext;
 
-            h.UploadAndShowResults(CurrentContext, resultList, childid, parentid);
+            h.UploadAndShowResults(CurrentContext, resultList, parentid, childid);
 
 
             JsonFiles files = new JsonFiles(resultList);
@@ -149,6 +149,17 @@ namespace NhomXingfa.Areas.Quantri.Controllers
         public JsonResult DeleteFile(string file)
         {
             h.DeleteFile(file);
+            return Json("OK", JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteImage(int? pid)
+        {
+            var img = db.PhotoLibraryLsts.Find(pid);
+
+            db.PhotoLibraryLsts.Remove(img);
+
+            db.SaveChanges();
+
             return Json("OK", JsonRequestBehavior.AllowGet);
         }
     }

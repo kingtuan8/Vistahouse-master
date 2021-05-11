@@ -690,6 +690,24 @@ namespace NhomXingfa.Areas.Quantri.Controllers
 
         }
 
+        public JsonResult UpdateThuTuProductImage(int? imageid, int? thutu)
+        {
+            string result = "FAIL";
+            try
+            {
+                var img = db.ProductImages.Find(imageid);
+                img.ThuTu = thutu;
+                db.SaveChanges();
+                result = "DONE";
+            }
+            catch
+            {
+
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+
+        }
+
         public JsonResult ChangeProductAvatar(int? imageid)
         {
             string result = "FAIL";

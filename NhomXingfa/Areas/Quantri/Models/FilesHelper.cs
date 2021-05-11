@@ -195,6 +195,7 @@ namespace NhomXingfa.Areas.Quantri.Models
                 img.ProductID = productid;
                 img.Title = file.FileName.Substring(0, file.FileName.Length - 4);
                 img.URLImage = guid + "_" + file.FileName;
+                img.ThuTu = 1;
                 db.ProductImages.Add(img);
                 db.SaveChanges();              
 
@@ -238,6 +239,7 @@ namespace NhomXingfa.Areas.Quantri.Models
             img.ProductID = productid;
             img.Title = file.FileName.Substring(0, file.FileName.Length - 4);
             img.URLImage = file.FileName + ".80x80.jpg";
+            img.ThuTu = 1;
             db.ProductImages.Add(img);
             db.SaveChanges();
 

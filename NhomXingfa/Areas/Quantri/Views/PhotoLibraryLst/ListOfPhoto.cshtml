@@ -133,17 +133,16 @@
 
         if (confirm("Bạn có chắc chắn xóa không?")) {
 
-            var id = $("#hidImage").val();
-            alert(id);
+            var pid = $(this).parent().attr("pid");
+            alert(pid);
             $.ajax({
-                url: "@Url.Action("ClearCatalogue", "CategoryImage")",
-                data: {id:id},
+                url: "/PhotoLibraryLst/DeleteImage",
+                data: {pid:pid},
                 type: 'GET',
                 success: function (data, textStatus, jqXHR) {
                     if (data.toString() == "OK") {
-                        alert("Xóa thành công");
-                        var url = '@Url.Action("LstCategoryImages", "CategoryImage")';
-                        window.location.href = url;
+
+                        location.reload();
                     }
                     else {
                         $("#ErrorText").html(data);
