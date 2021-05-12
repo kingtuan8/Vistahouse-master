@@ -225,9 +225,10 @@ textarea {
     padding-right:5px;
 }
     #topslogan .col-md-3 .boxtox {
-        height: 360px;
-        background-color: #e8f4e3;        
-        margin-bottom:8px;
+        height: 425px;
+        background-color: #e8f4e3;
+        margin-bottom: 8px;
+        font-family: 'Quicksand', sans-serif;
     }
     #topslogan .col-md-3 .boxtox1 {
         background-image: url('../images/wed-02.04f65709.jpg');
@@ -255,7 +256,7 @@ textarea {
     #topslogan .col-md-3 .boxtox .ptitle {
         text-align: center;
         color: #ededed;
-        font-size: 24px;
+        font-size: 21px;
         font-weight: bold;
         line-height: 40px;
         padding-top: 10px;
@@ -497,8 +498,8 @@ textarea {
     color:green;
     /*font-weight:bold;*/
     font-size:68px;
-    margin-top:42px;
-    margin-bottom:42px;
+    margin-top:20px;
+    margin-bottom:20px;
 }
 #titlespcon2 h2 {
     font-style: italic;
@@ -678,13 +679,15 @@ i.goldstar
 {
     margin-top:60px;
 }
-#luachonhangdau h3 {
-    color: #000;
-    font-size: 56px;
-    margin-top: 32px;
-    font-weight: bold;
-    padding-bottom: 8px;
-}
+    #luachonhangdau h3 {
+        font-style: italic;
+        color: green;
+       
+        font-size: 68px;
+        margin-top: 20px;
+        margin-bottom: 15px;
+       
+    }
 #luachonhangdau h4{
     margin-bottom:42px;
 }
