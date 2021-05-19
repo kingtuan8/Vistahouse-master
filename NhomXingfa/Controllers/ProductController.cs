@@ -22,11 +22,11 @@ namespace NhomXingfa.Controllers
             var model = new GoiDinhKyViewModel();
             if (id == null || id == 0)
             {
-                model.products = db.Products.Where(q => q.IsProduct == false).OrderBy(a=>a.ThuTu).ToList();
+                model.products = db.Products.Where(q => q.IsProduct == false && q.IsActive == true).OrderBy(a=>a.ThuTu).ToList();
             }
             else
             {
-                model.products = db.Products.Where(q => q.IsProduct == false && q.CategoryID == id).OrderBy(a => a.ThuTu).ToList();
+                model.products = db.Products.Where(q => q.IsProduct == false && q.CategoryID == id && q.IsActive == true).OrderBy(a => a.ThuTu).ToList();
             }
 
 
