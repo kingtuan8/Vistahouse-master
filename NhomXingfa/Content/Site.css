@@ -1185,7 +1185,7 @@ i.goldstar
     -moz-box-shadow: -1px -1px 1px -1px rgba(0,0,0,0.75);
     box-shadow: -1px -1px 1px -1px rgba(0,0,0,0.75);
     padding: 8px;
-    height: 800px;
+    min-height: 800px;
 }
 #sanphamcontent .listtintuc {
     border: 1px solid #e8e8e8;
@@ -1299,6 +1299,7 @@ i.goldstar
     .thetichgia .radio span.t1 {
         color: #084f1f;
         font-size:12pt;
+        font-weight:bold;
     }
     .thetichgia .radio span.t2 {
         color: #f3b302;
@@ -1306,6 +1307,7 @@ i.goldstar
         width:100px;
         text-align:right;
         display:inline-block;
+        font-size:13pt;
     }
     .thetichgia .radio span.t2 sup
     {
