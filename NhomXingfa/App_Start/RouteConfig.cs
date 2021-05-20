@@ -87,11 +87,11 @@ namespace NhomXingfa
                url: "chinh-sach-ban-hang",
                defaults: new { controller = "About", action = "ChinhSach", id = UrlParameter.Optional }
            );
-            // routes.MapRoute(
-            //    name: "tintuc1",
-            //    url: "tin-tuc/{url}-{id}",
-            //    defaults: new { controller = "news", action = "index", id = UrlParameter.Optional }
-            //);
+            routes.MapRoute(
+               name: "Delivery",
+               url: "giao-hang",
+               defaults: new { controller = "About", action = "Delivery", id = UrlParameter.Optional }
+           );
 
             routes.MapRoute(
                name: "tintucdetails",

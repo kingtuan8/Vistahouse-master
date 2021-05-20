@@ -32,5 +32,10 @@ namespace NhomXingfa.Controllers
             Blog ChinhSach = db.Blogs.Where(b => b.BlogID == 16 && (b.TypeBlog == WebConstants.BlogAboutUs || b.TypeBlog == WebConstants.BlogAboutUs_more)).FirstOrDefault();
             return View(ChinhSach);
         }
+        public ActionResult Delivery()
+        {
+            
+            return View();
+        }
     }
 }

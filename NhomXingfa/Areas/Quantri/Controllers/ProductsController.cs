@@ -76,7 +76,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             }
             ViewBag.SEOKeywords = SEOKeywords;
 
-            lstprod = lstprod.OrderByDescending(s => s.Created).ToList();
+            lstprod = lstprod.OrderBy(s => s.ThuTu).ToList();
             ViewBag.STT = pageNumber * pageSize - pageSize + 1;
             int count = lstprod.ToList().Count();
             ViewBag.TotalRow = count;
@@ -141,7 +141,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
             }
             ViewBag.SEOKeywords = SEOKeywords;
 
-            lstprod = lstprod.OrderByDescending(s => s.Created).ToList();
+            lstprod = lstprod.OrderBy(s => s.ThuTu).ToList();
             ViewBag.STT = pageNumber * pageSize - pageSize + 1;
             int count = lstprod.ToList().Count();
             ViewBag.TotalRow = count;
@@ -518,7 +518,7 @@ namespace NhomXingfa.Areas.Quantri.Controllers
 
         public PartialViewResult GetImageforProduct(int? productid)
         {
-            var model = db.ProductImages.Where(q => q.ProductID == productid).ToList();
+            var model = db.ProductImages.Where(q => q.ProductID == productid).OrderBy(a=>a.ThuTu).ToList();
 
             return PartialView("_image", model);
         }

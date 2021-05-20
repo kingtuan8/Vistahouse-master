@@ -22,11 +22,11 @@ namespace NhomXingfa.Controllers
             var model = new GoiDinhKyViewModel();
             if (id == null || id == 0)
             {
-                model.products = db.Products.Where(q => q.IsProduct == false).OrderBy(a=>a.ThuTu).ToList();
+                model.products = db.Products.Where(q => q.IsProduct == false && q.IsActive == true).OrderBy(a=>a.ThuTu).ToList();
             }
             else
             {
-                model.products = db.Products.Where(q => q.IsProduct == false && q.CategoryID == id).OrderBy(a => a.ThuTu).ToList();
+                model.products = db.Products.Where(q => q.IsProduct == false && q.CategoryID == id && q.IsActive == true).OrderBy(a => a.ThuTu).ToList();
             }
 
 
@@ -58,14 +58,14 @@ namespace NhomXingfa.Controllers
 
         public ActionResult SanPhamDon()
         {
-            var model = db.Products.Where(q => q.IsProduct == true).OrderBy(a => a.ThuTu).ToList();
+            var model = db.Products.Where(q => q.IsProduct == true && q.IsActive == true).OrderBy(a => a.ThuTu).ToList();
             return View(model);
         }
 
         public ActionResult SanPham(int? id)
         {
             var model = new SanPhamDonDM();
-            model.spdon = db.Products.Where(q => q.IsProduct == true && q.CategoryID == id).Take(12).OrderBy(a => a.ThuTu).ToList();
+            model.spdon = db.Products.Where(q => q.IsProduct == true && q.CategoryID == id && q.IsActive == true).Take(12).OrderBy(a => a.ThuTu).ToList();
             model.Title = db.Categories.Find(id).CategoryName;
             return View(model);
         }

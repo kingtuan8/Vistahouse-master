@@ -16,14 +16,14 @@
             <table>
                 <thead>
                     <tr>
-                        
+
                         <th style="width:30px">STT</th>
                         <th>SKU#</th>
                         <th style="width:250px">Tên Gói Sản phẩm</th>
                         <td style="width:200px">
                             Chủng loại
                         </td>
-                        
+
                         <th>Hình đại diện</th>
                         <th style="width:60px">SP<br /> mới</th>
                         <th style="width:60px">Hiện thị<br />Website</th>
@@ -42,7 +42,10 @@
                     {
                         <tr>
 
-                            <td style="width:30px">@stt</td>
+                            <td style="width:30px">
+                                @*@stt*@
+                                @item.ThuTu
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.ProductCode)
                             </td>
@@ -50,13 +53,13 @@
                                 <a href="/Quantri/Products/Details/@item.ProductID">
                                     @Html.DisplayFor(modelItem => item.ProductName)
                                 </a>
-                                
+
                             </td>
                             <td style="width:200px">
                                 @Html.DisplayFor(modelItem => item.Category.CategoryName)
 
                             </td>
-                            
+
                             <td>
                                 <img alt="@item.ProductName" style="height:40px" src="@WebConstants.ImgProductShow/@item.Images" />
                                 @*<img alt="@item.ProductName" style="height:40px" src="http://noithattanthoi.com/datafiles/setone/thumb_12307541712874_4.jpg" />*@
