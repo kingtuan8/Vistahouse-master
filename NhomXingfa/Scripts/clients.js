@@ -37,6 +37,9 @@ $(document).ready(function () {
         else {
             $("#ptnhapdiachi").hide();
             $("#taicuahang").show();
+
+            $('#modalMuaTaiCuaHang').modal({ backdrop: 'static', keyboard: false });
+
             //$("#btnHoanThanh").show();
         }
     });
@@ -74,6 +77,64 @@ $(document).ready(function () {
 
     });
 
+
+    $(document).on("click", "#btnLuuThongTin2", function () {
+        var hoten = $("#txtHoTen2").val().trim();
+        var sdt = $("#txtSDT2").val().trim();
+        var ngaynhan = $("#txtNgayNhan2").val().trim();
+        var diachi = "";//$("#txtDiaChi").val().trim();
+        var noted = $("#txtNoted2").val().trim();
+        var logged = $("#hdLogged").val().trim();
+        var styleship = $("#hdShipped").val().trim();
+
+        var timeship = $("#slGioGiaoHang2").children("option:selected").val().replace(':','_');
+
+        if (hoten == "" || sdt == "" || ngaynhan == "") {
+            $('#modalWarning').modal({ backdrop: 'static', keyboard: false });
+        }
+        else {
+            $.ajax({
+                url: '/home/InsertDonHang',
+                contentType: 'application/json; charset=utf-8',
+                data: { fname: hoten, sdt: sdt, ngaygiao: ngaynhan, dchi: diachi, ghichu: noted, logged: logged, styleship: styleship, timeship: timeship },
+                type: 'GET',
+                dataType: 'json'
+                , success: function (data) {
+
+                    if (data != "0") {
+
+
+                        $(".inputgiaohang").hide();
+                        $(".thongtinthanhtoan").show();
+
+                        $(".circlenumber").parent().parent().removeClass("actived");
+                        $(".circlenumber").removeClass("activeds");
+                        $(".cc3").parent().parent().addClass("actived");
+                        $(".cc3").addClass("activeds");
+
+                        $("#hdCartID").val(data);
+                        $("#btnXacMinhTK").hide();
+                        $("#btnChonGiaoHang").hide();
+                        $("#btnHoanThanh").show();
+
+                        $("#modalMuaTaiCuaHang").modal('toggle');
+                    }
+
+                },
+                error: function (xhr, status) {
+                    alert("Fail connect to system server. Please try again or check internet connection.");
+                },
+                complete: function (xhr, status) {
+
+                }
+            });
+        }
+
+    });
+
+
+
+
     $(document).on("click", "#btnLuuThongTin", function () {
         var hoten = $("#txtHoTen").val().trim();
         var sdt = $("#txtSDT").val().trim();
@@ -83,7 +144,7 @@ $(document).ready(function () {
         var logged = $("#hdLogged").val().trim();
         var styleship = $("#hdShipped").val().trim();
 
-        var timeship = $("#slGioGiaoHang").children("option:selected").val();
+        var timeship = $("#slGioGiaoHang").children("option:selected").val().replace(':', '_');
 
         if (hoten == "" || sdt == "" || ngaynhan == "" || diachi == "") {
             $('#modalWarning').modal({ backdrop: 'static', keyboard: false });
@@ -252,6 +313,12 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on("click", "#btnHuy2", function () {
+
+        $("#modalMuaTaiCuaHang").modal('toggle');
+
+    });
+
     $(document).on("click", "#btnHuy", function () {
 
         $("#lstfullgiohang").show();
@@ -293,6 +360,12 @@ $(document).ready(function () {
         $(".circlenumber").removeClass("activeds");
         $(".cc2").parent().parent().addClass("actived");
         $(".cc2").addClass("activeds");
+    });
+
+    $(document).on("click", "#btnXacMinhTK", function () {
+
+        location.href = "/account/logincust";
+
     });
 
     $(document).on("click", ".btnRemoveCart2", function () {
