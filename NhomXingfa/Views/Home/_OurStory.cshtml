@@ -11,7 +11,7 @@
             </h2>
         </div>
         <div class="contentour">
-            @{ string str = "";}
+            @*@{ string str = "";}
             @if (Model.Content.Length >= 600)
             {
                 str = Model.Content.Substring(0, 800);
@@ -20,9 +20,9 @@
             {
                 str = Model.Content;
             }
-            @Html.Raw(str)
+            @Html.Raw(str)*@
 
-
+            @Model.Descript
         </div>
         <a href="/ve-chung-toi">Xem tiếp</a>
     </div>

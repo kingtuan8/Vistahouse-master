@@ -36,7 +36,7 @@
                     @Html.HiddenFor(model => model.BlogID)
                     @Html.HiddenFor(model => model.ImageURL)
                     @Html.HiddenFor(model => model.TypeBlog)
-                    @Html.HiddenFor(model => model.Descript)
+                    @*@Html.HiddenFor(model => model.Descript)*@
                     <div class="form-group">
                         @Html.LabelFor(model => model.BlogName, "Tiêu đề", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -86,6 +86,7 @@
                             <img src="@WebConstants.imgNewsURLShow/@Model.ImageURL" style="height:100px;" title="@Model.BlogName" />
                         </div>
                     </div>
+
                 </div>
             </div>
             @*Right*@
@@ -117,17 +118,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12" style="display:none">
-                <div class="form-group">
+            @if (Model.BlogID == 3)
+            {
+                <div class="col-md-12">
+                    <div class="form-group">
+                        Mo tả ngắn <span style="font-size:9pt; color:#ff0000">Tối đa 400 kí tự</span><br />
+                        
+                        <div class="col-md-12">
+                            <textarea class="form-control" placeholder="Nhập mô tả ngắn..." id="Descript" name="Descript" rows="9">@Model.Descript</textarea>
 
-                    <div class="col-md-12">
-                        <textarea class="form-control" placeholder="Nhập mô tả ngắn..." id="Descript" name="Descript" rows="4"></textarea>
-
-                        @Html.ValidationMessageFor(model => model.Descript, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.Descript, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+
             <div class="col-md-12">
+                Chi tiết Bài Viết<br />
                 <textarea id="Content" name="Content">@Model.Content</textarea>
                 @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
 
