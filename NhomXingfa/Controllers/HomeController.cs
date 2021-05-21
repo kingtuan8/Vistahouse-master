@@ -159,7 +159,7 @@ namespace NhomXingfa.Controllers
                 c.AddresDelivery = dchi;
                 c.CustPhone = sdt;
                 DateTimeFormatInfo usDtfi = new CultureInfo("vi-VN", false).DateTimeFormat;
-                c.TimeDelivery = Convert.ToDateTime(ngaygiao + " " + timeship, usDtfi);
+                c.TimeDelivery = Convert.ToDateTime(ngaygiao + " " + timeship.Replace("_",":") + ":00", usDtfi);
                 c.ShipDelivery = 0;
                 c.Qty = cart.Sum(s => s.Quantity);
                 c.Total = 0;
@@ -203,7 +203,7 @@ namespace NhomXingfa.Controllers
                         }
                         else
                         {
-                            cd.ml = "550ml";
+                            cd.ml = "500ml";
                         }
                     }
 
@@ -262,7 +262,7 @@ namespace NhomXingfa.Controllers
                     c.AddresDelivery = dchi;
                     c.CustPhone = sdt;
                     DateTimeFormatInfo usDtfi = new CultureInfo("vi-VN", false).DateTimeFormat;
-                    c.TimeDelivery = Convert.ToDateTime(ngaygiao, usDtfi);
+                    c.TimeDelivery = Convert.ToDateTime(ngaygiao + " " + timeship.Replace("_", ":") + ":00", usDtfi);
                     c.ShipDelivery = 0;
                     c.Qty = cart.Sum(s => s.Quantity);
                     c.Total = 0;

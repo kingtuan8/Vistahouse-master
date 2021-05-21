@@ -404,3 +404,102 @@
     </div>
 </div>
 
+
+
+<div class="modal fade" id="modalMuaTaiCuaHang" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Thông tin người mua</h4>
+            </div>
+            <div class="modal-body row inputgiaohang" style="border:unset; margin-top:unset; margin-left:0px; margin-right:0px;">
+              
+                <div class="col-md-12">
+
+                    <p style="text-align:center; padding:9px;background-color: #fffbe6;border: 1px solid #ffe58f; font-size:13px;">
+                        Nếu quý khách đã có tài khoản, vui lòng đăng nhập để sử dụng thông tin đặt hàng trước đó
+                        <button type="button" class="close" id="closewarm" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </p>
+
+                    <div class="forminput form-horizontal">
+                        <div class="form-group">
+                            <label for="txtHoTen2" class="col-sm-3 control-label"><span>*</span> Họ & Tên</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="txtHoTen2" placeholder="tên người nhận" value="@cust.CustName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtSDT2" class="col-sm-3 control-label"><span>*</span> SĐT</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="txtSDT2" placeholder="số điện thoại người nhận" value="@cust.CustPhone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtNgayNhan2" class="col-sm-3 control-label"><span>*</span> Ngày nhận</label>
+                            <div class="col-sm-9" style="max-width:430px;">
+                                <span class="input-group date">
+                                    <input id="txtNgayNhan2" class="form-control datefrom3" autocomplete="off" placeholder="" type="text" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar" for="txtNgayNhan"></span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="slGioGiaoHang2" class="col-sm-3 control-label"><span>*</span> Giờ nhận hàng</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" id="slGioGiaoHang2">
+                                    <option value="0">-- Chọn giờ nhận hàng --</option>
+                                    @for (int i = 7; i <= 19; i++)
+                                    {
+
+                                        string hour = "";
+                                        string text = "";
+                                        if (i < 10)
+                                        {
+                                            hour = "0" + i.ToString();
+                                        }
+                                        else
+                                        {
+                                            hour = i.ToString();
+                                        }
+                                        { text = hour + ":00"; }
+                                        <option value="@text">@text</option>
+                                        { text = hour + ":30"; }
+                                        <option value="@text">@text</option>
+                                    }
+                                </select>
+                                <br />
+                                <span style="color:#30ba15">
+                                    Thời gian nhận hàng từ 7h -> 19h
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="txtNoted2" class="col-sm-3 control-label">Ghi chú</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" cols="3" id="txtNoted2" placeholder="ghi chú"></textarea>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="button" class="btn btn-default" id="btnLuuThongTin2">Lưu</button>
+                                <button type="button" class="btn btn-default" id="btnHuy2">Hủy</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>              
+
+            </div>
+            <div class="modal-footer">               
+            </div>
+        </div>
+    </div>
+</div>

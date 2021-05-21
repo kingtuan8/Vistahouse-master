@@ -57,6 +57,10 @@
     <div class="col-md-12">
         <h5>
             <b>Thông tin đơn hàng</b>
+            @if(CartModel.StyleShip == 2)
+            {
+                <span style="padding-left:8px;" class="text-info">(Nhận tại cửa hàng)</span>
+            }
         </h5>
         <table class="table table-bordered table-striped">
             <thead>
