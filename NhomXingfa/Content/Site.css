@@ -2455,8 +2455,8 @@ footer .col-md-8
 
 .coccoc-alo-phone {
     background-color: transparent;
-    width: 200px;
-    height: 200px;
+    width: 48px;
+    height: 48px;
     cursor: pointer;
     z-index: 200000 !important;
     -webkit-backface-visibility: hidden;
@@ -2500,8 +2500,8 @@ footer .col-md-8
 .coccoc-alo-ph-img-circle {
     width: 48px;
     height:48px;
-    top: 70px;
-    left: 70px;
+    top: -88px;
+    left: -83px;
     position: absolute;
     background: rgba(30, 30, 30, 0.1) url('../images/delivery.png') no-repeat center center;
     -webkit-border-radius: 100%;
