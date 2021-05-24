@@ -121,9 +121,18 @@
 
 
 <div class="text-center fontstyle" id="titlespcon">
-    <h2>
-        @Model.CategoryTitle
-    </h2>
+    @if (Model.product.IsProduct == true)
+    {
+        <h2>
+            Các sản phẩm lẻ được quan tâm
+        </h2>
+    }
+    else
+    {
+        <h2>
+            Các Liệu Trình Khác Được Ưa Thích
+        </h2>
+    }
 </div>
 
 <div class="row" id="goispdon">
