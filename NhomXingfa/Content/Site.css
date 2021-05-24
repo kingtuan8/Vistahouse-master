@@ -6,10 +6,11 @@
     /*overflow-y:hidden;*/
 }
 
-/*img{
-    width:100% !important;
+.contentsp img {
+    width: 100% !important;
+    height:auto;
 }
-*/
+
 blockquote {
     padding: 10px 20px;
     margin: 0 0 20px;
