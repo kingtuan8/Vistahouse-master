@@ -596,5 +596,10 @@ namespace NhomXingfa.Controllers
 
             return PartialView("_menu", model);
         }
+
+        public ActionResult testView()
+        {
+            return View();
+        }
     }
 }

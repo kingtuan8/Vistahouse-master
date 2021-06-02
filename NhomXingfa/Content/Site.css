@@ -286,8 +286,8 @@ textarea {
 }
 .floatbutton {
     position: fixed;
-    right: 39px;
-    bottom: 39px;
+    right: 24px;
+    bottom: 85px;
     z-index: 1554;
 }
 #listgoidinhky
@@ -2499,10 +2499,10 @@ footer .col-md-8
 }
 
 .coccoc-alo-ph-img-circle {
-    width: 48px;
-    height:48px;
-    top: -88px;
-    left: -83px;
+    width: 60px;
+    height:60px;
+    top: -145px;
+    left: -80px;
     position: absolute;
     background: rgba(30, 30, 30, 0.1) url('../images/delivery.png') no-repeat center center;
     -webkit-border-radius: 100%;

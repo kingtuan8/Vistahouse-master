@@ -38,10 +38,10 @@
                             @q.ProductName
                         </h4>
                         <h4 class="goiname2">
-                            @{ 
+                            @{
                                 var sl = q.SoLuongChai / q.SoNgayShip;
                             }
-                            @q.SoNgayShip Ngày - @sl Chai / Ngày 
+                            @q.SoNgayShip Ngày - @sl Chai / Ngày
 
                         </h4>
                     </a>
@@ -61,6 +61,13 @@
                             </a>
                         </div>
                     </div>
+                    @if (q.IsSale == true)
+                    {
+                        <span style="position: absolute; z-index: 999; right: 12px; top: 12px; color: #ac8514; font-weight: bold; font-size: 18px; width: 65px; transition: all;" class="iconbanchay fontstyle">
+                            <img style="width:43px" src="~/images/banchay.png" /> <br />
+                            Bán chạy nhất
+                        </span>
+                    }
                 </div>
             </div>
         }

@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My Juice</title>
+    <title>@ViewBag.Title - The Vita House - SmoothiePlus Delivery</title>
     @RenderSection("metatags", false)
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
@@ -28,8 +28,8 @@
     <div class="toptran container-fluid">
 
         @*<div class="col-md-2" style="font-weight:bold; color:#ffffff">
-            Hotline: 0898 77 22 70
-        </div>*@
+                Hotline: 0898 77 22 70
+            </div>*@
         <div class="col-md-12" style="padding-right:0px;">
 
 
@@ -60,7 +60,7 @@
                 {
                     <a href="javascript:" class="dropdown">Chào, @User.Identity.Name</a>
                     <a href="~/account/LogOffCust">Thoát</a>
-                }              
+                }
             </div>
         </div>
 
@@ -82,10 +82,10 @@
                 </span>
             </div>
             <div class="navbar-collapse collapse">
-               
+
                 <ul class="nav navbar-nav navbar-right" style="padding-right:30px;">
                     @{Html.RenderAction("menuSanPham", "Home");}
-                    
+
                     <li>
                         <a href="/home/cart">
                             <i class="glyphicon glyphicon-shopping-cart" id="shopicon" style="position:relative;">
@@ -172,5 +172,51 @@
 
     <div id="full-opacity">&nbsp;</div>
     @Html.Partial("_floatbutton")
+
+    <!-- Messenger Chat Plugin Code -->
+
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+
+    <div id="fb-customer-chat" class="fb-customerchat">
+
+    </div>
+
+    <script>
+
+        var chatbox = document.getElementById('fb-customer-chat');
+
+        chatbox.setAttribute("page_id", "113850917409361");
+
+        chatbox.setAttribute("attribution", "biz_inbox");
+
+        window.fbAsyncInit = function () {
+
+            FB.init({
+
+                xfbml: true,
+
+                version: 'v10.0'
+
+            });
+
+        };
+
+        (function (d, s, id) {
+
+            var js, fjs = d.getElementsByTagName(s)[0];
+
+            if (d.getElementById(id)) return;
+
+            js = d.createElement(s); js.id = id;
+
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+
+            fjs.parentNode.insertBefore(js, fjs);
+
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
 </body>
 </html>
