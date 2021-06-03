@@ -41,14 +41,14 @@ namespace NhomXingfa.Controllers
 
             var model = new DetailPageViewModel();
 
-            model.product = db.Products.Find(id);
+            model.product = prod;
             if(prod.IsProduct == true)
             {
                 model.products = db.Products.Where(q => q.IsProduct == true && q.IsActive == true && q.ProductID != id && q.CategoryID == prod.CategoryID).ToList();
             }    
             else
             {
-                model.products = db.Products.Where(q => q.IsProduct == false && q.IsActive == true && q.ProductID != id).ToList();
+                model.products = db.Products.Where(q => q.IsProduct == false && q.IsActive == true && q.ProductID != id && q.CategoryID == prod.CategoryID).ToList();
             }    
             model.images = db.ProductImages.Where(q => q.ProductID == id).OrderBy(a=>a.ThuTu).ToList();
             model.tintuc = db.Blogs.Where(q => q.Category.TypeCate == 3 && q.IsActive == true).OrderByDescending(o => o.LastModify).Take(4).ToList();
