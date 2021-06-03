@@ -302,7 +302,7 @@ textarea {
     max-height: 88px !important;    
     max-width:100px !important;
 }
-.btnTuVanDinhKy {
+#btnTuVanDinhKy {
     border-radius: 22px;
     text-transform: uppercase;
     background-color: #084f1f !important;
