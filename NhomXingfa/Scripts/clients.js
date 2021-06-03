@@ -216,16 +216,16 @@ $(document).ready(function () {
         //$('#modalLogin').modal({ backdrop: 'static', keyboard: false });
     });
 
-    $(document).on("click", "#btnTuVanDinhKy", function () {
+    $(document).on("click", ".datapopup", function () {
 
         $('#modalTuVan').modal({ backdrop: 'static', keyboard: false });
 
     });
-    $(document).on("click", "#btnTuVanDinhKy2", function () {
+    //$(document).on("click", "#btnTuVanDinhKy2", function () {
 
-        $('#modalTuVan').modal({ backdrop: 'static', keyboard: false });
+    //    $('#modalTuVan').modal({ backdrop: 'static', keyboard: false });
 
-    });
+    //});
     $(document).on("click", ".closed", function () {
 
         $("#full-opacity").hide();
