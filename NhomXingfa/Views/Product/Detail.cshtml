@@ -191,50 +191,55 @@
 else if (Model.product.IsProduct == false)
 {
     
-<div class="col-md-3">
-	<div class="divtong">
-		<a href="/product/detail/@q.ProductID">
-			<div class="toppin">
-				<img src="~/Photos/Products/@q.Images" />
-				<span class="slchai">
-					<span class="numberchai">@q.SoLuongChai</span><br /> Chai
-				</span>
-			</div>
-			<h4 class="goiname1">
-				@q.ProductName
-			</h4>
-			<h4 class="goiname2">
-				@{
-					var sl = q.SoLuongChai / q.SoNgayShip;
-				}
-				@q.SoNgayShip Ngày - @sl Chai / Ngày
-
-			</h4>
-		</a>
-		<div class="buttondathanggoi">
-			<input type="button" class="btn btn-lg btn-primary btnAddCartGoi" productid="@q.ProductID" value="thêm vào giỏ hàng" />
-		</div>
-		<div class="actionhover">
-			<div class="giagoi">
-				<span style="color: #124f27">Giá:</span> @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup>
-			</div>
-			<div class="giaship">
-				Giá gốc: <span class="shipdagiam">@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
-			</div>
-			<div class="xemthem">
+<div class="row" id="goispdon">
+	@foreach (var q in Model.products)
+	{
+		<div class="col-md-3">
+			<div class="divtong">
 				<a href="/product/detail/@q.ProductID">
-					<span>Xem Thêm ></span>
+					<div class="toppin">
+						<img src="~/Photos/Products/@q.Images" />
+						<span class="slchai">
+							<span class="numberchai">@q.SoLuongChai</span><br /> Chai
+						</span>
+					</div>
+					<h4 class="goiname1">
+						@q.ProductName
+					</h4>
+					<h4 class="goiname2">
+						@{
+							var sl = q.SoLuongChai / q.SoNgayShip;
+						}
+						@q.SoNgayShip Ngày - @sl Chai / Ngày
+
+					</h4>
 				</a>
+				<div class="buttondathanggoi">
+					<input type="button" class="btn btn-lg btn-primary btnAddCartGoi" productid="@q.ProductID" value="thêm vào giỏ hàng" />
+				</div>
+				<div class="actionhover">
+					<div class="giagoi">
+						<span style="color: #124f27">Giá:</span> @String.Format("{0:#,0}", q.PriceSale)<sup>đ</sup>
+					</div>
+					<div class="giaship">
+						Giá gốc: <span class="shipdagiam">@String.Format("{0:#,0}", q.Price)</span><sup>đ</sup>
+					</div>
+					<div class="xemthem">
+						<a href="/product/detail/@q.ProductID">
+							<span>Xem Thêm ></span>
+						</a>
+					</div>
+				</div>
+				@if (q.IsSale == true)
+				{
+					<span style="position: absolute; z-index: 999; right: 12px; top: 12px; color: #ac8514; font-weight: bold; font-size: 18px; width: 65px; transition: all;" class="iconbanchay fontstyle">
+						<img style="width:43px" src="~/images/banchay.png" /> <br />
+						Bán chạy nhất
+					</span>
+				}
 			</div>
 		</div>
-		@if (q.IsSale == true)
-		{
-			<span style="position: absolute; z-index: 999; right: 12px; top: 12px; color: #ac8514; font-weight: bold; font-size: 18px; width: 65px; transition: all;" class="iconbanchay fontstyle">
-				<img style="width:43px" src="~/images/banchay.png" /> <br />
-				Bán chạy nhất
-			</span>
-		}
-	</div>
+	}
 </div>
 }
 
