@@ -134,7 +134,7 @@
         </h2>
     }
 </div>
-@if (Model.product.IsProduct == true)
+@if (true == true)
 {
     <div class="row" id="goispdon">
 
@@ -187,14 +187,6 @@
         }
 
     </div>
-}
-else if (Model.product.IsProduct == false)
-{
-    
-    Html.Partial("_goidinhky", Model.products);
-
-
-    <span>1</span>
 }
 
 @section scripts
