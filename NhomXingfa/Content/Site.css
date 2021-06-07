@@ -141,6 +141,17 @@ textarea {
     {
         display:none;
     }
+
+    #endpage
+    {
+        background-size:unset;
+    }
+        #endpage .block
+        {
+            width:unset;
+            margin:unset;
+            padding-left:15px;
+        }
 }
 
 
