@@ -152,6 +152,14 @@ textarea {
             margin:unset !important;
             padding-left:15px !important;
         }
+    .green-o-components-global-header-index-slogan
+    {
+        font-size:16px !important;
+    }
+    .navbar-toggle
+    {
+        margin-right:1px !important;
+    }
 }
 
 
