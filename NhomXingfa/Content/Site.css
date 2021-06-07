@@ -144,13 +144,13 @@ textarea {
 
     #endpage
     {
-        background-size:unset;
+        background-size:unset !important;
     }
         #endpage .block
         {
-            width:unset;
-            margin:unset;
-            padding-left:15px;
+            width:unset !important;
+            margin:unset !important;
+            padding-left:15px !important;
         }
 }
 
