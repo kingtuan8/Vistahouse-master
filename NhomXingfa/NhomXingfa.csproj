@@ -1060,7 +1060,7 @@
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\_box.cshtml" />
+    <Content Include="Views\Shared\_box.cshtml" />
     <Content Include="Views\Home\_congdong.cshtml" />
     <Content Include="Views\Home\_goidinhky.cshtml" />
     <Content Include="Views\Home\_luachon.cshtml" />
