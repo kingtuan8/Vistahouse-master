@@ -164,10 +164,13 @@ textarea {
     {
         display:none;
     }
-    .tongtiencartmini .col-md-6
+    .sttdinhky.fontstyle
     {
-        float:left;
-        width:50%;
+        display:none !important; 
+    }
+    .tongtiencartmini .col-md-6 {
+        float: left;
+        width: 50%;
     }
     .tongtiencartmini {
         height: 220px !important;
