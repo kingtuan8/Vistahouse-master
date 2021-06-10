@@ -164,14 +164,23 @@ textarea {
     {
         display:none;
     }
-    .tongtiencartmini .col-md-6
+    .sttdinhky.fontstyle
     {
-        float:left;
-        width:50%;
+        display:none !important; 
     }
-    .listdathang ul li .col-md-9 .actioncart .form-inline
+    .tongtiencartmini .col-md-6 {
+        float: left;
+        width: 50%;
+    }
+    .tongtiencartmini {
+        height: 220px !important;
+    }
+    .listdathang
     {
-        float:right;
+        padding-bottom:20px !important;
+    }
+    .listdathang ul li .col-md-9 .actioncart .form-inline {
+        float: right;
     }
         .listdathang ul li .col-md-9 .actioncart .form-inline input[type="text"]
         {
