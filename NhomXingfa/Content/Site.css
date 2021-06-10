@@ -169,9 +169,15 @@ textarea {
         float:left;
         width:50%;
     }
-    .listdathang ul li .col-md-9 .actioncart .form-inline
+    .tongtiencartmini {
+        height: 220px !important;
+    }
+    .listdathang
     {
-        float:right;
+        padding-bottom:20px !important;
+    }
+    .listdathang ul li .col-md-9 .actioncart .form-inline {
+        float: right;
     }
         .listdathang ul li .col-md-9 .actioncart .form-inline input[type="text"]
         {

@@ -276,7 +276,7 @@ $(document).ready(function () {
                         },
                         complete: function (xhr, status) {
 
-                            var hw = window.outerHeight;
+                            var hw = window.innerHeight;
 
                             $("#full-opacity").css("height", hw);
                             $(".minicart").css("height", hw);
