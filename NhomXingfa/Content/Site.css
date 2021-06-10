@@ -160,6 +160,27 @@ textarea {
     {
         margin-right:0px;
     }
+    .borderdinhky
+    {
+        display:none;
+    }
+    .tongtiencartmini .col-md-6
+    {
+        float:left;
+        width:50%;
+    }
+    .listdathang ul li .col-md-9 .actioncart .form-inline
+    {
+        float:right;
+    }
+        .listdathang ul li .col-md-9 .actioncart .form-inline input[type="text"]
+        {
+            float:left;
+        }
+        .listdathang ul li .col-md-9 .actioncart .form-inline a:first-child
+        {
+            float:left;
+        }
 }
 
 
