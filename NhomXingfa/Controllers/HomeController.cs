@@ -592,7 +592,7 @@ namespace NhomXingfa.Controllers
             //var model = db.MENUs.Where(q => q.IdCha == 0).OrderBy(o => o.ThuTu);
 
             MenuViewModel model = new MenuViewModel();
-            model.lstCate = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct).ToList();
+            model.lstCate = db.Categories.Where(c => c.Parent == 0 && c.TypeCate == WebConstants.CategoryProduct && c.IsActive == true).ToList();
 
             return PartialView("_menu", model);
         }
