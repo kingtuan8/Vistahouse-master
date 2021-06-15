@@ -190,6 +190,26 @@ textarea {
         {
             float:left;
         }
+
+    #lstfullgiohang .itemlst .buttonfunc .removesp
+    {
+        left:0px !important;
+    }
+    #lstfullgiohang .itemlst .buttonfunc .form-inline {
+        padding-left:28px !important;
+    }
+        #lstfullgiohang .itemlst .buttonfunc .form-inline a:first-child
+        {
+            float:left !important;
+        }
+    #lstfullgiohang .itemlst .buttonfunc input[type="text"]
+    {
+        float:left !important;
+    }
+    #lstfullgiohang .itemlst .buttonfunc a:last-child
+    {
+        float:left !important;
+    }
 }
 
 
