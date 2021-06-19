@@ -189,7 +189,19 @@
                             <div class="timeline-body">
                                 <div class="timeline-header">
 
-                                    <span class="date">@h.User.UserName - @h.TimeHistory</span>
+                                    <span class="date">
+                                        @if (h.User != null)
+                                        {
+                                        <span>
+                                            @h.User.UserName
+                                        </span>
+                                        }
+                                        else
+                                        {
+                                            <span>Khách vãng lai</span>
+                                        }
+                                        - @h.TimeHistory.Value.ToString("HH:mm dd/MM/yyyy")
+                                    </span>
                                 </div>
                                 <div class="timeline-content">
                                     <p>@h.ContentHistory</p>
