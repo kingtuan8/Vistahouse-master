@@ -9,7 +9,7 @@
 
 <div id="page-heading">
     <ol class="breadcrumb">
-        <li><a href="/quantri/homepage">Trang chủ</a></li>
+        <li><a href="index.html">Trang chủ</a></li>
         <li class="active">Chi tiết</li>
 
     </ol>
@@ -127,8 +127,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Danh mục</th>
-                                <th>Sản phẩm</th>
+                                <th>Category</th>
+                                <th>Tên SP</th>
                                 <th>Số lượng</th>
                                 <th>Đơn giá</th>
                                 <th>Thành tiền</th>
@@ -170,13 +170,12 @@
                 }
                 decimal tong = shipFee + @Model.cart.TotalConLai.Value; }
             <div class="col-md-3 col-md-offset-9">
-                <p class="text-right"><b>Tổng đơn hàng: </b> @String.Format("{0:0,0}", Model.cart.Total) vnd</p>
-                <p class="text-right"><b>Discout: </b> 0%</p>
-                <p class="text-right"><b>Mã khuyến mại: </b> @String.Format("{0:0,0}", Model.cart.VourcerMoney) vnd - <span class="text-danger">@Model.cart.VouchersCode</span></p>
-                <p class="text-right"><b>Phí Vận chuyển: </b> @String.Format("{0:0,0}", shipFee)</p>
+                <p class="text-right">Tổng đơn hàng @String.Format("{0:0,0}", @Model.cart.Total) vnd</p>
+                <p class="text-right">Discout: 0%</p>
+                <p class="text-right">Phí Vận chuyển: @String.Format("{0:0,0}", shipFee)</p>
                 <hr>
 
-                <h3 class="text-right text-danger"><b>Tổng: @String.Format("{0:0,0}", tong)</b> <span style="color:#000000; font-size:8pt">vnd</span> </h3>
+                <h3 class="text-right">Tổng: @String.Format("{0:0,0}", tong) <span style="color:#000000; font-size:8pt">vnd</span> </h3>
             </div>
         </div>
         <div class="row">
@@ -189,18 +188,20 @@
 
                             <div class="timeline-body">
                                 <div class="timeline-header">
+
                                     <span class="date">
                                         @if (h.User != null)
                                         {
+                                        <span>
                                             @h.User.UserName
+                                        </span>
                                         }
                                         else
                                         {
                                             <span>Khách vãng lai</span>
                                         }
                                         - @h.TimeHistory.Value.ToString("HH:mm dd/MM/yyyy")
-                                    </span>                                    
-
+                                    </span>
                                 </div>
                                 <div class="timeline-content">
                                     <p>@h.ContentHistory</p>
