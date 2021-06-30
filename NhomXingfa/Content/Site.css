@@ -210,6 +210,35 @@ textarea {
     {
         float:left !important;
     }
+    .ytframe
+    {
+        display:none !important;
+    }
+    .green-o-components-global-header-index-slogan
+    {
+        display:none !important;
+    }
+    .navbar-brand img
+    {
+        /*width:83px !important;*/
+        /*margin-left:40% !important;*/
+    }
+    .navbar-brand
+    {
+        padding-left:35%;
+    }
+    #loadslogan
+    {
+        display:none !important;
+    }
+    #diachistyle
+    {
+        display:none !important;
+    }
+    .nav.navbar-nav.navbar-right li
+    {
+        /*display:inline-table !important;*/
+    }
 }
 
 
