@@ -1081,6 +1081,7 @@ function SetHeigth() {
     var h = $(document).height();
     var w = window.innerWidth;
     var hw = window.innerHeight;
+    var ww = $(document).width();
 
     $("#full-opacity").css("height", hw);
     $(".minicart").css("height", hw);
@@ -1091,6 +1092,11 @@ function SetHeigth() {
     $("#leftql").css("min-height", hw - 70);
     $("#leftql").css("max-height", hw - 70);
     $("#leftql ul").css("max-height", hw - 240);
+
+    //if (ww <= 768) {
+    //    $(".navbar-brand").css("padding-left", (ww / 4) + 55);
+    //}
+    
 
     //alert("sd");
 }
